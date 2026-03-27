@@ -1,0 +1,44 @@
+{
+  "name": "studylane",
+  "version": "1.0.0",
+  "description": "StudyLane – Digitaler Planer für Schüler und Studierende",
+  "main": "main.js",
+  "author": "KX KroniX Tech",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.kronix.studylane",
+    "productName": "StudyLane",
+    "copyright": "Copyright 2026 KX KroniX Tech",
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "StudyLane"
+    },
+    "directories": {
+      "buildResources": "assets",
+      "output": "release"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/.cache",
+      "!dist/**",
+      "!**/*.map"
+    ]
+  }
+}
