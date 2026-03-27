@@ -32,8 +32,10 @@
     "appId": "com.kronix.studylane",
     "productName": "StudyLane",
     "copyright": "Copyright 2026 KX KroniX Tech",
+    "icon": "assets/icon.ico",
     "win": {
-      "target": [{ "target": "nsis", "arch": ["x64"] }]
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "assets/icon.ico"
     },
     "nsis": {
       "oneClick": false,
