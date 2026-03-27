@@ -96,6 +96,10 @@
     <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
     <span data-i18n="navAzubi">Portfolio</span>
   </button>
+  <button class="nav-btn student-only" data-page="notes" onclick="showPage('notes')">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="12" y1="21" x2="12" y2="17"/></svg>
+    <span data-i18n="navNotes">Mitschriften</span>
+  </button>
   <button class="nav-btn" data-page="homework" onclick="showPage('homework')">
     <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
     <span data-i18n="navHomework">Aufgaben</span>
@@ -376,6 +380,72 @@
     </div>
     <div id="stuGoalsList"></div>
     <div id="stuGoalsEmpty" class="empty-hint" data-i18n="stuGoalsEmpty">Noch keine Ziele gesetzt – tippe + um Ziele hinzuzufügen</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ PAGE: NOTES ════════════════════════ -->
+<div class="page-content page" id="page-notes">
+  <div class="page-header">
+    <h1 data-i18n="navNotes">Mitschriften</h1>
+    <button class="btn btn-primary btn-sm" onclick="openNoteModal()">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      <span data-i18n="noteAdd">+ Neue Mitschrift</span>
+    </button>
+  </div>
+
+  <!-- Search + filter row -->
+  <div class="search-bar" style="margin-bottom:12px">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" id="notesSearchInput" data-i18n="notesSearch" placeholder="Notizen durchsuchen…" oninput="renderNotesList()" />
+  </div>
+
+  <div id="notesList" class="notes-list"></div>
+
+  <div id="notesEmpty" class="empty-state" style="display:none">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <h3 data-i18n="notesNoItems">Noch keine Mitschriften</h3>
+    <p data-i18n="notesHint">Tippe + um eine neue Mitschrift hinzuzufügen</p>
+    <button class="btn btn-primary" onclick="openNoteModal()">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      <span data-i18n="noteAdd">+ Neue Mitschrift</span>
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════════ MODAL: NOTE ═══════════════════════ -->
+<div class="modal-bg" id="noteModalBg">
+  <div class="modal">
+    <div class="modal-title">
+      <span id="noteModalTitle" data-i18n="noteAdd">+ Neue Mitschrift</span>
+      <button class="modal-close" onclick="closeNoteModal()">✕</button>
+    </div>
+    <div class="field">
+      <label data-i18n="noteSubject">Fach / Thema</label>
+      <input class="input" type="text" id="noteSubjectInput" data-i18n="noteSubjectPlaceholder" placeholder="z.B. Mathematik – Integralrechnung" list="noteSubjectSuggestions" />
+      <datalist id="noteSubjectSuggestions"></datalist>
+    </div>
+    <div class="field">
+      <label data-i18n="noteTitle">Titel</label>
+      <input class="input" type="text" id="noteTitleInput" data-i18n="noteTitlePlaceholder" placeholder="z.B. Wichtige Formeln" />
+    </div>
+    <div class="field">
+      <label data-i18n="noteContent">Inhalt</label>
+      <textarea class="textarea note-textarea" id="noteContentInput" rows="8" data-i18n="noteContentPlaceholder" placeholder="Mitschrift hier eingeben…"></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label data-i18n="noteDate">Datum</label>
+        <input class="input" type="date" id="noteDateInput" />
+      </div>
+      <div class="field">
+        <label data-i18n="noteColor">Farbe</label>
+        <div id="noteColorPalette" class="color-palette"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeNoteModal()"><span data-i18n="cancel">Abbrechen</span></button>
+      <button class="btn btn-primary" onclick="saveNote()"><span data-i18n="apply">Speichern</span></button>
+    </div>
   </div>
 </div>
 

@@ -16,6 +16,8 @@ let homeworkData = [];
 let gradesData   = {};     // { subjectId: { name, color, entries:[] } }
 let hwFilter     = 'all';
 let editingHwId  = null;
+let notesData    = [];   // [{ id, subject, title, content, date, color, createdAt }]
+let editingNoteId = null;
 
 const CELL_COLORS = [
   '#7c6af5','#a855f7','#ec4899','#ef4444',
@@ -40,6 +42,8 @@ const Storage = {
   saveHomework(arr)  { this.save('studylane_homework', arr); },
   loadGrades()       { return this.load('studylane_grades', {}); },
   saveGrades(obj)    { this.save('studylane_grades', obj); },
+  loadNotes()        { return this.load('studylane_notes', []); },
+  saveNotes(arr)     { this.save('studylane_notes', arr); },
 };
 
 // ── UUID ───────────────────────────────────────────────────────────
@@ -73,6 +77,7 @@ async function init() {
   schedules    = Storage.loadSchedules();
   homeworkData = Storage.loadHomework();
   gradesData   = Storage.loadGrades();
+  notesData    = Storage.loadNotes();
 
   populateSettingsForm();
   renderDefaultSlotsList();
@@ -179,6 +184,7 @@ function showPage(id) {
   if (id === 'homework') renderHomeworkList();
   if (id === 'home')     renderHomeDashboard();
   if (id === 'student')  renderStudentPage();
+  if (id === 'notes')    renderNotesList();
 }
 
 // Context-sensitive "+" nav button
@@ -187,6 +193,7 @@ function handleNavAdd() {
   const pageId = active ? active.id.replace('page-', '') : 'home';
   if      (pageId === 'homework') openHwModal();
   else if (pageId === 'grades')   openGradeModal();
+  else if (pageId === 'notes')    openNoteModal();
   else if (pageId === 'student')  openHwModal();
   else                            newScheduleAndShow();
 }
@@ -372,8 +379,129 @@ function deleteGoal(i) {
 }
 
 // ══════════════════════════════════════════════════════════════════
-//  SETTINGS
+//  NOTES
 // ══════════════════════════════════════════════════════════════════
+const NOTE_COLORS = ['#818cf8','#a855f7','#ec4899','#f59e0b','#22c55e','#3b82f6','#14b8a6','#ef4444'];
+let _selectedNoteColor = NOTE_COLORS[0];
+
+function renderNotesList() {
+  const list  = document.getElementById('notesList');
+  const empty = document.getElementById('notesEmpty');
+  if (!list) return;
+
+  const q = (document.getElementById('notesSearchInput')?.value || '').toLowerCase();
+  const items = [...notesData]
+    .filter(n => !q || (n.subject + ' ' + n.title + ' ' + n.content).toLowerCase().includes(q))
+    .sort((a, b) => (b.date || b.createdAt || '').localeCompare(a.date || a.createdAt || ''));
+
+  if (items.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+  empty.style.display = 'none';
+
+  // Group by date
+  const groups = {};
+  items.forEach(n => {
+    const key = n.date || n.createdAt?.slice(0, 10) || '?';
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(n);
+  });
+
+  list.innerHTML = Object.entries(groups).map(([date, notes]) => `
+    <div class="notes-date-group">
+      <div class="notes-date-label">${fmtDate2(date)}</div>
+      ${notes.map(n => `
+        <div class="note-card" style="border-left:3px solid ${n.color || NOTE_COLORS[0]}">
+          <div class="note-card-header">
+            <div class="note-card-meta">
+              ${n.subject ? `<span class="note-subject-tag" style="background:${n.color || NOTE_COLORS[0]}22;color:${n.color || NOTE_COLORS[0]}">${esc(n.subject)}</span>` : ''}
+              <span class="note-title">${esc(n.title || t('navNotes'))}</span>
+            </div>
+            <div class="note-actions">
+              <button class="hw-act-btn" onclick="editNote('${n.id}')">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button class="hw-act-btn" onclick="deleteNote('${n.id}')">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="note-content">${esc(n.content || '').replace(/\n/g, '<br>')}</div>
+        </div>`).join('')}
+    </div>`).join('');
+
+  // Update subject datalist
+  const subjects = [...new Set(notesData.map(n => n.subject).filter(Boolean))];
+  const dl = document.getElementById('noteSubjectSuggestions');
+  if (dl) dl.innerHTML = subjects.map(s => `<option value="${esc(s)}">`).join('');
+}
+
+function openNoteModal(note) {
+  editingNoteId = note ? note.id : null;
+  const titleEl = document.getElementById('noteModalTitle');
+  if (titleEl) titleEl.textContent = note ? t('noteEdit') : t('noteAdd');
+  setValue('noteSubjectInput', note ? (note.subject || '') : '');
+  setValue('noteTitleInput',   note ? (note.title   || '') : '');
+  setValue('noteContentInput', note ? (note.content || '') : '');
+  setValue('noteDateInput',    note ? (note.date    || todayStr()) : todayStr());
+  _selectedNoteColor = (note && note.color) ? note.color : NOTE_COLORS[0];
+  renderNoteColorPalette();
+  document.getElementById('noteModalBg').classList.add('open');
+  setTimeout(() => document.getElementById('noteContentInput')?.focus(), 100);
+}
+
+function renderNoteColorPalette() {
+  const pal = document.getElementById('noteColorPalette');
+  if (!pal) return;
+  pal.innerHTML = NOTE_COLORS.map(c =>
+    `<div class="color-dot ${_selectedNoteColor === c ? 'selected' : ''}" style="background:${c}"
+         onclick="selectNoteColor('${c}',this)"></div>`).join('');
+}
+
+function selectNoteColor(c, el) {
+  _selectedNoteColor = c;
+  document.querySelectorAll('#noteColorPalette .color-dot').forEach(d => d.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function closeNoteModal() {
+  document.getElementById('noteModalBg').classList.remove('open');
+  editingNoteId = null;
+}
+
+function saveNote() {
+  const subject = document.getElementById('noteSubjectInput')?.value.trim() || '';
+  const title   = document.getElementById('noteTitleInput')?.value.trim() || '';
+  const content = document.getElementById('noteContentInput')?.value.trim() || '';
+  const date    = document.getElementById('noteDateInput')?.value || todayStr();
+  if (!content && !title) { toast(t('noteContentRequired')); return; }
+
+  if (editingNoteId) {
+    const idx = notesData.findIndex(n => n.id === editingNoteId);
+    if (idx !== -1) {
+      notesData[idx] = { ...notesData[idx], subject, title, content, date, color: _selectedNoteColor };
+    }
+  } else {
+    notesData.unshift({ id: uuid(), subject, title, content, date, color: _selectedNoteColor, createdAt: new Date().toISOString() });
+  }
+  Storage.saveNotes(notesData);
+  closeNoteModal();
+  renderNotesList();
+  toast(t('noteSaved'));
+}
+
+function editNote(id) {
+  const note = notesData.find(n => n.id === id);
+  if (note) openNoteModal(note);
+}
+
+function deleteNote(id) {
+  notesData = notesData.filter(n => n.id !== id);
+  Storage.saveNotes(notesData);
+  renderNotesList();
+}
 function populateSettingsForm() {
   setValue('settingName',      settings.profileName     || '');
   setValue('settingSchool',    settings.profileSchool   || '');
