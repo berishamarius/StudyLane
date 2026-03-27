@@ -7,38 +7,44 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="StudyLane" />
-  <title>StudyLane</title>
+  <meta name="apple-mobile-web-app-title" content="TaskLane" />
+  <title>TaskLane</title>
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
   <script src="i18n.js"></script>
+  <!-- Capacitor runtime (only present when packaged as Android/iOS app) -->
+  <script>
+    if (typeof Capacitor !== 'undefined') {
+      document.documentElement.dataset.platform = Capacitor.getPlatform();
+    }
+  </script>
 </head>
 <body>
 
 <!-- ══════════════ TITLE BAR ══════════════ -->
 <div class="titlebar">
   <div class="titlebar-logo">
-    <svg width="40" height="28" viewBox="0 0 52 34" fill="none">
+    <svg width="36" height="28" viewBox="0 0 46 34" fill="none">
       <defs>
-        <linearGradient id="sg" x1="0" y1="0" x2="0" y2="34" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#FFFFFF"/>
-          <stop offset="100%" stop-color="#EDEDED"/>
+        <linearGradient id="tg" x1="0" y1="0" x2="46" y2="34" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#818cf8"/>
+          <stop offset="100%" stop-color="#6366f1"/>
         </linearGradient>
       </defs>
-      <text x="1" y="29" font-size="30" font-weight="900" fill="url(#sg)" font-family="'Segoe UI',system-ui,sans-serif" letter-spacing="-1">SL</text>
+      <text x="0" y="29" font-size="30" font-weight="900" fill="url(#tg)" font-family="'Segoe UI',system-ui,sans-serif" letter-spacing="-1">SL</text>
     </svg>
-    <span class="logo-text">StudyLane</span>
+    <span class="logo-text">TaskLane</span>
   </div>
 
   <div class="titlebar-mode" id="titlebarMode">
-    <button class="tmode-btn active" id="modeSchuelerBtn" onclick="setMode('schueler')">
-      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      <span data-i18n="modeSchueler">Schüler</span>
+    <button class="tmode-btn active" id="modeMitarbeiterBtn" onclick="setMode('mitarbeiter')">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span data-i18n="modeMitarbeiter">Mitarbeiter</span>
     </button>
-    <button class="tmode-btn" id="modeStudentBtn" onclick="setMode('student')">
+    <button class="tmode-btn azubi" id="modeAzubiBtn" onclick="setMode('azubi')">
       <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-      <span data-i18n="modeStudent">Studierender</span>
+      <span data-i18n="modeAzubi">Azubi</span>
     </button>
   </div>
 
@@ -82,17 +88,17 @@
     <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
     <span data-i18n="navNew">Neu</span>
   </button>
-  <button class="nav-btn" data-page="homework" onclick="showPage('homework')">
+  <button class="nav-btn mitarbeiter-only" data-page="grades" onclick="showPage('grades')">
     <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-    <span data-i18n="navHomework">Aufgaben</span>
+    <span data-i18n="navBerichte">Berichte</span>
   </button>
-  <button class="nav-btn" data-page="grades" onclick="showPage('grades')">
-    <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-    <span data-i18n="navGrades">Noten</span>
+  <button class="nav-btn azubi-only" data-page="azubi" onclick="showPage('azubi')">
+    <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+    <span data-i18n="navAzubi">Azubi</span>
   </button>
-  <button class="nav-btn" data-page="school" onclick="showPage('school')">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/><circle cx="12" cy="7" r="1"/></svg>
-    <span data-i18n="navSchool">Schule</span>
+  <button class="nav-btn" data-page="homework" onclick="showPage('homework')">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <span data-i18n="navWorkplan">Workplan</span>
   </button>
   <button class="nav-btn" data-page="settings" onclick="showPage('settings')">
     <svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
@@ -247,6 +253,19 @@
   <div id="grEmpty" class="empty-state" style="display:none">
     <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
     <h3 data-i18n="grNoSubjects">Noch keine Noten</h3>
+  </div>
+</div>
+
+<!-- ══════════════════════════ PAGE: AZUBI ══════════════════════════ -->
+<div class="page-content page" id="page-azubi">
+  <div class="page-header">
+    <h1 data-i18n="navAzubi">Azubi</h1>
+  </div>
+
+  <div class="empty-state" id="azubiEmpty">
+    <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+    <h3 data-i18n="azubiEmptyTitle">Azubi-Bereich</h3>
+    <p data-i18n="azubiEmptyHint">Dein Ausbildungsbereich kommt hier hin</p>
   </div>
 </div>
 
@@ -531,12 +550,17 @@
 
 <!-- ══════════════════════════ MODAL: LEGAL ══════════════════════════ -->
 <div class="modal-bg" id="legalModalBg">
-  <div class="modal">
+  <div class="modal modal-legal">
     <div class="modal-title">
-      <span id="legalModalTitle">Impressum</span>
-      <button class="modal-close" onclick="closeLegalModal()">✕</button>
+      <div class="legal-tabs">
+        <button class="legal-tab" id="legalTab-imprint" onclick="switchLegalTab('imprint')"><span data-i18n="imprintTitle">Impressum</span></button>
+        <button class="legal-tab" id="legalTab-privacy" onclick="switchLegalTab('privacy')"><span data-i18n="privacyTitle">Datenschutz</span></button>
+        <button class="legal-tab" id="legalTab-terms" onclick="switchLegalTab('terms')"><span data-i18n="termsTitle">Nutzung</span></button>
+      </div>
+      <button class="modal-close" onclick="closeLegalModal()">&#x2715;</button>
     </div>
     <div class="legal-modal-content" id="legalModalContent"></div>
+    <div class="legal-footer">&copy; 2024–2026 KX KroniX Tech &middot; TaskLane v1.0.0</div>
   </div>
 </div>
 

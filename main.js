@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   StudyLane – main.js  (Electron desktop shell)
+   TaskLane – main.js  (Electron desktop shell)
    All data stored in localStorage. No backend required.
    ══════════════════════════════════════════════════════════════ */
 const { app, BrowserWindow, ipcMain, session } = require('electron');
@@ -11,14 +11,14 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width:     1280,
     height:    800,
-    minWidth:  360,
+    minWidth:  900,
     minHeight: 600,
     resizable: true,
     frame:     false,
     fullscreen: true,
     show:      false,
-    backgroundColor: '#1E1E2E',
-    title: 'StudyLane',
+    backgroundColor: '#0e1520',
+    title: 'TaskLane',
     webPreferences: {
       contextIsolation: true,
       nodeIntegration:  false,

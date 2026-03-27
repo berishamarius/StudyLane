@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
-   renderer.js  –  StudyLane
-   Timetable + Homework + Grades + School Network
+   renderer.js  –  TaskLane
+   Workplan + Reports + Azubi + Settings
    Fully offline, localStorage only, no backend
    ═══════════════════════════════════════════════════════════════ */
 
@@ -32,14 +32,14 @@ const Storage = {
     catch { return def; }
   },
   save(key, val) { localStorage.setItem(key, JSON.stringify(val)); },
-  loadSchedules()    { return this.load('sl_schedules', []); },
-  saveSchedules(arr) { this.save('sl_schedules', arr); },
-  loadSettings()     { return this.load('sl_settings', {}); },
-  saveSettings(s)    { this.save('sl_settings', s); },
-  loadHomework()     { return this.load('sl_homework', []); },
-  saveHomework(arr)  { this.save('sl_homework', arr); },
-  loadGrades()       { return this.load('sl_grades', {}); },
-  saveGrades(obj)    { this.save('sl_grades', obj); },
+  loadSchedules()    { return this.load('tasklane_schedules', []); },
+  saveSchedules(arr) { this.save('tasklane_schedules', arr); },
+  loadSettings()     { return this.load('tasklane_settings', {}); },
+  saveSettings(s)    { this.save('tasklane_settings', s); },
+  loadHomework()     { return this.load('tasklane_homework', []); },
+  saveHomework(arr)  { this.save('tasklane_homework', arr); },
+  loadGrades()       { return this.load('tasklane_grades', {}); },
+  saveGrades(obj)    { this.save('tasklane_grades', obj); },
 };
 
 // ── UUID ───────────────────────────────────────────────────────────
@@ -55,7 +55,7 @@ async function init() {
 
   settings = Storage.loadSettings();
   if (!settings._v) {
-    settings.mode = 'schueler';
+    settings.mode = 'mitarbeiter';
     settings.gradeSystem = 'school';
     settings._v = 1;
     Storage.saveSettings(settings);
@@ -149,14 +149,17 @@ function setMode(mode) {
 }
 
 function applyMode() {
-  const mode = settings.mode || 'schueler';
-  ['schueler','student'].forEach(m => {
+  const mode = settings.mode || 'mitarbeiter';
+  ['mitarbeiter','azubi'].forEach(m => {
     const btn = document.getElementById('mode' + cap(m) + 'Btn');
     if (btn) btn.classList.toggle('active', m === mode);
   });
+  // Toggle body class for CSS-based nav/button switching
+  document.body.classList.toggle('mode-mitarbeiter', mode === 'mitarbeiter');
+  document.body.classList.toggle('mode-azubi',       mode === 'azubi');
   // Show/hide ECTS field in grade modal
   const ectsField = document.getElementById('grEctsField');
-  if (ectsField) ectsField.style.display = mode === 'student' ? '' : 'none';
+  if (ectsField) ectsField.style.display = mode === 'azubi' ? '' : 'none';
 }
 
 function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -174,6 +177,7 @@ function showPage(id) {
   if (id === 'grades')  renderGradesList();
   if (id === 'school')  renderSchoolPortal();
   if (id === 'homework') renderHomeworkList();
+  if (id === 'azubi') { /* azubi page rendered statically */ }
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -933,15 +937,61 @@ function safeUrl(url) {
 // ══════════════════════════════════════════════════════════════════
 const LEGAL_CONTENT = {
   imprint: {
-    de: `StudyLane – KX KroniX Tech\nKontakt: contact@kronix-tech.com`,
-    en: `StudyLane – KX KroniX Tech\nContact: contact@kronix-tech.com`,
-    ar: `StudyLane – KX KroniX Tech\nللتواصل: contact@kronix-tech.com`,
-    es: `StudyLane – KX KroniX Tech\nContacto: contact@kronix-tech.com`,
-    fr: `StudyLane – KX KroniX Tech\nContact : contact@kronix-tech.com`,
-    hi: `StudyLane – KX KroniX Tech\nसंपर्क: contact@kronix-tech.com`,
-    it: `StudyLane – KX KroniX Tech\nContatto: contact@kronix-tech.com`,
-    ja: `StudyLane – KX KroniX Tech\n連絡先: contact@kronix-tech.com`,
-    ko: `StudyLane – KX KroniX Tech\n연락처: contact@kronix-tech.com`,
+    de: '<h3>Anbieter &amp; Verantwortlicher</h3><p>KX KroniX Tech<br>E-Mail: contact@kronix-tech.com<br>Website: kronix-tech.com</p>' +
+        '<h3>Impressumspflicht (§ 5 TMG)</h3><p>Für eine rein private, nicht-kommerzielle App entfällt die gesetzliche Impressumspflicht. Sobald die App öffentlich angeboten wird (Play Store, Webseite etc.), ist ein vollständiges Impressum mit Name, Anschrift und erreichbarer E-Mail gesetzlich verpflichtend.</p>' +
+        '<h3>Haftungsausschluss</h3><p>Die Inhalte wurden mit größtmöglicher Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit oder Aktualität wird keine Haftung übernommen.</p>' +
+        '<h3>Drittanbieter-Lizenzen</h3><p>Electron (MIT) · electron-builder (MIT) · @capacitor/core (MIT) · @capacitor/android (MIT)<br>Vollständige Liste in <code>package.json</code>.</p>',
+    en: '<h3>Provider &amp; Responsible Party</h3><p>KX KroniX Tech<br>E-Mail: contact@kronix-tech.com<br>Website: kronix-tech.com</p>' +
+        '<h3>Legal Notice</h3><p>For a purely private, non-commercial app, there is no legal obligation to provide an imprint. Once publicly offered, a full imprint including name, address, and reachable email is legally required.</p>' +
+        '<h3>Disclaimer</h3><p>Content has been compiled with the greatest possible care. No liability is accepted for accuracy or completeness.</p>' +
+        '<h3>Third-Party Licenses</h3><p>Electron (MIT) · electron-builder (MIT) · @capacitor/core (MIT) · @capacitor/android (MIT)<br>Full list in <code>package.json</code>.</p>',
+  },
+  privacy: {
+    de: '<h3>Grundsatz</h3><p>TaskLane erhebt <b>keine personenbezogenen Daten</b> und sendet <b>keine Daten an externe Server</b>, solange die SMTP-Funktion nicht aktiv genutzt wird.</p>' +
+        '<h3>Lokal gespeicherte Daten</h3><p>Alle Daten werden ausschließlich im <code>localStorage</code> gespeichert:<br><code>tasklane_schedules</code> – Stundenpläne<br><code>tasklane_settings</code> – Sprache, Modus, SMTP-Konfiguration<br><code>tasklane_azubi</code> – Azubi-Daten &amp; Notizen</p>' +
+        '<p>Es werden keine Analyse-Tools, Tracking-Dienste, Cookies oder Werbedienste eingesetzt.</p>' +
+        '<h3>SMTP / E-Mail (optional)</h3><p>SMTP-Zugangsdaten werden lokal in <code>tasklane_settings</code> gespeichert und nur für den konfigurierten Server verwendet. KroniX Tech hat keinen Zugriff auf diese Daten.</p>' +
+        '<h3>Daten löschen</h3><p><b>Einstellungen → Alle Daten löschen</b> · oder App deinstallieren.</p>' +
+        '<h3>DSGVO / Datenschutzanfragen</h3><p>Da keine personenbezogenen Daten zentral verarbeitet werden, entfällt eine zentrale Datenhaltung. Anfragen: contact@kronix-tech.com</p>',
+    en: '<h3>Principle</h3><p>TaskLane collects <b>no personal data</b> and transmits <b>no data to external servers</b>, unless the SMTP function is actively used.</p>' +
+        '<h3>Locally Stored Data</h3><p>All data is stored exclusively in the device\'s <code>localStorage</code>:<br><code>tasklane_schedules</code> – Schedules<br><code>tasklane_settings</code> – Language, mode, SMTP config<br><code>tasklane_azubi</code> – Trainee data &amp; notes</p>' +
+        '<p>No analytics, tracking services, cookies, or advertising services are used.</p>' +
+        '<h3>SMTP / Email (optional)</h3><p>SMTP credentials are stored locally and used only for the configured server. KroniX Tech has no access to this data.</p>' +
+        '<h3>Delete Your Data</h3><p><b>Settings → Delete all data</b> · or uninstall the app.</p>' +
+        '<h3>GDPR / Privacy Inquiries</h3><p>Since no personal data is centrally processed, there is no central data storage. Inquiries: contact@kronix-tech.com</p>',
+  },
+  terms: {
+    de: '<h3>Nutzungsrecht</h3><p>TaskLane wird kostenlos bereitgestellt. Die Nutzung ist für legale, persönliche oder betriebliche Zwecke gestattet.</p>' +
+        '<h3>Verbotene Nutzung</h3><p>• Reverse Engineering zur kommerziellen Vervielfältigung<br>• Verbreitung modifizierter Versionen ohne schriftliche Genehmigung<br>• Verwendung für Spam, Betrug oder zur Umgehung technischer Schutzmaßnahmen</p>' +
+        '<h3>Verfügbarkeit</h3><p>Es wird keine Garantie für die dauerhafte Verfügbarkeit der App oder Web-Version übernommen. Updates können ohne Ankündigung veröffentlicht werden.</p>' +
+        '<h3>Haftungsausschluss &amp; Datenverlust</h3><p>Die App wird „wie besehen" bereitgestellt. Da alle Daten lokal gespeichert werden, liegt die Verantwortung für Datensicherung beim Nutzer. KroniX Tech haftet nicht für Datenverluste durch Gerätewechsel, Deinstallation oder Cache-Löschung.</p>' +
+        '<h3>Copyright</h3><p>© 2026 KX KroniX Tech – Alle Rechte vorbehalten.<br><b>TaskLane</b> und das <b>SL-Logo</b> sind Kennzeichen von KX KroniX Tech. Nutzung ohne schriftliche Genehmigung ist untersagt.</p>',
+    en: '<h3>Right of Use</h3><p>TaskLane is provided free of charge. Use is permitted for legal, personal, or business purposes.</p>' +
+        '<h3>Prohibited Use</h3><p>• Reverse engineering for commercial reproduction<br>• Distribution of modified versions without written consent<br>• Use for spam, fraud, or circumvention of security measures</p>' +
+        '<h3>Availability</h3><p>No guarantee is made for the permanent availability of the app or web version. Updates may be released without prior notice.</p>' +
+        '<h3>Disclaimer &amp; Data Loss</h3><p>The app is provided "as is". Since all data is stored locally, the user is responsible for data backup. KroniX Tech is not liable for data loss due to device changes, uninstallation, or cache clearing.</p>' +
+        '<h3>Copyright</h3><p>© 2026 KX KroniX Tech – All rights reserved.<br><b>TaskLane</b> and the <b>SL logo</b> are marks of KX KroniX Tech. Use without written consent is prohibited.</p>',
+  },
+};
+
+function showLegalModal(type) {
+  switchLegalTab(type || 'imprint');
+  document.getElementById('legalModalBg').classList.add('open');
+}
+
+function switchLegalTab(type) {
+  ['imprint', 'privacy', 'terms'].forEach(function(k) {
+    var btn = document.getElementById('legalTab-' + k);
+    if (btn) btn.classList.toggle('active', k === type);
+  });
+  var lang = currentLang || 'de';
+  var html = (LEGAL_CONTENT[type] || {})[lang] || (LEGAL_CONTENT[type] || {})['en'] || '';
+  document.getElementById('legalModalContent').innerHTML = html;
+}
+
+function closeLegalModal() {
+  document.getElementById('legalModalBg').classList.remove('open');
+}
     pl: `StudyLane – KX KroniX Tech\nKontakt: contact@kronix-tech.com`,
     pt: `StudyLane – KX KroniX Tech\nContato: contact@kronix-tech.com`,
     ru: `StudyLane – KX KroniX Tech\nКонтакт: contact@kronix-tech.com`,

@@ -1,6 +1,16 @@
-/* StudyLane – Service Worker */
-const CACHE = 'studylane-v1';
-const ASSETS = ['./', './index.html', './style.css', './i18n.js', './renderer.js', './manifest.json', './assets/icon.svg'];
+/* TaskLane – Service Worker */
+const CACHE = 'tasklane-v1';
+const ASSETS = [
+  './',
+  './index.html',
+  './style.css',
+  './i18n.js',
+  './renderer.js',
+  './manifest.json',
+  './assets/icon.svg',
+  './assets/icon-192.png',
+  './assets/icon-512.png',
+];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));

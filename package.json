@@ -1,21 +1,36 @@
 {
-  "name": "studylane",
+  "name": "tasklane",
   "version": "1.0.0",
-  "description": "StudyLane – Digitaler Planer für Schüler und Studierende",
+  "description": "TaskLane – Digitaler Arbeitsplaner für Mitarbeiter & Azubis",
   "main": "main.js",
   "author": "KX KroniX Tech",
   "license": "UNLICENSED",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder --win --publish never"
+    "build": "electron-builder --win --publish never",
+    "build:web": "node scripts/build-web.js",
+    "generate:icons": "node scripts/generate-icons.js",
+    "android": "npm run build:web && npx cap sync android && npx cap open android",
+    "cap:sync": "npm run build:web && npx cap sync",
+    "cap:copy": "npm run build:web && npx cap copy"
   },
   "devDependencies": {
     "electron": "^29.0.0",
-    "electron-builder": "^24.9.1"
+    "electron-builder": "^24.9.1",
+    "sharp": "^0.33.0",
+    "to-ico": "^1.1.5",
+    "png2icons": "^2.0.1"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/status-bar": "^6.0.0",
+    "@capacitor/splash-screen": "^6.0.0",
+    "@capacitor/keyboard": "^6.0.0"
   },
   "build": {
-    "appId": "com.kronix.studylane",
-    "productName": "StudyLane",
+    "appId": "com.kronix.tasklane",
+    "productName": "TaskLane",
     "copyright": "Copyright 2026 KX KroniX Tech",
     "win": {
       "target": [{ "target": "nsis", "arch": ["x64"] }],
@@ -28,7 +43,7 @@
       "uninstallerIcon": "assets/icon.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "StudyLane"
+      "shortcutName": "TaskLane"
     },
     "directories": {
       "buildResources": "assets",
