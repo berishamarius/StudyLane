@@ -997,48 +997,6 @@ function switchLegalTab(type) {
 function closeLegalModal() {
   document.getElementById('legalModalBg').classList.remove('open');
 }
-    pl: `StudyLane – KX KroniX Tech\nKontakt: contact@kronix-tech.com`,
-    pt: `StudyLane – KX KroniX Tech\nContato: contact@kronix-tech.com`,
-    ru: `StudyLane – KX KroniX Tech\nКонтакт: contact@kronix-tech.com`,
-    tr: `StudyLane – KX KroniX Tech\nİletişim: contact@kronix-tech.com`,
-    uk: `StudyLane – KX KroniX Tech\nКонтакт: contact@kronix-tech.com`,
-    zh: `StudyLane – KX KroniX Tech\n联系方式：contact@kronix-tech.com`,
-  },
-  privacy: {
-    de: `StudyLane speichert alle Daten ausschließlich lokal auf Ihrem Gerät (localStorage). Es werden keine Daten an externe Server übertragen.`,
-    en: `StudyLane stores all data exclusively on your device (localStorage). No data is transmitted to external servers.`,
-    ar: `يخزّن StudyLane جميع البيانات محلياً على جهازك (localStorage). لا تُرسل أي بيانات إلى خوادم خارجية.`,
-    es: `StudyLane almacena todos los datos exclusivamente en tu dispositivo (localStorage). No se transmite ningún dato a servidores externos.`,
-    fr: `StudyLane stocke toutes les données exclusivement sur votre appareil (localStorage). Aucune donnée n'est transmise à des serveurs externes.`,
-    hi: `StudyLane सभी डेटा केवल आपके डिवाइस पर (localStorage) संग्रहीत करता है। कोई भी डेटा बाहरी सर्वर पर नहीं भेजा जाता।`,
-    it: `StudyLane archivia tutti i dati esclusivamente sul tuo dispositivo (localStorage). Nessun dato viene trasmesso a server esterni.`,
-    ja: `StudyLaneはすべてのデータをお使いのデバイス（localStorage）にのみ保存します。外部サーバーへのデータ送信は行いません。`,
-    ko: `StudyLane은 모든 데이터를 귀하의 기기(localStorage)에만 저장합니다. 외부 서버로 데이터가 전송되지 않습니다.`,
-    pl: `StudyLane przechowuje wszystkie dane wyłącznie na Twoim urządzeniu (localStorage). Żadne dane nie są przesyłane do zewnętrznych serwerów.`,
-    pt: `StudyLane armazena todos os dados exclusivamente no seu dispositivo (localStorage). Nenhum dado é transmitido a servidores externos.`,
-    ru: `StudyLane хранит все данные исключительно на вашем устройстве (localStorage). Данные не передаются на внешние серверы.`,
-    tr: `StudyLane tüm verileri yalnızca cihazınızda (localStorage) depolar. Hiçbir veri harici sunuculara iletilmez.`,
-    uk: `StudyLane зберігає всі дані виключно на вашому пристрої (localStorage). Жодні дані не передаються на зовнішні сервери.`,
-    zh: `StudyLane仅将所有数据存储在您的设备上（localStorage）。不向外部服务器传输任何数据。`,
-  },
-  terms: {
-    de: `StudyLane wird "wie besehen" bereitgestellt. Die Nutzung erfolgt auf eigene Verantwortung. KX KroniX Tech übernimmt keine Haftung für Datenverlust.`,
-    en: `StudyLane is provided "as is". Use at your own risk. KX KroniX Tech accepts no liability for data loss.`,
-    ar: `يُقدَّم StudyLane "كما هو". الاستخدام على مسؤوليتك الخاصة. لا تتحمل KX KroniX Tech أي مسؤولية عن فقدان البيانات.`,
-    es: `StudyLane se proporciona "tal cual". El uso es bajo tu propia responsabilidad. KX KroniX Tech no acepta responsabilidad por pérdida de datos.`,
-    fr: `StudyLane est fourni "tel quel". L'utilisation se fait à vos risques. KX KroniX Tech n'assume aucune responsabilité pour la perte de données.`,
-    hi: `StudyLane "जैसा है" प्रदान किया जाता है। उपयोग अपनी जिम्मेदारी पर। KX KroniX Tech डेटा हानि के लिए कोई दायित्व स्वीकार नहीं करता।`,
-    it: `StudyLane è fornito "così com'è". L'uso è a proprio rischio. KX KroniX Tech non si assume responsabilità per la perdita di dati.`,
-    ja: `StudyLaneは「現状のまま」提供されます。使用は自己責任です。KX KroniX Techはデータ損失に対して一切の責任を負いません。`,
-    ko: `StudyLane은 "있는 그대로" 제공됩니다. 사용은 본인 책임입니다. KX KroniX Tech는 데이터 손실에 대한 책임을 지지 않습니다.`,
-    pl: `StudyLane jest dostarczany "tak jak jest". Korzystanie odbywa się na własną odpowiedzialność. KX KroniX Tech nie ponosi odpowiedzialności za utratę danych.`,
-    pt: `StudyLane é fornecido "como está". O uso é por sua conta e risco. KX KroniX Tech não aceita responsabilidade por perda de dados.`,
-    ru: `StudyLane предоставляется "как есть". Использование осуществляется на ваш страх и риск. KX KroniX Tech не несёт ответственности за потерю данных.`,
-    tr: `StudyLane "olduğu gibi" sunulmaktadır. Kullanım kendi sorumluluğunuzdadır. KX KroniX Tech veri kaybından sorumlu değildir.`,
-    uk: `StudyLane надається "як є". Використання здійснюється на власний ризик. KX KroniX Tech не несе відповідальності за втрату даних.`,
-    zh: `StudyLane按"原样"提供。使用风险自负。KX KroniX Tech不承担数据丢失的责任。`,
-  },
-};
 
 // ══════════════════════════════════════════════════════════════════
 //  TOAST
