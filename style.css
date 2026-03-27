@@ -106,8 +106,8 @@ html { background: #09111e; }
   border-color: var(--accent);
   color: var(--accent2);
 }
-/* Azubi pill active = amber */
-.tmode-btn.azubi.active {
+/* Student pill active = amber */
+.tmode-btn.student.active {
   background: var(--azubi-glow);
   border-color: var(--azubi);
   color: var(--azubi);
@@ -192,13 +192,13 @@ html { background: #09111e; }
 .nav-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .nav-btn.active { color: var(--accent2); }
 .nav-btn:hover:not(.active) { color: var(--text2); }
-/* Azubi-mode nav indicator */
-.mode-azubi .nav-btn.active { color: var(--azubi); }
+/* Student-mode nav indicator */
+.mode-student .nav-btn.active { color: var(--azubi); }
 /* Mode-gated nav buttons */
-.nav-btn.mitarbeiter-only { display: none; }
-.nav-btn.azubi-only       { display: none; }
-.mode-mitarbeiter .nav-btn.mitarbeiter-only { display: flex; }
-.mode-azubi       .nav-btn.azubi-only       { display: flex; }
+.nav-btn.schueler-only { display: none; }
+.nav-btn.student-only       { display: none; }
+.mode-schueler .nav-btn.schueler-only { display: flex; }
+.mode-student       .nav-btn.student-only       { display: flex; }
 
 /* ══ INSTALL BANNER ════════════════════════════════════════ */
 .install-banner {
@@ -260,9 +260,9 @@ html { background: #09111e; }
 }
 .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-h)); color: #fff; box-shadow: 0 2px 12px rgba(99,102,241,0.3); }
 .btn-primary:hover { background: linear-gradient(135deg, var(--accent-h), #3c3eb8); box-shadow: 0 2px 16px rgba(99,102,241,0.45); }
-/* Azubi-Modus: Amber primary */
-.mode-azubi .btn-primary { background: linear-gradient(135deg, var(--azubi), var(--azubi-h)); box-shadow: 0 2px 12px rgba(245,158,11,0.3); }
-.mode-azubi .btn-primary:hover { background: linear-gradient(135deg, var(--azubi-h), #b45309); box-shadow: 0 2px 16px rgba(245,158,11,0.45); }
+/* Student-Modus: Amber primary */
+.mode-student .btn-primary { background: linear-gradient(135deg, var(--azubi), var(--azubi-h)); box-shadow: 0 2px 12px rgba(245,158,11,0.3); }
+.mode-student .btn-primary:hover { background: linear-gradient(135deg, var(--azubi-h), #b45309); box-shadow: 0 2px 16px rgba(245,158,11,0.45); }
 .btn-secondary { background: var(--bg3); color: var(--text); border: 1px solid var(--border2); }
 .btn-secondary:hover { background: var(--bg4); }
 .btn-danger { background: var(--danger-bg); color: var(--danger); border: 1px solid rgba(239,68,68,.25); }
@@ -637,8 +637,75 @@ html { background: #09111e; }
 }
 
 /* ══ RTL ════════════════════════════════════════════════════ */
+/* Applied when setLanguage() sets dir="rtl" on <html> (Arabic) */
+
+/* Text alignment */
+[dir=rtl] .page-header h1,
+[dir=rtl] .settings-section-title,
+[dir=rtl] .card-title,
+[dir=rtl] .card-sub,
+[dir=rtl] .empty-state h3,
+[dir=rtl] .empty-state p { text-align: right; }
+
+/* Flex row reversal */
+[dir=rtl] .page-header,
+[dir=rtl] .card-header,
+[dir=rtl] .modal-title,
+[dir=rtl] .modal-footer,
+[dir=rtl] .search-bar,
+[dir=rtl] .filter-bar,
+[dir=rtl] .hw-item,
+[dir=rtl] .lang-current,
+[dir=rtl] .titlebar,
+[dir=rtl] .install-banner { flex-direction: row-reverse; }
+
+/* Nav stays LTR physically but labels go RTL */
+[dir=rtl] .bottom-nav { direction: rtl; }
+
+/* Inputs / textareas */
+[dir=rtl] input,
+[dir=rtl] textarea,
+[dir=rtl] select { text-align: right; direction: rtl; }
+
+/* Modal bottom sheet: keep shape, mirror padding */
 [dir=rtl] .modal { border-radius: var(--radius) var(--radius) 0 0; }
-[dir=rtl] .hw-item { direction: rtl; }
+[dir=rtl] .modal-close { margin-right: auto; margin-left: 0; }
+
+/* Cards */
+[dir=rtl] .card { text-align: right; }
+[dir=rtl] .card-title { text-align: right; }
+
+/* Grade / homework list items */
+[dir=rtl] .hw-item,
+[dir=rtl] .grade-entry { direction: rtl; text-align: right; }
+
+/* Settings form labels */
+[dir=rtl] .settings-item label,
+[dir=rtl] .field label { text-align: right; display: block; }
+
+/* Legal modal tabs */
+[dir=rtl] .legal-tabs { flex-direction: row-reverse; }
+[dir=rtl] .legal-modal-content { text-align: right; direction: rtl; }
+
+/* Toast stays centered */
+[dir=rtl] .toast { transform: translateX(50%) translateY(0); left: auto; right: 50%; }
+[dir=rtl] .toast.show { transform: translateX(50%) translateY(-8px); }
+
+/* Titlebar controls stay on right visually → move to left in RTL */
+[dir=rtl] .titlebar-controls { margin-right: auto; margin-left: 0; }
+[dir=rtl] .titlebar-mode { margin-left: auto; margin-right: 0; }
+
+/* Language picker */
+[dir=rtl] .lang-dropdown { left: 0; right: auto; }
+[dir=rtl] .lang-check { margin-right: auto; margin-left: 0; }
+
+/* Timetable grid — cells already use CSS grid, text alignment only */
+[dir=rtl] .cell-inner,
+[dir=rtl] .slot-label { text-align: right; }
+
+/* Badges / priority pills */
+[dir=rtl] .priority-badge,
+[dir=rtl] .due-badge { direction: rtl; }
 
 /* ══ ANDROID / PWA SAFE AREAS ══════════════════════════════ */
 /* Handles notches, gesture bars, and rounded corners on Android */

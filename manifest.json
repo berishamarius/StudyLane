@@ -1,7 +1,7 @@
 {
   "name": "StudyLane",
   "short_name": "StudyLane",
-  "description": "Dein digitaler Lern- & Arbeitsplaner für Mitarbeiter & Azubis",
+  "description": "Dein digitaler Lernplaner für Schüler & Studenten",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

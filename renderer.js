@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    renderer.js  –  StudyLane
-   Workplan + Reports + Azubi + Settings
+   Workplan + Grades + Portfolio + Settings
    Fully offline, localStorage only, no backend
    ═══════════════════════════════════════════════════════════════ */
 
@@ -55,7 +55,7 @@ async function init() {
 
   settings = Storage.loadSettings();
   if (!settings._v) {
-    settings.mode = 'mitarbeiter';
+    settings.mode = 'schueler';
     settings.gradeSystem = 'school';
     settings._v = 1;
     Storage.saveSettings(settings);
@@ -149,17 +149,17 @@ function setMode(mode) {
 }
 
 function applyMode() {
-  const mode = settings.mode || 'mitarbeiter';
-  ['mitarbeiter','azubi'].forEach(m => {
+  const mode = settings.mode || 'schueler';
+  ['schueler','student'].forEach(m => {
     const btn = document.getElementById('mode' + cap(m) + 'Btn');
     if (btn) btn.classList.toggle('active', m === mode);
   });
   // Toggle body class for CSS-based nav/button switching
-  document.body.classList.toggle('mode-mitarbeiter', mode === 'mitarbeiter');
-  document.body.classList.toggle('mode-azubi',       mode === 'azubi');
+  document.body.classList.toggle('mode-schueler', mode === 'schueler');
+  document.body.classList.toggle('mode-student',  mode === 'student');
   // Show/hide ECTS field in grade modal
   const ectsField = document.getElementById('grEctsField');
-  if (ectsField) ectsField.style.display = mode === 'azubi' ? '' : 'none';
+  if (ectsField) ectsField.style.display = mode === 'student' ? '' : 'none';
 }
 
 function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -177,7 +177,7 @@ function showPage(id) {
   if (id === 'grades')  renderGradesList();
   if (id === 'school')  renderSchoolPortal();
   if (id === 'homework') renderHomeworkList();
-  if (id === 'azubi') { /* azubi page rendered statically */ }
+  if (id === 'student') { /* student page rendered statically */ }
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -347,8 +347,13 @@ function openSchedule(id) {
 }
 
 function getDayNames() {
-  const tr = TRANSLATIONS[currentLang] || TRANSLATIONS['de'];
-  return ['Mo','Di','Mi','Do','Fr'];
+  const locale = currentLang || 'de';
+  const base = new Date(2024, 0, 1); // Monday 1 Jan 2024
+  return [1,2,3,4,5].map(d => {
+    const date = new Date(base);
+    date.setDate(base.getDate() + d);
+    return new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date);
+  });
 }
 
 function populateEditor() {
@@ -948,20 +953,20 @@ const LEGAL_CONTENT = {
   },
   privacy: {
     de: '<h3>Grundsatz</h3><p>StudyLane erhebt <b>keine personenbezogenen Daten</b> und sendet <b>keine Daten an externe Server</b>, solange die SMTP-Funktion nicht aktiv genutzt wird.</p>' +
-        '<h3>Lokal gespeicherte Daten</h3><p>Alle Daten werden ausschließlich im <code>localStorage</code> gespeichert:<br><code>studylane_schedules</code> – Stundenpläne<br><code>studylane_settings</code> – Sprache, Modus, SMTP-Konfiguration<br><code>studylane_azubi</code> – Azubi-Daten &amp; Notizen</p>' +
+        '<h3>Lokal gespeicherte Daten</h3><p>Alle Daten werden ausschließlich im <code>localStorage</code> gespeichert:<br><code>studylane_schedules</code> – Stundenpläne<br><code>studylane_settings</code> – Sprache, Modus, SMTP-Konfiguration<br><code>studylane_student</code> – Studenten-Daten &amp; Notizen</p>' +
         '<p>Es werden keine Analyse-Tools, Tracking-Dienste, Cookies oder Werbedienste eingesetzt.</p>' +
         '<h3>SMTP / E-Mail (optional)</h3><p>SMTP-Zugangsdaten werden lokal in <code>studylane_settings</code> gespeichert und nur für den konfigurierten Server verwendet. KroniX Tech hat keinen Zugriff auf diese Daten.</p>' +
         '<h3>Daten löschen</h3><p><b>Einstellungen → Alle Daten löschen</b> · oder App deinstallieren.</p>' +
         '<h3>DSGVO / Datenschutzanfragen</h3><p>Da keine personenbezogenen Daten zentral verarbeitet werden, entfällt eine zentrale Datenhaltung. Anfragen: contact@kronix-tech.com</p>',
     en: '<h3>Principle</h3><p>StudyLane collects <b>no personal data</b> and transmits <b>no data to external servers</b>, unless the SMTP function is actively used.</p>' +
-        '<h3>Locally Stored Data</h3><p>All data is stored exclusively in the device\'s <code>localStorage</code>:<br><code>studylane_schedules</code> – Schedules<br><code>studylane_settings</code> – Language, mode, SMTP config<br><code>studylane_azubi</code> – Trainee data &amp; notes</p>' +
+        '<h3>Locally Stored Data</h3><p>All data is stored exclusively in the device\'s <code>localStorage</code>:<br><code>studylane_schedules</code> – Schedules<br><code>studylane_settings</code> – Language, mode, SMTP config<br><code>studylane_student</code> – Student data &amp; notes</p>' +
         '<p>No analytics, tracking services, cookies, or advertising services are used.</p>' +
         '<h3>SMTP / Email (optional)</h3><p>SMTP credentials are stored locally and used only for the configured server. KroniX Tech has no access to this data.</p>' +
         '<h3>Delete Your Data</h3><p><b>Settings → Delete all data</b> · or uninstall the app.</p>' +
         '<h3>GDPR / Privacy Inquiries</h3><p>Since no personal data is centrally processed, there is no central data storage. Inquiries: contact@kronix-tech.com</p>',
   },
   terms: {
-    de: '<h3>Nutzungsrecht</h3><p>StudyLane wird kostenlos bereitgestellt. Die Nutzung ist für legale, persönliche oder betriebliche Zwecke gestattet.</p>' +
+    de: '<h3>Nutzungsrecht</h3><p>StudyLane wird kostenlos bereitgestellt. Die Nutzung ist für legale, persönliche oder schulische bzw. akademische Zwecke gestattet.</p>' +
         '<h3>Verbotene Nutzung</h3><p>• Reverse Engineering zur kommerziellen Vervielfältigung<br>• Verbreitung modifizierter Versionen ohne schriftliche Genehmigung<br>• Verwendung für Spam, Betrug oder zur Umgehung technischer Schutzmaßnahmen</p>' +
         '<h3>Verfügbarkeit</h3><p>Es wird keine Garantie für die dauerhafte Verfügbarkeit der App oder Web-Version übernommen. Updates können ohne Ankündigung veröffentlicht werden.</p>' +
         '<h3>Haftungsausschluss &amp; Datenverlust</h3><p>Die App wird „wie besehen" bereitgestellt. Da alle Daten lokal gespeichert werden, liegt die Verantwortung für Datensicherung beim Nutzer. KroniX Tech haftet nicht für Datenverluste durch Gerätewechsel, Deinstallation oder Cache-Löschung.</p>' +
@@ -1034,19 +1039,6 @@ function closeLegalModal() {
     zh: `StudyLane按"原样"提供。使用风险自负。KX KroniX Tech不承担数据丢失的责任。`,
   },
 };
-
-function showLegalModal(type) {
-  const lang    = currentLang || 'de';
-  const content = (LEGAL_CONTENT[type] || {})[lang] || (LEGAL_CONTENT[type] || {})['en'] || '';
-  const titles  = { imprint: t('imprintTitle'), privacy: t('privacyTitle'), terms: t('termsTitle') };
-  document.getElementById('legalModalTitle').textContent = titles[type] || '';
-  document.getElementById('legalModalContent').textContent = content;
-  document.getElementById('legalModalBg').classList.add('open');
-}
-
-function closeLegalModal() {
-  document.getElementById('legalModalBg').classList.remove('open');
-}
 
 // ══════════════════════════════════════════════════════════════════
 //  TOAST
