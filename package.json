@@ -32,7 +32,7 @@
     "appId": "com.kronix.studylane",
     "productName": "StudyLane",
     "copyright": "Copyright 2026 KX KroniX Tech",
-    "icon": "assets/icon.ico",
+    "icon": "assets/icon",
     "win": {
       "target": [{ "target": "nsis", "arch": ["x64"] }],
       "icon": "assets/icon.ico"
@@ -45,12 +45,13 @@
       "shortcutName": "StudyLane"
     },
     "directories": {
-      "output": "dist"
+      "output": "release"
     },
     "files": [
       "**/*",
       "!node_modules/.cache",
       "!dist/**",
+      "!release/**",
       "!**/*.map"
     ]
   }
