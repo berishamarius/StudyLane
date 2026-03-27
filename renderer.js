@@ -82,7 +82,7 @@ async function init() {
   renderSchoolPortal();
   applyMode();
   setupPWA();
-
+  renderHomeDashboard();
   showPage('home');
 }
 
@@ -174,10 +174,201 @@ function showPage(id) {
   document.querySelectorAll('.nav-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.page === id);
   });
-  if (id === 'grades')  renderGradesList();
-  if (id === 'school')  renderSchoolPortal();
+  if (id === 'grades')   renderGradesList();
+  if (id === 'school')   renderSchoolPortal();
   if (id === 'homework') renderHomeworkList();
-  if (id === 'student') { /* student page rendered statically */ }
+  if (id === 'home')     renderHomeDashboard();
+  if (id === 'student')  renderStudentPage();
+}
+
+// Context-sensitive "+" nav button
+function handleNavAdd() {
+  const active = document.querySelector('.page.active');
+  const pageId = active ? active.id.replace('page-', '') : 'home';
+  if      (pageId === 'homework') openHwModal();
+  else if (pageId === 'grades')   openGradeModal();
+  else if (pageId === 'student')  openHwModal();
+  else                            newScheduleAndShow();
+}
+
+// ══════════════════════════════════════════════════════════════════
+//  HOME DASHBOARD
+// ══════════════════════════════════════════════════════════════════
+function renderHomeDashboard() {
+  // Date greeting
+  const dateEl = document.getElementById('homeDate');
+  if (dateEl) {
+    const now = new Date();
+    const opts = { weekday: 'long', day: 'numeric', month: 'long' };
+    dateEl.textContent = now.toLocaleDateString(currentLang || 'de', opts);
+  }
+
+  // Stats
+  const pending = homeworkData.filter(h => !h.done).length;
+  const el = document.getElementById('statSchedules');
+  if (el) el.textContent = schedules.length;
+  const elP = document.getElementById('statPending');
+  if (elP) elP.textContent = pending;
+
+  const subjects = Object.values(gradesData || {});
+  let totalW = 0, totalS = 0;
+  subjects.forEach(subj => {
+    const avg = computeAverage(subj.entries || []);
+    const w = (subj.entries || []).reduce((a, e) => a + (e.weight || 1), 0);
+    if (avg !== null) { totalS += avg * w; totalW += w; }
+  });
+  const avgEl = document.getElementById('statAvg');
+  if (avgEl) avgEl.textContent = totalW > 0 ? (totalS / totalW).toFixed(1) : '–';
+
+  // Upcoming homework (up to 3, open tasks soonest first)
+  const wrap = document.getElementById('homeUpcomingWrap');
+  const list = document.getElementById('homeUpcomingList');
+  if (!wrap || !list) return;
+
+  const open = homeworkData
+    .filter(h => !h.done)
+    .sort((a, b) => (a.dueDate || '9999').localeCompare(b.dueDate || '9999'))
+    .slice(0, 3);
+
+  if (open.length === 0) {
+    wrap.style.display = 'none';
+  } else {
+    wrap.style.display = '';
+    list.innerHTML = open.map(item => {
+      const due = item.dueDate ? fmtDate2(item.dueDate) : '';
+      return `<div class="upcoming-item" onclick="showPage('homework')">
+        <div class="upcoming-dot" style="background:${prioBg(item.priority)}"></div>
+        <div class="upcoming-body">
+          <div class="upcoming-title">${esc(item.subject ? item.subject + ' · ' + item.title : item.title || '')}</div>
+          ${due ? `<div class="upcoming-due">${due}</div>` : ''}
+        </div>
+        <span class="hw-prio-badge ${item.priority || 'mittel'}">${getPrioLabel(item.priority)}</span>
+      </div>`;
+    }).join('');
+  }
+}
+
+function prioBg(p) {
+  if (p === 'hoch')    return '#ef4444';
+  if (p === 'niedrig') return '#22c55e';
+  return '#f59e0b';
+}
+
+// ══════════════════════════════════════════════════════════════════
+//  STUDENT PAGE
+// ══════════════════════════════════════════════════════════════════
+function renderStudentPage() {
+  // Stats
+  const open = homeworkData.filter(h => !h.done).length;
+  const done = homeworkData.filter(h =>  h.done).length;
+  const el1 = document.getElementById('stuStatOpen'); if (el1) el1.textContent = open;
+  const el2 = document.getElementById('stuStatDone'); if (el2) el2.textContent = done;
+
+  const subjects = Object.values(gradesData || {});
+  let totalW = 0, totalS = 0;
+  subjects.forEach(subj => {
+    const avg = computeAverage(subj.entries || []);
+    const w = (subj.entries || []).reduce((a, e) => a + (e.weight || 1), 0);
+    if (avg !== null) { totalS += avg * w; totalW += w; }
+  });
+  const avgEl = document.getElementById('stuStatAvg');
+  if (avgEl) avgEl.textContent = totalW > 0 ? (totalS / totalW).toFixed(1) : '–';
+
+  // Upcoming tasks (up to 5)
+  const upList = document.getElementById('stuUpcomingList');
+  if (upList) {
+    const items = homeworkData
+      .filter(h => !h.done)
+      .sort((a, b) => (a.dueDate || '9999').localeCompare(b.dueDate || '9999'))
+      .slice(0, 5);
+    if (items.length === 0) {
+      upList.innerHTML = `<div class="empty-hint">${t('hwNoItems')}</div>`;
+    } else {
+      upList.innerHTML = items.map(item => {
+        const due = item.dueDate ? fmtDate2(item.dueDate) : '';
+        return `<div class="upcoming-item" onclick="showPage('homework')">
+          <div class="upcoming-dot" style="background:${prioBg(item.priority)}"></div>
+          <div class="upcoming-body">
+            <div class="upcoming-title">${esc(item.subject ? item.subject + ' · ' + item.title : item.title || '')}</div>
+            ${due ? `<div class="upcoming-due">${due}</div>` : ''}
+          </div>
+          <span class="hw-prio-badge ${item.priority || 'mittel'}">${getPrioLabel(item.priority)}</span>
+        </div>`;
+      }).join('');
+    }
+  }
+
+  // Grade bars per subject
+  const barsEl = document.getElementById('stuGradesBars');
+  if (barsEl) {
+    if (subjects.length === 0) {
+      barsEl.innerHTML = `<div class="empty-hint">${t('grNoSubjects')}</div>`;
+    } else {
+      barsEl.innerHTML = subjects.map(subj => {
+        const avg = computeAverage(subj.entries || []);
+        const pct = avg !== null ? Math.max(0, Math.min(100, (1 - (avg - 1) / 5) * 100)) : 0;
+        const col = avg !== null ? gradeColor(avg) : 'var(--text3)';
+        return `<div class="stu-grade-bar-row" onclick="showPage('grades')">
+          <div class="stu-grade-bar-label">
+            <div class="stu-grade-dot" style="background:${subj.color || '#7c6af5'}"></div>
+            <span>${esc(subj.name)}</span>
+          </div>
+          <div class="stu-grade-bar-track">
+            <div class="stu-grade-bar-fill" style="width:${pct}%;background:${col}"></div>
+          </div>
+          <div class="stu-grade-bar-val" style="color:${col}">${avg !== null ? avg.toFixed(1) : '–'}</div>
+        </div>`;
+      }).join('');
+    }
+  }
+
+  // Study goals
+  renderStudyGoals();
+}
+
+// Study goals (stored in settings.studyGoals)
+function renderStudyGoals() {
+  const goals = settings.studyGoals || [];
+  const list  = document.getElementById('stuGoalsList');
+  const empty = document.getElementById('stuGoalsEmpty');
+  if (!list) return;
+  if (goals.length === 0) {
+    list.innerHTML = '';
+    if (empty) empty.style.display = '';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  list.innerHTML = goals.map((g, i) => `
+    <div class="goal-item ${g.done ? 'goal-done' : ''}">
+      <div class="hw-check ${g.done ? 'checked' : ''}" onclick="toggleGoal(${i})"></div>
+      <div class="goal-text">${esc(g.text)}</div>
+      <button class="hw-act-btn" onclick="deleteGoal(${i})">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>`).join('');
+}
+
+function addStudyGoal() {
+  const text = prompt(t('stuGoalsTitle') + ':');
+  if (!text || !text.trim()) return;
+  if (!settings.studyGoals) settings.studyGoals = [];
+  settings.studyGoals.push({ text: text.trim(), done: false });
+  Storage.saveSettings(settings);
+  renderStudyGoals();
+}
+
+function toggleGoal(i) {
+  if (!settings.studyGoals || !settings.studyGoals[i]) return;
+  settings.studyGoals[i].done = !settings.studyGoals[i].done;
+  Storage.saveSettings(settings);
+  renderStudyGoals();
+}
+
+function deleteGoal(i) {
+  if (!settings.studyGoals) return;
+  settings.studyGoals.splice(i, 1);
+  Storage.saveSettings(settings);
+  renderStudyGoals();
 }
 
 // ══════════════════════════════════════════════════════════════════

@@ -88,6 +88,36 @@ html { background: #09111e; }
 .titlebar-controls { display: none; }
 .electron .titlebar { -webkit-app-region: drag; }
 .electron .titlebar-controls { display: flex; align-items: center; gap: 4px; margin-left: auto; -webkit-app-region: no-drag; }
+/* Mode buttons + lang picker must be clickable (not consumed by drag region) */
+.electron .titlebar-mode,
+.electron .lang-picker { -webkit-app-region: no-drag; }
+
+/* ══ RTL ════════════════════════════════════════════════════ */
+/* Titlebar always stays LTR so window controls stay on the right (Windows) */
+.titlebar { direction: ltr; }
+/* Page content flips for RTL languages */
+[dir=rtl] .page,
+[dir=rtl] .card,
+[dir=rtl] .modal-body,
+[dir=rtl] .section-header,
+[dir=rtl] .form-group { direction: rtl; text-align: right; }
+[dir=rtl] .card-header,
+[dir=rtl] .card-title { flex-direction: row-reverse; }
+[dir=rtl] input,
+[dir=rtl] textarea,
+[dir=rtl] select { direction: rtl; text-align: right; }
+/* Lang dropdown aligns left when picker is near right edge in RTL */
+[dir=rtl] .lang-dropdown { right: auto; left: 0; }
+/* Nav bar */
+[dir=rtl] .nav-bar { direction: rtl; }
+/* Homework/grades list items */
+[dir=rtl] .hw-item,
+[dir=rtl] .grade-item { flex-direction: row-reverse; }
+[dir=rtl] .hw-item .hw-actions,
+[dir=rtl] .grade-item .grade-actions { margin-left: 0; margin-right: auto; }
+/* Legal modal */
+[dir=rtl] .legal-modal-body,
+[dir=rtl] .legal-content { text-align: right; }
 
 .tmode-btn {
   display: flex; align-items: center; gap: 5px;
@@ -752,3 +782,188 @@ html { background: #09111e; }
   -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
+
+/* ══ HOME DASHBOARD ════════════════════════════════════════ */
+.page-subtitle {
+  font-size: 12px;
+  color: var(--text2);
+  margin-top: 2px;
+  text-transform: capitalize;
+}
+.home-stats-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.home-stat-card {
+  flex: 1;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.home-stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.home-stat-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+.home-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+}
+.home-stat-label {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.home-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 0 2px;
+}
+.home-section-link {
+  background: none;
+  border: none;
+  color: var(--accent2);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+.home-section-link:hover { text-decoration: underline; }
+
+/* ══ UPCOMING ITEM (home + student page) ═══════════════════ */
+.upcoming-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.upcoming-item:last-child { border-bottom: none; }
+.upcoming-item:hover { opacity: 0.8; }
+.upcoming-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.upcoming-body { flex: 1; min-width: 0; }
+.upcoming-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.upcoming-due {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 1px;
+}
+
+/* ══ STUDENT PAGE – GRADE BARS ═════════════════════════════ */
+.stu-grade-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.stu-grade-bar-row:last-child { border-bottom: none; }
+.stu-grade-bar-row:hover { opacity: 0.8; }
+.stu-grade-bar-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 110px;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--text);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.stu-grade-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.stu-grade-bar-track {
+  flex: 1;
+  height: 6px;
+  background: var(--bg4);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.stu-grade-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width .4s;
+}
+.stu-grade-bar-val {
+  font-size: 13px;
+  font-weight: 700;
+  width: 32px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ══ STUDY GOALS ═══════════════════════════════════════════ */
+.goal-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+.goal-item:last-child { border-bottom: none; }
+.goal-text {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text);
+}
+.goal-done .goal-text {
+  text-decoration: line-through;
+  color: var(--text3);
+}
+.empty-hint {
+  font-size: 13px;
+  color: var(--text3);
+  padding: 12px 0;
+  text-align: center;
+}
+
+/* Nav add button accent */
+.nav-add-btn svg { stroke: var(--accent2); }
+.nav-add-btn span { color: var(--accent2); }

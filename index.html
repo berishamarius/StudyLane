@@ -84,7 +84,7 @@
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span data-i18n="navPlans">Pläne</span>
   </button>
-  <button class="nav-btn" data-page="editor" onclick="newScheduleAndShow()">
+  <button class="nav-btn nav-add-btn" id="navAddBtn" onclick="handleNavAdd()">
     <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
     <span data-i18n="navNew">Neu</span>
   </button>
@@ -111,6 +111,7 @@
   <div class="page-header">
     <div>
       <h1 data-i18n="mySchedules">Meine Stundenpläne</h1>
+      <p class="page-subtitle" id="homeDate"></p>
     </div>
     <div class="page-header-actions">
       <button class="btn btn-primary btn-sm" onclick="newScheduleAndShow()">
@@ -118,6 +119,50 @@
         <span data-i18n="navNew">Neu</span>
       </button>
     </div>
+  </div>
+
+  <!-- Quick Stats -->
+  <div class="home-stats-row">
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(99,102,241,.15);color:var(--accent2)">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="statSchedules">0</div>
+        <div class="home-stat-label" data-i18n="mySchedules">Pläne</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(245,158,11,.15);color:var(--warn)">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="statPending">0</div>
+        <div class="home-stat-label" data-i18n="hwFilterOpen">Offen</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(34,197,94,.15);color:var(--success)">
+        <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="statAvg">–</div>
+        <div class="home-stat-label" data-i18n="grOverall">Schnitt</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upcoming homework preview -->
+  <div id="homeUpcomingWrap" style="display:none">
+    <div class="home-section-header">
+      <span data-i18n="hwFilterOpen">Offene Aufgaben</span>
+      <button class="home-section-link" onclick="showPage('homework')">Alle →</button>
+    </div>
+    <div id="homeUpcomingList"></div>
+  </div>
+
+  <div class="home-section-header" style="margin-top:8px">
+    <span data-i18n="mySchedules">Stundenpläne</span>
   </div>
 
   <div class="search-bar">
@@ -260,12 +305,77 @@
 <div class="page-content page" id="page-student">
   <div class="page-header">
     <h1 data-i18n="navAzubi">Portfolio</h1>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-secondary btn-sm" onclick="openHwModal()">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        <span data-i18n="hwAdd">+ Aufgabe</span>
+      </button>
+      <button class="btn btn-primary btn-sm" onclick="openGradeModal()">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        <span data-i18n="grAdd">+ Note</span>
+      </button>
+    </div>
   </div>
 
-  <div class="empty-state" id="studentEmpty">
-    <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-    <h3 data-i18n="azubiEmptyTitle">Studienbereich</h3>
-    <p data-i18n="azubiEmptyHint">Dein Studentenbereich kommt hier hin</p>
+  <!-- Stats overview -->
+  <div class="home-stats-row">
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(245,158,11,.15);color:var(--warn)">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="stuStatOpen">0</div>
+        <div class="home-stat-label" data-i18n="hwFilterOpen">Offen</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(34,197,94,.15);color:var(--success)">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="stuStatDone">0</div>
+        <div class="home-stat-label" data-i18n="hwFilterDone">Erledigt</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(99,102,241,.15);color:var(--accent2)">
+        <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="stuStatAvg">–</div>
+        <div class="home-stat-label" data-i18n="grOverall">Schnitt</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upcoming deadlines -->
+  <div class="card" style="margin-bottom:12px">
+    <div class="card-header">
+      <span class="card-title" data-i18n="hwFilterOpen">Anstehende Aufgaben</span>
+      <button class="home-section-link" onclick="showPage('homework')">Alle →</button>
+    </div>
+    <div id="stuUpcomingList"><div class="empty-hint" data-i18n="hwNoItems">Keine offenen Aufgaben</div></div>
+  </div>
+
+  <!-- Grades per subject -->
+  <div class="card" style="margin-bottom:12px">
+    <div class="card-header">
+      <span class="card-title" data-i18n="grTitle">Noten nach Fach</span>
+      <button class="home-section-link" onclick="showPage('grades')">Alle →</button>
+    </div>
+    <div id="stuGradesBars"><div class="empty-hint" data-i18n="grNoSubjects">Noch keine Noten</div></div>
+  </div>
+
+  <!-- Study goals -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title" data-i18n="stuGoalsTitle">Lernziele</span>
+      <button class="btn btn-secondary btn-sm" onclick="addStudyGoal()">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+    <div id="stuGoalsList"></div>
+    <div id="stuGoalsEmpty" class="empty-hint" data-i18n="stuGoalsEmpty">Noch keine Ziele gesetzt – tippe + um Ziele hinzuzufügen</div>
   </div>
 </div>
 
