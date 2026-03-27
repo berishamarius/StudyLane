@@ -72,7 +72,6 @@ async function init() {
 
   setLanguage(lang);
   renderLangDropdown();
-  renderLangGrid();
 
   schedules    = Storage.loadSchedules();
   homeworkData = Storage.loadHomework();
@@ -102,9 +101,13 @@ function toggleLangMenu() {
 }
 function openLangMenu() {
   document.getElementById('langPicker').classList.add('open');
-  document.addEventListener('click', outsideLangClose, { once: true });
+  // defer so the opening click doesn't immediately consume the listener
+  setTimeout(() => document.addEventListener('click', outsideLangClose), 0);
 }
-function closeLangMenu()  { document.getElementById('langPicker').classList.remove('open'); }
+function closeLangMenu() {
+  document.getElementById('langPicker').classList.remove('open');
+  document.removeEventListener('click', outsideLangClose);
+}
 function outsideLangClose(e) {
   if (!document.getElementById('langPicker').contains(e.target)) closeLangMenu();
 }
@@ -135,7 +138,6 @@ function switchLang(code) {
   Storage.saveSettings(settings);
   setLanguage(code);
   renderLangDropdown();
-  renderLangGrid();
   closeLangMenu();
   renderHomeworkList();
   renderGradesList();
@@ -188,16 +190,6 @@ function showPage(id) {
 }
 
 // Context-sensitive "+" nav button
-function handleNavAdd() {
-  const active = document.querySelector('.page.active');
-  const pageId = active ? active.id.replace('page-', '') : 'home';
-  if      (pageId === 'homework') openHwModal();
-  else if (pageId === 'grades')   openGradeModal();
-  else if (pageId === 'notes')    openNoteModal();
-  else if (pageId === 'student')  openHwModal();
-  else                            newScheduleAndShow();
-}
-
 // ══════════════════════════════════════════════════════════════════
 //  HOME DASHBOARD
 // ══════════════════════════════════════════════════════════════════

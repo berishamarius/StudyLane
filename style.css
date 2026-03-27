@@ -84,10 +84,11 @@ html { background: #09111e; }
 
 .titlebar-mode { flex-shrink: 0; }
 .lang-picker   { flex-shrink: 0; }
+.titlebar-right { margin-left: auto; flex-shrink: 0; }
 
 .titlebar-controls { display: none; }
 .electron .titlebar { -webkit-app-region: drag; }
-.electron .titlebar-controls { display: flex; align-items: center; gap: 4px; margin-left: auto; -webkit-app-region: no-drag; }
+.electron .titlebar-controls { display: flex; align-items: center; gap: 4px; -webkit-app-region: no-drag; }
 /* Mode buttons + lang picker must be clickable (not consumed by drag region) */
 .electron .titlebar-mode,
 .electron .lang-picker { -webkit-app-region: no-drag; }
@@ -963,10 +964,6 @@ html { background: #09111e; }
   padding: 12px 0;
   text-align: center;
 }
-
-/* Nav add button accent */
-.nav-add-btn svg { stroke: var(--accent2); }
-.nav-add-btn span { color: var(--accent2); }
 
 /* ══ NOTES PAGE ════════════════════════════════════════════ */
 .notes-list { display: flex; flex-direction: column; gap: 0; }
