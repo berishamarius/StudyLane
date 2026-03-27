@@ -33,21 +33,17 @@
     "productName": "TaskLane",
     "copyright": "Copyright 2026 KX KroniX Tech",
     "win": {
-      "target": [{ "target": "nsis", "arch": ["x64"] }],
-      "icon": "assets/icon.ico"
+      "target": [{ "target": "nsis", "arch": ["x64"] }]
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "installerIcon": "assets/icon.ico",
-      "uninstallerIcon": "assets/icon.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "TaskLane"
     },
     "directories": {
-      "buildResources": "assets",
-      "output": "release"
+      "output": "dist"
     },
     "files": [
       "**/*",
