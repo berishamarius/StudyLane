@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   i18n.js  –  TaskLane  –  15 languages
+   i18n.js  –  StudyLane  –  15 languages
    ═══════════════════════════════════════════════════════════════════ */
 
 const LANGUAGES = [
@@ -22,7 +22,7 @@ const LANGUAGES = [
 
 const TRANSLATIONS = {
   de: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'Mitarbeiter',
     modeAzubi: 'Azubi',
     navPlans: 'Pläne',
@@ -170,7 +170,7 @@ const TRANSLATIONS = {
   },
 
   en: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'Employee',
     modeAzubi: 'Trainee',
     navPlans: 'Plans',
@@ -313,7 +313,7 @@ const TRANSLATIONS = {
   },
 
   ar: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'موظف',
     modeAzubi: 'متدرب',
     navPlans: 'الجداول',
@@ -456,7 +456,7 @@ const TRANSLATIONS = {
   },
 
   es: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'Empleado',
     modeAzubi: 'Aprendiz',
     navPlans: 'Planes',
@@ -599,7 +599,7 @@ const TRANSLATIONS = {
   },
 
   fr: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'Employé',
     modeAzubi: 'Apprenti',
     navPlans: 'Plans',
@@ -742,7 +742,7 @@ const TRANSLATIONS = {
   },
 
   hi: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'कर्मचारी',
     modeAzubi: 'प्रशिक्षु',
     navPlans: 'योजनाएँ',
@@ -891,7 +891,7 @@ const TRANSLATIONS = {
   },
 
   it: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'Dipendente',
     modeAzubi: 'Apprendista',
     navPlans: 'Piani',
@@ -1040,7 +1040,7 @@ const TRANSLATIONS = {
   },
 
   ja: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: '従業員',
     modeAzubi: '研修生',
     navPlans: 'プラン',
@@ -1189,7 +1189,7 @@ const TRANSLATIONS = {
   },
 
   ko: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: '직원',
     modeAzubi: '견습생',
     navPlans: '계획',
@@ -1338,7 +1338,7 @@ const TRANSLATIONS = {
   },
 
   pl: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'Pracownik',
     modeAzubi: 'Praktykant',
     navPlans: 'Plany',
@@ -1487,7 +1487,7 @@ const TRANSLATIONS = {
   },
 
   pt: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'Colaborador',
     modeAzubi: 'Aprendiz',
     navPlans: 'Planos',
@@ -1636,7 +1636,7 @@ const TRANSLATIONS = {
   },
 
   ru: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'Сотрудник',
     modeAzubi: 'Стажёр',
     navPlans: 'Планы',
@@ -1785,7 +1785,7 @@ const TRANSLATIONS = {
   },
 
   tr: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'Çalışan',
     modeAzubi: 'Stajyer',
     navPlans: 'Planlar',
@@ -1934,7 +1934,7 @@ const TRANSLATIONS = {
   },
 
   uk: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: 'Співробітник',
     modeAzubi: 'Стажер',
     navPlans: 'Плани',
@@ -2083,7 +2083,7 @@ const TRANSLATIONS = {
   },
 
   zh: {
-    appTitle: 'TaskLane',
+    appTitle: 'StudyLane',
     modeMitarbeiter: '员工',
     modeAzubi: '学员',
     navPlans: '计划',

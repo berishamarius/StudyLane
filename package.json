@@ -1,7 +1,7 @@
 {
-  "name": "tasklane",
+  "name": "studylane",
   "version": "1.0.0",
-  "description": "TaskLane – Digitaler Arbeitsplaner für Mitarbeiter & Azubis",
+  "description": "StudyLane – Digitaler Arbeitsplaner für Mitarbeiter & Azubis",
   "main": "main.js",
   "author": "KX KroniX Tech",
   "license": "UNLICENSED",
@@ -29,8 +29,8 @@
     "@capacitor/keyboard": "^6.0.0"
   },
   "build": {
-    "appId": "com.kronix.tasklane",
-    "productName": "TaskLane",
+    "appId": "com.kronix.studylane",
+    "productName": "StudyLane",
     "copyright": "Copyright 2026 KX KroniX Tech",
     "win": {
       "target": [{ "target": "nsis", "arch": ["x64"] }]
@@ -40,7 +40,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "TaskLane"
+      "shortcutName": "StudyLane"
     },
     "directories": {
       "output": "dist"

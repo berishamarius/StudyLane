@@ -1,7 +1,7 @@
 {
-  "name": "TaskLane",
-  "short_name": "TaskLane",
-  "description": "Dein digitaler Arbeitsplaner für Mitarbeiter & Azubis",
+  "name": "StudyLane",
+  "short_name": "StudyLane",
+  "description": "Dein digitaler Lern- & Arbeitsplaner für Mitarbeiter & Azubis",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

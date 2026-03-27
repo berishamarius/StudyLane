@@ -1,6 +1,6 @@
 {
-  "appId": "de.kronix.tasklane",
-  "appName": "TaskLane",
+  "appId": "de.kronix.studylane",
+  "appName": "StudyLane",
   "webDir": "www",
   "bundledWebRuntime": false,
   "server": {
@@ -26,7 +26,7 @@
   "android": {
     "buildOptions": {
       "keystorePath": "release.keystore",
-      "keystoreAlias": "tasklane"
+      "keystoreAlias": "studylane"
     }
   }
 }

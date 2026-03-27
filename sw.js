@@ -1,5 +1,5 @@
-/* TaskLane – Service Worker */
-const CACHE = 'tasklane-v1';
+/* StudyLane – Service Worker */
+const CACHE = 'studylane-v1';
 const ASSETS = [
   './',
   './index.html',
