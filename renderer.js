@@ -167,6 +167,9 @@ function applyMode() {
   // Show/hide ECTS field in grade modal
   const ectsField = document.getElementById('grEctsField');
   if (ectsField) ectsField.style.display = mode === 'student' ? '' : 'none';
+  // Show/hide settings sections
+  document.querySelectorAll('.schueler-only-section').forEach(el => el.style.display = mode === 'schueler' ? '' : 'none');
+  document.querySelectorAll('.student-only-section').forEach(el => el.style.display = mode === 'student'  ? '' : 'none');
 }
 
 function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -187,6 +190,7 @@ function showPage(id) {
   if (id === 'home')     renderHomeDashboard();
   if (id === 'student')  renderStudentPage();
   if (id === 'notes')    renderNotesList();
+  if (id === 'settings') { populateSettingsForm(); renderSettingsGoals(); renderDefaultSlotsList(); }
 }
 
 // Context-sensitive "+" nav button
@@ -347,6 +351,24 @@ function renderStudyGoals() {
     </div>`).join('');
 }
 
+function renderSettingsGoals() {
+  const goals = settings.studyGoals || [];
+  const el = document.getElementById('settingsGoalsList');
+  if (!el) return;
+  if (goals.length === 0) {
+    el.innerHTML = `<div class="empty-hint" style="padding:6px 0">${t('stuGoalsEmpty')}</div>`;
+    return;
+  }
+  el.innerHTML = goals.map((g, i) => `
+    <div class="goal-item ${g.done ? 'goal-done' : ''}" style="margin-bottom:6px">
+      <div class="hw-check ${g.done ? 'checked' : ''}" onclick="toggleGoal(${i});renderSettingsGoals()"></div>
+      <div class="goal-text">${esc(g.text)}</div>
+      <button class="hw-act-btn" onclick="deleteGoal(${i});renderSettingsGoals()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>`).join('');
+}
+
 function addStudyGoal() {
   const text = prompt(t('stuGoalsTitle') + ':');
   if (!text || !text.trim()) return;
@@ -380,6 +402,14 @@ function renderNotesList() {
   const list  = document.getElementById('notesList');
   const empty = document.getElementById('notesEmpty');
   if (!list) return;
+
+  // Always update stats from full dataset
+  const totalNotes = notesData.length;
+  const subjects   = [...new Set(notesData.map(n => n.subject).filter(Boolean))].length;
+  const latest     = notesData.length ? [...notesData].sort((a,b) => (b.date||b.createdAt||'').localeCompare(a.date||a.createdAt||''))[0] : null;
+  const elT = document.getElementById('notesStatTotal');    if (elT) elT.textContent = totalNotes;
+  const elS = document.getElementById('notesStatSubjects'); if (elS) elS.textContent = subjects;
+  const elL = document.getElementById('notesStatLatest');   if (elL) elL.textContent = latest ? fmtDate2(latest.date || latest.createdAt?.slice(0,10)) : '–';
 
   const q = (document.getElementById('notesSearchInput')?.value || '').toLowerCase();
   const items = [...notesData]
@@ -495,14 +525,23 @@ function deleteNote(id) {
   renderNotesList();
 }
 function populateSettingsForm() {
+  // shared / schueler fields
   setValue('settingName',      settings.profileName     || '');
   setValue('settingSchool',    settings.profileSchool   || '');
   setValue('settingClass',     settings.profileClass    || '');
   setValue('settingSemester',  settings.profileSemester || '');
+  // student-specific fields
+  setValue('settingNameStu',      settings.profileName     || '');
+  setValue('settingUni',          settings.profileUni      || '');
+  setValue('settingDegree',       settings.profileDegree   || '');
+  setValue('settingSemesterStu',  settings.profileSemester || '');
+  setValue('settingMatr',         settings.profileMatr     || '');
+  // shared
   setValue('settingGradeSystem', settings.gradeSystem   || 'school');
   setValue('settingPortalName', settings.portalName     || '');
   setValue('settingPortalUrl',  settings.portalUrl      || '');
   setValue('settingPortalType', settings.portalType     || 'iserv');
+  renderSettingsGoals();
 }
 
 function setValue(id, val) {
@@ -511,11 +550,20 @@ function setValue(id, val) {
 }
 
 function saveSettings(showToast) {
-  settings.profileName     = getValue('settingName');
-  settings.profileSchool   = getValue('settingSchool');
-  settings.profileClass    = getValue('settingClass');
-  settings.profileSemester = getValue('settingSemester');
-  settings.gradeSystem     = getValue('settingGradeSystem') || 'school';
+  const mode = settings.mode || 'schueler';
+  if (mode === 'student') {
+    settings.profileName     = getValue('settingNameStu');
+    settings.profileUni      = getValue('settingUni');
+    settings.profileDegree   = getValue('settingDegree');
+    settings.profileSemester = getValue('settingSemesterStu');
+    settings.profileMatr     = getValue('settingMatr');
+  } else {
+    settings.profileName     = getValue('settingName');
+    settings.profileSchool   = getValue('settingSchool');
+    settings.profileClass    = getValue('settingClass');
+    settings.profileSemester = getValue('settingSemester');
+  }
+  settings.gradeSystem = getValue('settingGradeSystem') || 'school';
   Storage.saveSettings(settings);
   applyMode();
   if (showToast) toast(t('settingsSaved'));
@@ -597,19 +645,29 @@ function renderScheduleList() {
     return;
   }
   empty.style.display = 'none';
-  list.innerHTML = filtered.map(s => `
+  list.innerHTML = filtered.map(s => {
+    const subjectChips = (s.subjects || []).slice(0, 4).map(sub =>
+      `<span class="schedule-chip" style="${sub.color ? 'border-color:'+sub.color+'88;color:'+sub.color : ''}">${esc(sub.name)}</span>`
+    ).join('');
+    const more = (s.subjects||[]).length > 4 ? `<span class="schedule-chip">+${(s.subjects.length-4)}</span>` : '';
+    const slotCount = (s.slots||[]).length;
+    return `
     <div class="schedule-card" onclick="openSchedule('${s.id}')">
+      <div class="schedule-card-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
       <div class="schedule-card-info">
         <div class="schedule-card-name">${esc(s.name || t('unnamed'))}</div>
         <div class="schedule-card-meta">
-          ${s.from && s.to ? esc(s.from) + ' – ' + esc(s.to) + ' · ' : ''}
-          ${t('lastChanged')}${fmtDate(s.updatedAt)}
+          ${s.from && s.to ? esc(s.from) + ' – ' + esc(s.to) + ' · ' : ''}${slotCount} ${t('lessons')} · ${t('lastChanged')}${fmtDate(s.updatedAt)}
         </div>
+        ${subjectChips || more ? `<div class="schedule-card-chips">${subjectChips}${more}</div>` : ''}
       </div>
       <button class="schedule-card-delete" onclick="deleteSchedule(event,'${s.id}')">
         <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
       </button>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 function deleteSchedule(e, id) {
@@ -759,23 +817,30 @@ function rebuildGrid() {
   if (!grid) return;
   const days  = current.days  || getDayNames();
   const slots = current.slots || getDefaultSlots();
-  const cols  = days.length + 1;
 
-  grid.style.gridTemplateColumns = `60px repeat(${days.length}, minmax(90px,1fr))`;
+  // Detect today's column index (0=Mon … 4=Fri)
+  const todayDow = new Date().getDay(); // 0=Sun,1=Mon…6=Sat
+  const todayCol = todayDow >= 1 && todayDow <= 5 ? todayDow - 1 : -1;
 
-  let html = '<div class="timetable-header" style="background:transparent"></div>';
-  days.forEach(d => { html += `<div class="timetable-header">${esc(d)}</div>`; });
+  grid.style.gridTemplateColumns = `52px repeat(${days.length}, minmax(86px,1fr))`;
+
+  let html = '<div class="timetable-header" style="background:transparent;border-bottom:1px solid var(--border)"></div>';
+  days.forEach((d, di) => {
+    const cls = di === todayCol ? ' today-col' : '';
+    html += `<div class="timetable-header${cls}">${esc(d)}</div>`;
+  });
 
   slots.forEach((slot, si) => {
-    html += `<div class="timetable-slot-label">${esc(slot)}</div>`;
+    html += `<div class="timetable-slot-label"><span class="slot-num">${si + 1}</span><span style="font-size:9px;color:var(--text3)">${esc(slot)}</span></div>`;
     days.forEach((_, di) => {
       const key  = `${di}-${si}`;
       const cell = (current.grid || {})[key] || {};
       const subj = (current.subjects || []).find(s => s.id === cell.subjectId);
       const bg   = cell.colorOverride || (subj ? subj.color : '');
       const name = subj ? subj.name : '';
-      html += `<div class="timetable-cell ${name ? 'filled' : ''}"
-        style="${bg ? 'background:' + bg + '22;border-color:' + bg + '55' : ''}"
+      const todayCls = di === todayCol ? ' today-col' : '';
+      html += `<div class="timetable-cell ${name ? 'filled' : ''}${todayCls}"
+        style="${bg ? 'background:' + bg + '22;border-left:3px solid ' + bg : ''}"
         onclick="openCellModal(${di},${si})">
         ${name ? `<div class="cell-subject" style="${bg?'color:'+bg:''}">${esc(name)}</div>` : ''}
         ${cell.room    ? `<div class="cell-room">${esc(cell.room)}</div>` : ''}
@@ -864,6 +929,35 @@ function renderHomeworkList() {
   const list  = document.getElementById('hwList');
   const empty = document.getElementById('hwEmpty');
   if (!list) return;
+
+  // Always compute stats from full dataset
+  const today = new Date(); today.setHours(0,0,0,0);
+  const allOpen    = homeworkData.filter(h => !h.done).length;
+  const allDone    = homeworkData.filter(h =>  h.done).length;
+  const allOverdue = homeworkData.filter(h => {
+    if (h.done || !h.dueDate) return false;
+    const d = new Date(h.dueDate); d.setHours(0,0,0,0); return d < today;
+  }).length;
+  const total = allOpen + allDone;
+  const pct   = total > 0 ? Math.round(allDone / total * 100) : 0;
+
+  const elO = document.getElementById('hwStatOpen');    if (elO) elO.textContent = allOpen;
+  const elD = document.getElementById('hwStatDone');    if (elD) elD.textContent = allDone;
+  const elV = document.getElementById('hwStatOverdue'); if (elV) { elV.textContent = allOverdue; elV.style.color = allOverdue > 0 ? 'var(--danger)' : ''; }
+
+  const wrap  = document.getElementById('hwProgressWrap');
+  const fill  = document.getElementById('hwProgressFill');
+  const label = document.getElementById('hwProgressLabel');
+  if (wrap && fill && label) {
+    if (total > 0) {
+      wrap.style.display = '';
+      fill.style.width = pct + '%';
+      fill.style.background = pct === 100 ? 'var(--success)' : pct >= 50 ? 'var(--accent)' : 'var(--warn)';
+      label.textContent = pct + '% ' + t('hwFilterDone');
+    } else {
+      wrap.style.display = 'none';
+    }
+  }
 
   let items = [...homeworkData].sort((a, b) => {
     if (!a.dueDate) return 1; if (!b.dueDate) return -1;
@@ -1003,6 +1097,26 @@ function renderGradesList() {
   if (!container) return;
 
   const subjects = Object.values(gradesData);
+
+  // Always update stats row
+  const allEntries = subjects.flatMap(s => s.entries || []);
+  const grStatAvg   = document.getElementById('grStatAvg');
+  const grStatBest  = document.getElementById('grStatBest');
+  const grStatWorst = document.getElementById('grStatWorst');
+  const grStatCount = document.getElementById('grStatCount');
+  if (grStatCount) grStatCount.textContent = allEntries.length;
+  if (allEntries.length > 0) {
+    const vals = allEntries.map(e => parseFloat(e.value)).filter(v => !isNaN(v));
+    if (grStatBest)  { const b = Math.min(...vals); grStatBest.textContent  = b.toFixed(1); grStatBest.style.color  = gradeColor(b); }
+    if (grStatWorst) { const w = Math.max(...vals); grStatWorst.textContent = w.toFixed(1); grStatWorst.style.color = gradeColor(w); }
+    let tw = 0, ts = 0;
+    allEntries.forEach(e => { const wt = e.weight||1; ts += parseFloat(e.value)*wt; tw += wt; });
+    if (grStatAvg) { const a = tw>0 ? ts/tw : null; grStatAvg.textContent = a!==null ? a.toFixed(1) : '–'; if(a) grStatAvg.style.color = gradeColor(a); }
+  } else {
+    if (grStatAvg)   { grStatAvg.textContent   = '–'; grStatAvg.style.color   = ''; }
+    if (grStatBest)  { grStatBest.textContent  = '–'; grStatBest.style.color  = ''; }
+    if (grStatWorst) { grStatWorst.textContent = '–'; grStatWorst.style.color = ''; }
+  }
   if (subjects.length === 0) {
     container.innerHTML = '';
     empty.style.display   = '';
@@ -1062,7 +1176,7 @@ function renderGradesList() {
             </button>
           </div>`).join('')}
         <button class="btn btn-secondary btn-sm" style="width:100%;margin-top:4px" onclick="openGradeModal('${subj.id}')">
-          + ${t('grAdd')}
+          ${t('grAdd')}
         </button>
       </div>
     </div>`;

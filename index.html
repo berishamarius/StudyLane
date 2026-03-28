@@ -25,14 +25,15 @@
 <!-- ══════════════ TITLE BAR ══════════════ -->
 <div class="titlebar">
   <div class="titlebar-logo">
-    <svg width="36" height="28" viewBox="0 0 46 34" fill="none">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#lg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <defs>
-        <linearGradient id="tg" x1="0" y1="0" x2="46" y2="34" gradientUnits="userSpaceOnUse">
+        <linearGradient id="lg" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stop-color="#818cf8"/>
           <stop offset="100%" stop-color="#6366f1"/>
         </linearGradient>
       </defs>
-      <text x="0" y="29" font-size="30" font-weight="900" fill="url(#tg)" font-family="'Segoe UI',system-ui,sans-serif" letter-spacing="-1">SL</text>
+      <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
     </svg>
     <span class="logo-text">StudyLane</span>
   </div>
@@ -84,7 +85,7 @@
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span data-i18n="navPlans">Pläne</span>
   </button>
-  <button class="nav-btn schueler-only" data-page="grades" onclick="showPage('grades')">
+  <button class="nav-btn" data-page="grades" onclick="showPage('grades')">
     <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
     <span data-i18n="navBerichte">Berichte</span>
   </button>
@@ -253,11 +254,47 @@
   <div class="page-header">
     <h1 data-i18n="hwTitle">Hausaufgaben & Aufgaben</h1>
     <button class="btn btn-primary btn-sm" onclick="openHwModal()">
-      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
       <span data-i18n="hwAdd">+ Neue Aufgabe</span>
     </button>
   </div>
+  <!-- Stats row -->
+  <div class="home-stats-row" style="margin-bottom:14px">
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(245,158,11,.15);color:var(--warn)">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="hwStatOpen">0</div>
+        <div class="home-stat-label" data-i18n="hwFilterOpen">Offen</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(34,197,94,.15);color:var(--success)">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="hwStatDone">0</div>
+        <div class="home-stat-label" data-i18n="hwFilterDone">Erledigt</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(239,68,68,.1);color:var(--danger)">
+        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="hwStatOverdue">0</div>
+        <div class="home-stat-label" data-i18n="hwOverdue">Überfällig</div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Progress bar -->
+  <div class="hw-progress-wrap" id="hwProgressWrap" style="display:none">
+    <div class="hw-progress-bar">
+      <div class="hw-progress-fill" id="hwProgressFill"></div>
+    </div>
+    <div class="hw-progress-label" id="hwProgressLabel"></div>
+  </div>
   <div class="hw-filter-bar">
     <button class="hw-filter-btn active" id="hwFilterAll" onclick="setHwFilter('all')" data-i18n="hwFilterAll">Alle</button>
     <button class="hw-filter-btn" id="hwFilterOpen" onclick="setHwFilter('open')" data-i18n="hwFilterOpen">Offen</button>
@@ -268,6 +305,10 @@
   <div id="hwEmpty" class="empty-state" style="display:none">
     <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
     <h3 data-i18n="hwNoItems">Keine Aufgaben</h3>
+    <p data-i18n="hwEmptyHint">Tippe + um deine erste Aufgabe hinzuzufügen</p>
+    <button class="btn btn-primary" onclick="openHwModal()">
+      <span data-i18n="hwAdd">+ Neue Aufgabe</span>
+    </button>
   </div>
 </div>
 
@@ -276,12 +317,51 @@
   <div class="page-header">
     <h1 data-i18n="grTitle">Noten</h1>
     <button class="btn btn-primary btn-sm" onclick="openGradeModal()">
-      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
       <span data-i18n="grAdd">+ Note eintragen</span>
     </button>
   </div>
 
-  <!-- Overall average -->
+  <!-- Stats row – always visible -->
+  <div class="home-stats-row" id="grStatsRow">
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(99,102,241,.15);color:var(--accent2)">
+        <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="grStatAvg">–</div>
+        <div class="home-stat-label" data-i18n="grOverall">Schnitt</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(34,197,94,.15);color:var(--success)">
+        <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="grStatBest">–</div>
+        <div class="home-stat-label" data-i18n="grBest">Beste</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(239,68,68,.1);color:var(--danger)">
+        <svg viewBox="0 0 24 24"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="grStatWorst">–</div>
+        <div class="home-stat-label" data-i18n="grWorst">Schlechteste</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(245,158,11,.15);color:var(--warn)">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="grStatCount">0</div>
+        <div class="home-stat-label" data-i18n="grCount">Einträge</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overall average bar -->
   <div class="gr-overview" id="grOverview" style="display:none">
     <div style="display:flex;align-items:center;gap:14px">
       <div>
@@ -298,6 +378,10 @@
   <div id="grEmpty" class="empty-state" style="display:none">
     <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
     <h3 data-i18n="grNoSubjects">Noch keine Noten</h3>
+    <p data-i18n="grEmptyHint">Tippe + um deine erste Note einzutragen</p>
+    <button class="btn btn-primary" onclick="openGradeModal()">
+      <span data-i18n="grAdd">+ Note eintragen</span>
+    </button>
   </div>
 </div>
 
@@ -307,11 +391,9 @@
     <h1 data-i18n="navAzubi">Portfolio</h1>
     <div style="display:flex;gap:8px">
       <button class="btn btn-secondary btn-sm" onclick="openHwModal()">
-        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
         <span data-i18n="hwAdd">+ Aufgabe</span>
       </button>
       <button class="btn btn-primary btn-sm" onclick="openGradeModal()">
-        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
         <span data-i18n="grAdd">+ Note</span>
       </button>
     </div>
@@ -384,11 +466,39 @@
   <div class="page-header">
     <h1 data-i18n="navNotes">Mitschriften</h1>
     <button class="btn btn-primary btn-sm" onclick="openNoteModal()">
-      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
       <span data-i18n="noteAdd">+ Neue Mitschrift</span>
     </button>
   </div>
-
+  <!-- Stats row -->
+  <div class="home-stats-row" style="margin-bottom:14px">
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(99,102,241,.15);color:var(--accent2)">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="notesStatTotal">0</div>
+        <div class="home-stat-label" data-i18n="notesStatTotal">Mitschriften</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(245,158,11,.15);color:var(--warn)">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="notesStatSubjects">0</div>
+        <div class="home-stat-label" data-i18n="subjects">Fächer</div>
+      </div>
+    </div>
+    <div class="home-stat-card">
+      <div class="home-stat-icon" style="background:rgba(34,197,94,.15);color:var(--success)">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="home-stat-body">
+        <div class="home-stat-value" id="notesStatLatest">–</div>
+        <div class="home-stat-label" data-i18n="notesStatLatest">Zuletzt</div>
+      </div>
+    </div>
+  </div>
   <!-- Search + filter row -->
   <div class="search-bar" style="margin-bottom:12px">
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -402,7 +512,6 @@
     <h3 data-i18n="notesNoItems">Noch keine Mitschriften</h3>
     <p data-i18n="notesHint">Tippe + um eine neue Mitschrift hinzuzufügen</p>
     <button class="btn btn-primary" onclick="openNoteModal()">
-      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
       <span data-i18n="noteAdd">+ Neue Mitschrift</span>
     </button>
   </div>
@@ -492,27 +601,56 @@
     <h1 data-i18n="settings">Einstellungen</h1>
   </div>
 
-  <!-- Profile -->
-  <div class="settings-section">
+  <!-- Profile – Schüler -->
+  <div class="settings-section schueler-only-section">
     <div class="settings-section-title" data-i18n="profileTitle">Profil</div>
     <div class="settings-item">
       <div class="field">
         <label data-i18n="profileName">Name</label>
-        <input class="input" type="text" id="settingName" />
+        <input class="input" type="text" id="settingName" placeholder="Dein Name" />
       </div>
       <div class="field">
-        <label data-i18n="profileSchool">Schule / Universität</label>
-        <input class="input" type="text" id="settingSchool" />
+        <label data-i18n="profileSchoolLabel">Schule</label>
+        <input class="input" type="text" id="settingSchool" placeholder="z.B. Gymnasium am See" />
       </div>
       <div class="field-row">
         <div class="field">
-          <label data-i18n="profileClass">Klasse / Studiengang</label>
-          <input class="input" type="text" id="settingClass" />
+          <label data-i18n="profileClassLabel">Klasse</label>
+          <input class="input" type="text" id="settingClass" placeholder="z.B. 10b" />
         </div>
         <div class="field">
-          <label data-i18n="profileSemester">Semester / Schuljahr</label>
-          <input class="input" type="text" id="settingSemester" />
+          <label data-i18n="profileYearLabel">Schuljahr</label>
+          <input class="input" type="text" id="settingSemester" placeholder="z.B. 2025/26" />
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile – Student -->
+  <div class="settings-section student-only-section">
+    <div class="settings-section-title" data-i18n="profileTitle">Profil</div>
+    <div class="settings-item">
+      <div class="field">
+        <label data-i18n="profileName">Name</label>
+        <input class="input" type="text" id="settingNameStu" placeholder="Dein Name" />
+      </div>
+      <div class="field">
+        <label data-i18n="profileUniLabel">Universität / Hochschule</label>
+        <input class="input" type="text" id="settingUni" placeholder="z.B. TU Berlin" />
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label data-i18n="profileDegreeLabel">Studiengang</label>
+          <input class="input" type="text" id="settingDegree" placeholder="z.B. Informatik B.Sc." />
+        </div>
+        <div class="field">
+          <label data-i18n="profileSemesterLabel">Semester</label>
+          <input class="input" type="text" id="settingSemesterStu" placeholder="z.B. 3. Semester" />
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="profileMatrLabel">Matrikelnummer (optional)</label>
+        <input class="input" type="text" id="settingMatr" placeholder="z.B. 123456" />
       </div>
     </div>
   </div>
@@ -530,8 +668,8 @@
     </div>
   </div>
 
-  <!-- School portal -->
-  <div class="settings-section" id="schoolSettingsSection">
+  <!-- School portal – only Schüler -->
+  <div class="settings-section schueler-only-section" id="schoolSettingsSection">
     <div class="settings-section-title" data-i18n="schTitle">Schulnetzwerk</div>
     <div class="settings-item">
       <div class="field">
@@ -557,13 +695,28 @@
     </div>
   </div>
 
-  <!-- Default slots -->
-  <div class="settings-section">
-    <div class="settings-section-title" data-i18n="defaultSlots">Standardstunden</div>
+  <!-- Default time slots – only Schüler -->
+  <div class="settings-section schueler-only-section">
+    <details id="defaultSlotsDetails">
+      <summary class="settings-section-title collapsible-summary" data-i18n="defaultSlots">Standardstunden
+        <svg class="collapsible-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="settings-item" style="margin-top:10px">
+        <div id="defaultSlotsList" class="default-slots-list" style="margin-bottom:8px"></div>
+        <button class="btn btn-secondary btn-sm" onclick="addDefaultSlot()">
+          <span data-i18n="addSlot">+ Stunde hinzufügen</span>
+        </button>
+      </div>
+    </details>
+  </div>
+
+  <!-- Study goals quick-add – only Student -->
+  <div class="settings-section student-only-section">
+    <div class="settings-section-title" data-i18n="stuGoalsTitle">Lernziele</div>
     <div class="settings-item">
-      <div id="defaultSlotsList" class="default-slots-list" style="margin-bottom:8px"></div>
-      <button class="btn btn-secondary btn-sm" onclick="addDefaultSlot()">
-        <span data-i18n="addSlot">+ Stunde hinzufügen</span>
+      <div id="settingsGoalsList" style="margin-bottom:8px"></div>
+      <button class="btn btn-secondary btn-sm" onclick="addStudyGoal(); renderSettingsGoals()">
+        <span data-i18n="addSlot">+ Ziel hinzufügen</span>
       </button>
     </div>
   </div>
