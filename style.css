@@ -94,8 +94,6 @@ html { background: #09111e; }
 .electron .lang-picker { -webkit-app-region: no-drag; }
 
 /* ══ RTL ════════════════════════════════════════════════════ */
-/* Titlebar always stays LTR so window controls stay on the right (Windows) */
-.titlebar { direction: ltr; }
 /* Page content flips for RTL languages */
 [dir=rtl] .page,
 [dir=rtl] .card,
@@ -291,7 +289,7 @@ html { background: #09111e; }
 
 /* ══ BUTTONS ═══════════════════════════════════════════════ */
 .btn {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   padding: 9px 16px; border-radius: var(--radius-sm);
   font-size: 13px; font-weight: 600; cursor: pointer;
   border: none; transition: all .18s;
@@ -739,7 +737,6 @@ details[open] summary.settings-section-title { margin-bottom: 10px; }
 [dir=rtl] .filter-bar,
 [dir=rtl] .hw-item,
 [dir=rtl] .lang-current,
-[dir=rtl] .titlebar,
 [dir=rtl] .install-banner { flex-direction: row-reverse; }
 
 /* Nav stays LTR physically but labels go RTL */
@@ -774,9 +771,7 @@ details[open] summary.settings-section-title { margin-bottom: 10px; }
 [dir=rtl] .toast { transform: translateX(50%) translateY(0); left: auto; right: 50%; }
 [dir=rtl] .toast.show { transform: translateX(50%) translateY(-8px); }
 
-/* Titlebar controls stay on right visually → move to left in RTL */
-[dir=rtl] .titlebar-controls { margin-right: auto; margin-left: 0; }
-[dir=rtl] .titlebar-mode { margin-left: auto; margin-right: 0; }
+/* Titlebar: .titlebar-right { margin-left: auto } already pushes controls to far left in RTL */
 
 /* Language picker */
 [dir=rtl] .lang-dropdown { left: 14px; right: auto; }
