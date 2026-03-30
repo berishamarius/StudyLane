@@ -101,15 +101,19 @@ function toggleLangMenu() {
 }
 function openLangMenu() {
   document.getElementById('langPicker').classList.add('open');
+  document.getElementById('langDropdown').style.display = 'block';
   // defer so the opening click doesn't immediately consume the listener
   setTimeout(() => document.addEventListener('click', outsideLangClose), 0);
 }
 function closeLangMenu() {
   document.getElementById('langPicker').classList.remove('open');
+  document.getElementById('langDropdown').style.display = 'none';
   document.removeEventListener('click', outsideLangClose);
 }
 function outsideLangClose(e) {
-  if (!document.getElementById('langPicker').contains(e.target)) closeLangMenu();
+  const picker = document.getElementById('langPicker');
+  const dd     = document.getElementById('langDropdown');
+  if (!picker.contains(e.target) && !dd.contains(e.target)) closeLangMenu();
 }
 
 function renderLangDropdown() {

@@ -55,7 +55,6 @@
       <span id="langLabel">DE</span>
       <svg class="chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
     </button>
-    <div class="lang-dropdown" id="langDropdown"></div>
   </div>
 
   <div class="titlebar-right">
@@ -886,8 +885,8 @@
 </div>
 
 <!-- ══════════════════════════ TOAST ══════════════════════════ -->
-<div class="toast" id="toast"></div>
-
+<div class="toast" id="toast"></div><!-- Language dropdown – outside titlebar so Electron drag region cannot intercept clicks -->
+<div class="lang-dropdown" id="langDropdown"></div>
 <script src="renderer.js"></script>
 </body>
 </html>
