@@ -161,7 +161,7 @@ html { background: #09111e; }
 .lang-picker.open .chevron { transform: rotate(180deg); }
 .lang-dropdown {
   display: none;
-  position: fixed; top: var(--titlebar-h); right: 14px;
+  position: fixed; top: 0; right: 0;
   background: var(--bg3); border: 1px solid var(--border2);
   border-radius: var(--radius-sm); padding: 4px 0; z-index: 9999;
   min-width: 160px; box-shadow: var(--shadow);

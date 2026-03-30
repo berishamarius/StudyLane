@@ -100,8 +100,15 @@ function toggleLangMenu() {
   picker.classList.contains('open') ? closeLangMenu() : openLangMenu();
 }
 function openLangMenu() {
-  document.getElementById('langPicker').classList.add('open');
-  document.getElementById('langDropdown').style.display = 'block';
+  const picker = document.getElementById('langPicker');
+  const dd     = document.getElementById('langDropdown');
+  picker.classList.add('open');
+  // position below the picker button
+  const rect = picker.getBoundingClientRect();
+  dd.style.top   = (rect.bottom + 4) + 'px';
+  dd.style.right = (window.innerWidth - rect.right) + 'px';
+  dd.style.left  = 'auto';
+  dd.style.display = 'block';
   // defer so the opening click doesn't immediately consume the listener
   setTimeout(() => document.addEventListener('click', outsideLangClose), 0);
 }
@@ -371,6 +378,18 @@ function renderSettingsGoals() {
         <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>`).join('');
+}
+
+function addStudyGoalInline() {
+  const input = document.getElementById('newGoalInput');
+  const text = input ? input.value.trim() : '';
+  if (!text) return;
+  if (!settings.studyGoals) settings.studyGoals = [];
+  settings.studyGoals.push({ text, done: false });
+  Storage.saveSettings(settings);
+  input.value = '';
+  renderStudyGoals();
+  renderSettingsGoals();
 }
 
 function addStudyGoal() {
