@@ -978,7 +978,6 @@ function renderHomeworkList() {
   }
   empty.style.display = 'none';
 
-  const today    = new Date(); today.setHours(0,0,0,0);
   const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate()+1);
 
   list.innerHTML = items.map(item => {
