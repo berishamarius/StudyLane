@@ -459,9 +459,9 @@ function renderNotesList() {
     </div>`).join('');
 
   // Update subject datalist
-  const subjects = [...new Set(notesData.map(n => n.subject).filter(Boolean))];
+  const subjectList = [...new Set(notesData.map(n => n.subject).filter(Boolean))];
   const dl = document.getElementById('noteSubjectSuggestions');
-  if (dl) dl.innerHTML = subjects.map(s => `<option value="${esc(s)}">`).join('');
+  if (dl) dl.innerHTML = subjectList.map(s => `<option value="${esc(s)}">`).join('');
 }
 
 function openNoteModal(note) {

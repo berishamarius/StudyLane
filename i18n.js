@@ -762,7 +762,7 @@ const TRANSLATIONS = {
     noteDate: 'Date',
     noteColor: 'Couleur',
     notesSearch: 'Rechercher des notes…',
-    notesNoItems: 'Aucune note pour l'instant',
+    notesNoItems: 'Aucune note pour l\'instant',
     notesHint: 'Touchez + pour ajouter une note',
     noteSaved: 'Note enregistrée',
     noteContentRequired: 'Veuillez saisir un titre ou un contenu',
