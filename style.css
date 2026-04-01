@@ -312,7 +312,7 @@ html { background: #09111e; }
 .btn-danger:hover { background: rgba(239,68,68,.22); }
 .btn-sm { padding: 5px 10px; font-size: 12px; border-radius: var(--radius-xs); }
 .btn-icon { width: 32px; height: 32px; padding: 0; justify-content: center; }
-.btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+.btn svg { display: block; flex-shrink: 0; width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
 
 /* ══ INPUTS ════════════════════════════════════════════════ */
 .input, .select, .textarea {
