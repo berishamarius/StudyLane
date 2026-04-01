@@ -11,12 +11,16 @@
     "build:web": "node scripts/build-web.js",
     "generate:icons": "node scripts/generate-icons.js",
     "android": "npm run build:web && npx cap sync android && npx cap open android",
+    "ios": "npm run build:web && npx cap sync ios && npx cap open ios",
+    "cap:add:android": "npx cap add android",
+    "cap:add:ios": "npx cap add ios",
     "cap:sync": "npm run build:web && npx cap sync",
     "cap:copy": "npm run build:web && npx cap copy"
   },
   "devDependencies": {
     "electron": "^29.0.0",
     "electron-builder": "^24.9.1",
+    "@capacitor/cli": "^6.0.0",
     "sharp": "^0.33.0",
     "to-ico": "^1.1.5",
     "png2icons": "^2.0.1"
@@ -24,6 +28,7 @@
   "dependencies": {
     "@capacitor/core": "^6.0.0",
     "@capacitor/android": "^6.0.0",
+    "@capacitor/ios": "^6.0.0",
     "@capacitor/status-bar": "^6.0.0",
     "@capacitor/splash-screen": "^6.0.0",
     "@capacitor/keyboard": "^6.0.0"
