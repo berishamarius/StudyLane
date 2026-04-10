@@ -1,73 +1,65 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
-      <stop offset="0%"   stop-color="#162032"/>
-      <stop offset="100%" stop-color="#0e1520"/>
-    </radialGradient>
-    <linearGradient id="pageL" x1="1" y1="0" x2="0" y2="0">
-      <stop offset="0%"   stop-color="#ccdaee"/>
-      <stop offset="50%"  stop-color="#f4f8ff"/>
-      <stop offset="100%" stop-color="#ffffff"/>
-    </linearGradient>
-    <linearGradient id="pageR" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="#ccdaee"/>
-      <stop offset="50%"  stop-color="#f4f8ff"/>
-      <stop offset="100%" stop-color="#ffffff"/>
-    </linearGradient>
-    <linearGradient id="bmGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#6ab4ff"/>
-      <stop offset="100%" stop-color="#1a5ec8"/>
-    </linearGradient>
+    <clipPath id="shape">
+      <rect width="512" height="512" rx="110"/>
+    </clipPath>
   </defs>
 
-  <rect width="512" height="512" rx="110" fill="url(#bg)"/>
-  <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="3"/>
+  <g clip-path="url(#shape)">
+    <!-- Hintergrund -->
+    <rect width="512" height="512" fill="#17253A"/>
 
-  <!-- Lesezeichen -->
-  <path fill="url(#bmGrad)" d="M 413,76 A 4,4 0 0,1 417,72 L 441,72 A 4,4 0 0,1 445,76 L 445,158 L 429,143 L 413,158 Z"/>
-  <rect x="413" y="72" width="32" height="6" rx="3" fill="rgba(255,255,255,0.32)"/>
+    <!-- Cyan-Rand -->
+    <rect width="512" height="512" rx="110" fill="none" stroke="#00C8E8" stroke-width="20"/>
+    <!-- Dünner Innenrand -->
+    <rect x="16" y="16" width="480" height="480" rx="94" fill="none" stroke="#00C8E8" stroke-width="1.8"/>
 
-  <!-- Linke Seite -->
-  <path fill="url(#pageL)" d="M 78,88 L 248,88 L 248,424 L 78,424 A 28,28 0 0,1 50,396 L 50,116 A 28,28 0 0,1 78,88 Z"/>
+    <!-- Lesezeichen -->
+    <path fill="#00C8E8" d="M 350,88 L 350,64 Q 350,58 356,58 L 382,58 Q 388,58 388,64 L 388,88 Z"/>
 
-  <!-- Rechte Seite -->
-  <path fill="url(#pageR)" d="M 264,88 L 434,88 A 28,28 0 0,1 462,116 L 462,396 A 28,28 0 0,1 434,424 L 264,424 Z"/>
+    <!-- Linke Seite -->
+    <path fill="none" stroke="#00C8E8" stroke-width="4"
+          d="M 78,88 L 248,88 L 248,424 L 78,424 A 28,28 0 0,1 50,396 L 50,116 A 28,28 0 0,1 78,88 Z"/>
 
-  <!-- Buchrücken -->
-  <rect x="248" y="88" width="16" height="336" fill="rgba(0,10,25,0.45)"/>
-  <rect x="254" y="88" width="3"  height="336" fill="rgba(255,255,255,0.10)"/>
+    <!-- Rechte Seite -->
+    <path fill="none" stroke="#00C8E8" stroke-width="4"
+          d="M 264,88 L 434,88 A 28,28 0 0,1 462,116 L 462,396 A 28,28 0 0,1 434,424 L 264,424 Z"/>
 
-  <!-- Kapitelüberschrift links -->
-  <rect x="68" y="118" width="138" height="17" rx="7" fill="#a8bdd6"/>
+    <!-- Buchrücken -->
+    <rect x="253" y="88" width="6" height="336" fill="#00C8E8"/>
 
-  <!-- Textzeilen links -->
-  <rect x="68" y="150" width="148" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="170" width="112" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="190" width="134" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="210" width="94"  height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="230" width="126" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="250" width="148" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="270" width="104" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="290" width="130" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="310" width="118" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="330" width="140" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="350" width="96"  height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="68" y="370" width="124" height="10" rx="5" fill="#8fa8c4"/>
+    <!-- Kapitelüberschrift links -->
+    <rect x="68" y="118" width="138" height="17" rx="7" fill="#00C8E8"/>
 
-  <!-- Kapitelüberschrift rechts -->
-  <rect x="282" y="118" width="138" height="17" rx="7" fill="#a8bdd6"/>
+    <!-- Textzeilen links -->
+    <rect x="68" y="150" width="148" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="170" width="112" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="190" width="134" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="210" width="94"  height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="230" width="126" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="250" width="148" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="270" width="104" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="290" width="130" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="310" width="118" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="330" width="140" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="350" width="96"  height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="68" y="370" width="124" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
 
-  <!-- Textzeilen rechts -->
-  <rect x="282" y="150" width="140" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="170" width="126" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="190" width="100" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="210" width="144" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="230" width="116" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="250" width="132" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="270" width="148" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="290" width="92"  height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="310" width="136" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="330" width="110" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="350" width="140" height="10" rx="5" fill="#8fa8c4"/>
-  <rect x="282" y="370" width="104" height="10" rx="5" fill="#8fa8c4"/>
+    <!-- Kapitelüberschrift rechts -->
+    <rect x="282" y="118" width="138" height="17" rx="7" fill="#00C8E8"/>
+
+    <!-- Textzeilen rechts -->
+    <rect x="282" y="150" width="140" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="170" width="126" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="190" width="100" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="210" width="144" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="230" width="116" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="250" width="132" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="270" width="148" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="290" width="92"  height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="310" width="136" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="330" width="110" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="350" width="140" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+    <rect x="282" y="370" width="104" height="10" rx="5" fill="rgba(0,200,232,0.65)"/>
+  </g>
 </svg>
