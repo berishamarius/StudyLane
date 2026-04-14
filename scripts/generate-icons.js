@@ -37,6 +37,15 @@ async function pngBuf(src, size) {
   return sharp(src).resize(size, size).png().toBuffer();
 }
 
+// ICO frames must not have transparency – flatten onto white (Windows standard)
+async function pngBufFlat(src, size) {
+  return sharp(src)
+    .resize(size, size)
+    .flatten({ background: { r: 255, g: 255, b: 255 } })
+    .png()
+    .toBuffer();
+}
+
 async function writePng(src, size, dest) {
   await sharp(src).resize(size, size).png().toFile(dest);
   console.log(`  ✓  ${path.relative(ROOT, dest)}`);
@@ -59,7 +68,7 @@ async function buildWeb() {
 
 async function buildIco() {
   console.log('\n── Windows .ico  (16 · 32 · 48 · 256) ─────────────────────');
-  const bufs = await Promise.all([16, 32, 48, 256].map(s => pngBuf(SRC, s)));
+  const bufs = await Promise.all([16, 32, 48, 256].map(s => pngBufFlat(SRC, s)));
   const ico  = await toIco(bufs);
   const dest = path.join(ASSETS, 'icon.ico');
   fs.writeFileSync(dest, ico);
