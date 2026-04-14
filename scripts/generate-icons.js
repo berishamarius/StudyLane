@@ -19,6 +19,8 @@
 
 const sharp     = require('sharp');
 const toIco     = require('to-ico');
+const pngToIcoMod = require('png-to-ico');
+const pngToIco  = (typeof pngToIcoMod === 'function') ? pngToIcoMod : (pngToIcoMod.default || pngToIcoMod.imagesToIco);
 const png2icons = require('png2icons');
 const fs        = require('fs');
 const path      = require('path');
@@ -64,19 +66,29 @@ async function buildWeb() {
   }
 }
 
-// ── 2. Windows .ico (ClipFlow approach: per-size sharp flatten → to-ico) ───
+// ── 2. Windows .ico (png-to-ico via temp files, ClipFlow build-ico approach) ─
 
 async function buildIco() {
   console.log('\n── Windows .ico  (16 · 24 · 32 · 48 · 64 · 128 · 256) ─────');
-  const sizes = [16, 24, 32, 48, 64, 128, 256];
-  const bufs  = [];
-  for (const size of sizes) {
-    bufs.push(await pngBufFlat(SRC, size));
-    console.log(`  · ${size}×${size}`);
+  const SIZES    = [16, 24, 32, 48, 64, 128, 256];
+  const TEMP_DIR = path.join(ASSETS, '_tmp_ico');
+  ensureDir(TEMP_DIR);
+
+  const tempFiles = [];
+  for (const s of SIZES) {
+    const out = path.join(TEMP_DIR, `icon-${s}.png`);
+    await sharp(SRC).resize(s, s).png().toFile(out);
+    tempFiles.push(out);
+    console.log(`  · ${s}×${s}`);
   }
-  const ico   = await toIco(bufs);
-  const dest  = path.join(ASSETS, 'icon.ico');
+
+  const ico  = await pngToIco(tempFiles);
+  const dest = path.join(ASSETS, 'icon.ico');
   fs.writeFileSync(dest, ico);
+
+  for (const f of tempFiles) fs.unlinkSync(f);
+  fs.rmdirSync(TEMP_DIR, { recursive: true });
+
   console.log(`  ✓  ${path.relative(ROOT, dest)}`);
 }
 
