@@ -37,11 +37,11 @@ async function pngBuf(src, size) {
   return sharp(src).resize(size, size).png().toBuffer();
 }
 
-// ICO frames must not have transparency – flatten onto white (Windows standard)
-async function pngBufFlat(src, size) {
+// ICO frames: per-size flatten (ClipFlow approach)
+async function pngBufFlat(src, size, bg) {
   return sharp(src)
     .resize(size, size)
-    .flatten({ background: { r: 255, g: 255, b: 255 } })
+    .flatten({ background: bg || '#ffffff' })
     .png()
     .toBuffer();
 }
@@ -64,15 +64,18 @@ async function buildWeb() {
   }
 }
 
-// ── 2. Windows .ico (multi-resolution via png2icons) ────────────────────────
+// ── 2. Windows .ico (ClipFlow approach: per-size sharp flatten → to-ico) ───
 
 async function buildIco() {
-  console.log('\n── Windows .ico  ───────────────────────────────────────────');
-  // png2icons needs a single square PNG buffer; it generates all sizes internally
-  const buf  = await pngBufFlat(SRC, 256);
-  const ico  = png2icons.createICO(buf, png2icons.BILINEAR, 0, false);
-  if (!ico) { console.warn('  ⚠  ICO generation failed'); return; }
-  const dest = path.join(ASSETS, 'icon.ico');
+  console.log('\n── Windows .ico  (16 · 24 · 32 · 48 · 64 · 128 · 256) ─────');
+  const sizes = [16, 24, 32, 48, 64, 128, 256];
+  const bufs  = [];
+  for (const size of sizes) {
+    bufs.push(await pngBufFlat(SRC, size));
+    console.log(`  · ${size}×${size}`);
+  }
+  const ico   = await toIco(bufs);
+  const dest  = path.join(ASSETS, 'icon.ico');
   fs.writeFileSync(dest, ico);
   console.log(`  ✓  ${path.relative(ROOT, dest)}`);
 }
