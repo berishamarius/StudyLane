@@ -25,9 +25,9 @@ const path      = require('path');
 
 const ROOT    = path.resolve(__dirname, '..');
 const ASSETS  = path.join(ROOT, 'assets');
-const SRC     = path.join(ASSETS, 'icon.svg');            // full icon (rounded bg)
-const SRC_FG  = path.join(ASSETS, 'icon-android-fg.svg'); // foreground only
-const SRC_MSK = path.join(ASSETS, 'icon-maskable.svg');   // square bg (PWA maskable)
+const SRC     = path.join(ROOT, 'Studylane.png');          // new logo PNG
+const SRC_FG  = path.join(ROOT, 'Studylane.png');          // foreground (same source)
+const SRC_MSK = path.join(ROOT, 'Studylane.png');          // maskable (same source)
 
 // ── util ────────────────────────────────────────────────────────────────────
 
