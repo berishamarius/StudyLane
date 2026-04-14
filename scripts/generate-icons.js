@@ -64,12 +64,14 @@ async function buildWeb() {
   }
 }
 
-// ── 2. Windows .ico (multi-resolution) ─────────────────────────────────────
+// ── 2. Windows .ico (multi-resolution via png2icons) ────────────────────────
 
 async function buildIco() {
-  console.log('\n── Windows .ico  (16 · 32 · 48 · 256) ─────────────────────');
-  const bufs = await Promise.all([16, 32, 48, 256].map(s => pngBufFlat(SRC, s)));
-  const ico  = await toIco(bufs);
+  console.log('\n── Windows .ico  ───────────────────────────────────────────');
+  // png2icons needs a single square PNG buffer; it generates all sizes internally
+  const buf  = await pngBufFlat(SRC, 256);
+  const ico  = png2icons.createICO(buf, png2icons.BILINEAR, 0, false);
+  if (!ico) { console.warn('  ⚠  ICO generation failed'); return; }
   const dest = path.join(ASSETS, 'icon.ico');
   fs.writeFileSync(dest, ico);
   console.log(`  ✓  ${path.relative(ROOT, dest)}`);
