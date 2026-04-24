@@ -1,27 +1,109 @@
 /* ═══════════════════════════════════════════════════════════════════
-   i18n.js  –  StudyLane  –  18 languages
+   i18n.js  –  StudyLane  –  language selector with regions
    ═══════════════════════════════════════════════════════════════════ */
 
-const LANGUAGES = [
-  { code: 'ar', label: 'العربية',    flag: '🇸🇦', dir: 'rtl' },
-  { code: 'de', label: 'Deutsch',    flag: '🇩🇪', dir: 'ltr' },
-  { code: 'en', label: 'English',    flag: '🇬🇧', dir: 'ltr' },
-  { code: 'es', label: 'Español',    flag: '🇪🇸', dir: 'ltr' },
-  { code: 'fr', label: 'Français',   flag: '🇫🇷', dir: 'ltr' },
-  { code: 'hi', label: 'हिन्दी',      flag: '🇮🇳', dir: 'ltr' },
-  { code: 'it', label: 'Italiano',   flag: '🇮🇹', dir: 'ltr' },
-  { code: 'ja', label: '日本語',      flag: '🇯🇵', dir: 'ltr' },
-  { code: 'ko', label: '한국어',      flag: '🇰🇷', dir: 'ltr' },
-  { code: 'pl', label: 'Polski',     flag: '🇵🇱', dir: 'ltr' },
-  { code: 'pt', label: 'Português',  flag: '🇧🇷', dir: 'ltr' },
-  { code: 'ru', label: 'Русский',    flag: '🇷🇺', dir: 'ltr' },
-  { code: 'tr', label: 'Türkçe',     flag: '🇹🇷', dir: 'ltr' },
-  { code: 'uk', label: 'Українська', flag: '🇺🇦', dir: 'ltr' },
-  { code: 'zh',    label: '中文',             flag: '🇨🇳', dir: 'ltr' },
-  { code: 'zh-TW', label: '繁體中文',          flag: '🇹🇼', dir: 'ltr' },
-  { code: 'sq',    label: 'Shqip',             flag: '🇦🇱', dir: 'ltr' },
-  { code: 'sq-XK', label: 'Shqip (Kosovë)',    flag: '🇽🇰', dir: 'ltr' },
+const LANGUAGE_REGIONS = [
+  {
+    region: 'Europe',
+    options: [
+      { code: 'de', label: 'Deutsch',    flag: '🇩🇪', dir: 'ltr' },
+      { code: 'en', label: 'English',    flag: '🇬🇧', dir: 'ltr' },
+      { code: 'fr', label: 'Français',   flag: '🇫🇷', dir: 'ltr' },
+      { code: 'es', label: 'Español',    flag: '🇪🇸', dir: 'ltr' },
+      { code: 'pt', label: 'Português',  flag: '🇵🇹', dir: 'ltr' },
+      { code: 'it', label: 'Italiano',   flag: '🇮🇹', dir: 'ltr' },
+      { code: 'nl', label: 'Nederlands', flag: '🇳🇱', dir: 'ltr' },
+      { code: 'pl', label: 'Polski',     flag: '🇵🇱', dir: 'ltr' },
+      { code: 'ru', label: 'Русский',    flag: '🇷🇺', dir: 'ltr' },
+      { code: 'uk', label: 'Українська', flag: '🇺🇦', dir: 'ltr' },
+      { code: 'kk', label: 'Қазақ тілі',  flag: '🇰🇿', dir: 'ltr' },
+      { code: 'tr', label: 'Türkçe',     flag: '🇹🇷', dir: 'ltr' },
+      { code: 'hy', label: 'Հայերեն',     flag: '🇦🇲', dir: 'ltr' },
+      { code: 'ka', label: 'ქართული',    flag: '🇬🇪', dir: 'ltr' },
+      { code: 'ro', label: 'Română',     flag: '🇷🇴', dir: 'ltr' },
+      { code: 'bg', label: 'Български',  flag: '🇧🇬', dir: 'ltr' },
+      { code: 'cs', label: 'Čeština',    flag: '🇨🇿', dir: 'ltr' },
+      { code: 'sk', label: 'Slovenčina', flag: '🇸🇰', dir: 'ltr' },
+      { code: 'hu', label: 'Magyar',     flag: '🇭🇺', dir: 'ltr' },
+      { code: 'el', label: 'Ελληνικά',   flag: '🇬🇷', dir: 'ltr' },
+      { code: 'hr', label: 'Hrvatski',   flag: '🇭🇷', dir: 'ltr' },
+      { code: 'sr', label: 'Српски',      flag: '🇷🇸', dir: 'ltr' },
+      { code: 'mk', label: 'Македонски', flag: '🇲🇰', dir: 'ltr' },
+      { code: 'fi', label: 'Suomi',      flag: '🇫🇮', dir: 'ltr' },
+      { code: 'no', label: 'Norsk',      flag: '🇳🇴', dir: 'ltr' },
+      { code: 'az', label: 'Azərbaycan dili', flag: '🇦🇿', dir: 'ltr' },
+      { code: 'sq', label: 'Shqip',      flag: '🇦🇱', dir: 'ltr' },
+      { code: 'sq-XK', label: 'Shqip (Kosovë)', flag: '🇽🇰', dir: 'ltr' },
+    ],
+  },
+  {
+    region: 'Middle East',
+    options: [
+      { code: 'ar',    label: 'العربية',        flag: '🇸🇦', dir: 'rtl' },
+      { code: 'ar-PS', label: 'العربية (فلسطين)', flag: '🇵🇸', dir: 'rtl' },
+      { code: 'fa',    label: 'فارسی',           flag: '🇮🇷', dir: 'rtl' },
+      { code: 'ur',    label: 'اُردُو',           flag: '🇵🇰', dir: 'rtl' },
+      { code: 'ps',    label: 'پښتو',            flag: '🇦🇫', dir: 'rtl' },
+      { code: 'ku',    label: 'Kurdî',            flag: '🇹🇷', dir: 'ltr' },
+      { code: 'he',    label: 'עברית',           flag: '🇮🇱', dir: 'rtl' },
+    ],
+  },
+  {
+    region: 'South Asia',
+    options: [
+      { code: 'hi', label: 'हिन्दी',           flag: '🇮🇳', dir: 'ltr' },
+      { code: 'bn', label: 'বাংলা',            flag: '🇧🇩', dir: 'ltr' },
+      { code: 'ta', label: 'தமிழ்',            flag: '🇮🇳', dir: 'ltr' },
+      { code: 'te', label: 'తెలుగు',          flag: '🇮🇳', dir: 'ltr' },
+      { code: 'mr', label: 'मराठी',            flag: '🇮🇳', dir: 'ltr' },
+      { code: 'gu', label: 'ગુજરાતી',           flag: '🇮🇳', dir: 'ltr' },
+      { code: 'ne', label: 'नेपाली',            flag: '🇳🇵', dir: 'ltr' },
+      { code: 'si', label: 'සිංහල',           flag: '🇱🇰', dir: 'ltr' },
+    ],
+  },
+  {
+    region: 'East Asia',
+    options: [
+      { code: 'zh',    label: '中文',              flag: '🇨🇳', dir: 'ltr' },
+      { code: 'zh-TW', label: '中文繁體',         flag: '🇹🇼', dir: 'ltr' },
+      { code: 'ja',    label: '日本語',           flag: '🇯🇵', dir: 'ltr' },
+      { code: 'ko',    label: '한국어',           flag: '🇰🇷', dir: 'ltr' },
+      { code: 'vi',    label: 'Tiếng Việt',       flag: '🇻🇳', dir: 'ltr' },
+      { code: 'th',    label: 'ไทย',              flag: '🇹🇭', dir: 'ltr' },
+      { code: 'id',    label: 'Bahasa Indonesia', flag: '🇮🇩', dir: 'ltr' },
+      { code: 'ms',    label: 'Bahasa Melayu',    flag: '🇲🇾', dir: 'ltr' },
+      { code: 'tl',    label: 'Filipino',         flag: '🇵🇭', dir: 'ltr' },
+    ],
+  },
+  {
+    region: 'Africa',
+    options: [
+      { code: 'sw', label: 'Kiswahili',      flag: '🇰🇪', dir: 'ltr' },
+      { code: 'am', label: 'አማርኛ',         flag: '🇪🇹', dir: 'ltr' },
+      { code: 'ha', label: 'Hausa',          flag: '🇳🇬', dir: 'ltr' },
+      { code: 'yo', label: 'Yorùbá',         flag: '🇳🇬', dir: 'ltr' },
+      { code: 'ig', label: 'Igbo',           flag: '🇳🇬', dir: 'ltr' },
+      { code: 'zu', label: 'isiZulu',        flag: '🇿🇦', dir: 'ltr' },
+      { code: 'af', label: 'Afrikaans',      flag: '🇿🇦', dir: 'ltr' },
+      { code: 'so', label: 'Soomaali',       flag: '🇸🇴', dir: 'ltr' },
+      { code: 'om', label: 'Oromoo',         flag: '🇪🇹', dir: 'ltr' },
+      { code: 'rw', label: 'Kinyarwanda',    flag: '🇷🇼', dir: 'ltr' },
+    ],
+  },
+  {
+    region: 'Americas',
+    options: [
+      { code: 'ht', label: 'Kreyòl Ayisyen', flag: '🇭🇹', dir: 'ltr' },
+      { code: 'es-MX', label: 'Español (México)',     flag: '🇲🇽', dir: 'ltr' },
+      { code: 'es-AR', label: 'Español (Argentina)',  flag: '🇦🇷', dir: 'ltr' },
+      { code: 'es-UY', label: 'Español (Uruguay)',    flag: '🇺🇾', dir: 'ltr' },
+      { code: 'qu', label: 'Runa Simi',      flag: '🇵🇪', dir: 'ltr' },
+      { code: 'gn', label: "Avañe'ẽ",       flag: '🇵🇾', dir: 'ltr' },
+    ],
+  },
 ];
+
+const LANGUAGES = LANGUAGE_REGIONS.flatMap(group => group.options);
 
 const TRANSLATIONS = {
   de: {
@@ -3256,17 +3338,35 @@ const TRANSLATIONS = {
   },
 };
 
+const LOCALE_PATH = 'locales';
+
+async function loadLocale(code) {
+  if (TRANSLATIONS[code]) return TRANSLATIONS[code];
+
+  try {
+    const response = await fetch(`${LOCALE_PATH}/${code}.json`);
+    if (!response.ok) throw new Error(`Locale not found: ${code}`);
+    const data = await response.json();
+    TRANSLATIONS[code] = data;
+    return data;
+  } catch (err) {
+    return TRANSLATIONS['en'];
+  }
+}
+
 /* ── setLanguage (used by renderer.js) ──────────────────────────── */
 let currentLang = 'de';
 
 function t(key) {
-  const lang = TRANSLATIONS[currentLang] || TRANSLATIONS['de'];
-  return lang[key] || TRANSLATIONS['de'][key] || key;
+  const lang = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
+  return lang[key] || TRANSLATIONS['en'][key] || key;
 }
 
-function setLanguage(code) {
+async function setLanguage(code) {
   const lang = LANGUAGES.find(l => l.code === code);
   if (!lang) return;
+
+  await loadLocale(code);
   currentLang = code;
   document.documentElement.lang = code;
   document.documentElement.dir = lang.dir || 'ltr';

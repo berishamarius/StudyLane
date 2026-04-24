@@ -9,14 +9,14 @@
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 1500,
-      "backgroundColor": "#0e1520",
+      "backgroundColor": "#17253A",
       "androidSplashResourceName": "splash",
       "androidScaleType": "CENTER_CROP",
       "showSpinner": false
     },
     "StatusBar": {
       "style": "Dark",
-      "backgroundColor": "#0e1520"
+      "backgroundColor": "#17253A"
     },
     "Keyboard": {
       "resize": "body",

@@ -70,7 +70,7 @@ async function init() {
   const lang = settings.lang || (supported.includes(osSuggest) ? osSuggest : 'de');
   if (!settings.lang) { settings.lang = lang; Storage.saveSettings(settings); }
 
-  setLanguage(lang);
+  await setLanguage(lang);
   renderLangDropdown();
 
   schedules    = Storage.loadSchedules();
@@ -126,28 +126,32 @@ function outsideLangClose(e) {
 function renderLangDropdown() {
   const dd = document.getElementById('langDropdown');
   if (!dd) return;
-  dd.innerHTML = LANGUAGES.map(l => `
-    <div class="lang-option ${l.code === currentLang ? 'active' : ''}" onclick="switchLang('${l.code}')">
-      <span class="lang-flag">${l.flag}</span>
-      <span class="lang-name">${l.label}</span>
-      ${l.code === currentLang ? '<span class="lang-check">✓</span>' : ''}
+  dd.innerHTML = LANGUAGE_REGIONS.map(group => `
+    <div class="lang-group">
+      <div class="lang-group-title">${group.region}</div>
+      ${group.options.map(l => `
+        <div class="lang-option ${l.code === currentLang ? 'active' : ''}" onclick="switchLang('${l.code}')">
+          <span class="lang-flag">${l.flag}</span>
+          <span class="lang-name">${l.label}</span>
+          ${l.code === currentLang ? '<span class="lang-check">✓</span>' : ''}
+        </div>`).join('')}
     </div>`).join('');
 }
 
 function renderLangGrid() {
   const grid = document.getElementById('langGrid');
   if (!grid) return;
-  grid.innerHTML = LANGUAGES.map(l => `
+  grid.innerHTML = LANGUAGE_REGIONS.flatMap(group => group.options).map(l => `
     <button class="lang-grid-btn ${l.code === currentLang ? 'active' : ''}" onclick="switchLang('${l.code}')">
       <span class="lf">${l.flag}</span>
       <span>${l.label}</span>
     </button>`).join('');
 }
 
-function switchLang(code) {
+async function switchLang(code) {
   settings.lang = code;
   Storage.saveSettings(settings);
-  setLanguage(code);
+  await setLanguage(code);
   renderLangDropdown();
   closeLangMenu();
   renderHomeworkList();
