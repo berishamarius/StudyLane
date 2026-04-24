@@ -460,6 +460,8 @@ const TRANSLATIONS = {
     defaultSlotsHint: 'Used in new timetables',
     addSlot: '+ Add slot',
     saveSettings: 'Save settings',
+    country: 'Country',
+    schoolDuration: 'Typical school length',
   },
 
   ar: {
@@ -3338,6 +3340,15 @@ const TRANSLATIONS = {
   },
 };
 
+const STATIC_LABELS = {
+  country: {
+    de: 'Land', en: 'Country', fr: 'Pays', es: 'País', pt: 'País', it: 'Paese', nl: 'Land', pl: 'Kraj', ru: 'Страна', uk: 'Країна', kk: 'Ел', tr: 'Ülke', hy: 'Երկիր', ka: 'ქვეყანა', ro: 'Țară', bg: 'Държава', cs: 'Země', sk: 'Krajina', hu: 'Ország', el: 'Χώρα', hr: 'Država', sr: 'Земља', mk: 'Држава', fi: 'Maa', no: 'Land', az: 'Ölkə', sq: 'Vendi', 'sq-XK': 'Vendi', ar: 'دولة', 'ar-PS': 'دولة', fa: 'کشور', ur: 'ملک', ps: 'هېواد', ku: 'Welat', he: 'מדינה', hi: 'देश', bn: 'দেশ', ta: 'நாடு', te: 'దేశం', mr: 'देश', gu: 'દેશ', ne: 'देश', si: 'රට', zh: '国家', 'zh-TW': '國家', ja: '国', ko: '국가', vi: 'Quốc gia', th: 'ประเทศ', id: 'Negara', ms: 'Negara', tl: 'Bansa', sw: 'Nchi', am: 'አገር', ha: 'Ƙasa', yo: "Orílẹ̀-èdè", ig: 'Mba', zu: 'Izwe', af: 'Land', so: 'Dalka', om: 'Biyya', rw: 'Igihugu', ht: 'Peyi', 'es-MX': 'País', 'es-AR': 'País', 'es-UY': 'País', qu: 'Runa simi', gn: 'Tetã'
+  },
+  schoolDuration: {
+    de: 'Schuldauer', en: 'Typical school length', fr: 'Durée scolaire', es: 'Duración escolar', pt: 'Duração escolar', it: 'Durata scolastica', nl: 'Schoolduur', pl: 'Długość szkoły', ru: 'Продолжительность школы', uk: 'Тривалість школи', kk: 'Мектеп ұзақтығы', tr: 'Okul süresi', hy: 'Սկզբում մանկավարժական ժամկետ', ka: 'სკოლის ხანგრძლივობა', ro: 'Durata școlii', bg: 'Продължителност на училището', cs: 'Délka školy', sk: 'Dĺžka školy', hu: 'Az iskola időtartama', el: 'Διάρκεια σχολείου', hr: 'Trajanje škole', sr: 'Трајање школе', mk: 'Траење на училиштето', fi: 'Koulun kesto', no: 'Skolevarighet', az: 'Məktəb müddəti', sq: 'Kohëzgjatja e shkollës', 'sq-XK': 'Kohëzgjatja e shkollës', ar: 'مدة المدرسة', 'ar-PS': 'مدة المدرسة', fa: 'مدت مدرسه', ur: 'اسکول کی مدت', ps: 'د ښوونځي موده', ku: 'Dema dibistana', he: 'משך בית הספר', hi: 'विद्यालय की अवधि', bn: 'বিদ্যালয়ের দৈর্ঘ্য', ta: 'பள்ளி காலம்', te: 'పాఠశాల వ్యవధి', mr: 'शाळेचा कालावधी', gu: 'શાળાની આગવી સમયગાળો', ne: 'विद्यालय अवधिः', si: 'පාසලේ කාලය', zh: '学校期限', 'zh-TW': '學校期限', ja: '学校期間', ko: '학교 기간', vi: 'Thời lượng học', th: 'ระยะเวลาโรงเรียน', id: 'Lama sekolah', ms: 'Tempoh sekolah', tl: 'Haba ng paaralan', sw: 'Muda wa shule', am: 'የትምህርት ጊዜ', ha: 'Tsawon makaranta', yo: 'Akoko ile-iwe', ig: 'Oge ụlọ akwụkwọ', zu: 'Ubude besikole', af: 'Skoolduur', so: 'Muddada iskuulka', om: 'Yeroo mana barumsaa', rw: 'Igihe cy’ishuri', ht: 'Dire lekòl la', 'es-MX': 'Duración escolar', 'es-AR': 'Duración escolar', 'es-UY': 'Duración escolar', qu: 'Yachay wasipi pachakuna', gn: 'Yvyra'
+  }
+};
+
 const LOCALE_PATH = 'locales';
 
 async function loadLocale(code) {
@@ -3359,7 +3370,11 @@ let currentLang = 'de';
 
 function t(key) {
   const lang = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
-  return lang[key] || TRANSLATIONS['en'][key] || key;
+  return lang[key]
+    || STATIC_LABELS[key]?.[currentLang]
+    || STATIC_LABELS[key]?.en
+    || TRANSLATIONS['en'][key]
+    || key;
 }
 
 async function setLanguage(code) {

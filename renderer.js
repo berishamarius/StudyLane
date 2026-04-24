@@ -18,6 +18,7 @@ let hwFilter     = 'all';
 let editingHwId  = null;
 let notesData    = [];   // [{ id, subject, title, content, date, color, createdAt }]
 let editingNoteId = null;
+let currentCountry = 'DE';
 
 const CELL_COLORS = [
   '#7c6af5','#a855f7','#ec4899','#ef4444',
@@ -26,6 +27,115 @@ const CELL_COLORS = [
 ];
 
 const GRADE_COLORS = ['#7c6af5','#ec4899','#22c55e','#f59e0b','#3b82f6','#ef4444','#14b8a6','#f97316','#a855f7','#0ea5e9'];
+
+const COUNTRY_REGIONS = [
+  {
+    region: 'Africa',
+    options: [
+      { code: 'DZ', label: 'Algeria' }, { code: 'AO', label: 'Angola' }, { code: 'BJ', label: 'Benin' }, { code: 'BW', label: 'Botswana' },
+      { code: 'BF', label: 'Burkina Faso' }, { code: 'BI', label: 'Burundi' }, { code: 'CM', label: 'Cameroon' },
+      { code: 'CV', label: 'Cabo Verde' }, { code: 'CF', label: 'Central African Republic' }, { code: 'TD', label: 'Chad' },
+      { code: 'KM', label: 'Comoros' }, { code: 'CG', label: 'Congo' }, { code: 'CD', label: 'Democratic Republic of the Congo' },
+      { code: 'CI', label: 'Côte d’Ivoire' }, { code: 'DJ', label: 'Djibouti' }, { code: 'EG', label: 'Egypt' },
+      { code: 'GQ', label: 'Equatorial Guinea' }, { code: 'ER', label: 'Eritrea' }, { code: 'SZ', label: 'Eswatini' },
+      { code: 'ET', label: 'Ethiopia' }, { code: 'GA', label: 'Gabon' }, { code: 'GM', label: 'Gambia' }, { code: 'GH', label: 'Ghana' },
+      { code: 'GN', label: 'Guinea' }, { code: 'GW', label: 'Guinea-Bissau' }, { code: 'KE', label: 'Kenya' },
+      { code: 'LS', label: 'Lesotho' }, { code: 'LR', label: 'Liberia' }, { code: 'LY', label: 'Libya' },
+      { code: 'MG', label: 'Madagascar' }, { code: 'MW', label: 'Malawi' }, { code: 'ML', label: 'Mali' },
+      { code: 'MR', label: 'Mauritania' }, { code: 'MU', label: 'Mauritius' }, { code: 'MA', label: 'Morocco' },
+      { code: 'MZ', label: 'Mozambique' }, { code: 'NA', label: 'Namibia' }, { code: 'NE', label: 'Niger' },
+      { code: 'NG', label: 'Nigeria' }, { code: 'RW', label: 'Rwanda' }, { code: 'ST', label: 'São Tomé and Príncipe' },
+      { code: 'SN', label: 'Senegal' }, { code: 'SC', label: 'Seychelles' }, { code: 'SL', label: 'Sierra Leone' },
+      { code: 'SO', label: 'Somalia' }, { code: 'ZA', label: 'South Africa' }, { code: 'SS', label: 'South Sudan' },
+      { code: 'SD', label: 'Sudan' }, { code: 'TZ', label: 'Tanzania' }, { code: 'TG', label: 'Togo' },
+      { code: 'TN', label: 'Tunisia' }, { code: 'UG', label: 'Uganda' }, { code: 'ZM', label: 'Zambia' },
+      { code: 'ZW', label: 'Zimbabwe' }
+    ],
+  },
+  {
+    region: 'Asia',
+    options: [
+      { code: 'AF', label: 'Afghanistan' }, { code: 'AM', label: 'Armenia' }, { code: 'AZ', label: 'Azerbaijan' },
+      { code: 'BH', label: 'Bahrain' }, { code: 'BD', label: 'Bangladesh' }, { code: 'BT', label: 'Bhutan' },
+      { code: 'BN', label: 'Brunei' }, { code: 'KH', label: 'Cambodia' }, { code: 'CN', label: 'China' },
+      { code: 'CY', label: 'Cyprus' }, { code: 'GE', label: 'Georgia' }, { code: 'IN', label: 'India' },
+      { code: 'ID', label: 'Indonesia' }, { code: 'IR', label: 'Iran' }, { code: 'IQ', label: 'Iraq' },
+      { code: 'IL', label: 'Israel' }, { code: 'JP', label: 'Japan' }, { code: 'JO', label: 'Jordan' },
+      { code: 'KZ', label: 'Kazakhstan' }, { code: 'KW', label: 'Kuwait' }, { code: 'KG', label: 'Kyrgyzstan' },
+      { code: 'LA', label: 'Laos' }, { code: 'LB', label: 'Lebanon' }, { code: 'MY', label: 'Malaysia' },
+      { code: 'MV', label: 'Maldives' }, { code: 'MN', label: 'Mongolia' }, { code: 'MM', label: 'Myanmar' },
+      { code: 'NP', label: 'Nepal' }, { code: 'KP', label: 'North Korea' }, { code: 'OM', label: 'Oman' },
+      { code: 'PK', label: 'Pakistan' }, { code: 'PS', label: 'Palestine' }, { code: 'PH', label: 'Philippines' },
+      { code: 'QA', label: 'Qatar' }, { code: 'RU', label: 'Russia' }, { code: 'SA', label: 'Saudi Arabia' },
+      { code: 'SG', label: 'Singapore' }, { code: 'KR', label: 'South Korea' }, { code: 'LK', label: 'Sri Lanka' },
+      { code: 'SY', label: 'Syria' }, { code: 'TW', label: 'Taiwan' }, { code: 'TJ', label: 'Tajikistan' },
+      { code: 'TH', label: 'Thailand' }, { code: 'TL', label: 'Timor-Leste' }, { code: 'TR', label: 'Turkey' },
+      { code: 'TM', label: 'Turkmenistan' }, { code: 'AE', label: 'United Arab Emirates' },
+      { code: 'UZ', label: 'Uzbekistan' }, { code: 'VN', label: 'Vietnam' }, { code: 'YE', label: 'Yemen' }
+    ],
+  },
+  {
+    region: 'Europe',
+    options: [
+      { code: 'AL', label: 'Albania' }, { code: 'AD', label: 'Andorra' }, { code: 'AT', label: 'Austria' },
+      { code: 'BY', label: 'Belarus' }, { code: 'BE', label: 'Belgium' }, { code: 'BA', label: 'Bosnia and Herzegovina' },
+      { code: 'BG', label: 'Bulgaria' }, { code: 'HR', label: 'Croatia' }, { code: 'CZ', label: 'Czech Republic' },
+      { code: 'DK', label: 'Denmark' }, { code: 'EE', label: 'Estonia' }, { code: 'FI', label: 'Finland' },
+      { code: 'FR', label: 'France' }, { code: 'DE', label: 'Germany' }, { code: 'GR', label: 'Greece' },
+      { code: 'HU', label: 'Hungary' }, { code: 'IS', label: 'Iceland' }, { code: 'IE', label: 'Ireland' },
+      { code: 'IT', label: 'Italy' }, { code: 'LV', label: 'Latvia' }, { code: 'LI', label: 'Liechtenstein' },
+      { code: 'LT', label: 'Lithuania' }, { code: 'LU', label: 'Luxembourg' }, { code: 'MT', label: 'Malta' },
+      { code: 'MD', label: 'Moldova' }, { code: 'MC', label: 'Monaco' }, { code: 'ME', label: 'Montenegro' },
+      { code: 'NL', label: 'Netherlands' }, { code: 'MK', label: 'North Macedonia' }, { code: 'NO', label: 'Norway' },
+      { code: 'PL', label: 'Poland' }, { code: 'PT', label: 'Portugal' }, { code: 'RO', label: 'Romania' },
+      { code: 'SM', label: 'San Marino' }, { code: 'RS', label: 'Serbia' }, { code: 'SK', label: 'Slovakia' },
+      { code: 'SI', label: 'Slovenia' }, { code: 'ES', label: 'Spain' }, { code: 'SE', label: 'Sweden' },
+      { code: 'CH', label: 'Switzerland' }, { code: 'UA', label: 'Ukraine' }, { code: 'GB', label: 'United Kingdom' },
+      { code: 'VA', label: 'Vatican City' }, { code: 'XK', label: 'Kosovo' }
+    ],
+  },
+  {
+    region: 'Americas',
+    options: [
+      { code: 'AG', label: 'Antigua and Barbuda' }, { code: 'AR', label: 'Argentina' }, { code: 'BS', label: 'Bahamas' },
+      { code: 'BB', label: 'Barbados' }, { code: 'BZ', label: 'Belize' }, { code: 'BO', label: 'Bolivia' },
+      { code: 'BR', label: 'Brazil' }, { code: 'CA', label: 'Canada' }, { code: 'CL', label: 'Chile' },
+      { code: 'CO', label: 'Colombia' }, { code: 'CR', label: 'Costa Rica' }, { code: 'CU', label: 'Cuba' },
+      { code: 'DM', label: 'Dominica' }, { code: 'DO', label: 'Dominican Republic' }, { code: 'EC', label: 'Ecuador' },
+      { code: 'SV', label: 'El Salvador' }, { code: 'GD', label: 'Grenada' }, { code: 'GT', label: 'Guatemala' },
+      { code: 'GY', label: 'Guyana' }, { code: 'HT', label: 'Haiti' }, { code: 'HN', label: 'Honduras' },
+      { code: 'JM', label: 'Jamaica' }, { code: 'MX', label: 'Mexico' }, { code: 'NI', label: 'Nicaragua' },
+      { code: 'PA', label: 'Panama' }, { code: 'PY', label: 'Paraguay' }, { code: 'PE', label: 'Peru' },
+      { code: 'KN', label: 'Saint Kitts and Nevis' }, { code: 'LC', label: 'Saint Lucia' },
+      { code: 'VC', label: 'Saint Vincent and the Grenadines' }, { code: 'SR', label: 'Suriname' },
+      { code: 'TT', label: 'Trinidad and Tobago' }, { code: 'US', label: 'United States' },
+      { code: 'UY', label: 'Uruguay' }, { code: 'VE', label: 'Venezuela' }
+    ],
+  },
+  {
+    region: 'Oceania',
+    options: [
+      { code: 'AU', label: 'Australia' }, { code: 'FJ', label: 'Fiji' }, { code: 'KI', label: 'Kiribati' },
+      { code: 'MH', label: 'Marshall Islands' }, { code: 'FM', label: 'Micronesia' }, { code: 'NR', label: 'Nauru' },
+      { code: 'NZ', label: 'New Zealand' }, { code: 'PW', label: 'Palau' }, { code: 'PG', label: 'Papua New Guinea' },
+      { code: 'SB', label: 'Solomon Islands' }, { code: 'WS', label: 'Samoa' }, { code: 'TO', label: 'Tonga' },
+      { code: 'TV', label: 'Tuvalu' }, { code: 'VU', label: 'Vanuatu' }
+    ],
+  },
+];
+
+const COUNTRIES = COUNTRY_REGIONS.flatMap(group => group.options);
+const DEFAULT_COUNTRY = 'DE';
+const SCHOOL_DURATION = {
+  DE: 13, AT: 12, CH: 13, FR: 12, ES: 12, IT: 13, GB: 13, US: 12,
+  CA: 13, AU: 13, NZ: 13, JP: 12, KR: 12, CN: 12, IN: 12, BR: 12,
+  RU: 11, ZA: 12, NG: 12, EG: 12, KE: 12, AR: 13, MX: 12, SA: 12,
+  SE: 12, NO: 13, FI: 13, DK: 13, NL: 12, BE: 12, PL: 12, CZ: 13,
+  TR: 12, IR: 12, PK: 10, BD: 10, BT: 12, LK: 13, PH: 12, TH: 12,
+  VN: 12, ID: 12, MY: 11, SG: 11, AE: 12, IL: 12, QA: 12, NZ: 13,
+  CN: 12, RU: 11, UA: 11, RO: 12, GR: 12, PT: 12, HU: 12, SK: 13,
+  SI: 13, HR: 13, BG: 12, RS: 12, ME: 12, AL: 12, MK: 12, BA: 12,
+};
 
 // ── Storage ────────────────────────────────────────────────────────
 const Storage = {
@@ -72,6 +182,8 @@ async function init() {
 
   await setLanguage(lang);
   renderLangDropdown();
+  renderCountryDropdown();
+  setCountry(settings.country || DEFAULT_COUNTRY);
 
   schedules    = Storage.loadSchedules();
   homeworkData = Storage.loadHomework();
@@ -146,6 +258,101 @@ function renderLangGrid() {
       <span class="lf">${l.flag}</span>
       <span>${l.label}</span>
     </button>`).join('');
+}
+
+function renderCountryDropdown() {
+  const dd = document.getElementById('countryDropdown');
+  if (!dd) return;
+  dd.innerHTML = COUNTRY_REGIONS.map(group => `
+    <div class="country-group">
+      <div class="country-group-title">${group.region}</div>
+      ${group.options.map(c => `
+        <div class="country-option ${c.code === currentCountry ? 'active' : ''}" onclick="switchCountry('${c.code}')">
+          ${c.flag ? `<span class="lang-flag">${c.flag}</span>` : ''}
+          <span>${c.label}</span>
+          ${c.code === currentCountry ? '<span class="lang-check">✓</span>' : ''}
+        </div>`).join('')}
+    </div>`).join('');
+}
+
+function toggleCountryMenu() {
+  const picker = document.getElementById('countryPicker');
+  picker.classList.contains('open') ? closeCountryMenu() : openCountryMenu();
+}
+function openCountryMenu() {
+  const picker = document.getElementById('countryPicker');
+  const dd     = document.getElementById('countryDropdown');
+  picker.classList.add('open');
+  const rect = picker.getBoundingClientRect();
+  dd.style.top   = (rect.bottom + 4) + 'px';
+  dd.style.right = (window.innerWidth - rect.right) + 'px';
+  dd.style.left  = 'auto';
+  dd.style.display = 'block';
+  setTimeout(() => document.addEventListener('click', outsideCountryClose), 0);
+}
+function closeCountryMenu() {
+  const picker = document.getElementById('countryPicker');
+  const dd     = document.getElementById('countryDropdown');
+  if (picker) picker.classList.remove('open');
+  if (dd) dd.style.display = 'none';
+  document.removeEventListener('click', outsideCountryClose);
+}
+function outsideCountryClose(e) {
+  const picker = document.getElementById('countryPicker');
+  const dd     = document.getElementById('countryDropdown');
+  if (!picker.contains(e.target) && !dd.contains(e.target)) closeCountryMenu();
+}
+
+function getCountryLabel(code) {
+  return COUNTRIES.find(c => c.code === code)?.label || code;
+}
+function getCustomCountryDuration(code) {
+  return settings.customSchoolDurationByCountry?.[code];
+}
+function getCountryDuration(code) {
+  const custom = getCustomCountryDuration(code);
+  const years = Number.isInteger(custom) && custom > 0 ? custom : (SCHOOL_DURATION[code] || 12);
+  return `${years} ${years === 1 ? 'year' : 'years'}`;
+}
+function updateCountryInfo() {
+  const infoEl = document.getElementById('countryInfo');
+  if (!infoEl) return;
+  const custom = getCustomCountryDuration(currentCountry);
+  const durationText = getCountryDuration(currentCountry);
+  infoEl.textContent = custom
+    ? `${t('schoolDuration')}: ${durationText} (custom)`
+    : `${t('schoolDuration')}: ${durationText}`;
+  const input = document.getElementById('countryDurationInput');
+  if (input) input.value = custom || '';
+}
+function saveCountryDuration() {
+  const input = document.getElementById('countryDurationInput');
+  if (!input) return;
+  const value = parseInt(input.value, 10);
+  if (!Number.isInteger(value) || value < 1 || value > 30) {
+    input.value = '';
+    return;
+  }
+  settings.customSchoolDurationByCountry = settings.customSchoolDurationByCountry || {};
+  settings.customSchoolDurationByCountry[currentCountry] = value;
+  Storage.saveSettings(settings);
+  updateCountryInfo();
+}
+function switchCountry(code) {
+  setCountry(code);
+}
+function setCountry(code) {
+  const country = COUNTRIES.find(c => c.code === code) ? code : DEFAULT_COUNTRY;
+  currentCountry = country;
+  settings.country = currentCountry;
+  Storage.saveSettings(settings);
+  const labelEl = document.getElementById('countryLabel');
+  const nameEl = document.getElementById('countryName');
+  if (labelEl) labelEl.textContent = currentCountry;
+  if (nameEl) nameEl.textContent = getCountryLabel(currentCountry);
+  updateCountryInfo();
+  renderCountryDropdown();
+  closeCountryMenu();
 }
 
 async function switchLang(code) {
