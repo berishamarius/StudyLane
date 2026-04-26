@@ -171,5 +171,7 @@
   "defaultSlots": "Khe mặc định",
   "defaultSlotsHint": "Sử dụng trong thời khóa biểu mới",
   "addSlot": "+ Thêm khe",
-  "saveSettings": "Lưu cài đặt"
+  "saveSettings": "Lưu cài đặt",
+  "country": "Quốc gia",
+  "schoolDuration": "Thời lượng học"
 }

@@ -171,5 +171,7 @@
   "defaultSlots": "Подразумевани слотови",
   "defaultSlotsHint": "Користи се у новим распоредом",
   "addSlot": "+ Додај слот",
-  "saveSettings": "Сачувај подешавања"
+  "saveSettings": "Сачувај подешавања",
+  "country": "Земља",
+  "schoolDuration": "Трајање школе"
 }

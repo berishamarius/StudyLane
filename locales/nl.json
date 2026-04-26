@@ -171,5 +171,7 @@
   "defaultSlots": "Standaarduren",
   "defaultSlotsHint": "Gebruikt in nieuwe roosters",
   "addSlot": "+ Slot toevoegen",
-  "saveSettings": "Instellingen opslaan"
+  "saveSettings": "Instellingen opslaan",
+  "country": "Land",
+  "schoolDuration": "Schoolduur"
 }

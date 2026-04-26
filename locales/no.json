@@ -171,5 +171,7 @@
   "defaultSlots": "Standardtidspunkter",
   "defaultSlotsHint": "Brukes i nye timeplaner",
   "addSlot": "+ Legg til tid",
-  "saveSettings": "Lagre innstillinger"
+  "saveSettings": "Lagre innstillinger",
+  "country": "Land",
+  "schoolDuration": "Skolevarighet"
 }

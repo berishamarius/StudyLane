@@ -171,5 +171,7 @@
   "defaultSlots": "Výchozí sloty",
   "defaultSlotsHint": "Používá se v nových rozvrzích",
   "addSlot": "+ Přidat slot",
-  "saveSettings": "Uložit nastavení"
+  "saveSettings": "Uložit nastavení",
+  "country": "Země",
+  "schoolDuration": "Délka školy"
 }

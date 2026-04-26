@@ -171,5 +171,7 @@
   "defaultSlots": "Стандардни слотови",
   "defaultSlotsHint": "Се користи во нови распореди",
   "addSlot": "+ Додај слот",
-  "saveSettings": "Зачувај поставки"
+  "saveSettings": "Зачувај поставки",
+  "country": "Држава",
+  "schoolDuration": "Траење на училиштето"
 }

@@ -171,5 +171,7 @@
   "defaultSlots": "ડિફોલ્ટ સ્લોટ્સ",
   "defaultSlotsHint": "નવા સમયપત્રકોમાં વપરાય છે",
   "addSlot": "+ સ્લોટ ઉમેરો",
-  "saveSettings": "સેટિંગ્સ સાચવો"
+  "saveSettings": "સેટિંગ્સ સાચવો",
+  "country": "દેશ",
+  "schoolDuration": "શાળાની આગવી સમયગાળો"
 }

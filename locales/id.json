@@ -171,5 +171,7 @@
   "defaultSlots": "Slot default",
   "defaultSlotsHint": "Digunakan dalam jadwal baru",
   "addSlot": "+ Tambah slot",
-  "saveSettings": "Simpan pengaturan"
+  "saveSettings": "Simpan pengaturan",
+  "country": "Negara",
+  "schoolDuration": "Lama sekolah"
 }

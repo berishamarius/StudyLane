@@ -171,5 +171,7 @@
   "defaultSlots": "Oletuspaikat",
   "defaultSlotsHint": "Käytetään uusissa lukujärjestyksissä",
   "addSlot": "+ Lisää paikka",
-  "saveSettings": "Tallenna asetukset"
+  "saveSettings": "Tallenna asetukset",
+  "country": "Maa",
+  "schoolDuration": "Koulun kesto"
 }

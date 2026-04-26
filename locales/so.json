@@ -171,5 +171,7 @@
   "defaultSlots": "Slots caadi ah",
   "defaultSlotsHint": "Waxaa loo isticmaalaa jadwal cusub",
   "addSlot": "+ Ku dar slot",
-  "saveSettings": "Keydi dejinta"
+  "saveSettings": "Keydi dejinta",
+  "country": "Dalka",
+  "schoolDuration": "Muddada iskuulka"
 }

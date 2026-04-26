@@ -171,5 +171,7 @@
   "defaultSlots": "Ore implicite",
   "defaultSlotsHint": "Folosite în orare noi",
   "addSlot": "+ Adaugă oră",
-  "saveSettings": "Salvează setările"
+  "saveSettings": "Salvează setările",
+  "country": "Țară",
+  "schoolDuration": "Durata școlii"
 }

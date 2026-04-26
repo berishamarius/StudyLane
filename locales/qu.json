@@ -171,5 +171,7 @@
   "defaultSlots": "Default slots",
   "defaultSlotsHint": "Nuevo tiznachaykuna chaskiy",
   "addSlot": "+ Slot hamuykuyniy",
-  "saveSettings": "Ruraykuna pichaq"
+  "saveSettings": "Ruraykuna pichaq",
+  "country": "Runa simi",
+  "schoolDuration": "Yachay wasipi pachakuna"
 }

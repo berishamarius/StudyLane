@@ -171,5 +171,7 @@
   "defaultSlots": "Slot za chaguo-msingi",
   "defaultSlotsHint": "Zinatumika kwenye ratiba mpya",
   "addSlot": "+ Ongeza slot",
-  "saveSettings": "Hifadhi mipangilio"
+  "saveSettings": "Hifadhi mipangilio",
+  "country": "Nchi",
+  "schoolDuration": "Muda wa shule"
 }

@@ -171,5 +171,7 @@
   "defaultSlots": "Slots ndabara",
   "defaultSlotsHint": "A na-eji ha na usoro ọhụrụ",
   "addSlot": "+ Tinye slot",
-  "saveSettings": "Chekwaa ntọala"
+  "saveSettings": "Chekwaa ntọala",
+  "country": "Mba",
+  "schoolDuration": "Oge ụlọ akwụkwọ"
 }

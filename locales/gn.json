@@ -171,5 +171,7 @@
   "defaultSlots": "Ranuras predeterminadas",
   "defaultSlotsHint": "Se usan en nuevos horarios",
   "addSlot": "+ Añadir ranura",
-  "saveSettings": "Guardar settings"
+  "saveSettings": "Guardar settings",
+  "country": "Tetã",
+  "schoolDuration": "Yvyra pe mba'e"
 }

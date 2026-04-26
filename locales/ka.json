@@ -171,5 +171,7 @@
   "defaultSlots": "სტანდარტული სლოტები",
   "defaultSlotsHint": "გამოიყენება ახალ განრიგებში",
   "addSlot": "+ სლოტის დამატება",
-  "saveSettings": "პარამეტრების შენახვა"
+  "saveSettings": "პარამეტრების შენახვა",
+  "country": "ქვეყანა",
+  "schoolDuration": "სკოლის ხანგრძლივობა"
 }

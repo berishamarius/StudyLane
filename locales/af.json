@@ -171,5 +171,7 @@
   "defaultSlots": "Standaard slots",
   "defaultSlotsHint": "Word gebruik in nuwe roosters",
   "addSlot": "+ Voeg slot by",
-  "saveSettings": "Stoor instellings"
+  "saveSettings": "Stoor instellings",
+  "country": "Land",
+  "schoolDuration": "Skoolduur"
 }

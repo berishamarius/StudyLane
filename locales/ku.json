@@ -171,5 +171,7 @@
   "defaultSlots": "Slotên bingehîn",
   "defaultSlotsHint": "Di rêveberên nû de têne bikaranîn",
   "addSlot": "+ Slot zêde bike",
-  "saveSettings": "Mîhengan parastin"
+  "saveSettings": "Mîhengan parastin",
+  "country": "Welat",
+  "schoolDuration": "Dema dibistana"
 }

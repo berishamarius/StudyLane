@@ -171,5 +171,7 @@
   "defaultSlots": "డిఫాల్ట్ స్లాట్స్",
   "defaultSlotsHint": "కొత్త షెడ్యూల్స్‌లో ఉపయోగించబడుతుంది",
   "addSlot": "+ స్లాట్ జోడించండి",
-  "saveSettings": "సెట్టింగ్స్ సేవ్ చేయండి"
+  "saveSettings": "సెట్టింగ్స్ సేవ్ చేయండి",
+  "country": "దేశం",
+  "schoolDuration": "పాఠశాల వ్యవధి"
 }

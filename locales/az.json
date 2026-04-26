@@ -171,5 +171,7 @@
   "defaultSlots": "Standart slotlar",
   "defaultSlotsHint": "Yeni cədvəllərdə istifadə olunur",
   "addSlot": "+ Slot əlavə et",
-  "saveSettings": "Ayarları saxla"
+  "saveSettings": "Ayarları saxla",
+  "country": "Ölkə",
+  "schoolDuration": "Məktəb müddəti"
 }

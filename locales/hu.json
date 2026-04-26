@@ -171,5 +171,7 @@
   "defaultSlots": "Alapértelmezett slotok",
   "defaultSlotsHint": "Új órarendekben használatos",
   "addSlot": "+ Slot hozzáadása",
-  "saveSettings": "Beállítások mentése"
+  "saveSettings": "Beállítások mentése",
+  "country": "Ország",
+  "schoolDuration": "Az iskola időtartama"
 }

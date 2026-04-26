@@ -171,5 +171,7 @@
   "defaultSlots": "ช่องเริ่มต้น",
   "defaultSlotsHint": "ใช้ในตารางเวลาใหม่",
   "addSlot": "+ เพิ่มช่อง",
-  "saveSettings": "บันทึกการตั้งค่า"
+  "saveSettings": "บันทึกการตั้งค่า",
+  "country": "ประเทศ",
+  "schoolDuration": "ระยะเวลาโรงเรียน"
 }

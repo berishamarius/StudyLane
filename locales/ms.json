@@ -171,5 +171,7 @@
   "defaultSlots": "Slot lalai",
   "defaultSlotsHint": "Digunakan dalam jadual baru",
   "addSlot": "+ Tambah slot",
-  "saveSettings": "Simpan tetapan"
+  "saveSettings": "Simpan tetapan",
+  "country": "Negara",
+  "schoolDuration": "Tempoh sekolah"
 }

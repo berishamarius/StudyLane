@@ -171,5 +171,7 @@
   "defaultSlots": "डीफॉल्ट स्लॉट",
   "defaultSlotsHint": "नवीन वेळापत्रकांसाठी वापरले जाते",
   "addSlot": "+ स्लॉट जोडा",
-  "saveSettings": "सेटिंग्ज जतन करा"
+  "saveSettings": "सेटिंग्ज जतन करा",
+  "country": "देश",
+  "schoolDuration": "शाळेचा कालावधी"
 }

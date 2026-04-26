@@ -172,5 +172,7 @@
   "defaultSlots": "Zadani slotovi",
   "defaultSlotsHint": "Koristi se u novim rasporedima",
   "addSlot": "+ Dodaj slot",
-  "saveSettings": "Spremi postavke"
+  "saveSettings": "Spremi postavke",
+  "country": "Država",
+  "schoolDuration": "Trajanje škole"
 }

@@ -171,5 +171,7 @@
   "defaultSlots": "የተለመዱ ስሎቶች",
   "defaultSlotsHint": "በአዲስ ሰዓዎች ውስጥ ይጠቀማሉ",
   "addSlot": "+ ስሎት አክል",
-  "saveSettings": "ቅንብሮች አስቀምጥ"
+  "saveSettings": "ቅንብሮች አስቀምጥ",
+  "country": "አገር",
+  "schoolDuration": "የትምህርት ጊዜ"
 }

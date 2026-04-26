@@ -171,5 +171,7 @@
   "defaultSlots": "Amaslots ezenzakalelayo",
   "defaultSlotsHint": "Kusetshenziswa kuzinhlelo ezisha",
   "addSlot": "+ Faka islot",
-  "saveSettings": "Gcina izilungiselelo"
+  "saveSettings": "Gcina izilungiselelo",
+  "country": "Izwe",
+  "schoolDuration": "Ubude besikole"
 }

@@ -171,5 +171,7 @@
   "defaultSlots": "Стандартни часове",
   "defaultSlotsHint": "Използва се в нови графици",
   "addSlot": "+ Добави час",
-  "saveSettings": "Запази настройките"
+  "saveSettings": "Запази настройките",
+  "country": "Държава",
+  "schoolDuration": "Продължителност на училището"
 }

@@ -171,5 +171,7 @@
   "defaultSlots": "ڈیفالٹ سلوٹ",
   "defaultSlotsHint": "نئے شیڈولز میں استعمال ہوتا ہے",
   "addSlot": "+ سلوٹ شامل کریں",
-  "saveSettings": "ترتیبات محفوظ کریں"
+  "saveSettings": "ترتیبات محفوظ کریں",
+  "country": "ملک",
+  "schoolDuration": "اسکول کی مدت"
 }

@@ -171,5 +171,7 @@
   "defaultSlots": "Default na slot",
   "defaultSlotsHint": "Ginagamit sa mga bagong iskedyul",
   "addSlot": "+ Magdagdag ng slot",
-  "saveSettings": "I-save ang mga setting"
+  "saveSettings": "I-save ang mga setting",
+  "country": "Bansa",
+  "schoolDuration": "Haba ng paaralan"
 }

@@ -171,5 +171,7 @@
   "defaultSlots": "පෙරනිමි ඇණවුම්",
   "defaultSlotsHint": "නව කාලසටහන් සඳහා භාවිතා වේ",
   "addSlot": "+ ඇණවුම් එකතු කරන්න",
-  "saveSettings": "සැකසුම් සුරකින්න"
+  "saveSettings": "සැකසුම් සුරකින්න",
+  "country": "රට",
+  "schoolDuration": "පාසලේ කාලය"
 }

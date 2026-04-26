@@ -171,5 +171,7 @@
   "defaultSlots": "Slots bisanzwe",
   "defaultSlotsHint": "Bikoreshwa mu mishinga mishya",
   "addSlot": "+ Ongeramo slot",
-  "saveSettings": "Bika settings"
+  "saveSettings": "Bika settings",
+  "country": "Igihugu",
+  "schoolDuration": "Igihe cy'ishuri"
 }

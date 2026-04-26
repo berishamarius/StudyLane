@@ -171,5 +171,7 @@
   "defaultSlots": "Әдепкі сабақтар",
   "defaultSlotsHint": "Жаңа кестелерде қолданылады",
   "addSlot": "+ Сабақ қосу",
-  "saveSettings": "Баптауларды сақтау"
+  "saveSettings": "Баптауларды сақтау",
+  "country": "Ел",
+  "schoolDuration": "Мектеп ұзақтығы"
 }

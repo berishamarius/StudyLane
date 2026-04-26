@@ -139,7 +139,7 @@
   "schFiles": "קבצים",
   "schCalendar": "לוח שנה",
   "schTasks": "משימות",
-  "schDashboard": "לו"ח בקרה",
+  "schDashboard": "לוח בקרה",
   "schPopularPlatforms": "פלטפורמות פופולריות",
   "schIserv": "IServ",
   "schMoodle": "Moodle",
@@ -171,5 +171,7 @@
   "defaultSlots": "סלוטים ברירת מחדל",
   "defaultSlotsHint": "נמצאים בשימוש בלוחות זמנים חדשים",
   "addSlot": "+ הוסף סלוט",
-  "saveSettings": "שמור הגדרות"
+  "saveSettings": "שמור הגדרות",
+  "country": "מדינה",
+  "schoolDuration": "משך בית הספר"
 }

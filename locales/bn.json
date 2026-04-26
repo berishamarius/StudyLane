@@ -171,5 +171,7 @@
   "defaultSlots": "ডিফল্ট স্লটগুলি",
   "defaultSlotsHint": "নতুন সময়সূচীতে ব্যবহৃত হয়",
   "addSlot": "+ স্লট যোগ করুন",
-  "saveSettings": "সেটিংস সংরক্ষণ করুন"
+  "saveSettings": "সেটিংস সংরক্ষণ করুন",
+  "country": "দেশ",
+  "schoolDuration": "বিদ্যালয়ের দৈর্ঘ্য"
 }

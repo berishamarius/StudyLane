@@ -171,5 +171,7 @@
   "defaultSlots": "Slotota dursee",
   "defaultSlotsHint": "Kaka’imni haaraa keessatti kan fayyadaman",
   "addSlot": "+ Slot dabaluu",
-  "saveSettings": "Dejii olkaa’i"
+  "saveSettings": "Dejii olkaa’i",
+  "country": "Biyya",
+  "schoolDuration": "Yeroo mana barumsaa"
 }

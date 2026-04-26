@@ -171,5 +171,7 @@
   "defaultSlots": "ډیفالټ سلایټونه",
   "defaultSlotsHint": "په نوو مهالویشونو کې کارول کیږي",
   "addSlot": "+ سلایټ اضافه کړئ",
-  "saveSettings": "ترتیبات خوندي کړئ"
+  "saveSettings": "ترتیبات خوندي کړئ",
+  "country": "هېواد",
+  "schoolDuration": "د ښوونځي موده"
 }
