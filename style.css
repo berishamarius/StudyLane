@@ -4,16 +4,16 @@
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-  --bg:         #12161e;
-  --bg2:        #181c2a;
-  --bg3:        #1e2336;
-  --bg4:        #242b44;
-  --border:     #252c48;
-  --border2:    #32395a;
-  --accent:     #5572d4;
-  --accent-h:   #6d88dc;
-  --accent2:    #8eabf0;
-  --accent-glow:rgba(85,114,212,0.15);
+  --bg:         #16191f;
+  --bg2:        #212635;
+  --bg3:        #1d2230;
+  --bg4:        #262c3d;
+  --border:     #2a3042;
+  --border2:    #1c2234;
+  --accent:     #5b7db1;
+  --accent-h:   #3f5b8b;
+  --accent2:    #9fa8c6;
+  --accent-glow:rgba(91,125,177,0.15);
   --azubi:      #f59e0b;
   --azubi-h:    #d97706;
   --azubi-glow: rgba(245,158,11,0.14);
@@ -21,10 +21,10 @@
   --danger-bg:  rgba(239,68,68,0.12);
   --success:    #22c55e;
   --warn:       #f59e0b;
-  --info:       #60a5fa;
-  --text:       #c4cad8;
-  --text2:      #848da4;
-  --text3:      #525a72;
+  --info:       #9fa8c6;
+  --text:       #e8ecf4;
+  --text2:      #b4bccf;
+  --text3:      #7e8faf;
   --radius:     16px;
   --radius-sm:  10px;
   --radius-xs:  7px;
@@ -46,7 +46,7 @@ html, body {
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
 }
-html { background: #0e1118; }
+html { background: #13161c; }
 
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -83,7 +83,7 @@ html { background: #0e1118; }
   font-size: 15px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #c4cad8, #8eabf0);
+  background: linear-gradient(135deg, #d5dbeb, #5b7db1, #2f5b8e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -380,7 +380,12 @@ html { background: #0e1118; }
   margin-bottom: 16px;
   flex-wrap: wrap; gap: 8px;
 }
-.page-header h1 { font-size: 20px; font-weight: 800; }
+.page-header h1 {
+  font-size: 20px; font-weight: 800;
+  background: linear-gradient(120deg, var(--text) 40%, var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .page-header-actions { display: flex; gap: 8px; align-items: center; }
 
 /* ══ BUTTONS ═══════════════════════════════════════════════ */
@@ -390,8 +395,8 @@ html { background: #0e1118; }
   font-size: 13px; font-weight: 600; line-height: 1; cursor: pointer;
   border: none; transition: all .18s;
 }
-.btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-h)); color: #fff; box-shadow: 0 2px 12px rgba(85,114,212,0.30); }
-.btn-primary:hover { background: linear-gradient(135deg, var(--accent-h), #2a44a8); box-shadow: 0 2px 16px rgba(85,114,212,0.45); }
+.btn-primary { background: linear-gradient(135deg, #5b7db1, #3f5b8b); color: #fff; box-shadow: 0 2px 12px rgba(91,125,177,0.30); }
+.btn-primary:hover { background: linear-gradient(135deg, #3f5b8b, #2d4470); box-shadow: 0 2px 16px rgba(91,125,177,0.45); }
 /* Student-Modus: Amber primary */
 .mode-student .btn-primary { background: linear-gradient(135deg, var(--azubi), var(--azubi-h)); box-shadow: 0 2px 12px rgba(245,158,11,0.3); }
 .mode-student .btn-primary:hover { background: linear-gradient(135deg, var(--azubi-h), #b45309); box-shadow: 0 2px 16px rgba(245,158,11,0.45); }
@@ -433,7 +438,7 @@ html { background: #0e1118; }
   display: flex; align-items: center; gap: 12px;
   cursor: pointer; transition: border-color .18s, background .18s, box-shadow .18s;
 }
-.schedule-card:hover { border-color: var(--accent); background: var(--bg3); box-shadow: 0 4px 18px rgba(85,114,212,.12); }
+.schedule-card:hover { border-color: var(--accent); background: var(--bg3); box-shadow: 0 4px 18px rgba(91,125,177,.12); }
 .schedule-card-icon {
   width: 38px; height: 38px; border-radius: var(--radius-sm);
   background: var(--accent-glow); color: var(--accent2);
@@ -489,8 +494,8 @@ html { background: #0e1118; }
   display: flex; flex-direction: column; gap: 2px;
 }
 .timetable-cell:hover { background: var(--bg3); border-color: var(--border2); }
-.timetable-cell.today-col { background: rgba(85,114,212,0.04); }
-.timetable-cell.today-col:hover { background: rgba(85,114,212,0.1); }
+.timetable-cell.today-col { background: rgba(91,125,177,0.05); }
+.timetable-cell.today-col:hover { background: rgba(91,125,177,0.12); }
 .timetable-cell.filled { }
 .cell-subject { font-weight: 700; font-size: 11px; line-height: 1.2; }
 .cell-room { font-size: 9px; opacity: .65; }
@@ -528,7 +533,7 @@ html { background: #0e1118; }
 }
 .hw-progress-fill {
   height: 100%; border-radius: 4px;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--accent2), #5b7db1);
   transition: width .4s ease, background .3s;
 }
 .hw-progress-label { font-size: 11px; color: var(--text2); flex-shrink: 0; white-space: nowrap; }
