@@ -177,7 +177,7 @@ async function init() {
 
   const osSuggest = (navigator.language || '').split('-')[0].toLowerCase();
   const supported = LANGUAGES.map(l => l.code);
-  const lang = settings.lang || (supported.includes(osSuggest) ? osSuggest : 'de');
+  const lang = settings.lang || (supported.includes(osSuggest) ? osSuggest : 'en');
   if (!settings.lang) { settings.lang = lang; Storage.saveSettings(settings); }
 
   await setLanguage(lang);
@@ -361,6 +361,7 @@ async function switchLang(code) {
   await setLanguage(code);
   renderLangDropdown();
   closeLangMenu();
+  updateCountryInfo();
   renderHomeworkList();
   renderGradesList();
   renderSchoolPortal();

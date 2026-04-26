@@ -3386,7 +3386,7 @@ async function loadLocale(code) {
 }
 
 /* ── setLanguage (used by renderer.js) ──────────────────────────── */
-let currentLang = 'de';
+let currentLang = 'en';
 
 function t(key) {
   const lang = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
