@@ -19,11 +19,26 @@
 
 <!-- AUTH SCREEN -->
 <div id="authScreen" class="auth-screen">
-  <div class="auth-card">
-    <div class="auth-logo">
-      <img src="Studylane.png" width="44" height="44" alt="StudyLane" />
-      <span class="auth-logo-text">StudyLane</span>
+  <div class="auth-inner">
+    <div class="auth-branding">
+      <div class="auth-logo">
+        <img src="Studylane.png" width="44" height="44" alt="StudyLane" />
+        <span class="auth-logo-text">StudyLane</span>
+      </div>
+      <h2>School planning made simple</h2>
+      <p>Sign in to access your lessons, tasks, messages, files and calendar. StudyLane keeps students, teachers and admins connected in one polished school portal.</p>
+      <ul class="auth-features">
+        <li>Secure Supabase login and invite-based sign up</li>
+        <li>Course dashboard with tasks and calendar</li>
+        <li>Teacher/admin controls and invite management</li>
+      </ul>
     </div>
+    <div class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-logo">
+          <img src="Studylane.png" width="44" height="44" alt="StudyLane" />
+          <span class="auth-logo-text">StudyLane</span>
+        </div>
     <p class="auth-tagline">Your school. Your lane.</p>
     <div class="auth-tabs">
       <button class="auth-tab active" id="tabLogin" onclick="showAuthTab('login')">Sign in</button>
@@ -44,6 +59,8 @@
       <button class="btn btn-primary btn-full" type="submit" id="regBtn">Create account</button>
       <p class="auth-error" id="regError"></p>
     </form>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -129,7 +146,7 @@
         </button>
       </div>
     </header>
-
+    <div id="setupBanner" class="setup-banner hidden"></div>
     <main class="page-area" id="pageArea">
 
       <!-- Dashboard -->

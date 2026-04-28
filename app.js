@@ -1,83 +1,366 @@
-﻿/* app.js - StudyLane  */
-let currentUser=null,currentProfile=null,currentPage="dashboard",sidebarOpen=false;
-document.addEventListener("DOMContentLoaded",async()=>{
-  Auth.onAuthChange(async(session)=>{
-    if(session){currentUser=session.user;await loadProfile();showApp();await navigate("dashboard");}
-    else{currentUser=null;currentProfile=null;showAuth();}
-  });
+﻿const state = {
+  page: 'dashboard',
+  user: null,
+  profile: null,
+  tasks: [],
+  messages: [],
+  notifications: [],
+  courses: [],
+  invites: [],
+};
+
+const showAuthTab = (tab) => {
+  document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+  document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+  document.getElementById('loginForm').classList.toggle('hidden', tab !== 'login');
+  document.getElementById('registerForm').classList.toggle('hidden', tab !== 'register');
+};
+
+const setPageTitle = (title) => {
+  document.getElementById('topbarTitle').textContent = title;
+};
+
+const navigate = (page) => {
+  state.page = page;
+  document.querySelectorAll('.page').forEach((section) => section.classList.remove('active'));
+  document.getElementById(`page-${page}`).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach((link) => link.classList.toggle('active', link.dataset.page === page));
+  setPageTitle(page.charAt(0).toUpperCase() + page.slice(1));
+  closeSidebar();
+  loadPage(page);
+};
+
+const loginSkeleton = (container) => {
+  container.innerHTML = `<div class="card"><div class="dash-card-title">Loading…</div><div class="dash-list-placeholder">Please wait while data loads.</div></div>`;
+};
+
+const loadPage = async (page) => {
+  switch (page) {
+    case 'dashboard':
+      renderDashboard();
+      break;
+    case 'courses':
+      await renderCourses();
+      break;
+    case 'tasks':
+      renderTasks();
+      break;
+    case 'messages':
+      renderMessages();
+      break;
+    case 'files':
+      renderFiles();
+      break;
+    case 'calendar':
+      renderCalendar();
+      break;
+    case 'grades':
+      renderGrades();
+      break;
+    case 'profile':
+      renderProfile();
+      break;
+    case 'admin':
+      await renderAdmin();
+      break;
+    case 'invites':
+      await renderInvites();
+      break;
+    default:
+      renderDashboard();
+  }
+};
+
+const showShell = () => {
+  document.getElementById('authScreen').classList.add('hidden');
+  document.getElementById('appShell').classList.remove('hidden');
+  updateUserChip();
+  loadPage(state.page);
+};
+
+const showAuth = () => {
+  document.getElementById('authScreen').classList.remove('hidden');
+  document.getElementById('appShell').classList.add('hidden');
+};
+
+const updateUserChip = () => {
+  const avatar = document.getElementById('userAvatar');
+  const name = document.getElementById('userChipName');
+  const role = document.getElementById('userChipRole');
+  const label = state.profile?.full_name || state.user?.email || 'Guest';
+  avatar.textContent = label.charAt(0).toUpperCase();
+  name.textContent = label;
+  role.textContent = state.profile?.role?.toUpperCase() || 'Member';
+  document.body.classList.remove('role-admin', 'role-teacher');
+  if (state.profile?.role === 'admin') document.body.classList.add('role-admin');
+  if (state.profile?.role === 'teacher') document.body.classList.add('role-teacher');
+};
+
+const handleLogin = async (event) => {
+  event.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const loginError = document.getElementById('loginError');
+  loginError.textContent = '';
+
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    loginError.textContent = error.message;
+    return;
+  }
+
+  await onAuthChange(data.user);
+};
+
+const handleRegister = async (event) => {
+  event.preventDefault();
+  const full_name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const password = document.getElementById('regPassword').value;
+  const invite_code = document.getElementById('regCode').value.trim();
+  const role = document.getElementById('regRole').value;
+  const regError = document.getElementById('regError');
+  regError.textContent = '';
+
+  try {
+    const { data, error } = await sb.auth.signUp({ email, password, options: { data: { full_name, role, invite_code } } });
+    if (error) throw error;
+    Notifications.show('Registration received. Please confirm your email if required.');
+  } catch (err) {
+    regError.textContent = err.message || 'Unable to register.';
+  }
+};
+
+const handleSignOut = async () => {
+  await sb.auth.signOut();
+  state.user = null;
+  state.profile = null;
+  showAuth();
+};
+
+const onAuthChange = async (user) => {
+  state.user = user;
+  const { data: profile, error } = await sb.from('profiles').select('*').eq('id', user.id).single();
+  if (error) return Notifications.show('Unable to load profile', 'error');
+  state.profile = profile;
+  showShell();
+};
+
+const loadProfile = async () => {
+  const { data, error } = await sb.from('profiles').select('*').eq('id', state.user.id).single();
+  if (!error) state.profile = data;
+};
+
+const renderDashboard = async () => {
+  document.getElementById('dashGreeting').textContent = `Welcome back, ${state.profile?.full_name || 'student'}!`;
+  document.getElementById('dashStats').innerHTML = `<div class="dash-stat"><span class="dash-stat-value">—</span><span class="dash-stat-label">Tasks</span></div><div class="dash-stat"><span class="dash-stat-value">—</span><span class="dash-stat-label">Messages</span></div><div class="dash-stat"><span class="dash-stat-value">—</span><span class="dash-stat-label">Courses</span></div>`;
+
+  const dashUpcoming = document.getElementById('dashUpcoming');
+  const dashTasks = document.getElementById('dashTasks');
+  const dashCourses = document.getElementById('dashCourses');
+  dashUpcoming.textContent = 'Loading…';
+  dashTasks.textContent = 'Loading…';
+  dashCourses.textContent = 'Loading…';
+
+  const [{ data: tasks }, { data: courses }] = await Promise.all([
+    sb.from('tasks').select('*').order('due_date', { ascending: true }).limit(5),
+    sb.from('courses').select('*').limit(4),
+  ]);
+
+  dashUpcoming.innerHTML = tasks?.length ? tasks.slice(0, 4).map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : task.status === 'overdue' ? '#ef4444' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">Due ${new Date(task.due_date).toLocaleDateString()}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No upcoming tasks found.</div>';
+  dashTasks.innerHTML = tasks?.length ? tasks.map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">${task.status}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No tasks available.</div>';
+  dashCourses.innerHTML = courses?.length ? courses.map((course) => `<div class="dash-list-item"><span class="dash-dot" style="background:linear-gradient(135deg,#7180ff,#7f95ff)"></span><div><div class="dash-list-title">${course.name}</div><div class="dash-list-sub">${course.teacher_name}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No courses yet.</div>';
+};
+
+const renderCourses = async () => {
+  const grid = document.getElementById('courseGrid');
+  courseGrid.innerHTML = '<div class="dash-list-placeholder">Loading courses…</div>';
+  const { data, error } = await sb.from('courses').select('*').order('name', { ascending: true });
+  if (error) return (grid.innerHTML = '<div class="dash-list-placeholder">Unable to load courses.</div>');
+  state.courses = data;
+  if (!data.length) {
+    grid.innerHTML = '<div class="dash-list-placeholder">No courses found.</div>';
+    return;
+  }
+  grid.innerHTML = data.map((course) => `<div class="course-card" onclick="showCourseDetail('${course.id}')"><div class="course-card-banner"></div><div class="course-card-body"><div class="course-card-name">${course.name}</div><div class="course-card-teacher">${course.teacher_name}</div><div class="course-card-chips"><span class="chip">${course.level || 'General'}</span></div></div></div>`).join('');
+};
+
+const showCourseDetail = async (courseId) => {
+  const course = state.courses.find((c) => c.id === courseId);
+  if (!course) return;
+  navigate('course-detail');
+  document.getElementById('courseDetailContent').innerHTML = `<div class="card"><div class="card-title">${course.name}</div><div class="card-sub">Instructor: ${course.teacher_name}</div><p>${course.description || 'No description available for this course.'}</p></div>`;
+};
+
+const filterCourses = () => {
+  const term = document.getElementById('courseSearch').value.toLowerCase();
+  const filtered = state.courses.filter((course) => course.name.toLowerCase().includes(term) || course.teacher_name.toLowerCase().includes(term));
+  document.getElementById('courseGrid').innerHTML = filtered.length ? filtered.map((course) => `<div class="course-card" onclick="showCourseDetail('${course.id}')"><div class="course-card-banner"></div><div class="course-card-body"><div class="course-card-name">${course.name}</div><div class="course-card-teacher">${course.teacher_name}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No matching courses.</div>';
+};
+
+const renderTasks = async () => {
+  const container = document.getElementById('taskList');
+  container.innerHTML = '<div class="dash-list-placeholder">Loading tasks…</div>';
+  const { data, error } = await sb.from('tasks').select('*').order('due_date', { ascending: false });
+  if (error) return (container.innerHTML = '<div class="dash-list-placeholder">Unable to load tasks.</div>');
+  state.tasks = data || [];
+  container.innerHTML = state.tasks.length ? state.tasks.map((task) => `<div class="task-item ${task.status === 'overdue' ? 'overdue' : task.status === 'done' ? '' : 'due-soon'}"><div class="task-check ${task.status === 'done' ? 'checked' : ''}" onclick="toggleTaskDone(event, '${task.id}')"></div><div class="task-body"><div class="task-title">${task.title}</div><div class="task-meta"><span>${task.course_name || 'General'}</span><span>Due ${new Date(task.due_date).toLocaleDateString()}</span></div></div><div class="task-badge ${task.status === 'overdue' ? 'overdue' : task.status === 'done' ? 'submitted' : 'due-soon'}">${task.status}</div></div>`).join('') : '<div class="dash-list-placeholder">No tasks found.</div>';
+};
+
+const renderMessages = async () => {
+  const list = document.getElementById('msgRoomList');
+  list.innerHTML = '<div class="dash-list-placeholder">Loading chats…</div>';
+  const { data, error } = await sb.from('messages').select('id,room_name,last_message,updated_at').order('updated_at', { ascending: false });
+  if (error) return (list.innerHTML = '<div class="dash-list-placeholder">Unable to load chats.</div>');
+  state.messages = data || [];
+  if (!state.messages.length) {
+    list.innerHTML = '<div class="dash-list-placeholder">No chats available.</div>';
+    return;
+  }
+  list.innerHTML = state.messages.map((room) => `<div class="msg-room-item" onclick="openChat('${room.id}')"><div class="msg-room-avatar">${room.room_name.charAt(0).toUpperCase()}</div><div class="msg-room-info"><div class="msg-room-name">${room.room_name}</div><div class="msg-room-preview">${room.last_message || 'No messages yet'}</div></div></div>`).join('');
+};
+
+const renderFiles = async () => {
+  const grid = document.getElementById('fileGrid');
+  grid.innerHTML = '<div class="dash-list-placeholder">Loading files…</div>';
+  const { data, error } = await sb.from('files').select('*').order('created_at', { ascending: false });
+  if (error) return (grid.innerHTML = '<div class="dash-list-placeholder">Unable to load files.</div>');
+  grid.innerHTML = data.length ? data.map((file) => `<div class="file-item"><div class="file-icon">📄</div><div class="file-name">${file.name}</div><div class="file-size">${file.size || '—'} KB</div></div>`).join('') : '<div class="dash-list-placeholder">No files uploaded yet.</div>';
+};
+
+const renderCalendar = async () => {
+  document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">Loading calendar…</div>';
+  const { data, error } = await sb.from('events').select('*').order('starts_at', { ascending: true });
+  if (error) return (document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">Unable to load events.</div>');
+  if (!data.length) return (document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">No events scheduled.</div>');
+  document.getElementById('calendarContainer').innerHTML = `<div class="dash-list-item">${data.map((event) => `<div class="dash-card"><div class="dash-card-title">${event.title}</div><div class="dash-list-sub">${new Date(event.starts_at).toLocaleDateString()} • ${event.location || 'No location'}</div></div>`).join('')}</div>`;
+};
+
+const renderGrades = async () => {
+  const content = document.getElementById('gradesContent');
+  content.innerHTML = '<div class="dash-list-placeholder">Loading grades…</div>';
+  const { data, error } = await sb.from('grades').select('*').order('updated_at', { ascending: false });
+  if (error) return (content.innerHTML = '<div class="dash-list-placeholder">Unable to load grades.</div>');
+  content.innerHTML = data.length ? `<table class="grade-table"><thead><tr><th>Course</th><th>Grade</th><th>Notes</th></tr></thead><tbody>${data.map((grade) => `<tr><td>${grade.course_name}</td><td class="grade-val grade-${Math.min(6, Math.max(1, grade.value))}">${grade.value}</td><td>${grade.notes || '—'}</td></tr>`).join('')}</tbody></table>` : '<div class="dash-list-placeholder">No grades available.</div>';
+};
+
+const renderProfile = () => {
+  document.getElementById('profileContent').innerHTML = `<div class="card profile-avatar-wrap"><div class="profile-avatar-large">${state.profile?.full_name?.charAt(0).toUpperCase() || '?'}</div><div class="card-title">${state.profile?.full_name || 'Profile'}</div><p class="card-sub">${state.profile?.role || ''}</p></div><div class="card"><div class="field"><label>Email</label><input class="input" disabled value="${state.user.email}" /></div><div class="field"><label>Role</label><input class="input" disabled value="${state.profile?.role || 'Member'}" /></div></div>`;
+};
+
+const renderAdmin = async () => {
+  const container = document.getElementById('adminUserList');
+  container.innerHTML = '<div class="dash-list-placeholder">Loading users…</div>';
+  const { data, error } = await sb.from('profiles').select('*').order('full_name', { ascending: true });
+  if (error) return (container.innerHTML = '<div class="dash-list-placeholder">Unable to load users.</div>');
+  container.innerHTML = `<table class="user-table"><thead><tr><th>Name</th><th>Email</th><th>Role</th></tr></thead><tbody>${data.map((profile) => `<tr><td>${profile.full_name}</td><td>${profile.email}</td><td><span class="role-badge ${profile.role}">${profile.role}</span></td></tr>`).join('')}</tbody></table>`;
+};
+
+const renderInvites = async () => {
+  const container = document.getElementById('inviteList');
+  container.innerHTML = '<div class="dash-list-placeholder">Loading invite codes…</div>';
+  const { data, error } = await sb.from('invite_codes').select('*').order('created_at', { ascending: false });
+  if (error) return (container.innerHTML = '<div class="dash-list-placeholder">Unable to load invites.</div>');
+  container.innerHTML = data.length ? `<div class="invite-grid">${data.map((invite) => `<div class="invite-card ${invite.used_at ? 'invite-used' : ''}"><div class="invite-code">${invite.code}</div><div class="invite-meta">Role: ${invite.role}</div><div class="invite-meta">Created: ${new Date(invite.created_at).toLocaleDateString()}</div></div>`).join('')}</div>` : '<div class="dash-list-placeholder">No invite codes yet.</div>';
+};
+
+const generateInviteCode = async () => {
+  try {
+    const result = await EdgeFunctions.generateInvite('teacher');
+    Notifications.show('Invite code generated successfully.');
+    await renderInvites();
+  } catch (error) {
+    Notifications.show(error.message, 'error');
+  }
+};
+
+const openCreateUser = () => {
+  const body = `<div class="field"><label>Full name</label><input class="input" id="createUserName" placeholder="Full name" /></div><div class="field"><label>Email</label><input class="input" id="createUserEmail" placeholder="Email" /></div><div class="field"><label>Password</label><input class="input" id="createUserPassword" type="password" placeholder="Temporary password" /></div><div class="field"><label>Role</label><select class="select" id="createUserRole"><option value="student">Student</option><option value="teacher">Teacher</option><option value="admin">Admin</option></select></div><div class="field"><label>Invite code</label><input class="input" id="createUserInvite" placeholder="Optional invite code" /></div>`;
+  openModal('Create new user', `${body}<div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="submitCreateUser()">Create</button></div>`);
+};
+
+const submitCreateUser = async () => {
+  const email = document.getElementById('createUserEmail').value.trim();
+  const password = document.getElementById('createUserPassword').value;
+  const full_name = document.getElementById('createUserName').value.trim();
+  const role = document.getElementById('createUserRole').value;
+  const invite_code = document.getElementById('createUserInvite').value.trim();
+
+  try {
+    await EdgeFunctions.adminCreateUser(email, password, full_name, role, invite_code);
+    Notifications.show('User created successfully.');
+    closeModal();
+    await renderAdmin();
+  } catch (error) {
+    Notifications.show(error.message, 'error');
+  }
+};
+
+const openModal = (title, html) => {
+  document.getElementById('globalModalTitle').textContent = title;
+  document.getElementById('globalModalBody').innerHTML = html;
+  document.getElementById('globalModal').classList.add('open');
+};
+
+const closeModal = () => {
+  document.getElementById('globalModal').classList.remove('open');
+};
+
+const toggleSidebar = () => {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('hidden');
+};
+
+const closeSidebar = () => {
+  document.querySelector('.sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.add('hidden');
+};
+
+const openSearch = () => {
+  Notifications.show('Search is coming soon.');
+};
+
+const toggleNotifs = () => {
+  Notifications.show('Notifications panel not implemented yet.');
+};
+
+const openChat = (roomId) => {
+  document.getElementById('msgChatArea').innerHTML = `<div class="msg-chat-header">Chat room ${roomId}</div><div class="msg-chat-messages">Messages will appear here.</div><div class="msg-chat-input-wrap"><textarea class="msg-chat-input" placeholder="Write a message..."></textarea><button class="btn btn-primary">Send</button></div>`;
+};
+
+const openFileUpload = () => {
+  Notifications.show('File upload functionality is coming soon.');
+};
+
+const openCreateEvent = () => {
+  Notifications.show('Event creation coming soon.');
+};
+
+const toggleTaskDone = async (event, taskId) => {
+  event.stopPropagation();
+  const task = state.tasks.find((t) => t.id === taskId);
+  if (!task) return;
+  const updatedStatus = task.status === 'done' ? 'open' : 'done';
+  await sb.from('tasks').update({ status: updatedStatus }).eq('id', taskId);
+  renderTasks();
+};
+
+const init = async () => {
+  const { data: { session }, error } = await sb.auth.getSession();
+  if (error) return Notifications.show('Auth error.');
+
+  if (session?.user) {
+    state.user = session.user;
+    await loadProfile();
+    showShell();
+  } else {
+    showAuth();
+  }
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  showAuthTab('login');
+  init();
 });
-function showAuth(){document.getElementById("authScreen").classList.remove("hidden");document.getElementById("appShell").classList.add("hidden");}
-function showApp(){document.getElementById("authScreen").classList.add("hidden");document.getElementById("appShell").classList.remove("hidden");renderUserChip();applyRole();}
-function showAuthTab(tab){document.getElementById("loginForm").classList.toggle("hidden",tab!=="login");document.getElementById("registerForm").classList.toggle("hidden",tab!=="register");document.getElementById("tabLogin").classList.toggle("active",tab==="login");document.getElementById("tabRegister").classList.toggle("active",tab!=="login");}
-async function handleLogin(e){e.preventDefault();const btn=document.getElementById("loginBtn"),errEl=document.getElementById("loginError");errEl.textContent="";btn.disabled=true;btn.textContent="Signing in...";try{await Auth.signIn(document.getElementById("loginEmail").value,document.getElementById("loginPassword").value);}catch(err){errEl.textContent=err.message;btn.disabled=false;btn.textContent="Sign in";}}
-async function handleRegister(e){e.preventDefault();const btn=document.getElementById("regBtn"),errEl=document.getElementById("regError");errEl.textContent="";btn.disabled=true;btn.textContent="Creating account...";try{const code=document.getElementById("regCode").value.trim();if(code)await Invites.validate(code);const{user}=await Auth.signUp(document.getElementById("regEmail").value,document.getElementById("regPassword").value,{full_name:document.getElementById("regName").value,role:document.getElementById("regRole").value});if(code&&user)await Invites.consume(code,user.id);showToast("Account created! Check your e-mail.");}catch(err){errEl.textContent=err.message;btn.disabled=false;btn.textContent="Create account";}}
-async function handleSignOut(){await Auth.signOut();}
-async function loadProfile(){try{currentProfile=await Profiles.get(currentUser.id);}catch{currentProfile={full_name:currentUser.user_metadata&&currentUser.user_metadata.full_name||"User",role:currentUser.user_metadata&&currentUser.user_metadata.role||"student"};}}
-function renderUserChip(){const name=currentProfile&&currentProfile.full_name||"User",role=currentProfile&&currentProfile.role||"student",initials=name.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();document.getElementById("userChipName").textContent=name;document.getElementById("userChipRole").textContent=role.charAt(0).toUpperCase()+role.slice(1);document.getElementById("userAvatar").textContent=initials;}
-function applyRole(){const role=currentProfile&&currentProfile.role||"student";document.body.classList.remove("role-student","role-teacher","role-admin");document.body.classList.add("role-"+role);}
-const PAGE_TITLES={dashboard:"Dashboard",courses:"Courses","course-detail":"Course",tasks:"Tasks",messages:"Messages",files:"Files",calendar:"Calendar",grades:"Grades",profile:"Profile",admin:"Users and Roles",invites:"Invite Codes"};
-async function navigate(page,params){params=params||{};document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));const pageEl=document.getElementById("page-"+page);if(!pageEl)return;pageEl.classList.add("active");const navItem=document.querySelector('[data-page="'+page+'"]');if(navItem)navItem.classList.add("active");document.getElementById("topbarTitle").textContent=PAGE_TITLES[page]||page;currentPage=page;if(window.innerWidth<=768)closeSidebar();switch(page){case"dashboard":await renderDashboard();break;case"courses":await renderCourses();break;case"course-detail":await renderCourseDetail(params.courseId);break;case"tasks":await renderTasks();break;case"messages":await renderMessages();break;case"files":await renderFiles();break;case"calendar":await renderCalendar();break;case"grades":await renderGrades();break;case"profile":renderProfile();break;case"admin":await renderAdmin();break;case"invites":await renderInvites();break;}}
-function toggleSidebar(){const sidebar=document.getElementById("sidebar"),overlay=document.getElementById("sidebarOverlay");if(window.innerWidth<=768){sidebarOpen=!sidebarOpen;sidebar.classList.toggle("open",sidebarOpen);overlay.classList.toggle("hidden",!sidebarOpen);}else{sidebar.classList.toggle("collapsed");}}
-function closeSidebar(){document.getElementById("sidebar").classList.remove("open");document.getElementById("sidebarOverlay").classList.add("hidden");sidebarOpen=false;}
-async function renderDashboard(){const name=(currentProfile&&currentProfile.full_name||"User").split(" ")[0],hour=new Date().getHours(),greeting=hour<12?"Good morning":hour<18?"Good afternoon":"Good evening";document.getElementById("dashGreeting").textContent=greeting+", "+name;try{const myTasks=await Tasks.myTasks(currentUser.id),myCourses=await Courses.myList(currentUser.id),open=myTasks.filter(t=>!t.done).length,overdue=myTasks.filter(t=>!t.done&&t.tasks&&t.tasks.due_at&&new Date(t.tasks.due_at)<new Date()).length;document.getElementById("dashStats").innerHTML="<div class='dash-stat'><div class='dash-stat-value'>"+myCourses.length+"</div><div class='dash-stat-label'>Courses</div></div><div class='dash-stat'><div class='dash-stat-value'>"+open+"</div><div class='dash-stat-label'>Open Tasks</div></div><div class='dash-stat' style='border-color:"+(overdue>0?"var(--danger)":"var(--border)")+"'><div class='dash-stat-value' style='color:"+(overdue>0?"var(--danger)":"var(--text)")+"'>"+overdue+"</div><div class='dash-stat-label'>Overdue</div></div>";const upcoming=myTasks.filter(t=>!t.done).sort((a,b)=>new Date((a.tasks&&a.tasks.due_at)||0)-new Date((b.tasks&&b.tasks.due_at)||0)).slice(0,5);document.getElementById("dashTasks").innerHTML=upcoming.length?upcoming.map(t=>"<div class='dash-list-item'><div class='dash-dot' style='background:"+(t.tasks&&t.tasks.courses&&t.tasks.courses.color||"var(--accent)")+"'></div><div><div class='dash-list-title'>"+esc(t.tasks&&t.tasks.title||"Task")+"</div><div class='dash-list-sub'>"+esc(t.tasks&&t.tasks.courses&&t.tasks.courses.name||"")+" - "+(t.tasks&&t.tasks.due_at?formatDate(t.tasks.due_at):"No due date")+"</div></div></div>").join(""):"<div class='dash-list-placeholder'>No open tasks</div>";document.getElementById("dashCourses").innerHTML=myCourses.slice(0,5).map(c=>"<div class='dash-list-item' onclick=\"navigate('course-detail',{courseId:'"+c.id+"'})\"'><div class='dash-dot' style='background:"+(c.color||"var(--accent)")+"'></div><div><div class='dash-list-title'>"+esc(c.name)+"</div><div class='dash-list-sub'>"+esc(c.my_role)+"</div></div></div>").join("")||"<div class='dash-list-placeholder'>No courses yet</div>";}catch(err){console.error("Dashboard:",err);}try{const events=await Calendar.upcoming(currentUser.id,5);document.getElementById("dashUpcoming").innerHTML=events.length?events.map(ev=>"<div class='dash-list-item'><div class='dash-dot' style='background:"+(ev.courses&&ev.courses.color||"var(--accent)")+"'></div><div><div class='dash-list-title'>"+esc(ev.title)+"</div><div class='dash-list-sub'>"+formatDate(ev.start_at)+"</div></div></div>").join(""):"<div class='dash-list-placeholder'>No upcoming events</div>";}catch{document.getElementById("dashUpcoming").innerHTML="<div class='dash-list-placeholder'>-</div>";}}
-
-let allCourses=[];
-async function renderCourses(){const el=document.getElementById("courseGrid");el.innerHTML="Loading...";try{allCourses=await Courses.myList(currentUser.id);displayCourses(allCourses);}catch(err){el.innerHTML="<div class='dash-list-placeholder'>Error: "+esc(err.message)+"</div>";}}
-function displayCourses(list){const el=document.getElementById("courseGrid");if(!list.length){el.innerHTML="<div class='empty-state'><h3>No courses yet</h3><p>Join or create a course</p></div>";return;}el.innerHTML=list.map(c=>"<div class='course-card' onclick=\"navigate('course-detail',{courseId:'"+c.id+"'})\"><div class='course-card-banner' style='background:"+(c.color||"var(--accent)")+"'></div><div class='course-card-body'><div class='course-card-name'>"+esc(c.name)+"</div><div class='course-card-teacher'>"+esc(c.description||"")+"</div><div class='course-card-chips'><span class='chip'>"+esc(c.my_role)+"</span></div></div></div>").join("");}
-function filterCourses(){const q=document.getElementById("courseSearch").value.toLowerCase();displayCourses(allCourses.filter(c=>c.name.toLowerCase().includes(q)));}
-async function renderCourseDetail(courseId){const el=document.getElementById("courseDetailContent");el.innerHTML="Loading...";try{const course=await Courses.get(courseId),tasks=await Tasks.list(courseId);el.innerHTML="<div style='height:8px;background:"+(course.color||"var(--accent)")+";border-radius:8px;margin-bottom:16px'></div><h2 style='font-size:22px;font-weight:800;margin-bottom:4px'>"+esc(course.name)+"</h2><p style='color:var(--text3);margin-bottom:20px'>"+esc(course.description||"")+"</p><h3 style='font-size:14px;font-weight:700;color:var(--text2);margin-bottom:10px'>Tasks ("+tasks.length+")</h3>"+(tasks.length?tasks.map(t=>"<div class='task-item' style='margin-bottom:8px'><div class='task-body'><div class='task-title'>"+esc(t.title)+"</div><div class='task-meta'><span>Due: "+(t.due_at?formatDate(t.due_at):"No date")+"</span></div></div></div>").join(""):"<div class='dash-list-placeholder'>No tasks</div>");}catch(err){el.innerHTML="<div class='dash-list-placeholder'>Error: "+esc(err.message)+"</div>";}}
-function openCreateCourse(){openModal("New Course","<div class='field'><label>Course name</label><input class='input' id='mcCourseName' placeholder='e.g. Mathematics 10A' /></div><div class='field'><label>Description</label><input class='input' id='mcCourseDesc' placeholder='Short description' /></div><div class='modal-footer'><button class='btn btn-secondary' onclick='closeModal()'>Cancel</button><button class='btn btn-primary' onclick='submitCreateCourse()'>Create</button></div>");}
-async function submitCreateCourse(){const name=document.getElementById("mcCourseName").value.trim();if(!name)return;try{const{error}=await sb.from("courses").insert({name,description:document.getElementById("mcCourseDesc").value,created_by:currentUser.id});if(error)throw error;closeModal();showToast("Course created!");await renderCourses();}catch(err){showToast("Error: "+err.message);}}
-let allTasks=[];
-async function renderTasks(){const el=document.getElementById("taskList");el.innerHTML="Loading...";try{allTasks=await Tasks.myTasks(currentUser.id);displayTasks(allTasks);const overdue=allTasks.filter(t=>!t.done&&t.tasks&&t.tasks.due_at&&new Date(t.tasks.due_at)<new Date()).length,badge=document.getElementById("navTaskBadge");if(overdue>0){badge.textContent=overdue;badge.classList.remove("hidden");}else{badge.classList.add("hidden");}}catch(err){el.innerHTML="<div class='dash-list-placeholder'>Error: "+esc(err.message)+"</div>";}}
-function displayTasks(list){const el=document.getElementById("taskList");if(!list.length){el.innerHTML="<div class='empty-state'><h3>All done!</h3><p>No tasks match this filter</p></div>";return;}const now=new Date();el.innerHTML=list.map(t=>{const due=t.tasks&&t.tasks.due_at?new Date(t.tasks.due_at):null,ov=due&&due<now&&!t.done,soon=due&&!ov&&(due-now)<172800000;return "<div class='task-item"+(ov?" overdue":soon?" due-soon":"")+"'><div class='task-check"+(t.done?" checked":"")+"' onclick='toggleTask(\""+(t.task_id||t.id)+"\",this)'></div><div class='task-body'><div class='task-title'>"+esc(t.tasks&&t.tasks.title||"Task")+"</div><div class='task-meta'><span>"+esc(t.tasks&&t.tasks.courses&&t.tasks.courses.name||"")+"</span>"+(due?"<span>Due: "+formatDate(t.tasks.due_at)+"</span>":"")+(ov?"<span class='task-badge overdue'>Overdue</span>":"")+(soon&&!ov?"<span class='task-badge due-soon'>Due soon</span>":"")+(t.done?"<span class='task-badge submitted'>Done</span>":"")+"</div></div></div>";}).join("");}
-function filterTasks(filter,btn){document.querySelectorAll(".filter-chip").forEach(b=>b.classList.remove("active"));btn.classList.add("active");const now=new Date(),filtered=filter==="open"?allTasks.filter(t=>!t.done):filter==="done"?allTasks.filter(t=>t.done):filter==="overdue"?allTasks.filter(t=>!t.done&&t.tasks&&t.tasks.due_at&&new Date(t.tasks.due_at)<now):allTasks;displayTasks(filtered);}
-async function toggleTask(taskId,el){el.classList.toggle("checked");await sb.from("task_assignments").update({done:el.classList.contains("checked")}).eq("task_id",taskId).eq("user_id",currentUser.id);}
-
-let activeRoomId=null,msgSubscription=null;
-async function renderMessages(){const el=document.getElementById("msgRoomList");el.innerHTML="Loading...";try{const res=await sb.from("room_members").select("room_id, rooms(id, name, type)").eq("user_id",currentUser.id),memberships=res.data;if(!memberships||!memberships.length){el.innerHTML="<div style='padding:14px;color:var(--text3);font-size:13px'>No chats yet</div>";return;}el.innerHTML=memberships.map(m=>"<div class='msg-room-item' id='room-"+m.rooms.id+"' onclick='openRoom(\""+m.rooms.id+"\",\""+esc(m.rooms.name)+"\")'><div class='msg-room-avatar'>"+m.rooms.name[0].toUpperCase()+"</div><div class='msg-room-info'><div class='msg-room-name'>"+esc(m.rooms.name)+"</div><div class='msg-room-preview'>Click to open</div></div></div>").join("");}catch(err){el.innerHTML="<div style='padding:14px;color:var(--danger);font-size:13px'>"+esc(err.message)+"</div>";}}
-async function openRoom(roomId,roomName){activeRoomId=roomId;document.querySelectorAll(".msg-room-item").forEach(r=>r.classList.remove("active"));const ri=document.getElementById("room-"+roomId);if(ri)ri.classList.add("active");if(window.innerWidth<=768)document.getElementById("page-messages").classList.add("chat-open");document.getElementById("msgChatArea").innerHTML="<div class='msg-chat-header'>"+esc(roomName)+"</div><div class='msg-chat-messages' id='msgMessages'></div><div class='msg-chat-input-wrap'><textarea class='msg-chat-input' id='msgInput' placeholder='Write a message...' rows='1' onkeydown='msgKeyDown(event)'></textarea><button class='btn btn-primary btn-sm' onclick='sendMsg()'>Send</button></div>";await loadMessages(roomId);if(msgSubscription)msgSubscription.unsubscribe();msgSubscription=Messages.subscribe(roomId,msg=>appendMessage(msg));}
-async function loadMessages(roomId){const msgs=await Messages.list(roomId),el=document.getElementById("msgMessages");el.innerHTML=msgs.map(m=>buildBubble(m)).join("");el.scrollTop=el.scrollHeight;}
-function appendMessage(msg){const el=document.getElementById("msgMessages");if(!el)return;el.insertAdjacentHTML("beforeend",buildBubble(msg));el.scrollTop=el.scrollHeight;}
-function buildBubble(m){const mine=m.user_id===currentUser.id;return "<div class='msg-bubble "+(mine?"mine":"theirs")+"'>"+((!mine)?"<div class='msg-bubble-sender'>"+esc(m.profiles&&m.profiles.full_name||"User")+"</div>":"")+esc(m.body)+"<div class='msg-bubble-time'>"+formatTime(m.created_at)+"</div></div>";}
-function msgKeyDown(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMsg();}}
-async function sendMsg(){const input=document.getElementById("msgInput"),body=input&&input.value.trim();if(!body||!activeRoomId)return;input.value="";await Messages.send(activeRoomId,currentUser.id,body);}
-function openNewChat(){showToast("Direct messaging coming soon");}
-
-let filePath=[];
-async function renderFiles(folder){folder=folder||[];filePath=folder;const el=document.getElementById("fileGrid"),bc=document.getElementById("fileBreadcrumb");el.innerHTML="Loading...";bc.innerHTML=["Root"].concat(folder).map((f,i)=>"<span onclick='renderFiles("+JSON.stringify(folder.slice(0,i))+")'>" +esc(f)+"</span>"+(i<folder.length?"<span class='breadcrumb-sep'>/</span>":"")).join("");try{const items=await Files.list("studylane",folder.join("/")||"");if(!items.length){el.innerHTML="<div class='empty-state'><h3>Empty folder</h3></div>";return;}el.innerHTML=items.map(f=>{const isFolder=f.id===null;return "<div class='file-item' onclick='"+(isFolder?"renderFiles("+JSON.stringify([...folder,f.name])+")":"window.open('"+Files.getUrl("studylane",[...folder,f.name].join("/"))+"','_blank')")+"'><div class='file-icon'>"+(isFolder?"📁":getFileIcon(f.name))+"</div><div class='file-name'>"+esc(f.name)+"</div>"+(!isFolder&&f.metadata&&f.metadata.size?"<div class='file-size'>"+formatSize(f.metadata.size)+"</div>":"")+"</div>";}).join("");}catch(err){el.innerHTML="<div class='dash-list-placeholder'>Error: "+esc(err.message)+"</div>";}}
-function openFileUpload(){openModal("Upload File","<div class='field'><label>Select file</label><input type='file' id='fileInput' class='input' /></div><div class='modal-footer'><button class='btn btn-secondary' onclick='closeModal()'>Cancel</button><button class='btn btn-primary' onclick='submitUpload()'>Upload</button></div>");}
-async function submitUpload(){const file=document.getElementById("fileInput")&&document.getElementById("fileInput").files[0];if(!file)return;try{await Files.upload("studylane",[...filePath,file.name].join("/"),file);closeModal();showToast("Uploaded!");await renderFiles(filePath);}catch(err){showToast("Error: "+err.message);}}
-
-let calDate=new Date();
-async function renderCalendar(){try{const events=await Calendar.upcoming(currentUser.id,100);renderCalGrid(events);}catch{document.getElementById("calendarContainer").innerHTML="<div class='dash-list-placeholder'>Could not load calendar</div>";}}
-function renderCalGrid(events){const el=document.getElementById("calendarContainer"),year=calDate.getFullYear(),month=calDate.getMonth(),firstDay=new Date(year,month,1).getDay(),daysInMonth=new Date(year,month+1,0).getDate(),monthName=calDate.toLocaleString("default",{month:"long",year:"numeric"}),eventDays=new Set(events.filter(e=>{const d=new Date(e.start_at);return d.getFullYear()===year&&d.getMonth()===month;}).map(e=>new Date(e.start_at).getDate()));let cells="";const offset=(firstDay+6)%7;for(let i=0;i<offset;i++)cells+="<div class='cal-day other-month'></div>";for(let d=1;d<=daysInMonth;d++){const t=new Date(),isT=t.getDate()===d&&t.getMonth()===month&&t.getFullYear()===year;cells+="<div class='cal-day"+(isT?" today":"")+"'><span class='cal-day-num'>"+d+"</span>"+(eventDays.has(d)?"<div class='cal-event-dot'></div>":"")+"</div>";}el.innerHTML="<div class='cal-header'><button class='icon-btn' onclick='calNav(-1)'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><polyline points='15 18 9 12 15 6'/></svg></button><span class='cal-month-label'>"+monthName+"</span><button class='icon-btn' onclick='calNav(1)'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><polyline points='9 18 15 12 9 6'/></svg></button></div><div class='cal-grid'>"+["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(d=>"<div class='cal-weekday'>"+d+"</div>").join("")+cells+"</div><div style='padding:14px'><div style='font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px'>Events this month</div>"+(events.filter(e=>{const d=new Date(e.start_at);return d.getFullYear()===year&&d.getMonth()===month;}).map(e=>"<div class='dash-list-item'><div class='dash-dot' style='background:"+(e.courses&&e.courses.color||"var(--accent)")+"'></div><div><div class='dash-list-title'>"+esc(e.title)+"</div><div class='dash-list-sub'>"+formatDate(e.start_at)+"</div></div></div>").join("")||"<div class='dash-list-placeholder'>No events this month</div>")+"</div>";}
-function calNav(dir){calDate=new Date(calDate.getFullYear(),calDate.getMonth()+dir,1);renderCalendar();}
-function openCreateEvent(){openModal("New Event","<div class='field'><label>Title</label><input class='input' id='evTitle' /></div><div class='field'><label>Start</label><input class='input' type='datetime-local' id='evStart' /></div><div class='field'><label>End</label><input class='input' type='datetime-local' id='evEnd' /></div><div class='modal-footer'><button class='btn btn-secondary' onclick='closeModal()'>Cancel</button><button class='btn btn-primary' onclick='submitEvent()'>Create</button></div>");}
-async function submitEvent(){const title=document.getElementById("evTitle")&&document.getElementById("evTitle").value.trim();if(!title)return;try{await Calendar.create({title,start_at:document.getElementById("evStart").value,end_at:document.getElementById("evEnd").value,created_by:currentUser.id});closeModal();showToast("Event created!");await renderCalendar();}catch(err){showToast("Error: "+err.message);}}
-
-async function renderGrades(){const el=document.getElementById("gradesContent");try{const res=await sb.from("grades").select("*, courses(name, color)").eq("user_id",currentUser.id).order("date",{ascending:false});if(res.error)throw res.error;if(!res.data.length){el.innerHTML="<div class='empty-state'><h3>No grades yet</h3></div>";return;}el.innerHTML="<table class='grade-table'><thead><tr><th>Course</th><th>Grade</th><th>Type</th><th>Date</th></tr></thead><tbody>"+res.data.map(g=>"<tr><td>"+esc(g.courses&&g.courses.name||"")+"</td><td><span class='grade-val grade-"+Math.round(g.value)+"'>"+g.value+"</span></td><td>"+esc(g.type||"")+"</td><td>"+(g.date?formatDate(g.date):"")+"</td></tr>").join("")+"</tbody></table>";}catch(err){el.innerHTML="<div class='dash-list-placeholder'>Error: "+esc(err.message)+"</div>";}}
-
-function renderProfile(){const p=currentProfile,name=p&&p.full_name||"User",initials=name.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();document.getElementById("profileContent").innerHTML="<div class='card' style='max-width:540px'><div class='profile-avatar-wrap'><div class='profile-avatar-large'>"+initials+"</div><div style='font-size:18px;font-weight:800;margin-top:8px'>"+esc(name)+"</div><div style='color:var(--text3);font-size:13px'>"+esc(currentUser&&currentUser.email||"")+"</div></div><div class='field'><label>Full name</label><input class='input' id='profName' value='"+esc(name)+"' /></div><div class='field'><label>Role</label><input class='input' value='"+esc(p&&p.role||"student")+"' disabled /></div><button class='btn btn-primary' onclick='saveProfile()'>Save</button></div>";}
-async function saveProfile(){try{await Profiles.update(currentUser.id,{full_name:document.getElementById("profName").value});await loadProfile();renderUserChip();showToast("Saved!");}catch(err){showToast("Error: "+err.message);}}
-
-async function renderAdmin(){const el=document.getElementById("adminUserList");try{const res=await sb.from("profiles").select("*").order("full_name");if(res.error)throw res.error;el.innerHTML="<table class='user-table'><thead><tr><th>Name</th><th>E-Mail</th><th>Role</th><th>Actions</th></tr></thead><tbody>"+res.data.map(u=>"<tr><td>"+esc(u.full_name||"-")+"</td><td style='color:var(--text3)'>"+esc(u.email||"-")+"</td><td><span class='role-badge "+u.role+"'>"+esc(u.role)+"</span></td><td><button class='btn btn-secondary btn-sm' onclick='changeRole(\""+u.id+"\",\""+u.role+"\")'>Change Role</button></td></tr>").join("")+"</tbody></table>";}catch(err){el.innerHTML="<div class='dash-list-placeholder'>Error: "+esc(err.message)+"</div>";}}
-function changeRole(userId,currentRole){openModal("Change Role","<div class='field'><label>New role</label><select class='select' id='newRoleSel'><option value='student'"+(currentRole==="student"?" selected":"")+"'>Student</option><option value='teacher'"+(currentRole==="teacher"?" selected":"")+"'>Teacher</option><option value='admin'"+(currentRole==="admin"?" selected":"")+"'>Admin</option></select></div><div class='modal-footer'><button class='btn btn-secondary' onclick='closeModal()'>Cancel</button><button class='btn btn-primary' onclick='submitRoleChange(\""+userId+"\")'>Save</button></div>");}
-async function submitRoleChange(userId){const role=document.getElementById("newRoleSel").value;await sb.from("profiles").update({role}).eq("id",userId);closeModal();showToast("Role updated!");await renderAdmin();}
-function openCreateUser(){showToast("Use Invite Codes to add users");navigate("invites");}
-
-async function renderInvites(){const el=document.getElementById("inviteList");try{const res=await sb.from("invite_codes").select("*").order("created_at",{ascending:false});if(res.error)throw res.error;el.innerHTML="<div class='invite-grid'>"+res.data.map(c=>"<div class='invite-card"+(c.used?" invite-used":"")+"'><div class='invite-code'>"+esc(c.code)+"</div><div class='invite-meta'>"+(c.used?"Used":"Available")+"</div>"+(!c.used?"<button class='btn btn-secondary btn-sm' style='margin-top:8px' onclick='navigator.clipboard.writeText(\""+c.code+"\").then(()=>showToast(\"Copied!\"))'>Copy</button>":"")+"</div>").join("")+"</div>";}catch(err){el.innerHTML="<div class='dash-list-placeholder'>Error: "+esc(err.message)+"</div>";}}
-async function generateInviteCode(){const code=[...Array(3)].map(()=>Math.random().toString(36).slice(2,5).toUpperCase()).join("-");try{await sb.from("invite_codes").insert({code,created_by:currentUser.id});showToast("Generated: "+code);await renderInvites();}catch(err){showToast("Error: "+err.message);}}
-
-function openModal(title,bodyHtml){document.getElementById("globalModalTitle").textContent=title;document.getElementById("globalModalBody").innerHTML=bodyHtml;document.getElementById("globalModal").classList.add("open");}
-function closeModal(){document.getElementById("globalModal").classList.remove("open");}
-function openSearch(){showToast("Global search coming soon");}
-function toggleNotifs(){showToast("Notifications coming soon");}
-
-let _toastTimer;
-function showToast(msg,duration){duration=duration||3000;const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");clearTimeout(_toastTimer);_toastTimer=setTimeout(()=>el.classList.remove("show"),duration);}
-function esc(str){if(!str)return"";return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
-function formatDate(iso){return new Date(iso).toLocaleDateString("default",{day:"numeric",month:"short",year:"numeric"});}
-function formatTime(iso){return new Date(iso).toLocaleTimeString("default",{hour:"2-digit",minute:"2-digit"});}
-function formatSize(bytes){if(bytes<1024)return bytes+" B";if(bytes<1048576)return(bytes/1024).toFixed(1)+" KB";return(bytes/1048576).toFixed(1)+" MB";}
-function getFileIcon(name){const ext=name.split(".").pop().toLowerCase(),icons={pdf:"📄",doc:"📝",docx:"📝",xls:"📊",xlsx:"📊",jpg:"🖼",jpeg:"🖼",png:"🖼",gif:"🖼",mp4:"🎬",mp3:"🎵",zip:"🗜",txt:"📃"};return icons[ext]||"📎";}
