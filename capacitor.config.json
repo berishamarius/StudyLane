@@ -1,6 +1,6 @@
 {
-  "appId": "de.kronix.studylane",
-  "appName": "StudyLane",
+  "appId": "de.kronix.paideon",
+  "appName": "Paideon",
   "webDir": "www",
   "bundledWebRuntime": false,
   "server": {
@@ -26,7 +26,7 @@
   "android": {
     "buildOptions": {
       "keystorePath": "release.keystore",
-      "keystoreAlias": "studylane"
+      "keystoreAlias": "paideon"
     }
   }
 }

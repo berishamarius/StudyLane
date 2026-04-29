@@ -41,6 +41,39 @@ const EdgeFunctions = {
     }
     return response.json();
   },
+
+  getLearningPath: async (mode, focus) => {
+    const response = await fetch('/.netlify/functions/get-learning-path', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mode, focus }),
+    });
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(error || 'Failed to create learning path');
+    }
+    return response.json();
+  },
+
+  saveStudyPreferences: async (payload) => {
+    const response = await fetch('/.netlify/functions/save-study-preferences', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(error || 'Failed to save study preferences');
+    }
+    return response.json();
+  },
+
+  listTrustedSources: async () => {
+    const response = await fetch('/.netlify/functions/list-trusted-sources');
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(error || 'Failed to load trusted sources');
+    }
+    return response.json();
+  },
 };
 
 const Notifications = {

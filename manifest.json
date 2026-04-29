@@ -1,7 +1,7 @@
 {
-  "name": "StudyLane",
-  "short_name": "StudyLane",
-  "description": "Dein digitaler Lernplaner für Schüler & Studenten",
+  "name": "Paideon",
+  "short_name": "Paideon",
+  "description": "Dein digitaler Lernbegleiter fuer Schule und Universitaet",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

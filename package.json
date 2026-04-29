@@ -1,7 +1,7 @@
 {
-  "name": "studylane",
+  "name": "paideon-app",
   "version": "1.0.0",
-  "description": "StudyLane – Digitaler Lernplaner für Schüler & Studenten",
+  "description": "Paideon – Lernplattform fuer Schule und Universitaet",
   "main": "main.js",
   "author": "KX KroniX Tech",
   "license": "UNLICENSED",
@@ -9,6 +9,10 @@
     "start": "electron .",
     "build": "electron-builder --win --publish never",
     "build:web": "node scripts/build-web.js",
+    "i18n:fill": "node scripts/fill-locales-native.js",
+    "i18n:translate-all": "node scripts/translate-locales.js",
+    "i18n:verify": "node scripts/verify-locales.js",
+    "i18n:all": "npm run i18n:translate-all && npm run i18n:verify",
     "generate:icons": "node scripts/generate-icons.js",
     "android": "npm run build:web && npx cap sync android && npx cap open android",
     "ios": "npm run build:web && npx cap sync ios && npx cap open ios",
@@ -35,8 +39,8 @@
     "@capacitor/status-bar": "^6.0.0"
   },
   "build": {
-    "appId": "com.kronix.studylane",
-    "productName": "StudyLane",
+    "appId": "com.kronix.paideon",
+    "productName": "Paideon",
     "copyright": "Copyright 2026 KX KroniX Tech",
     "icon": "assets/icon",
     "win": {
@@ -55,7 +59,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "StudyLane"
+      "shortcutName": "Paideon"
     },
     "directories": {
       "output": "release"

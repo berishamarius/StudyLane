@@ -2,11 +2,170 @@
   page: 'dashboard',
   user: null,
   profile: null,
+  demoMode: false,
   tasks: [],
   messages: [],
   notifications: [],
   courses: [],
   invites: [],
+  ui: {
+    studyMode: 'school',
+    schoolStage: 'grade-9-10',
+    uniSemester: 'semester-1-2',
+    examMode: 'balanced',
+  },
+  taskFilter: 'all',
+  chat: {
+    currentRoomId: null,
+    messagesByRoom: {},
+  },
+};
+
+const UI_SETTINGS_KEY = 'paideon_ui_settings';
+const DEMO_MODE_KEY = 'paideon_demo_mode';
+const FORCE_DEMO_MODE = true;
+const LEARN_BOOKMARKS_KEY = 'paideon_learn_bookmarks_v1';
+
+const DEMO_DATA = {
+  tasks: [
+    { id: 'd-task-1', title: 'Math worksheet: quadratic equations', status: 'open', course_name: 'Mathematics', due_date: '2026-05-02' },
+    { id: 'd-task-2', title: 'Read chapter on cell respiration', status: 'open', course_name: 'Biology', due_date: '2026-05-03' },
+    { id: 'd-task-3', title: 'Finish seminar abstract draft', status: 'overdue', course_name: 'Academic Writing', due_date: '2026-04-25' },
+    { id: 'd-task-4', title: 'Submit lab report', status: 'done', course_name: 'Physics', due_date: '2026-04-22' },
+  ],
+  courses: [
+    { id: 'd-course-1', name: 'Mathematics', teacher_name: 'Dr. Weber', level: 'Intermediate', description: 'Core algebra, geometry, and statistics with weekly practice.' },
+    { id: 'd-course-2', name: 'Biology', teacher_name: 'Prof. Klein', level: 'Intermediate', description: 'Cell biology, genetics, and ecology with structured revision blocks.' },
+    { id: 'd-course-3', name: 'Computer Science', teacher_name: 'Ms. Novak', level: 'Beginner', description: 'Programming, algorithms, and project-based learning.' },
+  ],
+  files: [
+    { id: 'd-file-1', name: 'Semester_Plan.pdf', size: 640 },
+    { id: 'd-file-2', name: 'Physics_Formula_Sheet.pdf', size: 220 },
+  ],
+  events: [
+    { id: 'd-event-1', title: 'Mathematics Quiz', starts_at: '2026-05-05T09:00:00Z', location: 'Room A-12' },
+    { id: 'd-event-2', title: 'Biology Lab', starts_at: '2026-05-07T12:00:00Z', location: 'Lab B-3' },
+  ],
+  grades: [
+    { id: 'd-grade-1', course_name: 'Mathematics', value: 2, notes: 'Strong progress', updated_at: '2026-04-20' },
+    { id: 'd-grade-2', course_name: 'Biology', value: 1, notes: 'Excellent practical work', updated_at: '2026-04-18' },
+  ],
+  chats: [
+    { id: 'd-room-1', room_name: 'General Study', last_message: 'Remember to review chapters 3 and 4.', updated_at: '2026-04-30T10:00:00Z' },
+    { id: 'd-room-2', room_name: 'Physics Lab Group', last_message: 'Meeting at 14:00 in Lab B-3.', updated_at: '2026-04-29T17:30:00Z' },
+  ],
+  chatMessages: {
+    'd-room-1': [
+      { id: 'd-msg-1', room_id: 'd-room-1', content: 'Hi all, today we focus on revision strategy.', created_at: '2026-04-30T08:00:00Z', sender_id: 'system', sender_name: 'Tutor' },
+      { id: 'd-msg-2', room_id: 'd-room-1', content: 'Remember to review chapters 3 and 4.', created_at: '2026-04-30T10:00:00Z', sender_id: 'system', sender_name: 'Tutor' },
+    ],
+    'd-room-2': [
+      { id: 'd-msg-3', room_id: 'd-room-2', content: 'Meeting at 14:00 in Lab B-3.', created_at: '2026-04-29T17:30:00Z', sender_id: 'system', sender_name: 'Lab Assistant' },
+    ],
+  },
+};
+
+const tr = (key, fallback) => {
+  if (typeof t === 'function') {
+    const translated = t(key);
+    if (translated && translated !== key) return translated;
+  }
+  return fallback || key;
+};
+
+const isDemoModeEnabled = () => {
+  if (FORCE_DEMO_MODE) return true;
+  const urlFlag = new URLSearchParams(window.location.search).get('demo');
+  if (urlFlag === '1') return true;
+  return localStorage.getItem(DEMO_MODE_KEY) === '1';
+};
+
+const getActiveLanguage = () => {
+  if (typeof currentLang === 'string' && currentLang) return currentLang;
+  if (typeof window.currentLang === 'string' && window.currentLang) return window.currentLang;
+  return (navigator.language || 'en');
+};
+
+const localizeLearnText = async (text, lang) => {
+  const normalized = (lang || 'en').toLowerCase();
+  if (normalized.startsWith('en')) return text;
+  if (typeof window.translateText !== 'function') return text;
+  return window.translateText(text, normalized);
+};
+
+const getLearningContextLine = (mode) => {
+  if (mode === 'school') {
+    const map = {
+      'grade-5-6': tr('learnSchoolStage56', 'School stage: Grade 5-6'),
+      'grade-7-8': tr('learnSchoolStage78', 'School stage: Grade 7-8'),
+      'grade-9-10': tr('learnSchoolStage910', 'School stage: Grade 9-10'),
+      'grade-11-13': tr('learnSchoolStage1113', 'School stage: Grade 11-13'),
+    };
+    return map[state.ui.schoolStage] || map['grade-9-10'];
+  }
+
+  const map = {
+    'semester-1-2': tr('learnUniSem12', 'University stage: Semester 1-2'),
+    'semester-3-4': tr('learnUniSem34', 'University stage: Semester 3-4'),
+    'semester-5-6': tr('learnUniSem56', 'University stage: Semester 5-6'),
+    'semester-7-plus': tr('learnUniSem7Plus', 'University stage: Semester 7+'),
+  };
+  return map[state.ui.uniSemester] || map['semester-1-2'];
+};
+
+const buildSimpleLessonPlan = (topic, mode) => {
+  const isUni = mode === 'university';
+  const examMode = state.ui.examMode || 'balanced';
+  const examHint = {
+    basics: tr('learnExamBasicsHint', 'Focus mode: strong basics first, then a small practice set.'),
+    balanced: tr('learnExamBalancedHint', 'Focus mode: balanced understanding, practice, and review.'),
+    exam: tr('learnExamHardHint', 'Focus mode: exam-style tasks with time pressure and quick feedback.'),
+  }[examMode] || tr('learnExamBalancedHint', 'Focus mode: balanced understanding, practice, and review.');
+
+  return {
+    level: isUni ? tr('learnLevelIntermediate', 'Intermediate') : tr('learnLevelBasic', 'Basic'),
+    explain: isUni
+      ? `${tr('learnExplainPrefix', 'In simple terms')}: ${topic} ${tr('learnExplainUni', 'means understanding the main concept, why it matters, and where it is applied in study or practice.')}`
+      : `${tr('learnExplainPrefix', 'In simple terms')}: ${topic} ${tr('learnExplainSchool', 'means learning one core idea at a time, then using easy examples to practice it.')}`,
+    steps: [
+      tr('learnStep1', 'Read the short explanation once.'),
+      tr('learnStep2', 'Write the key idea in your own words.'),
+      tr('learnStep3', 'Solve one mini task and check mistakes.'),
+    ],
+    miniTask: `${tr('learnMiniTask', 'Mini task')}: ${tr('learnMiniTaskAbout', 'Give one example for')} ${topic.toLowerCase()} ${tr('learnMiniTaskAndWhy', 'and explain why it fits.')}`,
+    hint: `${tr('learnHintSimple', 'Tip: If it feels hard, split the topic into smaller parts and repeat with one example each.')} ${examHint}`,
+  };
+};
+
+const loadLearnBookmarks = () => {
+  try {
+    const raw = localStorage.getItem(LEARN_BOOKMARKS_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+};
+
+const saveLearnBookmarks = (bookmarks) => {
+  try {
+    localStorage.setItem(LEARN_BOOKMARKS_KEY, JSON.stringify(bookmarks));
+  } catch {
+    // Ignore storage write failures.
+  }
+};
+
+const setLearnBookmark = (bookmark) => {
+  const all = loadLearnBookmarks();
+  all[bookmark.mode] = {
+    ...bookmark,
+    updatedAt: new Date().toISOString(),
+  };
+  saveLearnBookmarks(all);
+};
+
+const getLearnBookmark = (mode) => {
+  const all = loadLearnBookmarks();
+  return all[mode] || null;
 };
 
 const showAuthTab = (tab) => {
@@ -20,12 +179,34 @@ const setPageTitle = (title) => {
   document.getElementById('topbarTitle').textContent = title;
 };
 
+const PAGE_TITLE_KEYS = {
+  dashboard: { key: 'pageDashboard', fallback: 'Dashboard' },
+  courses: { key: 'pageCourses', fallback: 'Courses' },
+  'course-detail': { key: 'pageCourseDetail', fallback: 'Course Details' },
+  tasks: { key: 'pageTasks', fallback: 'Tasks' },
+  messages: { key: 'pageMessages', fallback: 'Messages' },
+  files: { key: 'pageFiles', fallback: 'Files' },
+  calendar: { key: 'pageCalendar', fallback: 'Calendar' },
+  grades: { key: 'pageGrades', fallback: 'Grades' },
+  learn: { key: 'pageLearn', fallback: 'Learn' },
+  settings: { key: 'pageSettings', fallback: 'Settings' },
+  profile: { key: 'pageProfile', fallback: 'Profile' },
+  admin: { key: 'pageAdmin', fallback: 'Users & Roles' },
+  invites: { key: 'pageInvites', fallback: 'Invite Codes' },
+};
+
+const getPageTitle = (page) => {
+  const config = PAGE_TITLE_KEYS[page];
+  if (!config) return page.charAt(0).toUpperCase() + page.slice(1);
+  return tr(config.key, config.fallback);
+};
+
 const navigate = (page) => {
   state.page = page;
   document.querySelectorAll('.page').forEach((section) => section.classList.remove('active'));
   document.getElementById(`page-${page}`).classList.add('active');
   document.querySelectorAll('.nav-item').forEach((link) => link.classList.toggle('active', link.dataset.page === page));
-  setPageTitle(page.charAt(0).toUpperCase() + page.slice(1));
+  setPageTitle(getPageTitle(page));
   closeSidebar();
   loadPage(page);
 };
@@ -57,6 +238,12 @@ const loadPage = async (page) => {
     case 'grades':
       renderGrades();
       break;
+    case 'learn':
+      renderLearn();
+      break;
+    case 'settings':
+      renderSettings();
+      break;
     case 'profile':
       renderProfile();
       break;
@@ -74,8 +261,32 @@ const loadPage = async (page) => {
 const showShell = () => {
   document.getElementById('authScreen').classList.add('hidden');
   document.getElementById('appShell').classList.remove('hidden');
+  loadUiSettings();
   updateUserChip();
   loadPage(state.page);
+};
+
+const loadUiSettings = () => {
+  try {
+    const raw = localStorage.getItem(UI_SETTINGS_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (parsed && (parsed.studyMode === 'school' || parsed.studyMode === 'university')) {
+      state.ui.studyMode = parsed.studyMode;
+      if (parsed.schoolStage) state.ui.schoolStage = parsed.schoolStage;
+      if (parsed.uniSemester) state.ui.uniSemester = parsed.uniSemester;
+      if (parsed.examMode) state.ui.examMode = parsed.examMode;
+    }
+  } catch (_) {
+    state.ui.studyMode = 'school';
+    state.ui.schoolStage = 'grade-9-10';
+    state.ui.uniSemester = 'semester-1-2';
+    state.ui.examMode = 'balanced';
+  }
+};
+
+const saveUiSettings = () => {
+  localStorage.setItem(UI_SETTINGS_KEY, JSON.stringify(state.ui));
 };
 
 const showAuth = () => {
@@ -118,12 +329,28 @@ const handleRegister = async (event) => {
   const email = document.getElementById('regEmail').value.trim();
   const password = document.getElementById('regPassword').value;
   const invite_code = document.getElementById('regCode').value.trim();
+  const study_type = document.getElementById('regStudyType').value;
+  const institution = document.getElementById('regInstitution').value.trim();
+  const level = document.getElementById('regLevel').value.trim();
   const role = document.getElementById('regRole').value;
   const regError = document.getElementById('regError');
   regError.textContent = '';
 
   try {
-    const { data, error } = await sb.auth.signUp({ email, password, options: { data: { full_name, role, invite_code } } });
+    const { data, error } = await sb.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name,
+          role,
+          invite_code,
+          study_type,
+          institution,
+          level,
+        }
+      }
+    });
     if (error) throw error;
     Notifications.show('Registration received. Please confirm your email if required.');
   } catch (err) {
@@ -132,6 +359,13 @@ const handleRegister = async (event) => {
 };
 
 const handleSignOut = async () => {
+  if (state.demoMode) {
+    state.user = null;
+    state.profile = null;
+    localStorage.removeItem(DEMO_MODE_KEY);
+    showAuth();
+    return;
+  }
   await sb.auth.signOut();
   state.user = null;
   state.profile = null;
@@ -162,6 +396,15 @@ const renderDashboard = async () => {
   dashTasks.textContent = 'Loading…';
   dashCourses.textContent = 'Loading…';
 
+  if (state.demoMode) {
+    const tasks = DEMO_DATA.tasks;
+    const courses = DEMO_DATA.courses;
+    dashUpcoming.innerHTML = tasks.slice(0, 4).map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : task.status === 'overdue' ? '#ef4444' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">Due ${new Date(task.due_date).toLocaleDateString()}</div></div></div>`).join('');
+    dashTasks.innerHTML = tasks.map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">${task.status}</div></div></div>`).join('');
+    dashCourses.innerHTML = courses.map((course) => `<div class="dash-list-item"><span class="dash-dot" style="background:linear-gradient(135deg,#7180ff,#7f95ff)"></span><div><div class="dash-list-title">${course.name}</div><div class="dash-list-sub">${course.teacher_name}</div></div></div>`).join('');
+    return;
+  }
+
   const [{ data: tasks }, { data: courses }] = await Promise.all([
     sb.from('tasks').select('*').order('due_date', { ascending: true }).limit(5),
     sb.from('courses').select('*').limit(4),
@@ -174,7 +417,12 @@ const renderDashboard = async () => {
 
 const renderCourses = async () => {
   const grid = document.getElementById('courseGrid');
-  courseGrid.innerHTML = '<div class="dash-list-placeholder">Loading courses…</div>';
+  grid.innerHTML = '<div class="dash-list-placeholder">Loading courses…</div>';
+  if (state.demoMode) {
+    state.courses = DEMO_DATA.courses;
+    grid.innerHTML = state.courses.map((course) => `<div class="course-card" onclick="showCourseDetail('${course.id}')"><div class="course-card-banner"></div><div class="course-card-body"><div class="course-card-name">${course.name}</div><div class="course-card-teacher">${course.teacher_name}</div><div class="course-card-chips"><span class="chip">${course.level || 'General'}</span></div></div></div>`).join('');
+    return;
+  }
   const { data, error } = await sb.from('courses').select('*').order('name', { ascending: true });
   if (error) return (grid.innerHTML = '<div class="dash-list-placeholder">Unable to load courses.</div>');
   state.courses = data;
@@ -201,28 +449,64 @@ const filterCourses = () => {
 const renderTasks = async () => {
   const container = document.getElementById('taskList');
   container.innerHTML = '<div class="dash-list-placeholder">Loading tasks…</div>';
+  if (state.demoMode) {
+    state.tasks = DEMO_DATA.tasks.slice();
+    filterTasks(state.taskFilter || 'all');
+    return;
+  }
   const { data, error } = await sb.from('tasks').select('*').order('due_date', { ascending: false });
   if (error) return (container.innerHTML = '<div class="dash-list-placeholder">Unable to load tasks.</div>');
   state.tasks = data || [];
-  container.innerHTML = state.tasks.length ? state.tasks.map((task) => `<div class="task-item ${task.status === 'overdue' ? 'overdue' : task.status === 'done' ? '' : 'due-soon'}"><div class="task-check ${task.status === 'done' ? 'checked' : ''}" onclick="toggleTaskDone(event, '${task.id}')"></div><div class="task-body"><div class="task-title">${task.title}</div><div class="task-meta"><span>${task.course_name || 'General'}</span><span>Due ${new Date(task.due_date).toLocaleDateString()}</span></div></div><div class="task-badge ${task.status === 'overdue' ? 'overdue' : task.status === 'done' ? 'submitted' : 'due-soon'}">${task.status}</div></div>`).join('') : '<div class="dash-list-placeholder">No tasks found.</div>';
+  filterTasks(state.taskFilter || 'all');
 };
 
 const renderMessages = async () => {
   const list = document.getElementById('msgRoomList');
-  list.innerHTML = '<div class="dash-list-placeholder">Loading chats…</div>';
-  const { data, error } = await sb.from('messages').select('id,room_name,last_message,updated_at').order('updated_at', { ascending: false });
-  if (error) return (list.innerHTML = '<div class="dash-list-placeholder">Unable to load chats.</div>');
-  state.messages = data || [];
-  if (!state.messages.length) {
-    list.innerHTML = '<div class="dash-list-placeholder">No chats available.</div>';
+  list.innerHTML = `<div class="dash-list-placeholder">${tr('chatLoading', 'Loading chats...')}</div>`;
+  if (state.demoMode) {
+    state.messages = DEMO_DATA.chats.slice();
+    list.innerHTML = state.messages.map((room) => `<div class="msg-room-item ${state.chat.currentRoomId === room.id ? 'active' : ''}" onclick="openChat('${room.id}')"><div class="msg-room-avatar">${(room.room_name || 'R').charAt(0).toUpperCase()}</div><div class="msg-room-info"><div class="msg-room-name">${room.room_name || tr('chatRoom', 'Room')}</div><div class="msg-room-preview">${room.last_message || tr('chatNoMessagesYet', 'No messages yet')}</div></div></div>`).join('');
+    if (!state.chat.currentRoomId && state.messages[0]) state.chat.currentRoomId = state.messages[0].id;
+    if (state.chat.currentRoomId) await openChat(state.chat.currentRoomId);
     return;
   }
-  list.innerHTML = state.messages.map((room) => `<div class="msg-room-item" onclick="openChat('${room.id}')"><div class="msg-room-avatar">${room.room_name.charAt(0).toUpperCase()}</div><div class="msg-room-info"><div class="msg-room-name">${room.room_name}</div><div class="msg-room-preview">${room.last_message || 'No messages yet'}</div></div></div>`).join('');
+  let data = null;
+  let error = null;
+
+  const roomsRes = await sb.from('chat_rooms').select('id,name,updated_at').order('updated_at', { ascending: false });
+  if (!roomsRes.error && roomsRes.data) {
+    data = roomsRes.data.map((room) => ({
+      id: room.id,
+      room_name: room.name,
+      last_message: '',
+      updated_at: room.updated_at,
+    }));
+  } else {
+    const fallback = await sb.from('messages').select('id,room_name,last_message,updated_at').order('updated_at', { ascending: false });
+    data = fallback.data;
+    error = fallback.error;
+  }
+
+  if (error) return (list.innerHTML = `<div class="dash-list-placeholder">${tr('chatLoadError', 'Unable to load chats.')}</div>`);
+  state.messages = data || [];
+  if (!state.messages.length) {
+    list.innerHTML = `<div class="dash-list-placeholder">${tr('chatNoRooms', 'No chats available.')}</div>`;
+    document.getElementById('msgChatArea').innerHTML = `<div class="msg-empty-state"><p>${tr('chatCreateFirstRoom', 'Create your first chat room.')}</p></div>`;
+    return;
+  }
+  list.innerHTML = state.messages.map((room) => `<div class="msg-room-item ${state.chat.currentRoomId === room.id ? 'active' : ''}" onclick="openChat('${room.id}')"><div class="msg-room-avatar">${(room.room_name || 'R').charAt(0).toUpperCase()}</div><div class="msg-room-info"><div class="msg-room-name">${room.room_name || tr('chatRoom', 'Room')}</div><div class="msg-room-preview">${room.last_message || tr('chatNoMessagesYet', 'No messages yet')}</div></div></div>`).join('');
+  if (state.chat.currentRoomId) {
+    await openChat(state.chat.currentRoomId);
+  }
 };
 
 const renderFiles = async () => {
   const grid = document.getElementById('fileGrid');
   grid.innerHTML = '<div class="dash-list-placeholder">Loading files…</div>';
+  if (state.demoMode) {
+    grid.innerHTML = DEMO_DATA.files.map((file) => `<div class="file-item"><div class="file-icon">📄</div><div class="file-name">${file.name}</div><div class="file-size">${file.size || '—'} KB</div></div>`).join('');
+    return;
+  }
   const { data, error } = await sb.from('files').select('*').order('created_at', { ascending: false });
   if (error) return (grid.innerHTML = '<div class="dash-list-placeholder">Unable to load files.</div>');
   grid.innerHTML = data.length ? data.map((file) => `<div class="file-item"><div class="file-icon">📄</div><div class="file-name">${file.name}</div><div class="file-size">${file.size || '—'} KB</div></div>`).join('') : '<div class="dash-list-placeholder">No files uploaded yet.</div>';
@@ -230,6 +514,11 @@ const renderFiles = async () => {
 
 const renderCalendar = async () => {
   document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">Loading calendar…</div>';
+  if (state.demoMode) {
+    const data = DEMO_DATA.events;
+    document.getElementById('calendarContainer').innerHTML = `<div class="dash-list-item">${data.map((event) => `<div class="dash-card"><div class="dash-card-title">${event.title}</div><div class="dash-list-sub">${new Date(event.starts_at).toLocaleDateString()} • ${event.location || 'No location'}</div></div>`).join('')}</div>`;
+    return;
+  }
   const { data, error } = await sb.from('events').select('*').order('starts_at', { ascending: true });
   if (error) return (document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">Unable to load events.</div>');
   if (!data.length) return (document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">No events scheduled.</div>');
@@ -239,9 +528,296 @@ const renderCalendar = async () => {
 const renderGrades = async () => {
   const content = document.getElementById('gradesContent');
   content.innerHTML = '<div class="dash-list-placeholder">Loading grades…</div>';
+  if (state.demoMode) {
+    const data = DEMO_DATA.grades;
+    content.innerHTML = `<table class="grade-table"><thead><tr><th>Course</th><th>Grade</th><th>Notes</th></tr></thead><tbody>${data.map((grade) => `<tr><td>${grade.course_name}</td><td class="grade-val grade-${Math.min(6, Math.max(1, grade.value))}">${grade.value}</td><td>${grade.notes || '—'}</td></tr>`).join('')}</tbody></table>`;
+    return;
+  }
   const { data, error } = await sb.from('grades').select('*').order('updated_at', { ascending: false });
   if (error) return (content.innerHTML = '<div class="dash-list-placeholder">Unable to load grades.</div>');
   content.innerHTML = data.length ? `<table class="grade-table"><thead><tr><th>Course</th><th>Grade</th><th>Notes</th></tr></thead><tbody>${data.map((grade) => `<tr><td>${grade.course_name}</td><td class="grade-val grade-${Math.min(6, Math.max(1, grade.value))}">${grade.value}</td><td>${grade.notes || '—'}</td></tr>`).join('')}</tbody></table>` : '<div class="dash-list-placeholder">No grades available.</div>';
+};
+
+const renderLearn = async () => {
+  const container = document.getElementById('learnContent');
+  if (!container) return;
+
+  const mode = state.ui.studyMode;
+  const activeLang = getActiveLanguage();
+  const bookmark = getLearnBookmark(mode);
+  const copy = {
+    title: tr('learnLibraryTitle', 'Open Learning Library'),
+    subtitle: tr('learnLibrarySubtitle', 'Structured by subject folders with trusted sources for school and university.'),
+    modeLabel: tr('learnCurrentMode', 'Current mode'),
+    modeValue: mode === 'school' ? tr('studyModeSchool', 'School') : tr('studyModeUniversity', 'University'),
+    modeContext: tr('learnModeContext', 'Learning profile'),
+    bookmarkTitle: tr('learnBookmarkTitle', 'Continue where you left off'),
+    bookmarkEmpty: tr('learnBookmarkEmpty', 'No bookmark yet. Mark a topic to resume later.'),
+    bookmarkAt: tr('learnBookmarkedAt', 'Saved topic'),
+    resume: tr('learnResume', 'Resume'),
+    clearBookmark: tr('learnClearBookmark', 'Clear bookmark'),
+    markHere: tr('learnMarkHere', 'Mark this topic'),
+    topics: tr('learnTopics', 'Topics'),
+    summary: tr('learnSummary', 'Simple explanation'),
+    hints: tr('learnHints', 'Learning help'),
+    inAppTitle: tr('learnInAppTitle', 'In-app learning cards'),
+    inAppSubtitle: tr('learnInAppSubtitle', 'Everything below is directly usable in the app without opening external links.'),
+    lessonPlan: tr('learnLessonPlan', 'Lesson plan'),
+    level: tr('learnLevel', 'Level'),
+    explain: tr('learnExplain', 'Easy explanation'),
+    steps: tr('learnSteps', 'Steps'),
+    miniTask: tr('learnMiniTaskLabel', 'Mini practice'),
+    sourcesOptional: tr('learnSourcesOptional', 'Trusted sources (optional)'),
+    sources: tr('learnTrustedSources', 'Trusted sources'),
+    empty: tr('learnEmpty', 'No learning areas available for this mode.')
+  };
+
+  const model = window.LEARN_SOURCES || { core: {}, school: [], university: [] };
+  const subjects = model[mode] || [];
+
+  const localizedSubjects = await Promise.all(subjects.map(async (subject) => {
+    const translatedTitle = await localizeLearnText(subject.title, activeLang);
+    const translatedFolders = await Promise.all((subject.folders || []).map(async (folder) => {
+      const translatedName = await localizeLearnText(folder.name, activeLang);
+      const translatedTopics = await Promise.all((folder.topics || []).map((topic) => localizeLearnText(topic, activeLang)));
+      const defaultHelps = [
+        `Break ${folder.name} into small daily parts and study one part at a time.`,
+        'Use active recall: close your notes and explain the concept from memory.',
+        'Solve at least three practice tasks and review mistakes immediately.'
+      ];
+      const translatedHelps = await Promise.all((folder.helps || defaultHelps).map((item) => localizeLearnText(item, activeLang)));
+      const lessonCards = await Promise.all(translatedTopics.map(async (topic) => {
+        const plan = buildSimpleLessonPlan(topic, mode);
+        return {
+          level: await localizeLearnText(plan.level, activeLang),
+          explain: await localizeLearnText(plan.explain, activeLang),
+          steps: await Promise.all(plan.steps.map((step) => localizeLearnText(step, activeLang))),
+          miniTask: await localizeLearnText(plan.miniTask, activeLang),
+          hint: await localizeLearnText(plan.hint, activeLang),
+        };
+      }));
+      const summaryBase = `This module explains ${folder.name} in easy steps. First learn the basics, then practice with examples, and finally test your understanding with exercises.`;
+      return {
+        ...folder,
+        name: translatedName,
+        topics: translatedTopics,
+        helps: translatedHelps,
+        lessonCards,
+        summary: await localizeLearnText(summaryBase, activeLang),
+      };
+    }));
+    return { ...subject, title: translatedTitle, folders: translatedFolders };
+  }));
+
+  container.innerHTML = `
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">${copy.title}</div>
+      <p class="card-sub">${copy.subtitle}</p>
+      <p class="card-sub">${copy.modeLabel}: <strong style="color:var(--text)">${copy.modeValue}</strong></p>
+      <p class="card-sub">${copy.modeContext}: <strong style="color:var(--text)">${getLearningContextLine(mode)}</strong></p>
+    </div>
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">${copy.bookmarkTitle}</div>
+      ${bookmark
+        ? `<p class="card-sub">${copy.bookmarkAt}: <strong style="color:var(--text)">${bookmark.subjectTitle} - ${bookmark.folderName} - ${bookmark.topic}</strong></p>
+           <div style="display:flex;gap:8px;flex-wrap:wrap">
+             <button class="btn btn-primary" onclick="resumeLearnBookmark()">${copy.resume}</button>
+             <button class="btn btn-secondary" onclick="clearLearnBookmark()">${copy.clearBookmark}</button>
+           </div>`
+        : `<p class="card-sub">${copy.bookmarkEmpty}</p>`}
+    </div>
+    <div class="dash-grid">
+      ${localizedSubjects.length ? localizedSubjects.map((subject) => `
+        <article class="dash-card">
+          <div class="dash-card-title">${subject.title}</div>
+          <div style="display:grid;gap:10px">
+            ${(subject.folders || []).map((folder, folderIndex) => `
+              <details class="card" data-learn-anchor="${subject.id}::${folderIndex}" style="padding:12px;border-radius:14px;margin:0">
+                <summary style="cursor:pointer;font-weight:700">${folder.name}</summary>
+                <div style="margin-top:8px" class="card-sub">${copy.summary}</div>
+                <p style="margin-top:6px">${folder.summary || ''}</p>
+                <div style="margin-top:8px" class="card-sub">${copy.hints}</div>
+                <ul style="padding-left:16px;margin-top:6px;display:grid;gap:4px">
+                  ${(folder.helps || []).map((hint) => `<li>${hint}</li>`).join('')}
+                </ul>
+                <div style="margin-top:10px" class="card-sub">${copy.inAppTitle}</div>
+                <p style="margin-top:6px" class="card-sub">${copy.inAppSubtitle}</p>
+                <div style="margin-top:8px" class="card-sub">${copy.topics}</div>
+                <ul style="padding-left:16px;margin-top:6px;display:grid;gap:4px">
+                  ${(folder.topics || []).map((topic, topicIndex) => `<li><button class="btn btn-secondary" style="padding:4px 8px;font-size:12px;margin-right:8px" onclick="markLearnTopic('${subject.id}','${encodeURIComponent(subject.title)}','${encodeURIComponent(folder.name)}',${folderIndex},'${encodeURIComponent(topic)}',${topicIndex})">${copy.markHere}</button>${topic}</li>`).join('')}
+                </ul>
+                <div style="margin-top:10px;display:grid;gap:10px">
+                  ${(folder.lessonCards || []).map((card, idx) => `
+                    <div class="card" style="padding:10px;border-radius:12px">
+                      <div class="card-sub" style="font-weight:700">${copy.lessonPlan} ${idx + 1}</div>
+                      <div style="margin-top:6px"><strong>${copy.level}:</strong> ${card.level}</div>
+                      <div style="margin-top:4px"><strong>${copy.explain}:</strong> ${card.explain}</div>
+                      <div style="margin-top:4px"><strong>${copy.steps}:</strong></div>
+                      <ul style="padding-left:16px;margin-top:4px;display:grid;gap:3px">
+                        ${(card.steps || []).map((step) => `<li>${step}</li>`).join('')}
+                      </ul>
+                      <div style="margin-top:4px"><strong>${copy.miniTask}:</strong> ${card.miniTask}</div>
+                      <div style="margin-top:4px" class="card-sub">${card.hint}</div>
+                    </div>
+                  `).join('')}
+                </div>
+                <details style="margin-top:10px">
+                  <summary class="card-sub" style="cursor:pointer">${copy.sourcesOptional}</summary>
+                  <div style="margin-top:6px" class="card-sub">${copy.sources}</div>
+                  <ul style="padding-left:16px;margin-top:6px;display:grid;gap:4px">
+                    ${(model.core[folder.sourceGroup] || []).map((source) => `<li><a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.title}</a></li>`).join('')}
+                  </ul>
+                </details>
+              </details>
+            `).join('')}
+          </div>
+        </article>
+      `).join('') : `<div class="dash-list-placeholder">${copy.empty}</div>`}
+    </div>
+  `;
+};
+
+const markLearnTopic = (subjectId, subjectTitle, folderName, folderIndex, topic, topicIndex) => {
+  const decodedSubject = decodeURIComponent(subjectTitle || '');
+  const decodedFolder = decodeURIComponent(folderName || '');
+  const decodedTopic = decodeURIComponent(topic || '');
+  setLearnBookmark({
+    mode: state.ui.studyMode,
+    subjectId,
+    subjectTitle: decodedSubject,
+    folderName: decodedFolder,
+    folderIndex,
+    topic: decodedTopic,
+    topicIndex,
+  });
+  Notifications.show(tr('learnBookmarkSaved', 'Bookmark saved.'));
+  renderLearn();
+};
+
+const clearLearnBookmark = () => {
+  const all = loadLearnBookmarks();
+  delete all[state.ui.studyMode];
+  saveLearnBookmarks(all);
+  Notifications.show(tr('learnBookmarkCleared', 'Bookmark cleared.'));
+  renderLearn();
+};
+
+const resumeLearnBookmark = () => {
+  const bookmark = getLearnBookmark(state.ui.studyMode);
+  if (!bookmark) return;
+  const anchor = `${bookmark.subjectId}::${bookmark.folderIndex}`;
+  const target = document.querySelector(`[data-learn-anchor="${anchor}"]`);
+  if (!target) return;
+  target.open = true;
+  target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+
+const renderSettings = () => {
+  const container = document.getElementById('settingsContent');
+  if (!container) return;
+
+  const isSchool = state.ui.studyMode === 'school';
+  container.innerHTML = `
+    <div class="card" style="max-width:860px">
+      <div class="card-title">${tr('studyModeTitle', 'Study mode')}</div>
+      <p class="card-sub" style="margin-bottom:14px">${tr('studyModeDescription', 'Choose whether your learning layout is optimized for school or university.')}</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+        <button class="btn ${isSchool ? 'btn-primary' : 'btn-secondary'}" onclick="setStudyMode('school')">${tr('studyModeSchool', 'School')}</button>
+        <button class="btn ${!isSchool ? 'btn-primary' : 'btn-secondary'}" onclick="setStudyMode('university')">${tr('studyModeUniversity', 'University')}</button>
+      </div>
+      <div class="field" style="margin-top:10px">
+        <label>${tr('studySchoolStage', 'School stage')}</label>
+        <select class="select" onchange="setSchoolStage(this.value)">
+          <option value="grade-5-6" ${state.ui.schoolStage === 'grade-5-6' ? 'selected' : ''}>${tr('learnSchoolStage56', 'School stage: Grade 5-6')}</option>
+          <option value="grade-7-8" ${state.ui.schoolStage === 'grade-7-8' ? 'selected' : ''}>${tr('learnSchoolStage78', 'School stage: Grade 7-8')}</option>
+          <option value="grade-9-10" ${state.ui.schoolStage === 'grade-9-10' ? 'selected' : ''}>${tr('learnSchoolStage910', 'School stage: Grade 9-10')}</option>
+          <option value="grade-11-13" ${state.ui.schoolStage === 'grade-11-13' ? 'selected' : ''}>${tr('learnSchoolStage1113', 'School stage: Grade 11-13')}</option>
+        </select>
+      </div>
+      <div class="field" style="margin-top:10px">
+        <label>${tr('studyUniSemester', 'University semester range')}</label>
+        <select class="select" onchange="setUniSemester(this.value)">
+          <option value="semester-1-2" ${state.ui.uniSemester === 'semester-1-2' ? 'selected' : ''}>${tr('learnUniSem12', 'University stage: Semester 1-2')}</option>
+          <option value="semester-3-4" ${state.ui.uniSemester === 'semester-3-4' ? 'selected' : ''}>${tr('learnUniSem34', 'University stage: Semester 3-4')}</option>
+          <option value="semester-5-6" ${state.ui.uniSemester === 'semester-5-6' ? 'selected' : ''}>${tr('learnUniSem56', 'University stage: Semester 5-6')}</option>
+          <option value="semester-7-plus" ${state.ui.uniSemester === 'semester-7-plus' ? 'selected' : ''}>${tr('learnUniSem7Plus', 'University stage: Semester 7+')}</option>
+        </select>
+      </div>
+      <div class="field" style="margin-top:10px">
+        <label>${tr('studyExamMode', 'Practice focus')}</label>
+        <select class="select" onchange="setExamMode(this.value)">
+          <option value="basics" ${state.ui.examMode === 'basics' ? 'selected' : ''}>${tr('studyExamModeBasics', 'Basics first')}</option>
+          <option value="balanced" ${state.ui.examMode === 'balanced' ? 'selected' : ''}>${tr('studyExamModeBalanced', 'Balanced')}</option>
+          <option value="exam" ${state.ui.examMode === 'exam' ? 'selected' : ''}>${tr('studyExamModeExam', 'Exam prep')}</option>
+        </select>
+      </div>
+      <div class="card-sub">${tr('studyModeCurrent', 'Current mode')}: <strong style="color:var(--text)">${isSchool ? tr('studyModeSchool', 'School') : tr('studyModeUniversity', 'University')}</strong></div>
+    </div>
+  `;
+};
+
+const setStudyMode = (mode) => {
+  if (mode !== 'school' && mode !== 'university') return;
+  state.ui.studyMode = mode;
+  saveUiSettings();
+  renderSettings();
+  renderLearn();
+  if (!state.demoMode && typeof EdgeFunctions?.saveStudyPreferences === 'function') {
+    EdgeFunctions.saveStudyPreferences({
+      user_id: state.user?.id || null,
+      study_mode: mode,
+      institution: state.profile?.institution || null,
+      level: state.profile?.level || null,
+    }).catch(() => {});
+  }
+  Notifications.show(`${tr('studyModeSwitchedTo', 'Study mode switched to')} ${mode === 'school' ? tr('studyModeSchool', 'School') : tr('studyModeUniversity', 'University')}.`);
+};
+
+const setSchoolStage = (stage) => {
+  state.ui.schoolStage = stage;
+  saveUiSettings();
+  renderSettings();
+  renderLearn();
+};
+
+const setUniSemester = (semester) => {
+  state.ui.uniSemester = semester;
+  saveUiSettings();
+  renderSettings();
+  renderLearn();
+};
+
+const setExamMode = (mode) => {
+  state.ui.examMode = mode;
+  saveUiSettings();
+  renderSettings();
+  renderLearn();
+};
+
+const filterTasks = (filter, button) => {
+  state.taskFilter = filter;
+  const chips = Array.from(document.querySelectorAll('#page-tasks .filter-chip'));
+  chips.forEach((chip) => chip.classList.remove('active'));
+  if (button) {
+    button.classList.add('active');
+  } else {
+    const match = chips.find((chip) => chip.textContent.trim().toLowerCase() === filter.toLowerCase());
+    if (match) match.classList.add('active');
+  }
+
+  const filtered = (state.tasks || []).filter((task) => {
+    if (filter === 'all') return true;
+    if (filter === 'done') return task.status === 'done';
+    if (filter === 'open') return task.status !== 'done';
+    if (filter === 'overdue') return task.status === 'overdue';
+    return true;
+  });
+
+  const container = document.getElementById('taskList');
+  if (!container) return;
+  container.innerHTML = filtered.length
+    ? filtered.map((task) => `<div class="task-item ${task.status === 'overdue' ? 'overdue' : task.status === 'done' ? '' : 'due-soon'}"><div class="task-check ${task.status === 'done' ? 'checked' : ''}" onclick="toggleTaskDone(event, '${task.id}')"></div><div class="task-body"><div class="task-title">${task.title}</div><div class="task-meta"><span>${task.course_name || 'General'}</span><span>Due ${new Date(task.due_date).toLocaleDateString()}</span></div></div><div class="task-badge ${task.status === 'overdue' ? 'overdue' : task.status === 'done' ? 'submitted' : 'due-soon'}">${task.status}</div></div>`).join('')
+    : '<div class="dash-list-placeholder">No tasks in this filter.</div>';
 };
 
 const renderProfile = () => {
@@ -326,8 +902,153 @@ const toggleNotifs = () => {
   Notifications.show('Notifications panel not implemented yet.');
 };
 
-const openChat = (roomId) => {
-  document.getElementById('msgChatArea').innerHTML = `<div class="msg-chat-header">Chat room ${roomId}</div><div class="msg-chat-messages">Messages will appear here.</div><div class="msg-chat-input-wrap"><textarea class="msg-chat-input" placeholder="Write a message..."></textarea><button class="btn btn-primary">Send</button></div>`;
+const openChat = async (roomId) => {
+  state.chat.currentRoomId = roomId;
+  let rows = [];
+
+  if (state.demoMode) {
+    rows = (DEMO_DATA.chatMessages[roomId] || []).slice();
+    state.chat.messagesByRoom[roomId] = rows;
+    const room = state.messages.find((entry) => entry.id === roomId);
+    const roomName = room?.room_name || 'Chat';
+    const bubbles = rows.length
+      ? rows.map((item) => {
+          const mine = item.sender_id === state.user?.id;
+          return `<div class="msg-bubble ${mine ? 'mine' : 'theirs'}">${item.sender_name ? `<div class="msg-bubble-sender">${item.sender_name}</div>` : ''}<div>${item.content || ''}</div><div class="msg-bubble-time">${item.created_at ? new Date(item.created_at).toLocaleString() : ''}</div></div>`;
+        }).join('')
+      : `<div class="dash-list-placeholder">${tr('chatNoMessagesYet', 'No messages yet')}</div>`;
+
+    document.getElementById('msgChatArea').innerHTML = `
+      <div class="msg-chat-header">${roomName}</div>
+      <div class="msg-chat-messages" id="msgChatMessages">${bubbles}</div>
+      <div class="msg-chat-input-wrap">
+        <textarea class="msg-chat-input" id="msgComposer" placeholder="${tr('chatWriteMessage', 'Write a message...')}"></textarea>
+        <button class="btn btn-primary" onclick="sendChatMessage()">${tr('chatSend', 'Send')}</button>
+      </div>
+    `;
+    return;
+  }
+
+  const msgRes = await sb
+    .from('chat_messages')
+    .select('id,room_id,content,created_at,sender_id,sender_name')
+    .eq('room_id', roomId)
+    .order('created_at', { ascending: true });
+
+  if (!msgRes.error && msgRes.data) {
+    rows = msgRes.data;
+  } else {
+    const fallback = await sb
+      .from('messages')
+      .select('id,room_id,content,created_at,sender_id,sender_name')
+      .eq('room_id', roomId)
+      .order('created_at', { ascending: true });
+    rows = fallback.data || [];
+  }
+
+  state.chat.messagesByRoom[roomId] = rows;
+  const room = state.messages.find((entry) => entry.id === roomId);
+  const roomName = room?.room_name || 'Chat';
+  const bubbles = rows.length
+    ? rows.map((item) => {
+        const mine = item.sender_id === state.user?.id;
+        return `<div class="msg-bubble ${mine ? 'mine' : 'theirs'}">${item.sender_name ? `<div class="msg-bubble-sender">${item.sender_name}</div>` : ''}<div>${item.content || ''}</div><div class="msg-bubble-time">${item.created_at ? new Date(item.created_at).toLocaleString() : ''}</div></div>`;
+      }).join('')
+    : '<div class="dash-list-placeholder">No messages yet. Start this conversation.</div>';
+
+  document.getElementById('msgChatArea').innerHTML = `
+    <div class="msg-chat-header">${roomName}</div>
+    <div class="msg-chat-messages" id="msgChatMessages">${bubbles}</div>
+    <div class="msg-chat-input-wrap">
+      <textarea class="msg-chat-input" id="msgComposer" placeholder="Write a message..."></textarea>
+      <button class="btn btn-primary" onclick="sendChatMessage()">Send</button>
+    </div>
+  `;
+
+  document.querySelectorAll('#msgRoomList .msg-room-item').forEach((node) => node.classList.remove('active'));
+  const active = Array.from(document.querySelectorAll('#msgRoomList .msg-room-item')).find((node) => node.innerHTML.includes(roomName));
+  if (active) active.classList.add('active');
+};
+
+const sendChatMessage = async () => {
+  const roomId = state.chat.currentRoomId;
+  const composer = document.getElementById('msgComposer');
+  if (!roomId || !composer) return;
+
+  const content = composer.value.trim();
+  if (!content) return;
+
+  const payload = {
+    room_id: roomId,
+    content,
+    sender_id: state.user?.id,
+    sender_name: state.profile?.full_name || state.user?.email || 'User',
+  };
+
+  if (state.demoMode) {
+    const list = DEMO_DATA.chatMessages[roomId] || [];
+    list.push({
+      id: `d-msg-${Date.now()}`,
+      room_id: roomId,
+      content,
+      sender_id: state.user?.id,
+      sender_name: state.profile?.full_name || 'Demo User',
+      created_at: new Date().toISOString(),
+    });
+    DEMO_DATA.chatMessages[roomId] = list;
+    composer.value = '';
+    await openChat(roomId);
+    await renderMessages();
+    return;
+  }
+
+  let inserted = false;
+  const primary = await sb.from('chat_messages').insert(payload);
+  if (!primary.error) inserted = true;
+  if (!inserted) {
+    const fallback = await sb.from('messages').insert(payload);
+    if (fallback.error) {
+      Notifications.show('Could not send message', 'error');
+      return;
+    }
+  }
+
+  composer.value = '';
+  await openChat(roomId);
+  await renderMessages();
+};
+
+const startNewChat = async () => {
+  const roomName = prompt(tr('chatRoomNamePrompt', 'Room name'));
+  if (!roomName || !roomName.trim()) return;
+
+  if (state.demoMode) {
+    const roomId = `d-room-${Date.now()}`;
+    DEMO_DATA.chats.unshift({
+      id: roomId,
+      room_name: roomName.trim(),
+      last_message: '',
+      updated_at: new Date().toISOString(),
+    });
+    DEMO_DATA.chatMessages[roomId] = [];
+    await renderMessages();
+    await openChat(roomId);
+    return;
+  }
+
+  let roomId = null;
+  const createRoom = await sb.from('chat_rooms').insert({ name: roomName.trim() }).select('id').single();
+  if (!createRoom.error && createRoom.data?.id) {
+    roomId = createRoom.data.id;
+  }
+
+  if (!roomId) {
+    Notifications.show('Chat room table not available. Please create chat_rooms.', 'error');
+    return;
+  }
+
+  await renderMessages();
+  await openChat(roomId);
 };
 
 const openFileUpload = () => {
@@ -343,11 +1064,27 @@ const toggleTaskDone = async (event, taskId) => {
   const task = state.tasks.find((t) => t.id === taskId);
   if (!task) return;
   const updatedStatus = task.status === 'done' ? 'open' : 'done';
+  if (state.demoMode) {
+    task.status = updatedStatus;
+    renderTasks();
+    return;
+  }
   await sb.from('tasks').update({ status: updatedStatus }).eq('id', taskId);
   renderTasks();
 };
 
 const init = async () => {
+  if (typeof ensurePagesMounted === 'function') ensurePagesMounted();
+  if (isDemoModeEnabled()) {
+    state.demoMode = true;
+    state.user = { id: 'demo-user', email: 'demo@paideon.local' };
+    state.profile = { id: 'demo-user', full_name: 'Demo User', role: 'student' };
+    localStorage.setItem(DEMO_MODE_KEY, '1');
+    showShell();
+    Notifications.show(tr('demoModeEnabled', 'Demo mode enabled. Authentication is bypassed for testing.'));
+    return;
+  }
+
   const { data: { session }, error } = await sb.auth.getSession();
   if (error) return Notifications.show('Auth error.');
 
@@ -360,7 +1097,43 @@ const init = async () => {
   }
 };
 
+Object.assign(window, {
+  showAuthTab,
+  handleLogin,
+  handleRegister,
+  handleSignOut,
+  navigate,
+  filterCourses,
+  filterTasks,
+  toggleSidebar,
+  closeSidebar,
+  openSearch,
+  toggleNotifs,
+  openChat,
+  startNewChat,
+  sendChatMessage,
+  openFileUpload,
+  openCreateEvent,
+  toggleTaskDone,
+  openCreateUser,
+  submitCreateUser,
+  closeModal,
+  generateInviteCode,
+  setStudyMode,
+  setSchoolStage,
+  setUniSemester,
+  setExamMode,
+  markLearnTopic,
+  resumeLearnBookmark,
+  clearLearnBookmark,
+});
+
 window.addEventListener('DOMContentLoaded', () => {
+  window.onLanguageChanged = () => {
+    setPageTitle(getPageTitle(state.page));
+    loadPage(state.page);
+  };
+
   showAuthTab('login');
   init();
 });

@@ -1,5 +1,5 @@
-/* StudyLane – Service Worker */
-const CACHE = 'studylane-v1';
+/* Paideon – Service Worker */
+const CACHE = 'paideon-v1';
 const ASSETS = [
   './',
   './index.html',

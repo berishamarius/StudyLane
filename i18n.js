@@ -129,6 +129,88 @@ const AVAILABLE_LOCALES = new Set(LANGUAGES.map(lang => lang.code));
 
 const localeCache = Object.create(null);
 let currentLang = 'en';
+window.currentLang = currentLang;
+const AUTO_TRANSLATION_CACHE_KEY = 'paideon_auto_translation_cache_v1';
+const AUTO_TRANSLATION_PREFILL_KEY = 'paideon_auto_translation_prefill_done_v1';
+const autoTranslationCache = (() => {
+	try {
+		const raw = localStorage.getItem(AUTO_TRANSLATION_CACHE_KEY);
+		return raw ? JSON.parse(raw) : {};
+	} catch {
+		return {};
+	}
+})();
+
+function persistAutoTranslationCache() {
+	try {
+		localStorage.setItem(AUTO_TRANSLATION_CACHE_KEY, JSON.stringify(autoTranslationCache));
+	} catch {
+		// Ignore storage write failures.
+	}
+}
+
+function getTranslateTarget(code) {
+	if (!code) return 'en';
+	if (code === 'zh-TW') return 'zh-TW';
+	return code.split('-')[0];
+}
+
+async function translateText(text, targetCode) {
+	const clean = (text || '').trim();
+	if (!clean) return clean;
+	const target = getTranslateTarget(targetCode);
+	if (target === 'en') return clean;
+
+	autoTranslationCache[target] = autoTranslationCache[target] || {};
+	if (autoTranslationCache[target][clean]) return autoTranslationCache[target][clean];
+
+	try {
+		const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${encodeURIComponent(target)}&dt=t&q=${encodeURIComponent(clean)}`;
+		const response = await fetch(url);
+		if (!response.ok) throw new Error('Auto translation failed');
+		const data = await response.json();
+		const translated = Array.isArray(data?.[0])
+			? data[0].map(part => Array.isArray(part) ? (part[0] || '') : '').join('').trim()
+			: '';
+		const finalText = translated || clean;
+		autoTranslationCache[target][clean] = finalText;
+		persistAutoTranslationCache();
+		return finalText;
+	} catch {
+		return clean;
+	}
+}
+
+async function fillMissingLocaleKeys(code) {
+	if (code === 'en') return;
+	const english = localeCache.en || {};
+	const target = localeCache[code] || {};
+
+	const missingKeys = Object.keys(english).filter(key => !target[key] || target[key] === key);
+	if (!missingKeys.length) return;
+
+	await Promise.all(missingKeys.map(async (key) => {
+		target[key] = await translateText(english[key], code);
+	}));
+
+	localeCache[code] = target;
+}
+
+async function prefillAllMissingLocaleKeysInBackground() {
+	try {
+		if (localStorage.getItem(AUTO_TRANSLATION_PREFILL_KEY) === '1') return;
+		await loadLocale('en');
+		for (const lang of LANGUAGES) {
+			const code = normalizeLanguageCode(lang.code);
+			if (code === 'en') continue;
+			await loadLocale(code);
+			await fillMissingLocaleKeys(code);
+		}
+		localStorage.setItem(AUTO_TRANSLATION_PREFILL_KEY, '1');
+	} catch {
+		// Ignore background prefill failures.
+	}
+}
 
 function normalizeLanguageCode(code) {
 	if (!code || typeof code !== 'string') return 'en';
@@ -173,7 +255,10 @@ async function setLanguage(code) {
 		normalized === 'en' ? Promise.resolve({}) : loadLocale(normalized),
 	]);
 
+	await fillMissingLocaleKeys(normalized);
+
 	currentLang = normalized;
+	window.currentLang = normalized;
 	document.documentElement.lang = normalized;
 	document.documentElement.dir = lang.dir || 'ltr';
 
@@ -192,4 +277,12 @@ async function setLanguage(code) {
 	const labelEl = document.getElementById('langLabel');
 	if (flagEl) flagEl.textContent = lang.flag;
 	if (labelEl) labelEl.textContent = lang.code.toUpperCase();
+
+	if (typeof window.onLanguageChanged === 'function') {
+		window.onLanguageChanged(normalized);
+	}
+
+	void prefillAllMissingLocaleKeysInBackground();
 }
+
+window.translateText = translateText;

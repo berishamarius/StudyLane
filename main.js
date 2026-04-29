@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   StudyLane – main.js  (Electron desktop shell)
+  Paideon – main.js  (Electron desktop shell)
    All data stored in localStorage. No backend required.
    ══════════════════════════════════════════════════════════════ */
 const { app, BrowserWindow, ipcMain, session } = require('electron');
@@ -18,7 +18,7 @@ function createWindow() {
     fullscreen: true,
     show:      false,
     backgroundColor: '#0e1520',
-    title: 'StudyLane',
+    title: 'Paideon',
     webPreferences: {
       contextIsolation: true,
       nodeIntegration:  false,
