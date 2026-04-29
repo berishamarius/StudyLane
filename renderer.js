@@ -30,6 +30,44 @@ const GRADE_COLORS = ['#7c6af5','#ec4899','#22c55e','#f59e0b','#3b82f6','#ef4444
 
 const COUNTRY_REGIONS = [
   {
+    region: 'Europe',
+    options: [
+      { code: 'AL', label: 'Albania' }, { code: 'AD', label: 'Andorra' }, { code: 'AT', label: 'Austria' },
+      { code: 'BY', label: 'Belarus' }, { code: 'BE', label: 'Belgium' }, { code: 'BA', label: 'Bosnia and Herzegovina' },
+      { code: 'BG', label: 'Bulgaria' }, { code: 'HR', label: 'Croatia' }, { code: 'CZ', label: 'Czech Republic' },
+      { code: 'DK', label: 'Denmark' }, { code: 'EE', label: 'Estonia' }, { code: 'FI', label: 'Finland' },
+      { code: 'FR', label: 'France' }, { code: 'DE', label: 'Germany' }, { code: 'GR', label: 'Greece' },
+      { code: 'HU', label: 'Hungary' }, { code: 'IS', label: 'Iceland' }, { code: 'IE', label: 'Ireland' },
+      { code: 'IT', label: 'Italy' }, { code: 'LV', label: 'Latvia' }, { code: 'LI', label: 'Liechtenstein' },
+      { code: 'LT', label: 'Lithuania' }, { code: 'LU', label: 'Luxembourg' }, { code: 'MT', label: 'Malta' },
+      { code: 'MD', label: 'Moldova' }, { code: 'MC', label: 'Monaco' }, { code: 'ME', label: 'Montenegro' },
+      { code: 'NL', label: 'Netherlands' }, { code: 'MK', label: 'North Macedonia' }, { code: 'NO', label: 'Norway' },
+      { code: 'PL', label: 'Poland' }, { code: 'PT', label: 'Portugal' }, { code: 'RO', label: 'Romania' },
+      { code: 'SM', label: 'San Marino' }, { code: 'RS', label: 'Serbia' }, { code: 'SK', label: 'Slovakia' },
+      { code: 'SI', label: 'Slovenia' }, { code: 'ES', label: 'Spain' }, { code: 'SE', label: 'Sweden' },
+      { code: 'CH', label: 'Switzerland' }, { code: 'UA', label: 'Ukraine' }, { code: 'GB', label: 'United Kingdom' }
+    ],
+  },
+  {
+    region: 'South Asia',
+    options: [
+      { code: 'AF', label: 'Afghanistan' }, { code: 'BD', label: 'Bangladesh' }, { code: 'BT', label: 'Bhutan' },
+      { code: 'IN', label: 'India' }, { code: 'MV', label: 'Maldives' }, { code: 'NP', label: 'Nepal' },
+      { code: 'PK', label: 'Pakistan' }, { code: 'LK', label: 'Sri Lanka' }
+    ],
+  },
+  {
+    region: 'East Asia',
+    options: [
+      { code: 'CN', label: 'China' }, { code: 'JP', label: 'Japan' }, { code: 'KP', label: 'North Korea' },
+      { code: 'KR', label: 'South Korea' }, { code: 'MN', label: 'Mongolia' }, { code: 'TW', label: 'Taiwan' },
+      { code: 'BN', label: 'Brunei' }, { code: 'KH', label: 'Cambodia' }, { code: 'ID', label: 'Indonesia' },
+      { code: 'LA', label: 'Laos' }, { code: 'MY', label: 'Malaysia' }, { code: 'MM', label: 'Myanmar' },
+      { code: 'PH', label: 'Philippines' }, { code: 'SG', label: 'Singapore' }, { code: 'TH', label: 'Thailand' },
+      { code: 'TL', label: 'Timor-Leste' }, { code: 'VN', label: 'Vietnam' }
+    ],
+  },
+  {
     region: 'Africa',
     options: [
       { code: 'DZ', label: 'Algeria' }, { code: 'AO', label: 'Angola' }, { code: 'BJ', label: 'Benin' }, { code: 'BW', label: 'Botswana' },
@@ -50,48 +88,6 @@ const COUNTRY_REGIONS = [
       { code: 'SD', label: 'Sudan' }, { code: 'TZ', label: 'Tanzania' }, { code: 'TG', label: 'Togo' },
       { code: 'TN', label: 'Tunisia' }, { code: 'UG', label: 'Uganda' }, { code: 'ZM', label: 'Zambia' },
       { code: 'ZW', label: 'Zimbabwe' }
-    ],
-  },
-  {
-    region: 'Asia',
-    options: [
-      { code: 'AF', label: 'Afghanistan' }, { code: 'AM', label: 'Armenia' }, { code: 'AZ', label: 'Azerbaijan' },
-      { code: 'BH', label: 'Bahrain' }, { code: 'BD', label: 'Bangladesh' }, { code: 'BT', label: 'Bhutan' },
-      { code: 'BN', label: 'Brunei' }, { code: 'KH', label: 'Cambodia' }, { code: 'CN', label: 'China' },
-      { code: 'CY', label: 'Cyprus' }, { code: 'GE', label: 'Georgia' }, { code: 'IN', label: 'India' },
-      { code: 'ID', label: 'Indonesia' }, { code: 'IR', label: 'Iran' }, { code: 'IQ', label: 'Iraq' },
-      { code: 'IL', label: 'Israel' }, { code: 'JP', label: 'Japan' }, { code: 'JO', label: 'Jordan' },
-      { code: 'KZ', label: 'Kazakhstan' }, { code: 'KW', label: 'Kuwait' }, { code: 'KG', label: 'Kyrgyzstan' },
-      { code: 'LA', label: 'Laos' }, { code: 'LB', label: 'Lebanon' }, { code: 'MY', label: 'Malaysia' },
-      { code: 'MV', label: 'Maldives' }, { code: 'MN', label: 'Mongolia' }, { code: 'MM', label: 'Myanmar' },
-      { code: 'NP', label: 'Nepal' }, { code: 'KP', label: 'North Korea' }, { code: 'OM', label: 'Oman' },
-      { code: 'PK', label: 'Pakistan' }, { code: 'PS', label: 'Palestine' }, { code: 'PH', label: 'Philippines' },
-      { code: 'QA', label: 'Qatar' }, { code: 'RU', label: 'Russia' }, { code: 'SA', label: 'Saudi Arabia' },
-      { code: 'SG', label: 'Singapore' }, { code: 'KR', label: 'South Korea' }, { code: 'LK', label: 'Sri Lanka' },
-      { code: 'SY', label: 'Syria' }, { code: 'TW', label: 'Taiwan' }, { code: 'TJ', label: 'Tajikistan' },
-      { code: 'TH', label: 'Thailand' }, { code: 'TL', label: 'Timor-Leste' }, { code: 'TR', label: 'Turkey' },
-      { code: 'TM', label: 'Turkmenistan' }, { code: 'AE', label: 'United Arab Emirates' },
-      { code: 'UZ', label: 'Uzbekistan' }, { code: 'VN', label: 'Vietnam' }, { code: 'YE', label: 'Yemen' }
-    ],
-  },
-  {
-    region: 'Europe',
-    options: [
-      { code: 'AL', label: 'Albania' }, { code: 'AD', label: 'Andorra' }, { code: 'AT', label: 'Austria' },
-      { code: 'BY', label: 'Belarus' }, { code: 'BE', label: 'Belgium' }, { code: 'BA', label: 'Bosnia and Herzegovina' },
-      { code: 'BG', label: 'Bulgaria' }, { code: 'HR', label: 'Croatia' }, { code: 'CZ', label: 'Czech Republic' },
-      { code: 'DK', label: 'Denmark' }, { code: 'EE', label: 'Estonia' }, { code: 'FI', label: 'Finland' },
-      { code: 'FR', label: 'France' }, { code: 'DE', label: 'Germany' }, { code: 'GR', label: 'Greece' },
-      { code: 'HU', label: 'Hungary' }, { code: 'IS', label: 'Iceland' }, { code: 'IE', label: 'Ireland' },
-      { code: 'IT', label: 'Italy' }, { code: 'LV', label: 'Latvia' }, { code: 'LI', label: 'Liechtenstein' },
-      { code: 'LT', label: 'Lithuania' }, { code: 'LU', label: 'Luxembourg' }, { code: 'MT', label: 'Malta' },
-      { code: 'MD', label: 'Moldova' }, { code: 'MC', label: 'Monaco' }, { code: 'ME', label: 'Montenegro' },
-      { code: 'NL', label: 'Netherlands' }, { code: 'MK', label: 'North Macedonia' }, { code: 'NO', label: 'Norway' },
-      { code: 'PL', label: 'Poland' }, { code: 'PT', label: 'Portugal' }, { code: 'RO', label: 'Romania' },
-      { code: 'SM', label: 'San Marino' }, { code: 'RS', label: 'Serbia' }, { code: 'SK', label: 'Slovakia' },
-      { code: 'SI', label: 'Slovenia' }, { code: 'ES', label: 'Spain' }, { code: 'SE', label: 'Sweden' },
-      { code: 'CH', label: 'Switzerland' }, { code: 'UA', label: 'Ukraine' }, { code: 'GB', label: 'United Kingdom' },
-      { code: 'VA', label: 'Vatican City' }, { code: 'XK', label: 'Kosovo' }
     ],
   },
   {
@@ -1099,7 +1095,9 @@ function openCellModal(di, si) {
   const key  = `${di}-${si}`;
   const cell = (current.grid || {})[key] || {};
   const subjectSel = document.getElementById('cellSubjectSelect');
-  subjectSel.innerHTML = `<option value="">– ${t('chooseSubject' in TRANSLATIONS[currentLang||'de'] ? 'chooseSubject' : 'lesson')} –</option>` +
+  const chooseSubjectLabel = t('chooseSubject');
+  const subjectPlaceholder = chooseSubjectLabel === 'chooseSubject' ? t('lesson') : chooseSubjectLabel;
+  subjectSel.innerHTML = `<option value="">– ${subjectPlaceholder} –</option>` +
     (current.subjects || []).map(s =>
       `<option value="${s.id}" ${s.id === cell.subjectId ? 'selected' : ''}>${esc(s.name)}</option>`
     ).join('');
