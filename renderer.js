@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   renderer.js  –  StudyLane
+   renderer.js  –  Lyceon
    Workplan + Grades + Portfolio + Settings
    Fully offline, localStorage only, no backend
    ═══════════════════════════════════════════════════════════════ */
@@ -140,16 +140,16 @@ const Storage = {
     catch { return def; }
   },
   save(key, val) { localStorage.setItem(key, JSON.stringify(val)); },
-  loadSchedules()    { return this.load('studylane_schedules', []); },
-  saveSchedules(arr) { this.save('studylane_schedules', arr); },
-  loadSettings()     { return this.load('studylane_settings', {}); },
-  saveSettings(s)    { this.save('studylane_settings', s); },
-  loadHomework()     { return this.load('studylane_homework', []); },
-  saveHomework(arr)  { this.save('studylane_homework', arr); },
-  loadGrades()       { return this.load('studylane_grades', {}); },
-  saveGrades(obj)    { this.save('studylane_grades', obj); },
-  loadNotes()        { return this.load('studylane_notes', []); },
-  saveNotes(arr)     { this.save('studylane_notes', arr); },
+  loadSchedules()    { return this.load('lyceon_schedules', []); },
+  saveSchedules(arr) { this.save('lyceon_schedules', arr); },
+  loadSettings()     { return this.load('lyceon_settings', {}); },
+  saveSettings(s)    { this.save('lyceon_settings', s); },
+  loadHomework()     { return this.load('lyceon_homework', []); },
+  saveHomework(arr)  { this.save('lyceon_homework', arr); },
+  loadGrades()       { return this.load('lyceon_grades', {}); },
+  saveGrades(obj)    { this.save('lyceon_grades', obj); },
+  loadNotes()        { return this.load('lyceon_notes', []); },
+  saveNotes(arr)     { this.save('lyceon_notes', arr); },
 };
 
 // ── UUID ───────────────────────────────────────────────────────────
@@ -1609,30 +1609,30 @@ const LEGAL_CONTENT = {
         '<h3>Third-Party Licenses</h3><p>Electron (MIT) · electron-builder (MIT) · @capacitor/core (MIT) · @capacitor/android (MIT)<br>Full list in <code>package.json</code>.</p>',
   },
   privacy: {
-    de: '<h3>Grundsatz</h3><p>StudyLane erhebt <b>keine personenbezogenen Daten</b> und sendet <b>keine Daten an externe Server</b>, solange die SMTP-Funktion nicht aktiv genutzt wird.</p>' +
-        '<h3>Lokal gespeicherte Daten</h3><p>Alle Daten werden ausschließlich im <code>localStorage</code> gespeichert:<br><code>studylane_schedules</code> – Stundenpläne<br><code>studylane_settings</code> – Sprache, Modus, SMTP-Konfiguration<br><code>studylane_student</code> – Studenten-Daten &amp; Notizen</p>' +
+    de: '<h3>Grundsatz</h3><p>Lyceon erhebt <b>keine personenbezogenen Daten</b> und sendet <b>keine Daten an externe Server</b>, solange die SMTP-Funktion nicht aktiv genutzt wird.</p>' +
+        '<h3>Lokal gespeicherte Daten</h3><p>Alle Daten werden ausschließlich im <code>localStorage</code> gespeichert:<br><code>lyceon_schedules</code> – Stundenpläne<br><code>lyceon_settings</code> – Sprache, Modus, SMTP-Konfiguration<br><code>lyceon_student</code> – Studenten-Daten &amp; Notizen</p>' +
         '<p>Es werden keine Analyse-Tools, Tracking-Dienste, Cookies oder Werbedienste eingesetzt.</p>' +
-        '<h3>SMTP / E-Mail (optional)</h3><p>SMTP-Zugangsdaten werden lokal in <code>studylane_settings</code> gespeichert und nur für den konfigurierten Server verwendet. KroniX Tech hat keinen Zugriff auf diese Daten.</p>' +
+        '<h3>SMTP / E-Mail (optional)</h3><p>SMTP-Zugangsdaten werden lokal in <code>lyceon_settings</code> gespeichert und nur für den konfigurierten Server verwendet. KroniX Tech hat keinen Zugriff auf diese Daten.</p>' +
         '<h3>Daten löschen</h3><p><b>Einstellungen → Alle Daten löschen</b> · oder App deinstallieren.</p>' +
         '<h3>DSGVO / Datenschutzanfragen</h3><p>Da keine personenbezogenen Daten zentral verarbeitet werden, entfällt eine zentrale Datenhaltung. Anfragen: contact@kronix-tech.com</p>',
-    en: '<h3>Principle</h3><p>StudyLane collects <b>no personal data</b> and transmits <b>no data to external servers</b>, unless the SMTP function is actively used.</p>' +
-        '<h3>Locally Stored Data</h3><p>All data is stored exclusively in the device\'s <code>localStorage</code>:<br><code>studylane_schedules</code> – Schedules<br><code>studylane_settings</code> – Language, mode, SMTP config<br><code>studylane_student</code> – Student data &amp; notes</p>' +
+    en: '<h3>Principle</h3><p>Lyceon collects <b>no personal data</b> and transmits <b>no data to external servers</b>, unless the SMTP function is actively used.</p>' +
+        '<h3>Locally Stored Data</h3><p>All data is stored exclusively in the device\'s <code>localStorage</code>:<br><code>lyceon_schedules</code> – Schedules<br><code>lyceon_settings</code> – Language, mode, SMTP config<br><code>lyceon_student</code> – Student data &amp; notes</p>' +
         '<p>No analytics, tracking services, cookies, or advertising services are used.</p>' +
         '<h3>SMTP / Email (optional)</h3><p>SMTP credentials are stored locally and used only for the configured server. KroniX Tech has no access to this data.</p>' +
         '<h3>Delete Your Data</h3><p><b>Settings → Delete all data</b> · or uninstall the app.</p>' +
         '<h3>GDPR / Privacy Inquiries</h3><p>Since no personal data is centrally processed, there is no central data storage. Inquiries: contact@kronix-tech.com</p>',
   },
   terms: {
-    de: '<h3>Nutzungsrecht</h3><p>StudyLane wird kostenlos bereitgestellt. Die Nutzung ist für legale, persönliche oder schulische bzw. akademische Zwecke gestattet.</p>' +
+    de: '<h3>Nutzungsrecht</h3><p>Lyceon wird kostenlos bereitgestellt. Die Nutzung ist für legale, persönliche oder schulische bzw. akademische Zwecke gestattet.</p>' +
         '<h3>Verbotene Nutzung</h3><p>• Reverse Engineering zur kommerziellen Vervielfältigung<br>• Verbreitung modifizierter Versionen ohne schriftliche Genehmigung<br>• Verwendung für Spam, Betrug oder zur Umgehung technischer Schutzmaßnahmen</p>' +
         '<h3>Verfügbarkeit</h3><p>Es wird keine Garantie für die dauerhafte Verfügbarkeit der App oder Web-Version übernommen. Updates können ohne Ankündigung veröffentlicht werden.</p>' +
         '<h3>Haftungsausschluss &amp; Datenverlust</h3><p>Die App wird „wie besehen" bereitgestellt. Da alle Daten lokal gespeichert werden, liegt die Verantwortung für Datensicherung beim Nutzer. KroniX Tech haftet nicht für Datenverluste durch Gerätewechsel, Deinstallation oder Cache-Löschung.</p>' +
-        '<h3>Copyright</h3><p>© 2026 KX KroniX Tech – Alle Rechte vorbehalten.<br><b>StudyLane</b> und das <b>SL-Logo</b> sind Kennzeichen von KX KroniX Tech. Nutzung ohne schriftliche Genehmigung ist untersagt.</p>',
-    en: '<h3>Right of Use</h3><p>StudyLane is provided free of charge. Use is permitted for legal, personal, or business purposes.</p>' +
+        '<h3>Copyright</h3><p>© 2026 KX KroniX Tech – Alle Rechte vorbehalten.<br><b>Lyceon</b> und das <b>SL-Logo</b> sind Kennzeichen von KX KroniX Tech. Nutzung ohne schriftliche Genehmigung ist untersagt.</p>',
+    en: '<h3>Right of Use</h3><p>Lyceon is provided free of charge. Use is permitted for legal, personal, or business purposes.</p>' +
         '<h3>Prohibited Use</h3><p>• Reverse engineering for commercial reproduction<br>• Distribution of modified versions without written consent<br>• Use for spam, fraud, or circumvention of security measures</p>' +
         '<h3>Availability</h3><p>No guarantee is made for the permanent availability of the app or web version. Updates may be released without prior notice.</p>' +
         '<h3>Disclaimer &amp; Data Loss</h3><p>The app is provided "as is". Since all data is stored locally, the user is responsible for data backup. KroniX Tech is not liable for data loss due to device changes, uninstallation, or cache clearing.</p>' +
-        '<h3>Copyright</h3><p>© 2026 KX KroniX Tech – All rights reserved.<br><b>StudyLane</b> and the <b>SL logo</b> are marks of KX KroniX Tech. Use without written consent is prohibited.</p>',
+        '<h3>Copyright</h3><p>© 2026 KX KroniX Tech – All rights reserved.<br><b>Lyceon</b> and the <b>SL logo</b> are marks of KX KroniX Tech. Use without written consent is prohibited.</p>',
   },
 };
 
@@ -1672,7 +1672,7 @@ function toast(msg) {
 //  PWA
 // ══════════════════════════════════════════════════════════════════
 function setupPWA() {
-  if ('serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator && !navigator.userAgent.includes('Electron') && window.location.protocol.startsWith('http')) {
     navigator.serviceWorker.register('sw.js').catch(() => {});
   }
 

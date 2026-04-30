@@ -18,7 +18,7 @@ const newLocales = {
 
   // ── Abkhazian ──────────────────────────────────────────────────────────────
   'ab': make({
-    appTitle: 'StudyLane',
+    appTitle: 'Lyceon', 
     modeMitarbeiter: 'Ахәыҷқәа',
     modeAzubi: 'Астудент',
     navPlans: 'Апланқәа',

@@ -327,6 +327,24 @@ const showAuth = () => {
   document.getElementById('appShell').classList.add('hidden');
 };
 
+const clearOldServiceWorker = async () => {
+  if (!('serviceWorker' in navigator) && !('caches' in window)) return false;
+  let foundServiceWorker = false;
+
+  if ('serviceWorker' in navigator) {
+    const registrations = await navigator.serviceWorker.getRegistrations().catch(() => []);
+    foundServiceWorker = registrations.length > 0;
+    await Promise.all(registrations.map((reg) => reg.unregister().catch(() => false)));
+  }
+
+  if ('caches' in window) {
+    const cacheKeys = await caches.keys().catch(() => []);
+    await Promise.all(cacheKeys.map((key) => caches.delete(key).catch(() => false)));
+  }
+
+  return foundServiceWorker;
+};
+
 const updateUserChip = () => {
   const avatar = document.getElementById('userAvatar');
   const name = document.getElementById('userChipName');
@@ -1134,7 +1152,7 @@ const toggleTaskDone = async (event, taskId) => {
 
 const init = async () => {
   if (typeof ensurePagesMounted === 'function') ensurePagesMounted();
-  if (isDemoModeEnabled()) {
+  if (FORCE_DEMO_MODE || isDemoModeEnabled()) {
     state.demoMode = true;
     state.user = { id: 'demo-user', email: 'demo@lyceon.local' };
     state.profile = { id: 'demo-user', full_name: 'Demo User', role: 'student' };
@@ -1202,11 +1220,20 @@ if (window.registerPageModule) {
   `);
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
   window.onLanguageChanged = () => {
     setPageTitle(getPageTitle(state.page));
     loadPage(state.page);
   };
+
+  if (!localStorage.getItem('lyceon_sw_cleared')) {
+    const cleared = await clearOldServiceWorker();
+    if (cleared) {
+      localStorage.setItem('lyceon_sw_cleared', '1');
+      window.location.reload();
+      return;
+    }
+  }
 
   showAuthTab('login');
   setAuthMode('student');

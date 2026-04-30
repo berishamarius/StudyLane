@@ -11,7 +11,6 @@ const OUT  = path.join(ROOT, 'www');
 const WEB_FILES = [
   'index.html',
   'style.css',
-  'renderer.js',
   'i18n.js',
   'sw.js',
   'manifest.json',

@@ -224,7 +224,7 @@ async function buildIOS() {
 // ── main ────────────────────────────────────────────────────────────────────
 
 (async () => {
-  console.log('StudyLane – Icon Generator\n');
+  console.log('Lyceon – Icon Generator\n');
   console.log('Sources:');
   console.log(`  Full icon   : ${path.relative(ROOT, SRC)}`);
   console.log(`  Foreground  : ${path.relative(ROOT, SRC_FG)}`);

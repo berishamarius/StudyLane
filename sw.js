@@ -1,11 +1,15 @@
 /* Lyceon – Service Worker */
-const CACHE = 'lyceon-v1';
+const CACHE = 'lyceon-v2';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './i18n.js',
-  './renderer.js',
+  './app.js',
+  './supabase.js',
+  './pages/registry.js',
+  './pages/dashboard.page.js',
+  './pages/courses.page.js',
   './manifest.json',
   './assets/icon.svg',
   './assets/lyceon-icon.svg',
