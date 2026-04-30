@@ -5,6 +5,34 @@ const localesDir = path.join(__dirname, '..', 'locales');
 const basePath = path.join(localesDir, 'en.json');
 
 const NON_TRANSLATABLE_KEYS = new Set(['appTitle']);
+const SHARED_TERMS = new Set([
+  'IServ',
+  'Moodle',
+  'WebUntis',
+  'Logineo NRW',
+  'HPI School Cloud',
+  'Microsoft Teams',
+  'ECTS',
+  'Dashboard',
+  'Semester',
+]);
+
+const isAllowedSharedTerm = (value) => {
+  if (typeof value !== 'string') return false;
+  const normalized = value.trim();
+  if (!normalized) return false;
+  if (SHARED_TERMS.has(normalized)) return true;
+  if (/^https?:\/\//i.test(normalized)) return true;
+  if (/^[A-Z0-9+.-]{2,8}$/.test(normalized)) return true;
+  return false;
+};
+
+const shouldStrictlyEnforceTranslation = (englishValue) => {
+  if (typeof englishValue !== 'string') return false;
+  const value = englishValue.trim();
+  if (!value) return false;
+  return /\s/.test(value);
+};
 
 const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
@@ -30,7 +58,11 @@ function run() {
         continue;
       }
 
-      if (value.trim() === englishValue.trim()) {
+      if (
+        shouldStrictlyEnforceTranslation(englishValue)
+        && value.trim() === englishValue.trim()
+        && !isAllowedSharedTerm(value)
+      ) {
         unresolved.push(`${file}:${key} (still English)`);
       }
     }

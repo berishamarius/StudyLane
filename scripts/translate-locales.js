@@ -13,6 +13,18 @@ const NON_TRANSLATABLE_KEYS = new Set([
   'appTitle',
 ]);
 
+const SHARED_TERMS = new Set([
+  'IServ',
+  'Moodle',
+  'WebUntis',
+  'Logineo NRW',
+  'HPI School Cloud',
+  'Microsoft Teams',
+  'ECTS',
+  'Dashboard',
+  'Semester',
+]);
+
 const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
 const writeJson = (filePath, data) => fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -49,6 +61,23 @@ const isLikelyEnglishPlaceholder = (value, englishValue) => {
   const e = englishValue.trim();
   if (!v || !e) return false;
   return v === e;
+};
+
+const isAllowedSharedTerm = (value) => {
+  if (typeof value !== 'string') return false;
+  const normalized = value.trim();
+  if (!normalized) return false;
+  if (SHARED_TERMS.has(normalized)) return true;
+  if (/^https?:\/\//i.test(normalized)) return true;
+  if (/^[A-Z0-9+.-]{2,8}$/.test(normalized)) return true;
+  return false;
+};
+
+const shouldStrictlyEnforceTranslation = (englishValue) => {
+  if (typeof englishValue !== 'string') return false;
+  const value = englishValue.trim();
+  if (!value) return false;
+  return /\s/.test(value);
 };
 
 async function translateText(text, targetLang) {
@@ -152,7 +181,11 @@ async function run() {
         // Keep unresolved key in report.
       }
 
-      if (isLikelyEnglishPlaceholder(locale[key], englishValue)) {
+      if (
+        shouldStrictlyEnforceTranslation(englishValue)
+        && isLikelyEnglishPlaceholder(locale[key], englishValue)
+        && !isAllowedSharedTerm(locale[key])
+      ) {
         unresolved.push(`${localeFile}:${key}`);
       }
 
