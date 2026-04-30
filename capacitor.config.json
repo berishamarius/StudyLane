@@ -1,6 +1,6 @@
 {
-  "appId": "de.kronix.paideon",
-  "appName": "Paideon",
+  "appId": "de.kronix.lyceon",
+  "appName": "Lyceon",
   "webDir": "www",
   "bundledWebRuntime": false,
   "server": {
@@ -26,7 +26,7 @@
   "android": {
     "buildOptions": {
       "keystorePath": "release.keystore",
-      "keystoreAlias": "paideon"
+      "keystoreAlias": "lyceon"
     }
   }
 }

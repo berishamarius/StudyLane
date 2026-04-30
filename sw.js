@@ -1,5 +1,5 @@
-/* Paideon – Service Worker */
-const CACHE = 'paideon-v1';
+/* Lyceon – Service Worker */
+const CACHE = 'lyceon-v1';
 const ASSETS = [
   './',
   './index.html',
@@ -8,6 +8,7 @@ const ASSETS = [
   './renderer.js',
   './manifest.json',
   './assets/icon.svg',
+  './assets/lyceon-icon.svg',
   './assets/icon-192.png',
   './assets/icon-512.png',
 ];

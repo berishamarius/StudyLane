@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-  Paideon – main.js  (Electron desktop shell)
+  Lyceon – main.js  (Electron desktop shell)
    All data stored in localStorage. No backend required.
    ══════════════════════════════════════════════════════════════ */
 const { app, BrowserWindow, ipcMain, session } = require('electron');
@@ -17,8 +17,8 @@ function createWindow() {
     frame:     false,
     fullscreen: true,
     show:      false,
-    backgroundColor: '#0e1520',
-    title: 'Paideon',
+    backgroundColor: '#f8ecd9',
+    title: 'Lyceon',
     webPreferences: {
       contextIsolation: true,
       nodeIntegration:  false,

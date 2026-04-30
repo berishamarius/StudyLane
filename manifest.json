@@ -1,6 +1,6 @@
 {
-  "name": "Paideon",
-  "short_name": "Paideon",
+  "name": "Lyceon",
+  "short_name": "Lyceon",
   "description": "Dein digitaler Lernbegleiter fuer Schule und Universitaet",
   "start_url": "./index.html",
   "scope": "./",
@@ -9,6 +9,7 @@
   "theme_color": "#17253A",
   "orientation": "portrait-primary",
   "icons": [
+    { "src": "assets/lyceon-icon.svg",      "sizes": "any",      "type": "image/svg+xml", "purpose": "any" },
     { "src": "assets/icon-512.png",          "sizes": "512x512", "type": "image/png",     "purpose": "any" },
     { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png",     "purpose": "maskable" },
     { "src": "assets/icon-192.png",          "sizes": "192x192", "type": "image/png",     "purpose": "any" },

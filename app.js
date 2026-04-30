@@ -21,10 +21,11 @@
   },
 };
 
-const UI_SETTINGS_KEY = 'paideon_ui_settings';
-const DEMO_MODE_KEY = 'paideon_demo_mode';
+const UI_SETTINGS_KEY = 'lyceon_ui_settings';
+const DEMO_MODE_KEY = 'lyceon_demo_mode';
+const AUTH_REMEMBER_KEY = 'lyceon_remember_me';
 const FORCE_DEMO_MODE = true;
-const LEARN_BOOKMARKS_KEY = 'paideon_learn_bookmarks_v1';
+const LEARN_BOOKMARKS_KEY = 'lyceon_learn_bookmarks_v1';
 
 const DEMO_DATA = {
   tasks: [
@@ -169,10 +170,29 @@ const getLearnBookmark = (mode) => {
 };
 
 const showAuthTab = (tab) => {
-  document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
-  document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
-  document.getElementById('loginForm').classList.toggle('hidden', tab !== 'login');
-  document.getElementById('registerForm').classList.toggle('hidden', tab !== 'register');
+  const loginTab = document.getElementById('tabLogin');
+  const registerTab = document.getElementById('tabRegister');
+  if (loginTab && registerTab) {
+    loginTab.classList.toggle('active', tab === 'login');
+    registerTab.classList.toggle('active', tab === 'register');
+    document.getElementById('loginForm').classList.toggle('hidden', tab !== 'login');
+    document.getElementById('registerForm').classList.toggle('hidden', tab !== 'register');
+  }
+};
+
+const setAuthMode = (mode) => {
+  const studentTab = document.querySelector('.auth-form-tabs .auth-tab:first-child');
+  const teacherTab = document.querySelector('.auth-form-tabs .auth-tab:last-child');
+  const teacherFields = document.getElementById('teacherFields');
+  const loginSubmit = document.getElementById('loginSubmit');
+  const loginRole = document.getElementById('loginRole');
+
+  if (!studentTab || !teacherTab || !teacherFields || !loginSubmit || !loginRole) return;
+  studentTab.classList.toggle('active', mode === 'student');
+  teacherTab.classList.toggle('active', mode === 'teacher');
+  teacherFields.classList.toggle('hidden', mode !== 'teacher');
+  loginRole.value = mode;
+  loginSubmit.textContent = mode === 'teacher' ? 'Sign in as Lecturer' : 'Continue as student';
 };
 
 const setPageTitle = (title) => {
@@ -191,6 +211,7 @@ const PAGE_TITLE_KEYS = {
   learn: { key: 'pageLearn', fallback: 'Learn' },
   settings: { key: 'pageSettings', fallback: 'Settings' },
   profile: { key: 'pageProfile', fallback: 'Profile' },
+  'teacher-tools': { key: 'pageTeacherTools', fallback: 'Teacher tools' },
   admin: { key: 'pageAdmin', fallback: 'Users & Roles' },
   invites: { key: 'pageInvites', fallback: 'Invite Codes' },
 };
@@ -238,6 +259,9 @@ const loadPage = async (page) => {
     case 'grades':
       renderGrades();
       break;
+    case 'teacher-tools':
+      renderTeacherTools();
+      break;
     case 'learn':
       renderLearn();
       break;
@@ -264,6 +288,15 @@ const showShell = () => {
   loadUiSettings();
   updateUserChip();
   loadPage(state.page);
+};
+
+const enterApp = () => {
+  state.demoMode = true;
+  state.user = { id: 'demo-user', email: 'demo@lyceon.local' };
+  state.profile = { id: 'demo-user', full_name: 'Demo User', role: 'student' };
+  localStorage.setItem(DEMO_MODE_KEY, '1');
+  showShell();
+  Notifications.show(tr('demoModeEnabled', 'Demo mode enabled. Authentication is bypassed for testing.'));
 };
 
 const loadUiSettings = () => {
@@ -311,8 +344,12 @@ const handleLogin = async (event) => {
   event.preventDefault();
   const email = document.getElementById('loginEmail').value.trim();
   const password = document.getElementById('loginPassword').value;
+  const rememberMe = document.getElementById('loginRemember').checked;
+  const loginRole = document.getElementById('loginRole').value;
   const loginError = document.getElementById('loginError');
   loginError.textContent = '';
+
+  localStorage.setItem(AUTH_REMEMBER_KEY, rememberMe ? '1' : '0');
 
   const { data, error } = await sb.auth.signInWithPassword({ email, password });
   if (error) {
@@ -320,7 +357,7 @@ const handleLogin = async (event) => {
     return;
   }
 
-  await onAuthChange(data.user);
+  await onAuthChange(data.user, loginRole);
 };
 
 const handleRegister = async (event) => {
@@ -372,11 +409,23 @@ const handleSignOut = async () => {
   showAuth();
 };
 
-const onAuthChange = async (user) => {
+const onAuthChange = async (user, fallbackRole = 'student') => {
   state.user = user;
   const { data: profile, error } = await sb.from('profiles').select('*').eq('id', user.id).single();
-  if (error) return Notifications.show('Unable to load profile', 'error');
-  state.profile = profile;
+  if (error) {
+    state.profile = {
+      id: user.id,
+      full_name: user.email.split('@')[0],
+      role: fallbackRole,
+    };
+    showShell();
+    return;
+  }
+  state.profile = profile || {
+    id: user.id,
+    full_name: user.email.split('@')[0],
+    role: fallbackRole,
+  };
   showShell();
 };
 
@@ -824,6 +873,16 @@ const renderProfile = () => {
   document.getElementById('profileContent').innerHTML = `<div class="card profile-avatar-wrap"><div class="profile-avatar-large">${state.profile?.full_name?.charAt(0).toUpperCase() || '?'}</div><div class="card-title">${state.profile?.full_name || 'Profile'}</div><p class="card-sub">${state.profile?.role || ''}</p></div><div class="card"><div class="field"><label>Email</label><input class="input" disabled value="${state.user.email}" /></div><div class="field"><label>Role</label><input class="input" disabled value="${state.profile?.role || 'Member'}" /></div></div>`;
 };
 
+const renderTeacherTools = () => {
+  const container = document.getElementById('page-teacher-tools');
+  if (!container) return;
+  container.innerHTML = `
+      <div class="page-header"><div><h1>Teacher tools</h1><p class="card-sub">Manage class access, lock student modes and distribute study content without giving students lecturer rights.</p></div></div>
+      <div class="card"><div class="field"><label>Class control</label><p class="card-sub">Lock student switching between school and university mode and keep the class focused on the current curriculum.</p></div><button class="btn btn-secondary" onclick="Notifications.show('Class mode locked for students.')">Lock student mode</button></div>
+      <div class="card"><div class="field"><label>Share study material</label><p class="card-sub">Publish assignments or quick revision notes for your class.</p></div><button class="btn btn-primary" onclick="Notifications.show('Study materials shared with class.')">Share a new resource</button></div>
+  `;
+};
+
 const renderAdmin = async () => {
   const container = document.getElementById('adminUserList');
   container.innerHTML = '<div class="dash-list-placeholder">Loading users…</div>';
@@ -1077,7 +1136,7 @@ const init = async () => {
   if (typeof ensurePagesMounted === 'function') ensurePagesMounted();
   if (isDemoModeEnabled()) {
     state.demoMode = true;
-    state.user = { id: 'demo-user', email: 'demo@paideon.local' };
+    state.user = { id: 'demo-user', email: 'demo@lyceon.local' };
     state.profile = { id: 'demo-user', full_name: 'Demo User', role: 'student' };
     localStorage.setItem(DEMO_MODE_KEY, '1');
     showShell();
@@ -1087,6 +1146,13 @@ const init = async () => {
 
   const { data: { session }, error } = await sb.auth.getSession();
   if (error) return Notifications.show('Auth error.');
+
+  const remember = localStorage.getItem(AUTH_REMEMBER_KEY) !== '0';
+  if (session?.user && !remember) {
+    await sb.auth.signOut();
+    showAuth();
+    return;
+  }
 
   if (session?.user) {
     state.user = session.user;
@@ -1102,6 +1168,7 @@ Object.assign(window, {
   handleLogin,
   handleRegister,
   handleSignOut,
+  setAuthMode,
   navigate,
   filterCourses,
   filterTasks,
@@ -1123,10 +1190,17 @@ Object.assign(window, {
   setSchoolStage,
   setUniSemester,
   setExamMode,
+  enterApp,
   markLearnTopic,
   resumeLearnBookmark,
   clearLearnBookmark,
 });
+
+if (window.registerPageModule) {
+  window.registerPageModule('teacher-tools', () => `
+    <section class="page" id="page-teacher-tools"></section>
+  `);
+}
 
 window.addEventListener('DOMContentLoaded', () => {
   window.onLanguageChanged = () => {
@@ -1135,5 +1209,6 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   showAuthTab('login');
+  setAuthMode('student');
   init();
 });

@@ -1,7 +1,7 @@
 {
-  "name": "paideon-app",
+  "name": "lyceon-app",
   "version": "1.0.0",
-  "description": "Paideon – Lernplattform fuer Schule und Universitaet",
+  "description": "Lyceon – Lernplattform fuer Schule und Universitaet",
   "main": "main.js",
   "author": "KX KroniX Tech",
   "license": "UNLICENSED",
@@ -39,8 +39,8 @@
     "@capacitor/status-bar": "^6.0.0"
   },
   "build": {
-    "appId": "com.kronix.paideon",
-    "productName": "Paideon",
+    "appId": "com.kronix.lyceon",
+    "productName": "Lyceon",
     "copyright": "Copyright 2026 KX KroniX Tech",
     "icon": "assets/icon",
     "win": {
@@ -59,7 +59,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Paideon"
+      "shortcutName": "Lyceon"
     },
     "directories": {
       "output": "release"

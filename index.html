@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#16191f" />
+  <meta name="theme-color" content="#f2bc6c" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Paideon</title>
-  <link rel="icon" type="image/png" href="assets/icon-192.png" />
+  <title>Lyceon</title>
+  <link rel="icon" type="image/svg+xml" href="assets/lyceon-icon.svg" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
@@ -19,49 +19,60 @@
 
 <!-- AUTH SCREEN -->
 <div id="authScreen" class="auth-screen">
-  <div class="auth-inner">
+  <div class="auth-inner auth-login-layout">
     <div class="auth-branding">
       <div class="auth-logo">
-        <img src="Studylane.png" width="44" height="44" alt="Paideon" />
-        <span class="auth-logo-text">Paideon</span>
+        <img class="brand-mark" src="assets/lyceon-icon.svg" width="44" height="44" alt="Lyceon icon" />
+        <span class="auth-logo-text">Lyceon</span>
       </div>
-      <h2>School and university learning, made clear</h2>
-      <p>Sign in to access lessons, tasks, messages, files, and your adaptive learning library. Paideon keeps school and university learning in one structured place.</p>
-      <ul class="auth-features">
-        <li>Secure Supabase login and invite-based sign up</li>
-        <li>Course dashboard with tasks and calendar</li>
-        <li>Teacher/admin controls and invite management</li>
-      </ul>
+      <h2>Your study hub for school and college</h2>
+      <p>Lyceon puts your timetable, homework, notes and revision cards into one polished student workspace.</p>
+      <div class="auth-feature-grid">
+        <div class="auth-feature">
+          <div class="feature-icon">📚</div>
+          <div><strong>Homework planning</strong><p>Organise deadlines and stay on top of every subject.</p></div>
+        </div>
+        <div class="auth-feature">
+          <div class="feature-icon">📝</div>
+          <div><strong>Notes & revision</strong><p>Save class notes, flashcards and study summaries in one place.</p></div>
+        </div>
+        <div class="auth-feature">
+          <div class="feature-icon">📆</div>
+          <div><strong>Schedule view</strong><p>See lessons, deadlines and study blocks at a glance.</p></div>
+        </div>
+      </div>
     </div>
     <div class="auth-panel">
-      <div class="auth-card">
-        <div class="auth-logo">
-              <img src="Studylane.png" width="44" height="44" alt="Paideon" />
-              <span class="auth-logo-text">Paideon</span>
+      <div class="auth-card auth-login-card">
+        <div class="auth-form-tabs">
+          <button type="button" class="auth-tab active" onclick="setAuthMode('student')">Student access</button>
+          <button type="button" class="auth-tab" onclick="setAuthMode('teacher')">Teacher / Lecturer</button>
         </div>
-            <p class="auth-tagline">Paideia-inspired learning flow.</p>
-    <div class="auth-tabs">
-      <button class="auth-tab active" id="tabLogin" onclick="showAuthTab('login')">Sign in</button>
-      <button class="auth-tab" id="tabRegister" onclick="showAuthTab('register')">Sign up</button>
-    </div>
-    <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
-      <div class="field"><label>E-Mail</label><input class="input" type="email" id="loginEmail" placeholder="you@school.edu" required autocomplete="email" /></div>
-      <div class="field"><label>Password</label><input class="input" type="password" id="loginPassword" placeholder="••••••••" required autocomplete="current-password" /></div>
-      <button class="btn btn-primary btn-full" type="submit" id="loginBtn">Sign in</button>
-      <p class="auth-error" id="loginError"></p>
-    </form>
-    <form id="registerForm" class="auth-form hidden" onsubmit="handleRegister(event)">
-      <div class="field"><label>Full name</label><input class="input" type="text" id="regName" placeholder="Alex Müller" required /></div>
-      <div class="field"><label>E-Mail</label><input class="input" type="email" id="regEmail" placeholder="you@school.edu" required autocomplete="email" /></div>
-      <div class="field"><label>Password</label><input class="input" type="password" id="regPassword" placeholder="Min. 8 characters" required minlength="8" autocomplete="new-password" /></div>
-      <div class="field"><label>Invite code <span class="field-hint">(optional)</span></label><input class="input" type="text" id="regCode" placeholder="e.g. ABC-1234" /></div>
-      <div class="field"><label>Study type</label><select class="select" id="regStudyType"><option value="school">School</option><option value="university">University</option></select></div>
-      <div class="field"><label>School / University</label><input class="input" type="text" id="regInstitution" placeholder="e.g. Gymnasium West / TU Berlin" /></div>
-      <div class="field"><label>Class / Degree</label><input class="input" type="text" id="regLevel" placeholder="e.g. Grade 10 / BSc Computer Science" /></div>
-      <div class="field"><label>Role</label><select class="select" id="regRole"><option value="student">Student</option><option value="teacher">Teacher</option></select></div>
-      <button class="btn btn-primary btn-full" type="submit" id="regBtn">Create account</button>
-      <p class="auth-error" id="regError"></p>
-    </form>
+        <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+          <input type="hidden" id="loginRole" value="student" />
+          <div class="field">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" class="input" type="email" placeholder="you@student.school" required />
+          </div>
+          <div class="field">
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" class="input" type="password" placeholder="••••••••" required />
+          </div>
+          <div id="teacherFields" class="teacher-fields hidden">
+            <div class="field">
+              <label for="loginStaffCode">Lecturer code</label>
+              <input id="loginStaffCode" class="input" type="text" placeholder="Staff code or faculty ID" />
+            </div>
+          </div>
+          <div class="auth-row">
+            <label class="auth-checkbox"><input id="loginRemember" type="checkbox" checked /> Keep me signed in</label>
+            <span class="auth-login-note">Student accounts are the default; teacher login unlocks extra class controls.</span>
+          </div>
+          <div class="field">
+            <button class="btn btn-primary btn-full" type="submit" id="loginSubmit">Continue as student</button>
+          </div>
+          <div class="auth-error" id="loginError"></div>
+        </form>
       </div>
     </div>
   </div>
@@ -73,9 +84,9 @@
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <img src="Studylane.png" width="30" height="30" alt="" />
-      <span class="sidebar-logo-text">Paideon</span>
-    </div>
+        <img class="brand-mark sidebar-mark" src="assets/lyceon-icon.svg" width="30" height="30" alt="Lyceon" />
+        <span class="sidebar-logo-text">Lyceon</span>
+      </div>
     <nav class="sidebar-nav">
       <a class="nav-item active" data-page="dashboard" onclick="navigate('dashboard')">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
@@ -106,6 +117,10 @@
       <a class="nav-item" data-page="grades" onclick="navigate('grades')">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         <span>Grades</span>
+      </a>
+      <a class="nav-item teacher-only" data-page="teacher-tools" onclick="navigate('teacher-tools')">
+        <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M7 9h10"/><path d="M7 13h6"/><path d="M14 4v4"/></svg>
+        <span>Teacher tools</span>
       </a>
       <a class="nav-item" data-page="learn" onclick="navigate('learn')">
         <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>

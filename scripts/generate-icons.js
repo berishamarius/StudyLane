@@ -1,5 +1,5 @@
 /**
- * generate-icons.js  –  StudyLane Icon Generator
+ * generate-icons.js  –  Lyceon Icon Generator
  *
  * Generates every icon size needed for Desktop (Windows .ico, macOS .icns),
  * Android (adaptive + legacy mipmap PNGs) and iOS (AppIcon.appiconset).
@@ -27,9 +27,9 @@ const path      = require('path');
 
 const ROOT    = path.resolve(__dirname, '..');
 const ASSETS  = path.join(ROOT, 'assets');
-const SRC     = path.join(ROOT, 'Studylane.png');          // new logo PNG
-const SRC_FG  = path.join(ROOT, 'Studylane.png');          // foreground (same source)
-const SRC_MSK = path.join(ROOT, 'Studylane.png');          // maskable (same source)
+const SRC     = path.join(ROOT, 'assets', 'lyceon-icon.svg');          // source icon SVG
+const SRC_FG  = path.join(ROOT, 'assets', 'lyceon-icon.svg');          // foreground (same source)
+const SRC_MSK = path.join(ROOT, 'assets', 'lyceon-icon.svg');          // maskable (same source)
 
 // ── util ────────────────────────────────────────────────────────────────────
 

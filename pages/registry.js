@@ -19,6 +19,7 @@
       'files',
       'calendar',
       'grades',
+      'teacher-tools',
       'learn',
       'settings',
       'profile',
