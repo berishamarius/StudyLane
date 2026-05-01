@@ -484,56 +484,43 @@ const loadProfile = async () => {
 };
 
 const renderDashboard = async () => {
-  document.getElementById('dashGreeting').textContent = `Welcome back, ${state.profile?.full_name || 'student'}!`;
-  const scheduleCount = state.demoMode ? DEMO_DATA.schedules.length : 0;
-  const roomCount = state.demoMode ? DEMO_DATA.learningRooms.length : 0;
-  const taskCount = state.demoMode ? DEMO_DATA.tasks.filter((task) => task.status !== 'done').length : 0;
-  const courseCount = state.demoMode ? DEMO_DATA.courses.length : 0;
+  document.getElementById('dashGreeting').textContent = `${tr('dashWelcome', 'Welcome back')}, ${state.profile?.full_name || tr('student', 'student')}!`;
+  const scheduleCount = 0;
+  const roomCount = 0;
+  const taskCount = 0;
+  const courseCount = 0;
   document.getElementById('dashStats').innerHTML = `
-    <div class="dash-stat"><span class="dash-stat-value">${taskCount}</span><span class="dash-stat-label">Open Tasks</span></div>
-    <div class="dash-stat"><span class="dash-stat-value">${scheduleCount}</span><span class="dash-stat-label">Today’s lessons</span></div>
-    <div class="dash-stat"><span class="dash-stat-value">${roomCount}</span><span class="dash-stat-label">Learning rooms</span></div>
-    <div class="dash-stat"><span class="dash-stat-value">${courseCount}</span><span class="dash-stat-label">Courses</span></div>
+    <div class="dash-stat"><span class="dash-stat-value">${taskCount}</span><span class="dash-stat-label">${tr('dashStatTasks','Open tasks')}</span></div>
+    <div class="dash-stat"><span class="dash-stat-value">${scheduleCount}</span><span class="dash-stat-label">${tr('dashStatLessons',"Today's lessons")}</span></div>
+    <div class="dash-stat"><span class="dash-stat-value">${roomCount}</span><span class="dash-stat-label">${tr('dashStatRooms','Learning rooms')}</span></div>
+    <div class="dash-stat"><span class="dash-stat-value">${courseCount}</span><span class="dash-stat-label">${tr('dashStatCourses','Courses')}</span></div>
   `;
 
   const dashSchedule = document.getElementById('dashSchedule');
   const dashRooms = document.getElementById('dashRooms');
   const dashUpcoming = document.getElementById('dashUpcoming');
   const dashTasks = document.getElementById('dashTasks');
-  const dashCourses = document.getElementById('dashCourses');
   const dashHomeschool = document.getElementById('dashHomeschool');
   dashSchedule.textContent = 'Loading…';
   dashRooms.textContent = 'Loading…';
   dashUpcoming.textContent = 'Loading…';
   dashTasks.textContent = 'Loading…';
-  dashCourses.textContent = 'Loading…';
   dashHomeschool.textContent = 'Loading…';
 
   if (state.demoMode) {
-    const tasks = DEMO_DATA.tasks;
-    const courses = DEMO_DATA.courses;
-    const schedule = DEMO_DATA.schedules;
-    const rooms = DEMO_DATA.learningRooms;
-    const tips = DEMO_DATA.homeschoolTips;
-
-    dashSchedule.innerHTML = schedule.slice(0, 4).map((item) => `<div class="dash-list-item"><span class="dash-dot" style="background:#7f95ff"></span><div><div class="dash-list-title">${item.time} • ${item.subject}</div><div class="dash-list-sub">${item.location} · ${item.type}</div></div></div>`).join('') || '<div class="dash-list-placeholder">No classes scheduled for today.</div>';
-    dashRooms.innerHTML = rooms.map((room) => `<div class="dash-list-item"><span class="dash-dot" style="background:${room.status === 'Open' ? '#22c55e' : room.status === 'Booked' ? '#ef4444' : '#7180ff'}"></span><div><div class="dash-list-title">${room.name}</div><div class="dash-list-sub">${room.bestFor} · ${room.status}</div><div class="dash-list-sub">${room.description}</div></div></div>`).join('');
-    dashHomeschool.innerHTML = `<div class="dash-list-sub">Use separate learning spaces for focus, group work, and online study.</div><ul style="padding-left:16px;margin-top:10px;display:grid;gap:6px">${tips.map((tip) => `<li>${tip}</li>`).join('')}</ul>`;
-    dashUpcoming.innerHTML = tasks.slice(0, 4).map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : task.status === 'overdue' ? '#ef4444' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">Due ${new Date(task.due_date).toLocaleDateString()}</div></div></div>`).join('');
-    dashTasks.innerHTML = tasks.map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">${task.status}</div></div></div>`).join('');
-    dashCourses.innerHTML = courses.map((course) => `<div class="dash-list-item"><span class="dash-dot" style="background:linear-gradient(135deg,#7180ff,#7f95ff)"></span><div><div class="dash-list-title">${course.name}</div><div class="dash-list-sub">${course.teacher_name}</div></div></div>`).join('');
+    dashSchedule.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoSchedule','No classes scheduled yet.')}</div>`;
+    dashRooms.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoRooms','No learning rooms available.')}</div>`;
+    dashUpcoming.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoUpcoming','No upcoming tasks.')}</div>`;
+    dashTasks.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoTasks','No tasks yet.')}</div>`;
+    dashHomeschool.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoHomeschool','Set up a routine in Learn to get guidance here.')}</div>`;
     return;
   }
 
-  const [{ data: tasks }, { data: courses }] = await Promise.all([
-    sb.from('tasks').select('*').order('due_date', { ascending: true }).limit(5),
-    sb.from('courses').select('*').limit(4),
-  ]);
+  const { data: tasks } = await sb.from('tasks').select('*').order('due_date', { ascending: true }).limit(5);
 
   dashUpcoming.innerHTML = tasks?.length ? tasks.slice(0, 4).map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : task.status === 'overdue' ? '#ef4444' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">Due ${new Date(task.due_date).toLocaleDateString()}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No upcoming tasks found.</div>';
   dashTasks.innerHTML = tasks?.length ? tasks.map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">${task.status}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No tasks available.</div>';
-  dashCourses.innerHTML = courses?.length ? courses.map((course) => `<div class="dash-list-item"><span class="dash-dot" style="background:linear-gradient(135deg,#7180ff,#7f95ff)"></span><div><div class="dash-list-title">${course.name}</div><div class="dash-list-sub">${course.teacher_name}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No courses yet.</div>';
-  dashSchedule.innerHTML = '<div class="dash-list-placeholder">Your schedule is not available yet. Add lessons to create a timetable.</div>';
+  dashSchedule.innerHTML = '<div class="dash-list-placeholder">Your schedule is not available yet.</div>';
   dashRooms.innerHTML = '<div class="dash-list-placeholder">Learning rooms will appear here once you add them.</div>';
   dashHomeschool.innerHTML = '<div class="dash-list-placeholder">Add a homeschooling routine in Learn to get helpful guidance.</div>';
 };
@@ -542,8 +529,8 @@ const renderCourses = async () => {
   const grid = document.getElementById('courseGrid');
   grid.innerHTML = '<div class="dash-list-placeholder">Loading courses…</div>';
   if (state.demoMode) {
-    state.courses = DEMO_DATA.courses;
-    grid.innerHTML = state.courses.map((course) => `<div class="course-card" onclick="showCourseDetail('${course.id}')"><div class="course-card-banner"></div><div class="course-card-body"><div class="course-card-name">${course.name}</div><div class="course-card-teacher">${course.teacher_name}</div><div class="course-card-chips"><span class="chip">${course.level || 'General'}</span></div></div></div>`).join('');
+    state.courses = [];
+    grid.innerHTML = '<div class="dash-list-placeholder">No courses yet.</div>';
     return;
   }
   const { data, error } = await sb.from('courses').select('*').order('name', { ascending: true });
@@ -573,7 +560,7 @@ const renderTasks = async () => {
   const container = document.getElementById('taskList');
   container.innerHTML = '<div class="dash-list-placeholder">Loading tasks…</div>';
   if (state.demoMode) {
-    state.tasks = DEMO_DATA.tasks.slice();
+    state.tasks = [];
     filterTasks(state.taskFilter || 'all');
     return;
   }
@@ -587,10 +574,14 @@ const renderMessages = async () => {
   const list = document.getElementById('msgRoomList');
   list.innerHTML = `<div class="dash-list-placeholder">${tr('chatLoading', 'Loading chats...')}</div>`;
   if (state.demoMode) {
-    state.messages = DEMO_DATA.chats.slice();
-    list.innerHTML = state.messages.map((room) => `<div class="msg-room-item ${state.chat.currentRoomId === room.id ? 'active' : ''}" onclick="openChat('${room.id}')"><div class="msg-room-avatar">${(room.room_name || 'R').charAt(0).toUpperCase()}</div><div class="msg-room-info"><div class="msg-room-name">${room.room_name || tr('chatRoom', 'Room')}</div><div class="msg-room-preview">${room.last_message || tr('chatNoMessagesYet', 'No messages yet')}</div></div></div>`).join('');
-    if (!state.chat.currentRoomId && state.messages[0]) state.chat.currentRoomId = state.messages[0].id;
-    if (state.chat.currentRoomId) await openChat(state.chat.currentRoomId);
+    list.innerHTML = state.messages.length
+      ? state.messages.map((room) => `<div class="msg-room-item ${state.chat.currentRoomId === room.id ? 'active' : ''}" onclick="openChat('${room.id}')"><div class="msg-room-avatar">${(room.room_name || 'R').charAt(0).toUpperCase()}</div><div class="msg-room-info"><div class="msg-room-name">${room.room_name || tr('chatRoom', 'Room')}</div><div class="msg-room-preview">${room.last_message || tr('chatNoMessagesYet', 'No messages yet')}</div></div></div>`).join('')
+      : `<div class="dash-list-placeholder">${tr('chatNoRooms', 'No chats available.')}</div>`;
+    if (state.chat.currentRoomId) {
+      await openChat(state.chat.currentRoomId);
+    } else {
+      document.getElementById('msgChatArea').innerHTML = `<div class="msg-empty-state"><p>${tr('chatCreateFirstRoom', 'Create your first chat room.')}</p></div>`;
+    }
     return;
   }
   let data = null;
@@ -627,7 +618,7 @@ const renderFiles = async () => {
   const grid = document.getElementById('fileGrid');
   grid.innerHTML = '<div class="dash-list-placeholder">Loading files…</div>';
   if (state.demoMode) {
-    grid.innerHTML = DEMO_DATA.files.map((file) => `<div class="file-item"><div class="file-icon">📄</div><div class="file-name">${file.name}</div><div class="file-size">${file.size || '—'} KB</div></div>`).join('');
+    grid.innerHTML = '<div class="dash-list-placeholder">No files uploaded yet.</div>';
     return;
   }
   const { data, error } = await sb.from('files').select('*').order('created_at', { ascending: false });
@@ -638,8 +629,7 @@ const renderFiles = async () => {
 const renderCalendar = async () => {
   document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">Loading calendar…</div>';
   if (state.demoMode) {
-    const data = DEMO_DATA.events;
-    document.getElementById('calendarContainer').innerHTML = `<div class="dash-list-item">${data.map((event) => `<div class="dash-card"><div class="dash-card-title">${event.title}</div><div class="dash-list-sub">${new Date(event.starts_at).toLocaleDateString()} • ${event.location || 'No location'}</div></div>`).join('')}</div>`;
+    document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">No events scheduled.</div>';
     return;
   }
   const { data, error } = await sb.from('events').select('*').order('starts_at', { ascending: true });
@@ -652,8 +642,7 @@ const renderGrades = async () => {
   const content = document.getElementById('gradesContent');
   content.innerHTML = '<div class="dash-list-placeholder">Loading grades…</div>';
   if (state.demoMode) {
-    const data = DEMO_DATA.grades;
-    content.innerHTML = `<table class="grade-table"><thead><tr><th>Course</th><th>Grade</th><th>Notes</th></tr></thead><tbody>${data.map((grade) => `<tr><td>${grade.course_name}</td><td class="grade-val grade-${Math.min(6, Math.max(1, grade.value))}">${grade.value}</td><td>${grade.notes || '—'}</td></tr>`).join('')}</tbody></table>`;
+    content.innerHTML = '<div class="dash-list-placeholder">No grades available.</div>';
     return;
   }
   const { data, error } = await sb.from('grades').select('*').order('updated_at', { ascending: false });
@@ -667,202 +656,129 @@ const renderLearn = async () => {
 
   const mode = state.ui.studyMode;
   const activeLang = getActiveLanguage();
-  const bookmark = getLearnBookmark(mode);
-
-  // Subject → visual identity map
-  const SUBJECT_META = {
-    mathematics: { icon: '📐', color: 'var(--subject-math)' },
-    physics: { icon: '⚛️', color: 'var(--subject-physics)' },
-    chemistry: { icon: '⚗️', color: 'var(--subject-chemistry)' },
-    biology: { icon: '🌿', color: 'var(--subject-biology)' },
-    'computer-science': { icon: '💻', color: 'var(--subject-cs)' },
-    'language-arts': { icon: '📝', color: 'var(--subject-lang)' },
-    'english-language': { icon: '🇬🇧', color: 'var(--subject-lang)' },
-    'german-language': { icon: '🇩🇪', color: 'var(--subject-lang)' },
-    'french-language': { icon: '🇫🇷', color: 'var(--subject-lang)' },
-    'spanish-language': { icon: '🇪🇸', color: 'var(--subject-lang)' },
-    history: { icon: '📜', color: 'var(--subject-hist)' },
-    geography: { icon: '🌍', color: 'var(--subject-geo)' },
-    economics: { icon: '📊', color: 'var(--subject-eco)' },
-    arts: { icon: '🎨', color: 'var(--subject-art)' },
-    music: { icon: '🎵', color: 'var(--subject-music)' },
-    'health': { icon: '💚', color: 'var(--subject-biology)' },
-    'earth-science': { icon: '🌎', color: 'var(--subject-geo)' },
-    'religion-and-ethics': { icon: '⚖️', color: 'var(--subject-default)' },
-    'physical-education': { icon: '🏃', color: 'var(--subject-green)' },
-    'social-studies': { icon: '🏛️', color: 'var(--subject-hist)' },
-  };
-  const getMeta = (id) => SUBJECT_META[id] || { icon: '📚', color: 'var(--subject-default)' };
-
-  const copy = {
-    homeschoolTitle: tr('learnHomeschoolTitle', 'Homeschooling & Learning Rooms'),
-    homeschoolSub: tr('learnHomeschoolSubtitle', 'Build a home learning routine, choose the right room, and keep your weekly plan on track.'),
-    roomBestFor: tr('learnRoomBestFor', 'Best for'),
-    roomStatus: tr('learnRoomStatus', 'Status'),
-    modeLabel: tr('learnCurrentMode', 'Current mode'),
-    modeValue: mode === 'school' ? tr('studyModeSchool', 'School') : tr('studyModeUniversity', 'University'),
-    modeContext: tr('learnModeContext', 'Learning profile'),
-    bookmarkTitle: tr('learnBookmarkTitle', 'Continue where you left off'),
-    bookmarkEmpty: tr('learnBookmarkEmpty', 'No bookmark yet. Mark a topic to resume later.'),
-    bookmarkAt: tr('learnBookmarkedAt', 'Saved topic'),
-    resume: tr('learnResume', 'Resume'),
-    clearBookmark: tr('learnClearBookmark', 'Clear bookmark'),
-    markHere: tr('learnMarkHere', '🔖 Mark'),
-    hints: tr('learnHints', 'Study tips'),
-    lessonPlan: tr('learnLessonPlan', 'Lesson plan'),
-    level: tr('learnLevel', 'Level'),
-    explain: tr('learnExplain', 'Easy explanation'),
-    steps: tr('learnSteps', 'Steps'),
-    miniTask: tr('learnMiniTaskLabel', 'Mini practice'),
-    sourcesOptional: tr('learnSourcesOptional', '📎 Trusted sources'),
-    sources: tr('learnTrustedSources', 'Trusted sources'),
-    empty: tr('learnEmpty', 'No learning areas available for this mode.')
-  };
-
   const model = window.LEARN_SOURCES || { core: {}, school: [], university: [] };
   const subjects = model[mode] || [];
 
-  const localizedSubjects = await Promise.all(subjects.map(async (subject) => {
-    const translatedTitle = await localizeLearnText(subject.title, activeLang);
-    const translatedFolders = await Promise.all((subject.folders || []).map(async (folder) => {
-      const translatedName = await localizeLearnText(folder.name, activeLang);
-      const translatedTopics = await Promise.all((folder.topics || []).map((topic) => localizeLearnText(topic, activeLang)));
-      const defaultHelps = [
-        `Break ${folder.name} into small daily parts and study one part at a time.`,
-        'Use active recall: close your notes and explain the concept from memory.',
-        'Solve at least three practice tasks and review mistakes immediately.'
-      ];
-      const translatedHelps = await Promise.all((folder.helps || defaultHelps).map((item) => localizeLearnText(item, activeLang)));
-      const lessonCards = await Promise.all(translatedTopics.map(async (topic) => {
-        const plan = buildSimpleLessonPlan(topic, mode);
-        return {
-          level: await localizeLearnText(plan.level, activeLang),
-          explain: await localizeLearnText(plan.explain, activeLang),
-          steps: await Promise.all(plan.steps.map((step) => localizeLearnText(step, activeLang))),
-          miniTask: await localizeLearnText(plan.miniTask, activeLang),
-          hint: await localizeLearnText(plan.hint, activeLang),
-        };
-      }));
-      return {
-        ...folder,
-        name: translatedName,
-        topics: translatedTopics,
-        helps: translatedHelps,
-        lessonCards,
-      };
-    }));
-    return { ...subject, title: translatedTitle, folders: translatedFolders };
+  if (!subjects.length) {
+    container.innerHTML = `<div class="dash-list-placeholder">${tr('learnEmpty','No content available.')}</div>`;
+    return;
+  }
+
+  const SUBJECT_META = {
+    mathematics:          { icon: '📐', color: '#e8a020' },
+    physics:              { icon: '⚛️',  color: '#4a90d9' },
+    chemistry:            { icon: '⚗️',  color: '#9b59b6' },
+    biology:              { icon: '🌿', color: '#27ae60' },
+    'computer-science':   { icon: '💻', color: '#2980b9' },
+    'language-arts':      { icon: '📝', color: '#e67e22' },
+    'english-language':   { icon: '🇬🇧', color: '#c0392b' },
+    'german-language':    { icon: '🇩🇪', color: '#f39c12' },
+    'french-language':    { icon: '🇫🇷', color: '#2980b9' },
+    'spanish-language':   { icon: '🇪🇸', color: '#c0392b' },
+    history:              { icon: '📜', color: '#8e6b3e' },
+    geography:            { icon: '🌍', color: '#16a085' },
+    civics:               { icon: '🏛️',  color: '#2c3e50' },
+    economics:            { icon: '📊', color: '#2c3e50' },
+    'earth-science':      { icon: '🌎', color: '#16a085' },
+    arts:                 { icon: '🎨', color: '#c0392b' },
+    health:               { icon: '💚', color: '#27ae60' },
+    'religion-and-ethics':{ icon: '⚖️',  color: '#7f8c8d' },
+    music:                { icon: '🎵', color: '#8e44ad' },
+    'physical-education': { icon: '🏃', color: '#2ecc71' },
+    'technology-and-design': { icon: '🔧', color: '#34495e' },
+    'media-literacy':     { icon: '📱', color: '#3498db' },
+  };
+  const getMeta = (id) => SUBJECT_META[id] || { icon: '📚', color: 'var(--accent2)' };
+
+  // Ensure a subject is selected
+  if (!state.ui.learnSelectedSubject || !subjects.find(s => s.id === state.ui.learnSelectedSubject)) {
+    state.ui.learnSelectedSubject = subjects[0].id;
+  }
+  const selId = state.ui.learnSelectedSubject;
+  const subject = subjects.find(s => s.id === selId) || subjects[0];
+  const meta = getMeta(subject.id);
+
+  // Translate subject title for the panel header
+  const subjectTitle = await localizeLearnText(subject.title, activeLang);
+
+  // Subject pills — show native English titles for speed (language switching retranslates on next render)
+  const pillsHtml = subjects.map(s => {
+    const m = getMeta(s.id);
+    const active = s.id === selId;
+    return `<button class="learn-pill${active ? ' active' : ''}"
+      onclick="selectLearnSubject('${s.id}')"
+      style="${active ? `background:${m.color};color:#fff;border-color:${m.color}` : `border-color:${m.color}40`}">
+      <span style="font-size:16px;line-height:1">${m.icon}</span>
+      <span>${s.title}</span>
+    </button>`;
+  }).join('');
+
+  // Translate all folder content in parallel
+  const localizedFolders = await Promise.all((subject.folders || []).map(async (folder) => {
+    const [name, description, miniTask] = await Promise.all([
+      localizeLearnText(folder.name, activeLang),
+      localizeLearnText(folder.description || '', activeLang),
+      localizeLearnText(folder.miniTask || '', activeLang)
+    ]);
+    const keyPoints = folder.keyPoints
+      ? await Promise.all(folder.keyPoints.map(kp => localizeLearnText(kp, activeLang)))
+      : [];
+    const topics = folder.topics
+      ? await Promise.all(folder.topics.map(t => localizeLearnText(t, activeLang)))
+      : [];
+    const sourceNames = (model.core[folder.sourceGroup] || []).join(', ');
+    return { ...folder, name, description, miniTask, keyPoints, topics, sourceNames };
   }));
 
-  // Bookmark card
-  const bookmarkHtml = bookmark
-    ? `<div class="learn-bookmark-card">
-        <div style="font-weight:700;margin-bottom:8px;font-size:15px">🔖 ${copy.bookmarkTitle}</div>
-        <p style="font-size:13px;color:var(--text2);margin-bottom:12px">${copy.bookmarkAt}: <strong>${bookmark.subjectTitle} › ${bookmark.folderName} › ${bookmark.topic}</strong></p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn btn-primary" onclick="resumeLearnBookmark()">${copy.resume}</button>
-          <button class="btn btn-secondary" onclick="clearLearnBookmark()">${copy.clearBookmark}</button>
+  // Build folder cards
+  const foldersHtml = localizedFolders.map((folder, fi) => {
+    const kpHtml = folder.keyPoints.length
+      ? `<ul class="learn-key-points">${folder.keyPoints.map(kp => `<li>${kp}</li>`).join('')}</ul>`
+      : '';
+    const topicsHtml = folder.topics.length
+      ? `<div class="learn-topics-row">${folder.topics.map(t => `<span class="learn-topic-chip">${t}</span>`).join('')}</div>`
+      : '';
+    const miniTaskHtml = folder.miniTask
+      ? `<div class="learn-mini-task"><strong>${tr('learnTopicTask','Practice task')}:</strong> ${folder.miniTask}</div>`
+      : '';
+    const sourcesHtml = folder.sourceNames
+      ? `<p class="learn-sources-line">${tr('learnTopicSources','Sources')}: ${folder.sourceNames}</p>`
+      : '';
+    return `
+      <details class="learn-folder-card" ${fi === 0 ? 'open' : ''}>
+        <summary class="learn-folder-header">
+          <span class="learn-folder-num">${fi + 1}</span>
+          <span>${folder.name}</span>
+        </summary>
+        <div class="learn-folder-body">
+          ${folder.description ? `<p class="learn-folder-desc">${folder.description}</p>` : ''}
+          ${kpHtml}
+          ${topicsHtml}
+          ${miniTaskHtml}
+          ${sourcesHtml}
         </div>
-      </div>`
-    : `<div class="learn-bookmark-card" style="opacity:.7">
-        <div style="font-weight:700;margin-bottom:6px;font-size:15px">🔖 ${copy.bookmarkTitle}</div>
-        <p style="font-size:13px;color:var(--text2)">${copy.bookmarkEmpty}</p>
-      </div>`;
-
-  // Homeschool + rooms card
-  const homeschoolHtml = `
-    <div class="learn-homeschool-card">
-      <div style="font-weight:700;font-size:16px;margin-bottom:6px">🏠 ${copy.homeschoolTitle}</div>
-      <p style="font-size:13px;color:var(--text2);margin-bottom:14px">${copy.homeschoolSub}</p>
-      <div style="display:grid;gap:10px;margin-bottom:14px">
-        ${DEMO_DATA.learningRooms.map((room) => `
-          <div class="learn-room-row">
-            <div style="flex:1">
-              <div style="font-weight:700;font-size:13px;margin-bottom:3px">${room.name}</div>
-              <div style="font-size:12px;color:var(--text2)">${room.description}</div>
-              <div style="font-size:11px;color:var(--text3);margin-top:5px">${copy.roomBestFor}: ${room.bestFor}</div>
-            </div>
-            <span class="learn-room-status ${(room.status || '').toLowerCase()}">${room.status}</span>
-          </div>
-        `).join('')}
-      </div>
-      <div style="font-weight:700;font-size:13px;margin-bottom:8px">Quick setup tips</div>
-      ${DEMO_DATA.homeschoolTips.map((tip) => `<div class="learn-tip">${tip}</div>`).join('')}
-    </div>`;
-
-  // Mode context bar
-  const modeBarHtml = `
-    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:20px;padding:14px 18px;background:rgba(255,255,255,.72);border:1px solid rgba(176,127,82,.12);border-radius:18px">
-      <span style="font-size:13px;color:var(--text2)">${copy.modeLabel}:</span>
-      <span style="font-weight:700;color:var(--text)">${copy.modeValue}</span>
-      <span style="color:var(--text3);font-size:12px">·</span>
-      <span style="font-size:13px;color:var(--text2)">${copy.modeContext}:</span>
-      <span style="font-weight:700;color:var(--text)">${getLearningContextLine(mode)}</span>
-    </div>`;
-
-  // Subject cards with folder details
-  const subjectsHtml = localizedSubjects.length
-    ? localizedSubjects.map((subject) => {
-        const meta = getMeta(subject.id);
-        return `
-          <article class="learn-subject-card" data-subject="${subject.id}">
-            <div class="learn-subject-header" style="border-bottom:1px solid rgba(176,127,82,.1)">
-              <div class="learn-subject-icon" style="background:${meta.color}">${meta.icon}</div>
-              <div class="learn-subject-name">${subject.title}</div>
-            </div>
-            <div class="learn-subject-body">
-              ${(subject.folders || []).map((folder, folderIndex) => `
-                <details class="learn-folder" data-learn-anchor="${subject.id}::${folderIndex}">
-                  <summary>${folder.name}</summary>
-                  <div class="learn-folder-body">
-                    ${folder.helps?.length ? `
-                      <div class="learn-card">
-                        <div class="learn-card-label">${copy.hints}</div>
-                        ${folder.helps.map((hint) => `<div class="learn-tip">${hint}</div>`).join('')}
-                      </div>` : ''}
-                    <div class="learn-card" style="padding:10px 12px">
-                      <div class="learn-card-label" style="margin-bottom:8px">Topics</div>
-                      ${(folder.topics || []).map((topic, topicIndex) => `
-                        <div class="learn-topic-row">
-                          <div class="learn-topic-dot" style="background:${meta.color.includes('gradient') ? 'var(--accent2)' : meta.color}"></div>
-                          <span class="learn-topic-label">${topic}</span>
-                          <button class="learn-bookmark-btn${bookmark && bookmark.subjectId === subject.id && bookmark.folderIndex === folderIndex && bookmark.topicIndex === topicIndex ? ' bookmarked' : ''}"
-                            onclick="markLearnTopic('${subject.id}','${encodeURIComponent(subject.title)}','${encodeURIComponent(folder.name)}',${folderIndex},'${encodeURIComponent(topic)}',${topicIndex})">${copy.markHere}</button>
-                        </div>
-                      `).join('')}
-                    </div>
-                    ${(folder.lessonCards || []).map((card, idx) => `
-                      <div class="learn-card">
-                        <div class="learn-card-label">${copy.lessonPlan} ${idx + 1} · ${card.level}</div>
-                        <p style="font-size:13px;margin:6px 0 8px">${card.explain}</p>
-                        ${card.steps.map((step, si) => `<div class="learn-card-step" data-n="${si + 1}">${step}</div>`).join('')}
-                        <div class="learn-mini-task">${card.miniTask}</div>
-                        <p style="font-size:12px;color:var(--text3);margin-top:8px">${card.hint}</p>
-                      </div>
-                    `).join('')}
-                    ${(model.core[folder.sourceGroup] || []).length ? `
-                      <details class="learn-folder" style="margin-top:2px">
-                        <summary class="learn-sources-toggle">${copy.sourcesOptional}</summary>
-                        <div style="padding:8px 14px 10px;display:grid;gap:4px">
-                          ${(model.core[folder.sourceGroup] || []).map((src) => `<a class="learn-source-link" href="${src.url}" target="_blank" rel="noopener noreferrer">${src.title}</a>`).join('')}
-                        </div>
-                      </details>` : ''}
-                  </div>
-                </details>
-              `).join('')}
-            </div>
-          </article>`;
-      }).join('')
-    : `<div class="dash-list-placeholder">${copy.empty}</div>`;
+      </details>`;
+  }).join('');
 
   container.innerHTML = `
-    ${modeBarHtml}
-    ${bookmarkHtml}
-    ${homeschoolHtml}
-    <div class="dash-grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px">
-      ${subjectsHtml}
-    </div>
-  `;
+    <div class="learn-wrap">
+      <div class="learn-mode-bar">
+        <span>${tr('studyMode','Mode')}: <strong>${mode === 'school' ? tr('studyModeSchool','School') : tr('studyModeUniversity','University')}</strong></span>
+      </div>
+      <div class="learn-subjects-pills">${pillsHtml}</div>
+      <div class="learn-subject-panel">
+        <div class="learn-subject-panel-header" style="border-left:4px solid ${meta.color}">
+          <span style="font-size:28px;line-height:1">${meta.icon}</span>
+          <span class="learn-subject-panel-title">${subjectTitle}</span>
+        </div>
+        <div class="learn-folder-list">${foldersHtml}</div>
+      </div>
+    </div>`;
+};
+
+window.selectLearnSubject = (id) => {
+  state.ui.learnSelectedSubject = id;
+  renderLearn();
 };
 
 const markLearnTopic = (subjectId, subjectTitle, folderName, folderIndex, topic, topicIndex) => {
@@ -1087,6 +1003,13 @@ const toggleSidebar = () => {
   overlay.classList.toggle('hidden');
 };
 
+const toggleSidebarCollapse = () => {
+  const sidebar = document.querySelector('.sidebar');
+  const shell = document.querySelector('.app-shell');
+  sidebar.classList.toggle('collapsed');
+  shell.classList.toggle('sidebar-collapsed');
+};
+
 const closeSidebar = () => {
   document.querySelector('.sidebar').classList.remove('open');
   document.getElementById('sidebarOverlay').classList.add('hidden');
@@ -1105,14 +1028,14 @@ const openChat = async (roomId) => {
   let rows = [];
 
   if (state.demoMode) {
-    rows = (DEMO_DATA.chatMessages[roomId] || []).slice();
-    state.chat.messagesByRoom[roomId] = rows;
+    const existingMsgs = state.chat.messagesByRoom[roomId] || [];
+    state.chat.messagesByRoom[roomId] = existingMsgs;
     const room = state.messages.find((entry) => entry.id === roomId);
     const roomName = room?.room_name || 'Chat';
-    const bubbles = rows.length
-      ? rows.map((item) => {
+    const bubbles = existingMsgs.length
+      ? existingMsgs.map((item) => {
           const mine = item.sender_id === state.user?.id;
-          return `<div class="msg-bubble ${mine ? 'mine' : 'theirs'}">${item.sender_name ? `<div class="msg-bubble-sender">${item.sender_name}</div>` : ''}<div>${item.content || ''}</div><div class="msg-bubble-time">${item.created_at ? new Date(item.created_at).toLocaleString() : ''}</div></div>`;
+          return `<div class="msg-bubble-wrap ${mine ? 'mine' : 'theirs'}"><div class="msg-bubble ${mine ? 'mine' : 'theirs'}">${item.sender_name && !mine ? `<div class="msg-bubble-sender">${item.sender_name}</div>` : ''}<div>${item.content || ''}</div></div><div class="msg-bubble-time ${mine ? '' : 'theirs'}">${item.created_at ? new Date(item.created_at).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) : ''}</div></div>`;
         }).join('')
       : `<div class="dash-list-placeholder">${tr('chatNoMessagesYet', 'No messages yet')}</div>`;
 
@@ -1121,7 +1044,7 @@ const openChat = async (roomId) => {
       <div class="msg-chat-messages" id="msgChatMessages">${bubbles}</div>
       <div class="msg-chat-input-wrap">
         <textarea class="msg-chat-input" id="msgComposer" placeholder="${tr('chatWriteMessage', 'Write a message...')}"></textarea>
-        <button class="btn btn-primary" onclick="sendChatMessage()">${tr('chatSend', 'Send')}</button>
+        <button class="msg-send-btn" onclick="sendChatMessage()" title="${tr('chatSend','Send')}"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
       </div>
     `;
     return;
@@ -1150,7 +1073,7 @@ const openChat = async (roomId) => {
   const bubbles = rows.length
     ? rows.map((item) => {
         const mine = item.sender_id === state.user?.id;
-        return `<div class="msg-bubble ${mine ? 'mine' : 'theirs'}">${item.sender_name ? `<div class="msg-bubble-sender">${item.sender_name}</div>` : ''}<div>${item.content || ''}</div><div class="msg-bubble-time">${item.created_at ? new Date(item.created_at).toLocaleString() : ''}</div></div>`;
+        return `<div class="msg-bubble-wrap ${mine ? 'mine' : 'theirs'}"><div class="msg-bubble ${mine ? 'mine' : 'theirs'}">${item.sender_name && !mine ? `<div class="msg-bubble-sender">${item.sender_name}</div>` : ''}<div>${item.content || ''}</div></div><div class="msg-bubble-time ${mine ? '' : 'theirs'}">${item.created_at ? new Date(item.created_at).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) : ''}</div></div>`;
       }).join('')
     : '<div class="dash-list-placeholder">No messages yet. Start this conversation.</div>';
 
@@ -1159,7 +1082,7 @@ const openChat = async (roomId) => {
     <div class="msg-chat-messages" id="msgChatMessages">${bubbles}</div>
     <div class="msg-chat-input-wrap">
       <textarea class="msg-chat-input" id="msgComposer" placeholder="Write a message..."></textarea>
-      <button class="btn btn-primary" onclick="sendChatMessage()">Send</button>
+      <button class="msg-send-btn" onclick="sendChatMessage()" title="${tr('chatSend','Send')}"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
     </div>
   `;
 
@@ -1184,19 +1107,18 @@ const sendChatMessage = async () => {
   };
 
   if (state.demoMode) {
-    const list = DEMO_DATA.chatMessages[roomId] || [];
-    list.push({
-      id: `d-msg-${Date.now()}`,
+    const msgs = state.chat.messagesByRoom[roomId] || [];
+    msgs.push({
+      id: `msg-${Date.now()}`,
       room_id: roomId,
       content,
       sender_id: state.user?.id,
-      sender_name: state.profile?.full_name || 'Demo User',
+      sender_name: state.profile?.full_name || 'User',
       created_at: new Date().toISOString(),
     });
-    DEMO_DATA.chatMessages[roomId] = list;
+    state.chat.messagesByRoom[roomId] = msgs;
     composer.value = '';
     await openChat(roomId);
-    await renderMessages();
     return;
   }
 
@@ -1221,16 +1143,16 @@ const startNewChat = async () => {
   if (!roomName || !roomName.trim()) return;
 
   if (state.demoMode) {
-    const roomId = `d-room-${Date.now()}`;
-    DEMO_DATA.chats.unshift({
+    const roomId = `room-${Date.now()}`;
+    state.messages.unshift({
       id: roomId,
       room_name: roomName.trim(),
       last_message: '',
       updated_at: new Date().toISOString(),
     });
-    DEMO_DATA.chatMessages[roomId] = [];
+    state.chat.messagesByRoom[roomId] = [];
+    state.chat.currentRoomId = roomId;
     await renderMessages();
-    await openChat(roomId);
     return;
   }
 
@@ -1312,6 +1234,7 @@ Object.assign(window, {
   filterCourses,
   filterTasks,
   toggleSidebar,
+  toggleSidebarCollapse,
   closeSidebar,
   openSearch,
   toggleNotifs,

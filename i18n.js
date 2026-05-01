@@ -275,14 +275,90 @@ async function setLanguage(code) {
 
 	const flagEl = document.getElementById('langFlag');
 	const labelEl = document.getElementById('langLabel');
-	if (flagEl) flagEl.textContent = lang.flag;
+	// flagEl is an SVG globe — don't overwrite it with emoji
 	if (labelEl) labelEl.textContent = lang.code.toUpperCase();
 
-	if (typeof window.onLanguageChanged === 'function') {
-		window.onLanguageChanged(normalized);
-	}
+localStorage.setItem('lyceon_language', normalized);
 
-	void prefillAllMissingLocaleKeysInBackground();
+        if (typeof window.onLanguageChanged === 'function') {
+                window.onLanguageChanged(normalized);
+        }
+
+        void prefillAllMissingLocaleKeysInBackground();
 }
 
 window.translateText = translateText;
+
+/* ── Language Picker UI ─────────────────────────────────────────── */
+function buildLangPickerList(filter) {
+        const list = document.getElementById('langPickerList');
+        if (!list) return;
+        const q = (filter || '').toLowerCase();
+        let html = '';
+        LANGUAGE_REGIONS.forEach(group => {
+                const items = group.options.filter(o =>
+                        !q || o.label.toLowerCase().includes(q) || o.code.toLowerCase().includes(q)
+                );
+                if (!items.length) return;
+                html += `<div class="lang-picker-region">${group.region}</div>`;
+                items.forEach(o => {
+                        const active = o.code === currentLang ? ' active' : '';
+                        const flagCode = (o.flag || o.code).toUpperCase().slice(0,2);
+                        html += `<div class="lang-picker-item${active}" onclick="pickLanguage('${o.code}')">
+                                <span class="lp-flag" style="font-size:11px;font-weight:700;background:var(--accent-glow);color:var(--accent);border-radius:4px;padding:1px 4px;min-width:22px;text-align:center">${flagCode}</span>
+                                <span class="lp-label">${o.label}</span>
+                                <span class="lp-code">${o.code.toUpperCase()}</span>
+                        </div>`;
+                });
+        });
+        list.innerHTML = html;
+}
+
+function getFlagEmoji(countryCode) {
+        if (!countryCode || countryCode.length < 2) return '🌐';
+        try {
+                return String.fromCodePoint(
+                        ...[...countryCode.toUpperCase().slice(0,2)].map(c => 0x1F1E6 + c.charCodeAt(0) - 65)
+                );
+        } catch { return '🌐'; }
+}
+
+window.toggleLangPicker = function() {
+        const dd = document.getElementById('langPickerDropdown');
+        if (!dd) return;
+        const isHidden = dd.classList.contains('hidden');
+        dd.classList.toggle('hidden');
+        if (isHidden) {
+                buildLangPickerList('');
+                const inp = document.getElementById('langPickerSearch');
+                if (inp) { inp.value = ''; inp.focus(); }
+        }
+};
+
+window.filterLangPicker = function(val) {
+        buildLangPickerList(val);
+};
+
+window.pickLanguage = async function(code) {
+        await setLanguage(code);
+        const dd = document.getElementById('langPickerDropdown');
+        if (dd) dd.classList.add('hidden');
+};
+
+/* Close picker when clicking outside */
+document.addEventListener('click', function(e) {
+        const btn = document.getElementById('langPickerBtn');
+        const dd = document.getElementById('langPickerDropdown');
+        if (!dd || dd.classList.contains('hidden')) return;
+        if (!dd.contains(e.target) && e.target !== btn && !btn?.contains(e.target)) {
+                dd.classList.add('hidden');
+        }
+});
+
+/* Init language from localStorage on DOMContentLoaded */
+window.addEventListener('DOMContentLoaded', async () => {
+        const saved = localStorage.getItem('lyceon_language');
+        const browserLang = (navigator.language || 'en').split('-')[0];
+        const lang = saved || browserLang || 'en';
+        await setLanguage(normalizeLanguageCode(lang));
+});

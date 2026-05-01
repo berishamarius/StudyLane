@@ -1,1021 +1,995 @@
 (function () {
   window.LEARN_SOURCES = {
-    core: {
-      math: [
-        { title: 'Khan Academy Mathematics', url: 'https://www.khanacademy.org/math' },
-        { title: 'OpenStax Mathematics', url: 'https://openstax.org/subjects/math' },
-        { title: 'GeoGebra', url: 'https://www.geogebra.org/' }
-      ],
-      physics: [
-        { title: 'OpenStax University Physics', url: 'https://openstax.org/details/books/university-physics-volume-1' },
-        { title: 'PhET Interactive Simulations (University of Colorado Boulder)', url: 'https://phet.colorado.edu/' },
-        { title: 'MIT OpenCourseWare Physics', url: 'https://ocw.mit.edu/search/?d=Physics' }
-      ],
-      chemistry: [
-        { title: 'Chemistry LibreTexts', url: 'https://chem.libretexts.org/' },
-        { title: 'Royal Society of Chemistry Education', url: 'https://edu.rsc.org/' },
-        { title: 'OpenStax Chemistry 2e', url: 'https://openstax.org/details/books/chemistry-2e' }
-      ],
-      biology: [
-        { title: 'OpenStax Biology 2e', url: 'https://openstax.org/details/books/biology-2e' },
-        { title: 'HHMI BioInteractive', url: 'https://www.biointeractive.org/' },
-        { title: 'NCBI Bookshelf', url: 'https://www.ncbi.nlm.nih.gov/books/' }
-      ],
-      cs: [
-        { title: 'CS50 (Harvard University)', url: 'https://cs50.harvard.edu/' },
-        { title: 'MIT OpenCourseWare Electrical Engineering and Computer Science', url: 'https://ocw.mit.edu/search/?d=Electrical%20Engineering%20and%20Computer%20Science' },
-        { title: 'MDN Web Docs', url: 'https://developer.mozilla.org/' }
-      ],
-      engineering: [
-        { title: 'MIT OpenCourseWare Engineering', url: 'https://ocw.mit.edu/search/?d=Engineering' },
-        { title: 'NPTEL (IITs and IISc)', url: 'https://nptel.ac.in/' },
-        { title: 'Open Textbook Library Engineering', url: 'https://open.umn.edu/opentextbooks' }
-      ],
-      medicine: [
-        { title: 'MedlinePlus', url: 'https://medlineplus.gov/' },
-        { title: 'World Health Organization Learning', url: 'https://academy.who.int/' },
-        { title: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/' }
-      ],
-      law: [
-        { title: 'Cornell Law School Legal Information Institute', url: 'https://www.law.cornell.edu/' },
-        { title: 'EUR-Lex', url: 'https://eur-lex.europa.eu/' },
-        { title: 'United Nations Treaty Collection', url: 'https://treaties.un.org/' }
-      ],
-      economics: [
-        { title: 'CORE Econ', url: 'https://www.core-econ.org/' },
-        { title: 'OpenStax Economics', url: 'https://openstax.org/subjects/social-sciences' },
-        { title: 'World Bank Open Learning Campus', url: 'https://olc.worldbank.org/' }
-      ],
-      socialScience: [
-        { title: 'OECD Education and Skills', url: 'https://www.oecd.org/education/' },
-        { title: 'Our World in Data', url: 'https://ourworldindata.org/' },
-        { title: 'UNESCO Institute for Statistics', url: 'https://uis.unesco.org/' }
-      ],
-      writing: [
-        { title: 'Purdue Online Writing Lab', url: 'https://owl.purdue.edu/' },
-        { title: 'Open Textbook Library', url: 'https://open.umn.edu/opentextbooks' },
-        { title: 'Saylor Academy', url: 'https://www.saylor.org/' }
-      ],
-      earthScience: [
-        { title: 'NASA STEM', url: 'https://www.nasa.gov/stem/' },
-        { title: 'USGS Education', url: 'https://www.usgs.gov/education' },
-        { title: 'NOAA Education', url: 'https://www.noaa.gov/education' }
-      ],
-      geography: [
-        { title: 'National Geographic Education', url: 'https://education.nationalgeographic.org/' },
-        { title: 'US Census Education', url: 'https://www.census.gov/schools/' },
-        { title: 'United Nations Data', url: 'https://data.un.org/' }
-      ],
-      languageArts: [
-        { title: 'British Council Learn English', url: 'https://learnenglish.britishcouncil.org/' },
-        { title: 'Deutsche Welle Learn German', url: 'https://learngerman.dw.com/' },
-        { title: 'Cambridge Dictionary', url: 'https://dictionary.cambridge.org/' }
-      ],
-      languageLearning: [
-        { title: 'Institut francais', url: 'https://www.institutfrancais.com/' },
-        { title: 'Instituto Cervantes', url: 'https://www.cervantes.es/' },
-        { title: 'Goethe-Institut', url: 'https://www.goethe.de/' }
-      ],
-      arts: [
-        { title: 'The Metropolitan Museum of Art Learning', url: 'https://www.metmuseum.org/learn' },
-        { title: 'Google Arts and Culture', url: 'https://artsandculture.google.com/' },
-        { title: 'Smarthistory', url: 'https://smarthistory.org/' }
-      ],
-      health: [
-        { title: 'Centers for Disease Control and Prevention', url: 'https://www.cdc.gov/' },
-        { title: 'World Health Organization', url: 'https://www.who.int/' },
-        { title: 'NHS Health A-Z', url: 'https://www.nhs.uk/conditions/' }
-      ],
-      architecture: [
-        { title: 'MIT OpenCourseWare Architecture', url: 'https://ocw.mit.edu/search/?d=Architecture' },
-        { title: 'RIBA', url: 'https://www.architecture.com/' },
-        { title: 'ArchDaily', url: 'https://www.archdaily.com/' }
-      ],
-      agriculture: [
-        { title: 'FAO E-learning Academy', url: 'https://elearning.fao.org/' },
-        { title: 'USDA Education', url: 'https://www.usda.gov/topics/education-and-outreach' },
-        { title: 'CIMMYT Resources', url: 'https://www.cimmyt.org/' }
-      ],
-      cybersecurity: [
-        { title: 'NIST Cybersecurity', url: 'https://www.nist.gov/cybersecurity' },
-        { title: 'ENISA', url: 'https://www.enisa.europa.eu/' },
-        { title: 'CISA', url: 'https://www.cisa.gov/' }
-      ],
-      businessPolicy: [
-        { title: 'International Monetary Fund', url: 'https://www.imf.org/' },
-        { title: 'International Labour Organization', url: 'https://www.ilo.org/' },
-        { title: 'OECD Policy', url: 'https://www.oecd.org/' }
-      ],
-      energy: [
-        { title: 'International Energy Agency', url: 'https://www.iea.org/' },
-        { title: 'International Renewable Energy Agency', url: 'https://www.irena.org/' },
-        { title: 'US Department of Energy Office of Science', url: 'https://science.osti.gov/' }
-      ],
-      ocean: [
-        { title: 'NOAA Ocean and Coasts', url: 'https://www.noaa.gov/ocean-coasts' },
-        { title: 'UNESCO Intergovernmental Oceanographic Commission', url: 'https://ioc.unesco.org/' },
-        { title: 'Woods Hole Oceanographic Institution', url: 'https://www.whoi.edu/' }
+  "core": {
+    "math": [
+      "Khan Academy",
+      "OpenStax Mathematics",
+      "GeoGebra"
+    ],
+    "physics": [
+      "OpenStax University Physics",
+      "PhET Simulations (U Colorado)",
+      "MIT OpenCourseWare Physics"
+    ],
+    "chemistry": [
+      "Chemistry LibreTexts",
+      "Royal Society of Chemistry",
+      "OpenStax Chemistry 2e"
+    ],
+    "biology": [
+      "OpenStax Biology 2e",
+      "HHMI BioInteractive",
+      "NCBI Bookshelf"
+    ],
+    "cs": [
+      "CS50 Harvard",
+      "MIT OpenCourseWare CS",
+      "MDN Web Docs"
+    ],
+    "engineering": [
+      "MIT OpenCourseWare Engineering",
+      "NPTEL (IITs)",
+      "Open Textbook Library"
+    ],
+    "medicine": [
+      "MedlinePlus",
+      "WHO Learning Academy",
+      "PubMed"
+    ],
+    "law": [
+      "Cornell Law LII",
+      "EUR-Lex",
+      "UN Treaty Collection"
+    ],
+    "economics": [
+      "CORE Econ",
+      "OpenStax Economics",
+      "World Bank Open Learning"
+    ],
+    "socialScience": [
+      "OECD Education",
+      "Our World in Data",
+      "UNESCO Institute for Statistics"
+    ],
+    "writing": [
+      "Purdue OWL",
+      "Open Textbook Library",
+      "Saylor Academy"
+    ],
+    "earthScience": [
+      "NASA STEM",
+      "USGS Education",
+      "NOAA Education"
+    ],
+    "geography": [
+      "National Geographic Education",
+      "UN Data",
+      "World Bank Data"
+    ],
+    "languageArts": [
+      "British Council Learn English",
+      "Cambridge Dictionary",
+      "Purdue OWL"
+    ],
+    "languageLearning": [
+      "Institut francais",
+      "Instituto Cervantes",
+      "Goethe-Institut"
+    ],
+    "arts": [
+      "The Met Museum Learning",
+      "Google Arts & Culture",
+      "Smarthistory"
+    ],
+    "health": [
+      "WHO",
+      "CDC",
+      "NHS Health A-Z"
+    ],
+    "architecture": [
+      "MIT OpenCourseWare Architecture",
+      "RIBA",
+      "ArchDaily"
+    ],
+    "agriculture": [
+      "FAO e-Learning Academy",
+      "USDA Education",
+      "CIMMYT"
+    ],
+    "cybersecurity": [
+      "NIST Cybersecurity",
+      "ENISA",
+      "CISA"
+    ],
+    "businessPolicy": [
+      "IMF",
+      "ILO",
+      "OECD Policy"
+    ],
+    "energy": [
+      "IEA",
+      "IRENA",
+      "US Dept of Energy"
+    ],
+    "ocean": [
+      "NOAA Oceans",
+      "UNESCO Oceanographic Commission",
+      "WHOI"
+    ]
+  },
+  "school": [
+    {
+      "id": "mathematics",
+      "title": "Mathematics",
+      "folders": [
+        {
+          "name": "Algebra",
+          "description": "Algebra uses letters and symbols to represent numbers and describe relationships. It is the backbone of all advanced mathematics. You learn to solve equations, work with variables, and find unknown values through logical steps.",
+          "keyPoints": [
+            "A variable (like x or y) stands for an unknown number.",
+            "An equation shows that two expressions are equal (e.g. 2x + 3 = 7).",
+            "To solve an equation, do the same operation on both sides to isolate the variable.",
+            "Functions map every input to exactly one output: f(x) = 2x means double the input.",
+            "Polynomials are expressions with multiple terms: 3x² + 2x − 1."
+          ],
+          "miniTask": "Solve: 3x − 5 = 10. Write each step. Then check your answer by substituting x back.",
+          "topics": [
+            "Linear equations",
+            "Functions",
+            "Polynomials"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Geometry",
+          "description": "Geometry studies shapes, angles, and spatial relationships. It teaches you to reason logically and prove statements using definitions and theorems. Geometry appears in architecture, art, engineering, and everyday life.",
+          "keyPoints": [
+            "A point has no size; a line extends infinitely in both directions.",
+            "Angles are measured in degrees: a right angle = 90°, a straight angle = 180°.",
+            "The sum of angles in any triangle is always 180°.",
+            "Pythagorean theorem: in a right triangle, a² + b² = c² (c is the hypotenuse).",
+            "Congruent shapes are identical in size and shape; similar shapes have the same angles but different sizes."
+          ],
+          "miniTask": "A right triangle has legs of 3 cm and 4 cm. Calculate the hypotenuse using a² + b² = c².",
+          "topics": [
+            "Angles and triangles",
+            "Coordinate geometry",
+            "Transformations"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Statistics and Probability",
+          "description": "Statistics helps you collect, organize, and interpret data to draw conclusions. Probability measures how likely an event is. Together they are essential in science, economics, and everyday decision-making.",
+          "keyPoints": [
+            "Mean = sum of all values ÷ number of values.",
+            "Median = the middle value when data is sorted.",
+            "Probability of an event = (favorable outcomes) ÷ (total outcomes).",
+            "A histogram shows the frequency distribution of data.",
+            "Correlation shows whether two variables tend to move together — but not causation."
+          ],
+          "miniTask": "Roll a die: what is the probability of getting an even number? Show the calculation.",
+          "topics": [
+            "Data visualization",
+            "Probability rules",
+            "Distributions"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Trigonometry",
+          "description": "Trigonometry studies relationships between angles and side lengths in triangles. It is used in physics, engineering, navigation, and music. The three main functions — sine, cosine, and tangent — connect angles to ratios of sides.",
+          "keyPoints": [
+            "In a right triangle: sin(θ) = opposite/hypotenuse, cos(θ) = adjacent/hypotenuse, tan(θ) = opposite/adjacent.",
+            "Memorize with SOH-CAH-TOA.",
+            "The unit circle extends trig to all angles beyond 90°.",
+            "Sine and cosine are periodic: they repeat every 360° (2π radians).",
+            "1 radian ≈ 57.3°; full circle = 2π radians = 360°."
+          ],
+          "miniTask": "A ladder 5 m long leans against a wall at 60°. How high does it reach? Use sin(60°) = √3/2.",
+          "topics": [
+            "Sine cosine tangent",
+            "Right triangle problems",
+            "Unit circle basics"
+          ],
+          "sourceGroup": "math"
+        }
       ]
     },
-    school: [
-      {
-        id: 'mathematics',
-        title: 'Mathematics',
-        folders: [
-          { name: 'Algebra', topics: ['Linear equations', 'Functions', 'Polynomials'], sourceGroup: 'math' },
-          { name: 'Geometry', topics: ['Angles and triangles', 'Coordinate geometry', 'Transformations'], sourceGroup: 'math' },
-          { name: 'Statistics and Probability', topics: ['Data visualization', 'Probability rules', 'Distributions'], sourceGroup: 'math' },
-          { name: 'Trigonometry', topics: ['Sine cosine tangent', 'Right triangle problems', 'Unit circle basics'], sourceGroup: 'math' },
-          { name: 'Number Theory Basics', topics: ['Prime numbers', 'Divisibility rules', 'Modular arithmetic intro'], sourceGroup: 'math' },
-          { name: 'Precalculus and Calculus Intro', topics: ['Limits concept', 'Rate of change', 'Area under curves'], sourceGroup: 'math' }
-        ]
-      },
-      {
-        id: 'physics',
-        title: 'Physics',
-        folders: [
-          { name: 'Mechanics', topics: ['Motion', 'Forces', 'Energy and work'], sourceGroup: 'physics' },
-          { name: 'Electricity and Magnetism', topics: ['Circuits', 'Current and voltage', 'Magnetic fields'], sourceGroup: 'physics' },
-          { name: 'Waves and Optics', topics: ['Sound', 'Light', 'Lenses and mirrors'], sourceGroup: 'physics' }
-        ]
-      },
-      {
-        id: 'chemistry',
-        title: 'Chemistry',
-        folders: [
-          { name: 'Atomic Structure', topics: ['Atoms', 'Periodic table', 'Bonding'], sourceGroup: 'chemistry' },
-          { name: 'Reactions', topics: ['Balancing equations', 'Reaction rates', 'Stoichiometry'], sourceGroup: 'chemistry' },
-          { name: 'Acids and Bases', topics: ['pH scale', 'Neutralization', 'Titration basics'], sourceGroup: 'chemistry' }
-        ]
-      },
-      {
-        id: 'biology',
-        title: 'Biology',
-        folders: [
-          { name: 'Cell Biology', topics: ['Cell structure', 'Mitosis and meiosis', 'DNA and RNA'], sourceGroup: 'biology' },
-          { name: 'Human Biology', topics: ['Body systems', 'Nutrition', 'Homeostasis'], sourceGroup: 'biology' },
-          { name: 'Ecology', topics: ['Ecosystems', 'Food webs', 'Climate impact'], sourceGroup: 'biology' }
-        ]
-      },
-      {
-        id: 'computer-science',
-        title: 'Computer Science',
-        folders: [
-          { name: 'Computational Thinking', topics: ['Algorithms', 'Decomposition', 'Abstraction'], sourceGroup: 'cs' },
-          { name: 'Programming', topics: ['Variables and loops', 'Functions', 'Debugging'], sourceGroup: 'cs' },
-          { name: 'Digital Systems', topics: ['Networks', 'Cybersecurity basics', 'Data representation'], sourceGroup: 'cs' }
-        ]
-      },
-      {
-        id: 'language-arts',
-        title: 'Language Arts',
-        folders: [
-          {
-            name: 'Reading and Analysis',
-            topics: ['Text structure', 'Argument analysis', 'Evidence use'],
-            sourceGroup: 'languageArts',
-            helps: ['Read one short text first, then summarize the main idea in two sentences.', 'Underline key evidence and link it to the question.', 'Compare two interpretations and justify your answer.']
-          },
-          {
-            name: 'Writing',
-            topics: ['Essays', 'Reports', 'Revision process'],
-            sourceGroup: 'writing',
-            helps: ['Draft with a simple outline: intro, body, conclusion.', 'Write one paragraph at a time and revise for clarity.', 'Use a checklist for grammar, structure, and evidence.']
-          },
-          {
-            name: 'Grammar and Vocabulary',
-            topics: ['Sentence structure', 'Word usage', 'Academic vocabulary'],
-            sourceGroup: 'languageArts',
-            helps: ['Practice 10 vocabulary words per session.', 'Transform sentences actively between tenses.', 'Use new vocabulary in short self-written examples.']
-          }
-        ]
-      },
-      {
-        id: 'german-language',
-        title: 'German Language',
-        folders: [
-          {
-            name: 'Grammar Foundations',
-            topics: ['Cases and articles', 'Verb position', 'Sentence structure'],
-            sourceGroup: 'languageLearning',
-            helps: ['Learn one grammar rule and apply it in five example sentences.', 'Use color coding for cases (Nominativ, Akkusativ, Dativ, Genitiv).', 'Read short dialogs and identify grammar patterns.']
-          },
-          {
-            name: 'Reading and Writing',
-            topics: ['Text comprehension', 'Summary writing', 'Argumentative writing'],
-            sourceGroup: 'languageArts',
-            helps: ['Read short articles first, then expand to longer texts.', 'Write one paragraph summary after each text.', 'Practice connectors to improve text flow.']
-          },
-          {
-            name: 'Listening and Speaking',
-            topics: ['Listening tasks', 'Pronunciation', 'Oral presentations'],
-            sourceGroup: 'languageLearning',
-            helps: ['Listen to short clips and note key words.', 'Shadow-read audio for pronunciation training.', 'Practice 2-minute speaking answers on common school topics.']
-          }
-        ]
-      },
-      {
-        id: 'english-language',
-        title: 'English Language',
-        folders: [
-          {
-            name: 'Grammar and Usage',
-            topics: ['Tenses', 'Conditionals', 'Passive voice'],
-            sourceGroup: 'languageArts',
-            helps: ['Master one tense at a time with mini-drills.', 'Rewrite active and passive sentence pairs.', 'Use short daily speaking prompts to apply grammar.']
-          },
-          {
-            name: 'Reading and Literature',
-            topics: ['Close reading', 'Poetry and prose', 'Character and theme analysis'],
-            sourceGroup: 'languageArts',
-            helps: ['Annotate key lines before answering questions.', 'Track themes with a simple table (quote, meaning, context).', 'Compare characters using evidence from the text.']
-          },
-          {
-            name: 'Writing and Communication',
-            topics: ['Essay writing', 'Email and formal writing', 'Presentation language'],
-            sourceGroup: 'writing',
-            helps: ['Use PEEL structure for body paragraphs.', 'Practice formal and informal register differences.', 'Record and review your spoken presentation once per week.']
-          }
-        ]
-      },
-      {
-        id: 'french-language',
-        title: 'French Language',
-        folders: [
-          {
-            name: 'Core Grammar',
-            topics: ['Verb conjugation', 'Gender and agreement', 'Pronouns'],
-            sourceGroup: 'languageLearning',
-            helps: ['Conjugate one verb family each day.', 'Practice adjective agreement with short sentence cards.', 'Use pronoun replacement drills to increase fluency.']
-          },
-          {
-            name: 'Comprehension',
-            topics: ['Listening comprehension', 'Reading comprehension', 'Context clues'],
-            sourceGroup: 'languageLearning',
-            helps: ['Listen once for gist and once for details.', 'Build a vocabulary list from each text.', 'Summarize the passage in simple French sentences.']
-          },
-          {
-            name: 'Production',
-            topics: ['Dialog practice', 'Essay structure', 'Exam speaking tasks'],
-            sourceGroup: 'writing',
-            helps: ['Use model dialogs and adapt them to new topics.', 'Write short structured responses before longer essays.', 'Practice oral exam answers with a timer.']
-          }
-        ]
-      },
-      {
-        id: 'spanish-language',
-        title: 'Spanish Language',
-        folders: [
-          {
-            name: 'Grammar and Vocabulary',
-            topics: ['Present, past, future', 'Subjunctive basics', 'Theme vocabulary'],
-            sourceGroup: 'languageLearning',
-            helps: ['Review high-frequency verbs with spaced repetition.', 'Practice tense changes in short daily exercises.', 'Group vocabulary by school themes to improve recall.']
-          },
-          {
-            name: 'Reading and Listening',
-            topics: ['Article comprehension', 'Audio comprehension', 'Inference skills'],
-            sourceGroup: 'languageLearning',
-            helps: ['Read headlines first to predict the topic.', 'Listen and capture key words before full sentences.', 'Check understanding with short true/false statements.']
-          },
-          {
-            name: 'Writing and Speaking',
-            topics: ['Guided writing', 'Conversation strategies', 'Exam tasks'],
-            sourceGroup: 'writing',
-            helps: ['Use sentence starters for smooth speaking.', 'Prepare reusable structures for common exam prompts.', 'Practice correction by rewriting one old text each week.']
-          }
-        ]
-      },
-      {
-        id: 'history',
-        title: 'History',
-        folders: [
-          { name: 'World History', topics: ['Ancient civilizations', 'Industrial era', 'Global conflicts'], sourceGroup: 'socialScience' },
-          { name: 'Primary Sources', topics: ['Source evaluation', 'Bias detection', 'Context analysis'], sourceGroup: 'socialScience' },
-          { name: 'Historical Writing', topics: ['Chronology', 'Cause and effect', 'Evidence-based arguments'], sourceGroup: 'writing' },
-          { name: 'Ancient and Medieval History', topics: ['Empires and trade', 'Religion and society', 'Medieval institutions'], sourceGroup: 'socialScience' },
-          { name: 'Modern and Contemporary History', topics: ['Nation states', 'World wars', 'Cold War and globalization'], sourceGroup: 'socialScience' },
-          { name: 'Regional History Projects', topics: ['Local archives', 'Oral history basics', 'Timeline building'], sourceGroup: 'writing' }
-        ]
-      },
-      {
-        id: 'geography',
-        title: 'Geography',
-        folders: [
-          { name: 'Physical Geography', topics: ['Landforms', 'Weather systems', 'Natural hazards'], sourceGroup: 'geography' },
-          { name: 'Human Geography', topics: ['Population', 'Urbanization', 'Migration'], sourceGroup: 'geography' },
-          { name: 'Map Skills', topics: ['Scale and coordinates', 'Thematic maps', 'GIS basics'], sourceGroup: 'geography' },
-          { name: 'Climate and Environment', topics: ['Climate zones', 'Climate change impacts', 'Adaptation and resilience'], sourceGroup: 'earthScience' },
-          { name: 'Economic Geography', topics: ['Resources and trade', 'Industry location', 'Global supply chains'], sourceGroup: 'geography' },
-          { name: 'Regional Case Studies', topics: ['Europe', 'Asia', 'Africa and the Americas'], sourceGroup: 'geography' }
-        ]
-      },
-      {
-        id: 'civics',
-        title: 'Civics and Government',
-        folders: [
-          { name: 'Institutions', topics: ['Constitutions', 'Branches of government', 'Elections'], sourceGroup: 'socialScience' },
-          { name: 'Rights and Responsibilities', topics: ['Civil rights', 'Rule of law', 'Public participation'], sourceGroup: 'socialScience' },
-          { name: 'Media Literacy', topics: ['Fact checking', 'Source reliability', 'Digital citizenship'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'economics',
-        title: 'Economics',
-        folders: [
-          { name: 'Microeconomics', topics: ['Supply and demand', 'Market structures', 'Consumer behavior'], sourceGroup: 'economics' },
-          { name: 'Macroeconomics', topics: ['Inflation', 'Unemployment', 'Fiscal policy'], sourceGroup: 'economics' },
-          { name: 'Personal Finance', topics: ['Budgeting', 'Interest rates', 'Saving and credit'], sourceGroup: 'economics' }
-        ]
-      },
-      {
-        id: 'earth-science',
-        title: 'Earth Science',
-        folders: [
-          { name: 'Geology', topics: ['Rock cycle', 'Plate tectonics', 'Earthquakes'], sourceGroup: 'earthScience' },
-          { name: 'Meteorology', topics: ['Atmosphere', 'Weather maps', 'Climate systems'], sourceGroup: 'earthScience' },
-          { name: 'Astronomy Basics', topics: ['Solar system', 'Stars and galaxies', 'Space exploration'], sourceGroup: 'earthScience' }
-        ]
-      },
-      {
-        id: 'arts',
-        title: 'Arts and Design',
-        folders: [
-          { name: 'Visual Arts', topics: ['Drawing', 'Color theory', 'Composition'], sourceGroup: 'arts' },
-          { name: 'Art History', topics: ['Major movements', 'Artists and works', 'Cultural context'], sourceGroup: 'arts' },
-          { name: 'Digital Design', topics: ['Typography', 'Layout', 'Creative tools'], sourceGroup: 'arts' }
-        ]
-      },
-      {
-        id: 'health',
-        title: 'Health Education',
-        folders: [
-          { name: 'Personal Health', topics: ['Nutrition', 'Sleep', 'Physical activity'], sourceGroup: 'health' },
-          { name: 'Mental Health', topics: ['Stress management', 'Help resources', 'Healthy habits'], sourceGroup: 'health' },
-          { name: 'Public Health Basics', topics: ['Prevention', 'Vaccination', 'Community health'], sourceGroup: 'health' }
-        ]
-      },
-      {
-        id: 'religion-and-ethics',
-        title: 'Religion and Ethics',
-        folders: [
-          { name: 'World Religions', topics: ['Beliefs and traditions', 'Festivals', 'Historical contexts'], sourceGroup: 'socialScience' },
-          { name: 'Ethics', topics: ['Moral dilemmas', 'Justice and fairness', 'Responsibility'], sourceGroup: 'socialScience' },
-          { name: 'Applied Ethics', topics: ['Media ethics', 'Bioethics basics', 'Environmental ethics'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'music',
-        title: 'Music',
-        folders: [
-          { name: 'Music Theory', topics: ['Rhythm and meter', 'Scales and harmony', 'Notation'], sourceGroup: 'arts' },
-          { name: 'Music History', topics: ['Baroque to modern', 'Genres', 'Cultural influences'], sourceGroup: 'arts' },
-          { name: 'Performance and Practice', topics: ['Technique drills', 'Ensemble skills', 'Stage confidence'], sourceGroup: 'arts' }
-        ]
-      },
-      {
-        id: 'physical-education',
-        title: 'Physical Education',
-        folders: [
-          { name: 'Fitness Fundamentals', topics: ['Endurance', 'Strength', 'Mobility'], sourceGroup: 'health' },
-          { name: 'Team Sports', topics: ['Game tactics', 'Cooperation', 'Fair play'], sourceGroup: 'health' },
-          { name: 'Sports Science Basics', topics: ['Training principles', 'Recovery', 'Injury prevention'], sourceGroup: 'health' }
-        ]
-      },
-      {
-        id: 'technology-and-design',
-        title: 'Technology and Design',
-        folders: [
-          { name: 'Design Process', topics: ['Problem definition', 'Prototyping', 'Testing and iteration'], sourceGroup: 'engineering' },
-          { name: 'Materials and Manufacturing', topics: ['Wood metal plastic basics', 'Tools and safety', 'Sustainable material choices'], sourceGroup: 'engineering' },
-          { name: 'Digital Fabrication', topics: ['CAD basics', '3D printing intro', 'Laser cutting workflows'], sourceGroup: 'engineering' }
-        ]
-      },
-      {
-        id: 'media-literacy',
-        title: 'Media Literacy and Digital Citizenship',
-        folders: [
-          { name: 'Information Verification', topics: ['Fact checking', 'Source comparison', 'Misinformation patterns'], sourceGroup: 'socialScience' },
-          { name: 'Digital Safety', topics: ['Privacy', 'Passwords and security', 'Online behavior'], sourceGroup: 'cs' },
-          { name: 'Content Creation', topics: ['Responsible publishing', 'Copyright basics', 'Storytelling'], sourceGroup: 'writing' }
-        ]
-      },
-      {
-        id: 'career-guidance',
-        title: 'Career Guidance',
-        folders: [
-          { name: 'Self Assessment', topics: ['Strengths and interests', 'Learning profile', 'Goal setting'], sourceGroup: 'socialScience' },
-          { name: 'Study and Job Pathways', topics: ['Vocational routes', 'University routes', 'Application requirements'], sourceGroup: 'socialScience' },
-          { name: 'Application Skills', topics: ['CV writing', 'Motivation letters', 'Interview basics'], sourceGroup: 'writing' }
-        ]
-      },
-      {
-        id: 'entrepreneurship',
-        title: 'Entrepreneurship',
-        folders: [
-          { name: 'Business Basics', topics: ['Value proposition', 'Customer needs', 'Simple business models'], sourceGroup: 'businessPolicy' },
-          { name: 'Finance for Starters', topics: ['Revenue and costs', 'Budget planning', 'Break-even basics'], sourceGroup: 'economics' },
-          { name: 'Project and Pitch Skills', topics: ['Prototype testing', 'Pitch structure', 'Feedback cycles'], sourceGroup: 'writing' }
-        ]
-      },
-      {
-        id: 'robotics-and-electronics',
-        title: 'Robotics and Electronics',
-        folders: [
-          { name: 'Electronics Fundamentals', topics: ['Sensors and actuators', 'Microcontrollers', 'Circuit safety'], sourceGroup: 'engineering' },
-          { name: 'Programming Robots', topics: ['Control logic', 'Motion planning basics', 'Debugging hardware-software systems'], sourceGroup: 'cs' },
-          { name: 'Applied Robotics Projects', topics: ['Line follower', 'Object detection intro', 'Automation challenge'], sourceGroup: 'engineering' }
-        ]
-      },
-      {
-        id: 'home-economics-and-life-skills',
-        title: 'Home Economics and Life Skills',
-        folders: [
-          { name: 'Nutrition and Cooking', topics: ['Balanced meals', 'Food hygiene', 'Meal planning'], sourceGroup: 'health' },
-          { name: 'Consumer Skills', topics: ['Contracts and subscriptions', 'Budgeting at home', 'Sustainable consumption'], sourceGroup: 'economics' },
-          { name: 'Everyday Management', topics: ['Time planning', 'Household organization', 'Responsible decision-making'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'logic-and-critical-thinking',
-        title: 'Logic and Critical Thinking',
-        folders: [
-          { name: 'Formal Logic Basics', topics: ['Statements and arguments', 'Validity and soundness', 'Common logical forms'], sourceGroup: 'math' },
-          { name: 'Reasoning in Texts', topics: ['Detecting fallacies', 'Argument mapping', 'Evidence quality checks'], sourceGroup: 'writing' },
-          { name: 'Decision and Problem Solving', topics: ['Structured decision models', 'Bias awareness', 'Scenario evaluation'], sourceGroup: 'socialScience' }
-        ]
-      }
-    ],
-    university: [
-      {
-        id: 'medicine',
-        title: 'Medicine',
-        folders: [
-          { name: 'Preclinical Foundations', topics: ['Anatomy', 'Physiology', 'Biochemistry'], sourceGroup: 'medicine' },
-          { name: 'Clinical Medicine', topics: ['Internal medicine', 'Surgery basics', 'Differential diagnosis'], sourceGroup: 'medicine' },
-          { name: 'Evidence-Based Medicine', topics: ['Clinical trials', 'Guideline reading', 'Biostatistics'], sourceGroup: 'medicine' },
-          { name: 'Cardiology and Pulmonology', topics: ['Cardiovascular diagnostics', 'ECG interpretation basics', 'Respiratory disorders'], sourceGroup: 'medicine' },
-          { name: 'Neurology and Psychiatry', topics: ['Neurological examination', 'Common neuro disorders', 'Psychiatric assessment basics'], sourceGroup: 'medicine' },
-          { name: 'Pediatrics and Neonatology', topics: ['Growth and development', 'Pediatric emergencies', 'Neonatal care principles'], sourceGroup: 'medicine' },
-          { name: 'Obstetrics and Gynecology', topics: ['Prenatal care', 'Labor and delivery basics', 'Gynecologic disorders'], sourceGroup: 'medicine' },
-          { name: 'Emergency and Critical Care', topics: ['Triage principles', 'ACLS and resuscitation flow', 'Shock and sepsis management'], sourceGroup: 'medicine' },
-          { name: 'Radiology and Imaging', topics: ['X-ray reading basics', 'Ultrasound principles', 'CT and MRI indications'], sourceGroup: 'medicine' },
-          { name: 'Pathology and Laboratory Medicine', topics: ['Histopathology fundamentals', 'Lab value interpretation', 'Diagnostic algorithms'], sourceGroup: 'medicine' },
-          { name: 'Pharmacotherapy', topics: ['Drug mechanisms', 'Safe prescribing', 'Adverse drug reactions'], sourceGroup: 'medicine' },
-          { name: 'Infectious Diseases', topics: ['Antimicrobial stewardship', 'Infection prevention', 'Outbreak response'], sourceGroup: 'medicine' },
-          { name: 'Oncology', topics: ['Cancer biology basics', 'Staging and diagnostics', 'Therapy principles'], sourceGroup: 'medicine' },
-          { name: 'Clinical Skills and OSCE Prep', topics: ['History taking', 'Physical examination', 'Communication with patients'], sourceGroup: 'medicine' },
-          { name: 'Medical Ethics and Law', topics: ['Informed consent', 'Confidentiality', 'Professional responsibility'], sourceGroup: 'health' }
-        ]
-      },
-      {
-        id: 'nursing',
-        title: 'Nursing',
-        folders: [
-          { name: 'Core Nursing Science', topics: ['Patient assessment', 'Care plans', 'Medication safety'], sourceGroup: 'medicine' },
-          { name: 'Clinical Skills', topics: ['Infection control', 'Documentation', 'Communication'], sourceGroup: 'medicine' },
-          { name: 'Community and Public Health', topics: ['Prevention', 'Health promotion', 'Epidemiology basics'], sourceGroup: 'health' }
-        ]
-      },
-      {
-        id: 'pharmacy',
-        title: 'Pharmacy',
-        folders: [
-          { name: 'Pharmacology', topics: ['Drug classes', 'Mechanisms', 'Adverse effects'], sourceGroup: 'medicine' },
-          { name: 'Pharmaceutical Chemistry', topics: ['Medicinal chemistry', 'Formulations', 'Quality control'], sourceGroup: 'chemistry' },
-          { name: 'Clinical Pharmacy', topics: ['Medication review', 'Interactions', 'Patient counseling'], sourceGroup: 'medicine' }
-        ]
-      },
-      {
-        id: 'dentistry',
-        title: 'Dentistry',
-        folders: [
-          { name: 'Oral Biology', topics: ['Tooth anatomy', 'Oral microbiology', 'Development'], sourceGroup: 'biology' },
-          { name: 'Clinical Dentistry', topics: ['Diagnostics', 'Restorative basics', 'Preventive care'], sourceGroup: 'medicine' },
-          { name: 'Patient Safety', topics: ['Infection prevention', 'Sterilization', 'Ethics'], sourceGroup: 'health' }
-        ]
-      },
-      {
-        id: 'law',
-        title: 'Law',
-        folders: [
-          { name: 'Legal Foundations', topics: ['Constitutional law', 'Legal systems', 'Interpretation'], sourceGroup: 'law' },
-          { name: 'Public and Private Law', topics: ['Criminal law', 'Civil law', 'Administrative law'], sourceGroup: 'law' },
-          { name: 'Research and Writing', topics: ['Case analysis', 'Citation standards', 'Legal argumentation'], sourceGroup: 'writing' },
-          { name: 'Constitutional and Human Rights Law', topics: ['Fundamental rights review', 'Constitutional complaints', 'Proportionality analysis'], sourceGroup: 'law' },
-          { name: 'Criminal Law and Procedure', topics: ['Offense elements', 'Defenses and liability', 'Criminal procedure workflow'], sourceGroup: 'law' },
-          { name: 'Civil Law and Civil Procedure', topics: ['Contract and tort', 'Property and obligations', 'Civil litigation stages'], sourceGroup: 'law' },
-          { name: 'Commercial and Corporate Law', topics: ['Company forms', 'Corporate governance', 'Insolvency basics'], sourceGroup: 'law' },
-          { name: 'Labor and Social Law', topics: ['Employment contracts', 'Collective labor law', 'Social protection frameworks'], sourceGroup: 'law' },
-          { name: 'Tax Law', topics: ['Tax principles', 'Corporate taxation basics', 'Tax compliance and disputes'], sourceGroup: 'law' },
-          { name: 'International and EU Law', topics: ['Treaty systems', 'EU institutions and legislation', 'Cross-border dispute issues'], sourceGroup: 'law' },
-          { name: 'Intellectual Property and IT Law', topics: ['Copyright and trademarks', 'Patent basics', 'Data protection and platform law'], sourceGroup: 'law' },
-          { name: 'Administrative and Regulatory Law', topics: ['Administrative acts', 'Licensing and supervision', 'Judicial review in administration'], sourceGroup: 'law' },
-          { name: 'Environmental and Climate Law', topics: ['Environmental permits', 'Liability for environmental harm', 'Climate governance frameworks'], sourceGroup: 'law' },
-          { name: 'Alternative Dispute Resolution', topics: ['Negotiation strategies', 'Mediation and arbitration', 'Settlement drafting'], sourceGroup: 'law' },
-          { name: 'Legal Clinics and Practical Training', topics: ['Client interviewing', 'File and deadline management', 'Court submission drafting'], sourceGroup: 'writing' }
-        ]
-      },
-      {
-        id: 'business-administration',
-        title: 'Business Administration',
-        folders: [
-          { name: 'Management', topics: ['Strategy', 'Operations', 'Organizational behavior'], sourceGroup: 'economics' },
-          { name: 'Accounting and Finance', topics: ['Financial statements', 'Corporate finance', 'Cost accounting'], sourceGroup: 'economics' },
-          { name: 'Marketing', topics: ['Market research', 'Consumer behavior', 'Digital marketing'], sourceGroup: 'economics' }
-        ]
-      },
-      {
-        id: 'economics',
-        title: 'Economics',
-        folders: [
-          { name: 'Microeconomics', topics: ['Game theory', 'Market failure', 'Welfare analysis'], sourceGroup: 'economics' },
-          { name: 'Macroeconomics', topics: ['Growth models', 'Monetary policy', 'Labor markets'], sourceGroup: 'economics' },
-          { name: 'Econometrics', topics: ['Regression', 'Causal inference', 'Panel data'], sourceGroup: 'economics' }
-        ]
-      },
-      {
-        id: 'computer-science',
-        title: 'Computer Science',
-        folders: [
-          { name: 'Algorithms and Data Structures', topics: ['Complexity analysis', 'Trees and graphs', 'Dynamic programming'], sourceGroup: 'cs' },
-          { name: 'Systems', topics: ['Operating systems', 'Computer networks', 'Distributed systems'], sourceGroup: 'cs' },
-          { name: 'Software Engineering', topics: ['Architecture', 'Testing', 'Version control and CI'], sourceGroup: 'cs' }
-        ]
-      },
-      {
-        id: 'data-science',
-        title: 'Data Science',
-        folders: [
-          { name: 'Data Analysis', topics: ['Data cleaning', 'Exploratory analysis', 'Visualization'], sourceGroup: 'cs' },
-          { name: 'Machine Learning', topics: ['Supervised learning', 'Model evaluation', 'Feature engineering'], sourceGroup: 'cs' },
-          { name: 'Statistics for Data Science', topics: ['Inference', 'Hypothesis testing', 'Bayesian basics'], sourceGroup: 'math' }
-        ]
-      },
-      {
-        id: 'artificial-intelligence',
-        title: 'Artificial Intelligence',
-        folders: [
-          { name: 'Foundations', topics: ['Search and optimization', 'Knowledge representation', 'Reasoning'], sourceGroup: 'cs' },
-          { name: 'Deep Learning', topics: ['Neural networks', 'Computer vision', 'Natural language processing'], sourceGroup: 'cs' },
-          { name: 'Responsible AI', topics: ['Bias and fairness', 'Model interpretability', 'Ethics and governance'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'electrical-engineering',
-        title: 'Electrical Engineering',
-        folders: [
-          { name: 'Circuit Theory', topics: ['Circuit laws', 'AC/DC analysis', 'Signal basics'], sourceGroup: 'engineering' },
-          { name: 'Electronics', topics: ['Semiconductors', 'Amplifiers', 'Digital electronics'], sourceGroup: 'engineering' },
-          { name: 'Control and Communication', topics: ['Feedback systems', 'Communication systems', 'Embedded systems'], sourceGroup: 'engineering' }
-        ]
-      },
-      {
-        id: 'mechanical-engineering',
-        title: 'Mechanical Engineering',
-        folders: [
-          { name: 'Mechanics and Materials', topics: ['Statics and dynamics', 'Strength of materials', 'Failure analysis'], sourceGroup: 'engineering' },
-          { name: 'Thermal Sciences', topics: ['Thermodynamics', 'Heat transfer', 'Fluid mechanics'], sourceGroup: 'engineering' },
-          { name: 'Design and Manufacturing', topics: ['CAD', 'Manufacturing processes', 'Quality engineering'], sourceGroup: 'engineering' }
-        ]
-      },
-      {
-        id: 'civil-engineering',
-        title: 'Civil Engineering',
-        folders: [
-          { name: 'Structural Engineering', topics: ['Structural analysis', 'Concrete and steel design', 'Load cases'], sourceGroup: 'engineering' },
-          { name: 'Geotechnical and Water', topics: ['Soil mechanics', 'Hydraulics', 'Water resources'], sourceGroup: 'engineering' },
-          { name: 'Transportation and Construction', topics: ['Transportation systems', 'Project management', 'Construction methods'], sourceGroup: 'engineering' }
-        ]
-      },
-      {
-        id: 'chemical-engineering',
-        title: 'Chemical Engineering',
-        folders: [
-          { name: 'Reaction Engineering', topics: ['Reaction kinetics', 'Reactor design', 'Catalysis'], sourceGroup: 'chemistry' },
-          { name: 'Process Engineering', topics: ['Mass and energy balances', 'Separation processes', 'Process control'], sourceGroup: 'engineering' },
-          { name: 'Safety and Sustainability', topics: ['Process safety', 'Risk analysis', 'Green chemistry'], sourceGroup: 'engineering' }
-        ]
-      },
-      {
-        id: 'aerospace-engineering',
-        title: 'Aerospace Engineering',
-        folders: [
-          { name: 'Aerodynamics', topics: ['Fluid flow', 'Lift and drag', 'Boundary layers'], sourceGroup: 'engineering' },
-          { name: 'Flight Mechanics', topics: ['Stability and control', 'Orbital basics', 'Mission profiles'], sourceGroup: 'engineering' },
-          { name: 'Propulsion and Structures', topics: ['Jet and rocket propulsion', 'Composite materials', 'Structural loads'], sourceGroup: 'engineering' }
-        ]
-      },
-      {
-        id: 'architecture',
-        title: 'Architecture',
-        folders: [
-          { name: 'Design Studio', topics: ['Spatial composition', 'Site analysis', 'Concept development'], sourceGroup: 'architecture' },
-          { name: 'Building Technology', topics: ['Building envelopes', 'Construction systems', 'Building physics'], sourceGroup: 'architecture' },
-          { name: 'Urban and Sustainable Design', topics: ['Urban planning basics', 'Climate-responsive design', 'Sustainable materials'], sourceGroup: 'architecture' }
-        ]
-      },
-      {
-        id: 'mathematics',
-        title: 'Mathematics',
-        folders: [
-          { name: 'Pure Mathematics', topics: ['Real analysis', 'Abstract algebra', 'Topology'], sourceGroup: 'math' },
-          { name: 'Applied Mathematics', topics: ['Differential equations', 'Numerical methods', 'Optimization'], sourceGroup: 'math' },
-          { name: 'Probability and Statistics', topics: ['Stochastic processes', 'Statistical inference', 'Time series'], sourceGroup: 'math' },
-          { name: 'Linear and Multilinear Algebra', topics: ['Vector spaces', 'Matrix decompositions', 'Tensor intro'], sourceGroup: 'math' },
-          { name: 'Complex Analysis and Differential Geometry', topics: ['Complex functions', 'Contour integration', 'Manifolds intro'], sourceGroup: 'math' },
-          { name: 'Mathematical Modeling', topics: ['Model formulation', 'Parameter estimation', 'Validation and sensitivity'], sourceGroup: 'math' }
-        ]
-      },
-      {
-        id: 'physics',
-        title: 'Physics',
-        folders: [
-          { name: 'Classical Physics', topics: ['Analytical mechanics', 'Electrodynamics', 'Thermodynamics'], sourceGroup: 'physics' },
-          { name: 'Modern Physics', topics: ['Quantum mechanics', 'Relativity', 'Particle physics'], sourceGroup: 'physics' },
-          { name: 'Experimental Methods', topics: ['Measurement uncertainty', 'Data analysis', 'Lab methodology'], sourceGroup: 'physics' }
-        ]
-      },
-      {
-        id: 'chemistry',
-        title: 'Chemistry',
-        folders: [
-          { name: 'Physical and Inorganic Chemistry', topics: ['Thermochemistry', 'Spectroscopy', 'Coordination chemistry'], sourceGroup: 'chemistry' },
-          { name: 'Organic Chemistry', topics: ['Reaction mechanisms', 'Synthesis strategy', 'Structure elucidation'], sourceGroup: 'chemistry' },
-          { name: 'Analytical Chemistry', topics: ['Chromatography', 'Mass spectrometry', 'Quality assurance'], sourceGroup: 'chemistry' }
-        ]
-      },
-      {
-        id: 'biology',
-        title: 'Biology',
-        folders: [
-          { name: 'Molecular and Cell Biology', topics: ['Gene expression', 'Protein function', 'Cell signaling'], sourceGroup: 'biology' },
-          { name: 'Genetics and Evolution', topics: ['Population genetics', 'Phylogenetics', 'Genomics'], sourceGroup: 'biology' },
-          { name: 'Ecology and Conservation', topics: ['Biodiversity', 'Ecosystem services', 'Conservation biology'], sourceGroup: 'biology' }
-        ]
-      },
-      {
-        id: 'biotechnology',
-        title: 'Biotechnology',
-        folders: [
-          { name: 'Bioprocess Engineering', topics: ['Fermentation', 'Bioreactors', 'Downstream processing'], sourceGroup: 'engineering' },
-          { name: 'Molecular Biotechnology', topics: ['PCR and cloning', 'Genome editing basics', 'Protein engineering'], sourceGroup: 'biology' },
-          { name: 'Bioethics and Regulation', topics: ['Ethical review', 'Safety standards', 'Regulatory frameworks'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'environmental-science',
-        title: 'Environmental Science',
-        folders: [
-          { name: 'Climate and Atmosphere', topics: ['Climate systems', 'Carbon cycle', 'Mitigation pathways'], sourceGroup: 'earthScience' },
-          { name: 'Water and Soil', topics: ['Water quality', 'Soil systems', 'Pollution control'], sourceGroup: 'earthScience' },
-          { name: 'Environmental Policy', topics: ['Environmental law', 'Impact assessment', 'Sustainability metrics'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'geosciences',
-        title: 'Geosciences',
-        folders: [
-          { name: 'Geology and Geophysics', topics: ['Earth structure', 'Seismology basics', 'Plate tectonics'], sourceGroup: 'earthScience' },
-          { name: 'Remote Sensing and GIS', topics: ['Satellite data', 'Spatial analysis', 'Geospatial workflows'], sourceGroup: 'geography' },
-          { name: 'Natural Hazards', topics: ['Volcanoes', 'Earthquakes', 'Risk mitigation'], sourceGroup: 'earthScience' },
-          { name: 'Hydrology and Climate Systems', topics: ['Hydrological cycle', 'Watershed analysis', 'Climate data interpretation'], sourceGroup: 'earthScience' },
-          { name: 'Advanced Cartography', topics: ['Map projections', 'Spatial statistics', 'Geodata ethics'], sourceGroup: 'geography' }
-        ]
-      },
-      {
-        id: 'psychology',
-        title: 'Psychology',
-        folders: [
-          { name: 'Core Psychology', topics: ['Cognitive psychology', 'Developmental psychology', 'Social psychology'], sourceGroup: 'socialScience' },
-          { name: 'Research Methods', topics: ['Experimental design', 'Survey methods', 'Statistical analysis'], sourceGroup: 'socialScience' },
-          { name: 'Clinical and Health Contexts', topics: ['Psychopathology basics', 'Behavior change', 'Ethics'], sourceGroup: 'health' }
-        ]
-      },
-      {
-        id: 'sociology',
-        title: 'Sociology',
-        folders: [
-          { name: 'Social Theory', topics: ['Classical theorists', 'Modern theory', 'Institutions'], sourceGroup: 'socialScience' },
-          { name: 'Methods', topics: ['Qualitative methods', 'Quantitative methods', 'Mixed methods'], sourceGroup: 'socialScience' },
-          { name: 'Applied Sociology', topics: ['Inequality', 'Urban sociology', 'Education and work'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'political-science',
-        title: 'Political Science',
-        folders: [
-          { name: 'Political Theory', topics: ['Normative theory', 'Democracy', 'Governance models'], sourceGroup: 'socialScience' },
-          { name: 'Comparative Politics', topics: ['Institutions', 'Elections', 'Public policy'], sourceGroup: 'socialScience' },
-          { name: 'International Relations', topics: ['Global governance', 'Security studies', 'Political economy'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'education',
-        title: 'Education',
-        folders: [
-          { name: 'Learning Sciences', topics: ['Learning theories', 'Instructional design', 'Assessment'], sourceGroup: 'socialScience' },
-          { name: 'Pedagogy and Didactics', topics: ['Classroom management', 'Inclusive education', 'Curriculum planning'], sourceGroup: 'socialScience' },
-          { name: 'Education Technology', topics: ['Digital learning tools', 'Learning analytics', 'Online pedagogy'], sourceGroup: 'cs' }
-        ]
-      },
-      {
-        id: 'linguistics',
-        title: 'Linguistics',
-        folders: [
-          { name: 'Core Linguistics', topics: ['Phonetics and phonology', 'Morphology', 'Syntax'], sourceGroup: 'languageArts' },
-          { name: 'Semantics and Pragmatics', topics: ['Meaning', 'Context', 'Discourse'], sourceGroup: 'languageArts' },
-          { name: 'Applied Linguistics', topics: ['Language acquisition', 'Sociolinguistics', 'Corpus methods'], sourceGroup: 'languageArts' }
-        ]
-      },
-      {
-        id: 'modern-languages',
-        title: 'Modern Languages',
-        folders: [
-          {
-            name: 'Applied Language Skills',
-            topics: ['Advanced grammar', 'Academic vocabulary', 'Register and style'],
-            sourceGroup: 'languageLearning',
-            helps: ['Build domain-specific vocabulary lists for your faculty.', 'Practice translation of short academic abstracts.', 'Review feedback loops: write, correct, rewrite.']
-          },
-          {
-            name: 'Intercultural Communication',
-            topics: ['Cultural framing', 'Discourse conventions', 'Pragmatics'],
-            sourceGroup: 'socialScience',
-            helps: ['Compare communication norms across two cultures.', 'Analyze authentic dialogue samples.', 'Use reflective notes after each speaking practice.']
-          },
-          {
-            name: 'Professional Writing',
-            topics: ['Reports', 'Research summaries', 'Presentation scripts'],
-            sourceGroup: 'writing',
-            helps: ['Use a template for report structure.', 'Cite sources consistently in every draft.', 'Peer-review one text before final submission.']
-          }
-        ]
-      },
-      {
-        id: 'literature',
-        title: 'Literature',
-        folders: [
-          { name: 'Literary Analysis', topics: ['Genres', 'Narrative structures', 'Interpretation'], sourceGroup: 'languageArts' },
-          { name: 'World Literature', topics: ['Historical periods', 'Comparative literature', 'Cultural contexts'], sourceGroup: 'languageArts' },
-          { name: 'Academic Writing', topics: ['Close reading essays', 'Citation standards', 'Research papers'], sourceGroup: 'writing' }
-        ]
-      },
-      {
-        id: 'history',
-        title: 'History',
-        folders: [
-          { name: 'Historiography', topics: ['Methods and sources', 'Historical debates', 'Interpretive frameworks'], sourceGroup: 'socialScience' },
-          { name: 'Regional and Global History', topics: ['State formation', 'Imperial systems', 'Globalization'], sourceGroup: 'socialScience' },
-          { name: 'Research Seminar', topics: ['Archival work', 'Source criticism', 'Scholarly writing'], sourceGroup: 'writing' },
-          { name: 'Ancient to Early Modern Worlds', topics: ['Classical antiquity', 'Medieval transformations', 'Early modern state systems'], sourceGroup: 'socialScience' },
-          { name: '19th and 20th Century Transformations', topics: ['Industrialization', 'Nationalism and revolutions', 'War and decolonization'], sourceGroup: 'socialScience' },
-          { name: 'Digital History and Public History', topics: ['Digital archives', 'Data-driven historical analysis', 'Museum and memory studies'], sourceGroup: 'writing' }
-        ]
-      },
-      {
-        id: 'philosophy',
-        title: 'Philosophy',
-        folders: [
-          { name: 'Core Areas', topics: ['Ethics', 'Epistemology', 'Metaphysics'], sourceGroup: 'socialScience' },
-          { name: 'Logic', topics: ['Propositional logic', 'Predicate logic', 'Argument validity'], sourceGroup: 'math' },
-          { name: 'Contemporary Issues', topics: ['Philosophy of mind', 'Political philosophy', 'Applied ethics'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'art-and-design',
-        title: 'Art and Design',
-        folders: [
-          { name: 'Studio Practice', topics: ['Drawing and composition', 'Digital media', 'Portfolio development'], sourceGroup: 'arts' },
-          { name: 'Design Theory', topics: ['Visual communication', 'Design research', 'User-centered design'], sourceGroup: 'arts' },
-          { name: 'Art History and Critique', topics: ['Art movements', 'Critical writing', 'Curatorial concepts'], sourceGroup: 'arts' }
-        ]
-      },
-      {
-        id: 'media-and-communication',
-        title: 'Media and Communication',
-        folders: [
-          { name: 'Media Studies', topics: ['Media systems', 'Media effects', 'Audience analysis'], sourceGroup: 'socialScience' },
-          { name: 'Journalism and Verification', topics: ['Reporting standards', 'Fact-checking workflows', 'Source verification'], sourceGroup: 'writing' },
-          { name: 'Digital Communication', topics: ['Platform communication', 'Data storytelling', 'Ethics'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'agriculture-and-food-science',
-        title: 'Agriculture and Food Science',
-        folders: [
-          { name: 'Crop and Soil Science', topics: ['Soil fertility', 'Plant nutrition', 'Crop management'], sourceGroup: 'agriculture' },
-          { name: 'Food Systems', topics: ['Food safety', 'Supply chains', 'Nutrition systems'], sourceGroup: 'agriculture' },
-          { name: 'Sustainable Agriculture', topics: ['Water-efficient farming', 'Agroecology', 'Climate adaptation'], sourceGroup: 'agriculture' }
-        ]
-      },
-      {
-        id: 'statistics',
-        title: 'Statistics',
-        folders: [
-          { name: 'Statistical Foundations', topics: ['Probability models', 'Sampling', 'Estimation'], sourceGroup: 'math' },
-          { name: 'Inference and Modeling', topics: ['Hypothesis testing', 'Regression', 'ANOVA basics'], sourceGroup: 'math' },
-          { name: 'Applied Statistics', topics: ['Experimental design', 'Survey analysis', 'Reproducible workflows'], sourceGroup: 'math' }
-        ]
-      },
-      {
-        id: 'finance-and-accounting',
-        title: 'Finance and Accounting',
-        folders: [
-          { name: 'Financial Accounting', topics: ['Balance sheet', 'Income statement', 'Cash flow'], sourceGroup: 'economics' },
-          { name: 'Corporate Finance', topics: ['Time value of money', 'Capital budgeting', 'Risk and return'], sourceGroup: 'economics' },
-          { name: 'Managerial Accounting', topics: ['Costing methods', 'Budgeting', 'Performance analysis'], sourceGroup: 'economics' }
-        ]
-      },
-      {
-        id: 'international-business',
-        title: 'International Business',
-        folders: [
-          { name: 'Global Markets', topics: ['Trade structures', 'Market entry strategies', 'Global competition'], sourceGroup: 'economics' },
-          { name: 'Operations and Supply Chains', topics: ['Sourcing', 'Logistics', 'Risk resilience'], sourceGroup: 'economics' },
-          { name: 'Cross-Cultural Management', topics: ['Intercultural negotiation', 'Leadership styles', 'Global teams'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'public-health',
-        title: 'Public Health',
-        folders: [
-          { name: 'Epidemiology', topics: ['Incidence and prevalence', 'Study designs', 'Outbreak investigation'], sourceGroup: 'health' },
-          { name: 'Health Policy', topics: ['Health systems', 'Prevention policy', 'Equity in health'], sourceGroup: 'health' },
-          { name: 'Biostatistics for Health', topics: ['Risk measures', 'Clinical data interpretation', 'Evidence appraisal'], sourceGroup: 'medicine' }
-        ]
-      },
-      {
-        id: 'veterinary-medicine',
-        title: 'Veterinary Medicine',
-        folders: [
-          { name: 'Animal Anatomy and Physiology', topics: ['Species differences', 'Body systems', 'Clinical signs'], sourceGroup: 'medicine' },
-          { name: 'Diagnostics and Treatment', topics: ['Clinical examination', 'Laboratory diagnostics', 'Therapeutic planning'], sourceGroup: 'medicine' },
-          { name: 'Animal Welfare and Public Health', topics: ['Welfare standards', 'Zoonoses', 'Ethics and regulation'], sourceGroup: 'health' }
-        ]
-      },
-      {
-        id: 'sports-science',
-        title: 'Sports Science',
-        folders: [
-          { name: 'Exercise Physiology', topics: ['Energy systems', 'Adaptation to training', 'Fatigue'], sourceGroup: 'health' },
-          { name: 'Biomechanics', topics: ['Movement analysis', 'Force and motion', 'Performance optimization'], sourceGroup: 'engineering' },
-          { name: 'Coaching and Performance', topics: ['Training periodization', 'Skill acquisition', 'Athlete monitoring'], sourceGroup: 'health' }
-        ]
-      },
-      {
-        id: 'theology-and-religious-studies',
-        title: 'Theology and Religious Studies',
-        folders: [
-          { name: 'Sacred Texts and Interpretation', topics: ['Text traditions', 'Hermeneutics', 'Comparative readings'], sourceGroup: 'socialScience' },
-          { name: 'History of Religions', topics: ['Religious movements', 'Institutions', 'Modern developments'], sourceGroup: 'socialScience' },
-          { name: 'Religion in Society', topics: ['Ethics and public life', 'Interfaith dialogue', 'Religion and conflict'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'anthropology-and-archaeology',
-        title: 'Anthropology and Archaeology',
-        folders: [
-          { name: 'Cultural Anthropology', topics: ['Fieldwork methods', 'Kinship and identity', 'Cultural change'], sourceGroup: 'socialScience' },
-          { name: 'Biological Anthropology', topics: ['Human evolution', 'Population variation', 'Primate studies'], sourceGroup: 'biology' },
-          { name: 'Archaeological Methods', topics: ['Excavation strategy', 'Dating techniques', 'Material culture analysis'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'library-and-information-science',
-        title: 'Library and Information Science',
-        folders: [
-          { name: 'Knowledge Organization', topics: ['Classification systems', 'Metadata standards', 'Information retrieval'], sourceGroup: 'cs' },
-          { name: 'Digital Libraries', topics: ['Archival workflows', 'Digital preservation', 'Open access ecosystems'], sourceGroup: 'cs' },
-          { name: 'Information Literacy Education', topics: ['Search strategies', 'Source evaluation', 'Citation management'], sourceGroup: 'writing' }
-        ]
-      },
-      {
-        id: 'urban-and-regional-planning',
-        title: 'Urban and Regional Planning',
-        folders: [
-          { name: 'Urban Systems', topics: ['Land use', 'Mobility systems', 'Infrastructure planning'], sourceGroup: 'geography' },
-          { name: 'Regional Development', topics: ['Economic geography', 'Rural-urban dynamics', 'Spatial inequality'], sourceGroup: 'geography' },
-          { name: 'Planning Methods', topics: ['Policy instruments', 'Participatory planning', 'Impact assessment'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'cybersecurity',
-        title: 'Cybersecurity',
-        folders: [
-          { name: 'Security Foundations', topics: ['CIA triad', 'Threat modeling', 'Risk management'], sourceGroup: 'cybersecurity' },
-          { name: 'Network and System Security', topics: ['Secure network design', 'Endpoint hardening', 'Identity and access management'], sourceGroup: 'cybersecurity' },
-          { name: 'Security Operations', topics: ['Incident response', 'Vulnerability management', 'Security monitoring'], sourceGroup: 'cybersecurity' }
-        ]
-      },
-      {
-        id: 'information-systems',
-        title: 'Information Systems',
-        folders: [
-          { name: 'Enterprise Systems', topics: ['ERP and CRM concepts', 'Business process mapping', 'Data governance'], sourceGroup: 'cs' },
-          { name: 'Database and Analytics Platforms', topics: ['Relational modeling', 'Data warehousing', 'BI reporting'], sourceGroup: 'cs' },
-          { name: 'IT Strategy and Governance', topics: ['IT service management', 'Digital transformation', 'Compliance and controls'], sourceGroup: 'businessPolicy' }
-        ]
-      },
-      {
-        id: 'operations-research',
-        title: 'Operations Research',
-        folders: [
-          { name: 'Optimization Models', topics: ['Linear programming', 'Integer programming', 'Network optimization'], sourceGroup: 'math' },
-          { name: 'Stochastic Models', topics: ['Queueing systems', 'Simulation', 'Decision under uncertainty'], sourceGroup: 'math' },
-          { name: 'Applications', topics: ['Production planning', 'Routing and scheduling', 'Resource allocation'], sourceGroup: 'engineering' }
-        ]
-      },
-      {
-        id: 'supply-chain-and-logistics',
-        title: 'Supply Chain and Logistics',
-        folders: [
-          { name: 'Supply Chain Design', topics: ['Procurement networks', 'Inventory policies', 'Demand planning'], sourceGroup: 'economics' },
-          { name: 'Logistics Operations', topics: ['Warehousing systems', 'Transport optimization', 'Cold chain basics'], sourceGroup: 'economics' },
-          { name: 'Resilience and Sustainability', topics: ['Disruption planning', 'Traceability', 'Low-carbon logistics'], sourceGroup: 'businessPolicy' }
-        ]
-      },
-      {
-        id: 'energy-systems',
-        title: 'Energy Systems',
-        folders: [
-          { name: 'Power Systems Fundamentals', topics: ['Generation technologies', 'Grid structure', 'Load management'], sourceGroup: 'energy' },
-          { name: 'Renewables and Storage', topics: ['Solar and wind systems', 'Battery storage', 'Hybrid energy systems'], sourceGroup: 'energy' },
-          { name: 'Energy Policy and Markets', topics: ['Energy regulation', 'Electricity markets', 'Transition planning'], sourceGroup: 'businessPolicy' }
-        ]
-      },
-      {
-        id: 'materials-science',
-        title: 'Materials Science',
-        folders: [
-          { name: 'Structure and Properties', topics: ['Crystal structures', 'Mechanical properties', 'Electrical and thermal behavior'], sourceGroup: 'engineering' },
-          { name: 'Characterization Methods', topics: ['Microscopy', 'Spectroscopy', 'Failure analysis methods'], sourceGroup: 'chemistry' },
-          { name: 'Advanced Materials', topics: ['Polymers and composites', 'Biomaterials', 'Nanomaterials'], sourceGroup: 'engineering' }
-        ]
-      },
-      {
-        id: 'marine-and-ocean-science',
-        title: 'Marine and Ocean Science',
-        folders: [
-          { name: 'Ocean Systems', topics: ['Ocean circulation', 'Marine ecosystems', 'Biogeochemical cycles'], sourceGroup: 'ocean' },
-          { name: 'Marine Data and Observation', topics: ['Field sampling', 'Remote sensing for oceans', 'Marine data analysis'], sourceGroup: 'ocean' },
-          { name: 'Coastal and Marine Management', topics: ['Coastal risk assessment', 'Marine conservation', 'Fisheries governance'], sourceGroup: 'ocean' }
-        ]
-      },
-      {
-        id: 'neuroscience',
-        title: 'Neuroscience',
-        folders: [
-          { name: 'Neurobiology Foundations', topics: ['Neurons and synapses', 'Neural circuits', 'Brain development'], sourceGroup: 'biology' },
-          { name: 'Cognitive and Behavioral Neuroscience', topics: ['Memory and attention', 'Perception', 'Decision processes'], sourceGroup: 'medicine' },
-          { name: 'Clinical and Translational Neuroscience', topics: ['Neurodegenerative disorders', 'Neuroimaging', 'Neurotherapeutics'], sourceGroup: 'medicine' }
-        ]
-      },
-      {
-        id: 'public-administration',
-        title: 'Public Administration',
-        folders: [
-          { name: 'State and Public Institutions', topics: ['Administrative structures', 'Public service delivery', 'Institutional accountability'], sourceGroup: 'socialScience' },
-          { name: 'Public Policy Analysis', topics: ['Policy cycle', 'Impact evaluation', 'Program implementation'], sourceGroup: 'businessPolicy' },
-          { name: 'Governance and Ethics', topics: ['Transparency standards', 'Anti-corruption tools', 'Ethics in public office'], sourceGroup: 'law' }
-        ]
-      },
-      {
-        id: 'development-studies',
-        title: 'Development Studies',
-        folders: [
-          { name: 'Development Theories', topics: ['Growth and inequality', 'Human development', 'Structural transformation'], sourceGroup: 'economics' },
-          { name: 'Global Development Practice', topics: ['Education and health systems', 'Poverty reduction strategies', 'Aid effectiveness'], sourceGroup: 'businessPolicy' },
-          { name: 'Sustainable Development Goals', topics: ['SDG metrics', 'Cross-sector policy design', 'Local implementation'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'hospitality-and-tourism',
-        title: 'Hospitality and Tourism',
-        folders: [
-          { name: 'Hospitality Operations', topics: ['Service quality standards', 'Front office systems', 'Food and beverage operations'], sourceGroup: 'economics' },
-          { name: 'Tourism Management', topics: ['Destination planning', 'Experience design', 'Tourism marketing'], sourceGroup: 'economics' },
-          { name: 'Sustainable Tourism', topics: ['Community impact', 'Environmental footprint', 'Responsible tourism policy'], sourceGroup: 'socialScience' }
-        ]
-      },
-      {
-        id: 'translation-and-interpreting',
-        title: 'Translation and Interpreting',
-        folders: [
-          { name: 'Translation Techniques', topics: ['Text analysis', 'Terminology management', 'Revision and quality assurance'], sourceGroup: 'languageLearning' },
-          { name: 'Interpreting Practice', topics: ['Consecutive interpreting', 'Note-taking systems', 'Interpreting ethics'], sourceGroup: 'languageLearning' },
-          { name: 'Specialized Language Services', topics: ['Legal translation', 'Medical translation', 'Technical localization'], sourceGroup: 'writing' }
-        ]
-      },
-      {
-        id: 'performing-arts',
-        title: 'Performing Arts',
-        folders: [
-          { name: 'Performance Practice', topics: ['Voice and movement', 'Stage interpretation', 'Rehearsal process'], sourceGroup: 'arts' },
-          { name: 'Theatre and Dance Studies', topics: ['Performance history', 'Dramaturgy basics', 'Choreographic structures'], sourceGroup: 'arts' },
-          { name: 'Production and Management', topics: ['Production planning', 'Technical stage workflows', 'Audience development'], sourceGroup: 'arts' }
-        ]
-      }
-    ]
-  };
+    {
+      "id": "physics",
+      "title": "Physics",
+      "folders": [
+        {
+          "name": "Mechanics",
+          "description": "Mechanics is the study of motion and the forces that cause it. Newton’s three laws of motion are the foundation. Understanding mechanics helps explain everything from falling objects to rocket launches.",
+          "keyPoints": [
+            "Newton’s 1st law: an object at rest stays at rest unless acted on by a force.",
+            "Newton’s 2nd law: Force = mass × acceleration (F = ma).",
+            "Newton’s 3rd law: every action has an equal and opposite reaction.",
+            "Kinetic energy = ½ × mass × velocity² (KE = ½mv²).",
+            "Work = Force × distance in the direction of the force (W = Fd)."
+          ],
+          "miniTask": "A 2 kg ball accelerates at 3 m/s². What force acts on it? Use F = ma.",
+          "topics": [
+            "Motion",
+            "Forces",
+            "Energy and work"
+          ],
+          "sourceGroup": "physics"
+        },
+        {
+          "name": "Electricity and Magnetism",
+          "description": "Electricity is the flow of electric charge through conductors. Magnetism arises from moving charges and magnetic materials. Both are unified in electromagnetism, which powers modern technology.",
+          "keyPoints": [
+            "Ohm’s law: Voltage = Current × Resistance (V = IR).",
+            "Series circuit: same current through all components; voltages add up.",
+            "Parallel circuit: same voltage across all components; currents add up.",
+            "Power = Voltage × Current (P = VI).",
+            "Magnetic fields exert forces on moving charges: F = qvB."
+          ],
+          "miniTask": "A circuit has a 12 V battery and a 4 Ω resistor. What is the current? Use V = IR.",
+          "topics": [
+            "Circuits",
+            "Current and voltage",
+            "Magnetic fields"
+          ],
+          "sourceGroup": "physics"
+        },
+        {
+          "name": "Waves and Optics",
+          "description": "Waves transfer energy without transferring matter. Sound and light are both waves. Optics studies how light behaves — reflecting off mirrors, bending through lenses, and forming images.",
+          "keyPoints": [
+            "Wave speed = frequency × wavelength (v = fλ).",
+            "Sound travels through matter; it cannot travel through a vacuum.",
+            "Light travels at 300,000 km/s in a vacuum (c).",
+            "Reflection: angle of incidence = angle of reflection.",
+            "Refraction: light bends when passing between materials of different densities (Snell’s law)."
+          ],
+          "miniTask": "A sound wave has frequency 440 Hz and speed 340 m/s. What is its wavelength? Use v = fλ.",
+          "topics": [
+            "Sound",
+            "Light",
+            "Lenses and mirrors"
+          ],
+          "sourceGroup": "physics"
+        }
+      ]
+    },
+    {
+      "id": "chemistry",
+      "title": "Chemistry",
+      "folders": [
+        {
+          "name": "Atomic Structure",
+          "description": "Everything is made of atoms. Each atom has a nucleus (protons + neutrons) surrounded by electrons. The periodic table organizes elements by their atomic number and chemical properties.",
+          "keyPoints": [
+            "Atomic number = number of protons; determines which element it is.",
+            "Mass number = protons + neutrons.",
+            "Electrons occupy energy levels (shells); outermost electrons determine reactivity.",
+            "Isotopes are atoms of the same element with different numbers of neutrons.",
+            "Ionic bonds: electrons transfer. Covalent bonds: electrons are shared."
+          ],
+          "miniTask": "Carbon has atomic number 6. How many protons, electrons, and neutrons does ¹²C have?",
+          "topics": [
+            "Atoms",
+            "Periodic table",
+            "Bonding"
+          ],
+          "sourceGroup": "chemistry"
+        },
+        {
+          "name": "Chemical Reactions",
+          "description": "Chemical reactions rearrange atoms to form new substances. Reactants are transformed into products. Understanding reactions helps in medicine, materials science, cooking, and industry.",
+          "keyPoints": [
+            "Law of conservation of mass: atoms are neither created nor destroyed in a reaction.",
+            "Balancing equations: the number of each atom must be equal on both sides.",
+            "Reaction rate increases with higher temperature, concentration, or surface area.",
+            "Catalysts speed up reactions without being consumed.",
+            "Stoichiometry uses mole ratios to calculate quantities in reactions."
+          ],
+          "miniTask": "Balance this equation: H₂ + O₂ → H₂O. How many H₂ and O₂ molecules do you need?",
+          "topics": [
+            "Balancing equations",
+            "Reaction rates",
+            "Stoichiometry"
+          ],
+          "sourceGroup": "chemistry"
+        },
+        {
+          "name": "Acids and Bases",
+          "description": "Acids donate hydrogen ions (H⁺); bases accept them. The pH scale measures acidity from 0 (very acidic) to 14 (very basic), with 7 being neutral. Neutralization reactions combine acids and bases to form water and a salt.",
+          "keyPoints": [
+            "pH < 7 = acidic (e.g. vinegar pH ≈ 3). pH > 7 = basic (e.g. baking soda pH ≈ 9).",
+            "Neutralization: acid + base → salt + water.",
+            "Indicators (like litmus) change colour in acids and bases.",
+            "Strong acids fully dissociate (HCl); weak acids partially dissociate (CH₃COOH).",
+            "Titration determines unknown concentration by reacting with a known solution."
+          ],
+          "miniTask": "If you mix hydrochloric acid (HCl) with sodium hydroxide (NaOH), what products form? Write the equation.",
+          "topics": [
+            "pH scale",
+            "Neutralization",
+            "Titration basics"
+          ],
+          "sourceGroup": "chemistry"
+        }
+      ]
+    },
+    {
+      "id": "biology",
+      "title": "Biology",
+      "folders": [
+        {
+          "name": "Cell Biology",
+          "description": "The cell is the basic unit of all living things. Cells carry out all life functions: obtaining energy, responding to the environment, growing, and reproducing. Understanding cells is the foundation for all biology.",
+          "keyPoints": [
+            "Prokaryotes (bacteria) have no nucleus; eukaryotes (animals, plants, fungi) have a nucleus.",
+            "The nucleus contains DNA, the genetic blueprint of the cell.",
+            "Mitochondria produce energy through cellular respiration (ATP).",
+            "Mitosis produces two identical daughter cells for growth and repair.",
+            "Meiosis produces four sex cells (gametes) with half the chromosome number."
+          ],
+          "miniTask": "Name three differences between a plant cell and an animal cell with one function for each difference.",
+          "topics": [
+            "Cell structure",
+            "Mitosis and meiosis",
+            "DNA and RNA"
+          ],
+          "sourceGroup": "biology"
+        },
+        {
+          "name": "Human Biology",
+          "description": "The human body is a complex system of organ systems that work together to maintain life. Understanding how these systems function helps in health, medicine, and personal well-being.",
+          "keyPoints": [
+            "The circulatory system pumps blood through the body, delivering oxygen and nutrients.",
+            "The digestive system breaks food into nutrients the body can absorb.",
+            "The nervous system processes information and coordinates responses.",
+            "Homeostasis keeps internal conditions stable (e.g. body temperature at 37°C).",
+            "Nutrition: carbohydrates give energy; proteins build; fats store energy and protect organs."
+          ],
+          "miniTask": "Trace the path of a breath of oxygen from the nose to a muscle cell. Name each organ system involved.",
+          "topics": [
+            "Body systems",
+            "Nutrition",
+            "Homeostasis"
+          ],
+          "sourceGroup": "biology"
+        },
+        {
+          "name": "Ecology",
+          "description": "Ecology studies how living organisms interact with each other and their environment. Understanding ecosystems helps us protect biodiversity, manage resources, and address climate change.",
+          "keyPoints": [
+            "Producers (plants) make food via photosynthesis; consumers eat them.",
+            "A food chain shows energy flow: Sun → plant → herbivore → carnivore.",
+            "Only about 10% of energy transfers to the next trophic level.",
+            "Biodiversity makes ecosystems more resilient to change.",
+            "Climate change alters habitats, shifts species ranges, and disrupts food webs."
+          ],
+          "miniTask": "Draw a simple food web with 5 organisms. Label producers, primary consumers, and secondary consumers.",
+          "topics": [
+            "Ecosystems",
+            "Food webs",
+            "Climate impact"
+          ],
+          "sourceGroup": "biology"
+        }
+      ]
+    },
+    {
+      "id": "computer-science",
+      "title": "Computer Science",
+      "folders": [
+        {
+          "name": "Computational Thinking",
+          "description": "Computational thinking is a problem-solving approach used in programming and beyond. It breaks complex problems into manageable parts and finds step-by-step solutions that a computer (or human) can follow.",
+          "keyPoints": [
+            "Decomposition: break a big problem into smaller, solvable sub-problems.",
+            "Pattern recognition: identify similarities and regularities in problems.",
+            "Abstraction: focus on the important parts and ignore irrelevant details.",
+            "Algorithm: a precise sequence of steps to solve a problem.",
+            "Pseudocode helps plan an algorithm in plain language before coding."
+          ],
+          "miniTask": "Write a step-by-step algorithm (in plain language) for sorting a shuffled deck of 5 cards by number.",
+          "topics": [
+            "Algorithms",
+            "Decomposition",
+            "Abstraction"
+          ],
+          "sourceGroup": "cs"
+        },
+        {
+          "name": "Programming",
+          "description": "Programming translates logical ideas into instructions a computer can execute. Every program uses variables, conditions, loops, and functions. Debugging — finding and fixing errors — is an essential skill.",
+          "keyPoints": [
+            "A variable stores a value that can change: x = 5.",
+            "A loop repeats code: for i in range(5) runs the body 5 times.",
+            "An if-statement makes a decision: if x > 0: print(\"positive\").",
+            "A function groups reusable code: def greet(name): return \"Hello \" + name.",
+            "Common error types: syntax errors (wrong spelling), runtime errors (crash), logic errors (wrong result)."
+          ],
+          "miniTask": "Write pseudocode or real code that asks the user for a number and prints whether it is odd or even.",
+          "topics": [
+            "Variables and loops",
+            "Functions",
+            "Debugging"
+          ],
+          "sourceGroup": "cs"
+        },
+        {
+          "name": "Digital Systems",
+          "description": "Digital systems form the infrastructure of the internet and modern computing. Understanding networks, data representation, and cybersecurity is essential for anyone using or building technology.",
+          "keyPoints": [
+            "Data is stored in binary (0s and 1s): 8 bits = 1 byte.",
+            "ASCII and Unicode map numbers to characters (e.g. A = 65 in ASCII).",
+            "The internet is a global network of networks using TCP/IP protocols.",
+            "HTTP is used for web pages; HTTPS adds encryption for security.",
+            "Encryption scrambles data so only the intended recipient can read it."
+          ],
+          "miniTask": "Convert the decimal number 13 to binary. Show your working (divide by 2 repeatedly).",
+          "topics": [
+            "Networks",
+            "Cybersecurity basics",
+            "Data representation"
+          ],
+          "sourceGroup": "cs"
+        }
+      ]
+    },
+    {
+      "id": "language-arts",
+      "title": "Language Arts",
+      "folders": [
+        {
+          "name": "Reading and Analysis",
+          "description": "Reading and analysis teaches you to understand and evaluate texts critically. You learn to identify the author’s purpose, structure arguments, and evaluate the quality of evidence used.",
+          "keyPoints": [
+            "Text structure types: chronological, problem-solution, cause-effect, compare-contrast.",
+            "The main argument is the central claim the author wants you to accept.",
+            "Evidence supports claims: look for facts, statistics, expert quotes, and examples.",
+            "Evaluate the source: is the author credible? Is the evidence recent and relevant?",
+            "Bias occurs when a text only presents one side of an argument."
+          ],
+          "miniTask": "Read one paragraph from any article. Identify: (1) the main claim, (2) one piece of evidence, (3) one potential bias.",
+          "topics": [
+            "Text structure",
+            "Argument analysis",
+            "Evidence use"
+          ],
+          "sourceGroup": "languageArts"
+        },
+        {
+          "name": "Writing",
+          "description": "Good writing communicates ideas clearly and persuasively. The process involves planning, drafting, revising, and editing. Structure and evidence are as important as vocabulary.",
+          "keyPoints": [
+            "PEEL paragraph: Point → Evidence → Explain → Link back.",
+            "An essay introduction states the argument; the conclusion restates it with insight.",
+            "Formal writing avoids contractions, slang, and first-person unless specified.",
+            "Active voice is clearer: \"The student solved the problem\" (not \"was solved by\").",
+            "Always revise: check logic, evidence, grammar, and sentence variety."
+          ],
+          "miniTask": "Write one PEEL paragraph (5–7 sentences) arguing that homework is beneficial or harmful. Use one piece of evidence.",
+          "topics": [
+            "Essays",
+            "Reports",
+            "Revision process"
+          ],
+          "sourceGroup": "writing"
+        },
+        {
+          "name": "Grammar and Vocabulary",
+          "description": "Grammar rules govern how words combine into correct sentences. A strong vocabulary makes writing precise and persuasive. Both require active practice — not just passive reading.",
+          "keyPoints": [
+            "A sentence needs a subject and a verb: \"She runs.\"",
+            "Tenses show time: simple present (runs), past (ran), future (will run), present perfect (has run).",
+            "Clauses: a main clause stands alone; a subordinate clause needs a main clause.",
+            "Punctuation guides the reader: comma = brief pause, semicolon = join related ideas.",
+            "Context clues help decode unfamiliar words: look at surrounding words."
+          ],
+          "miniTask": "Rewrite this sentence in three different tenses: \"The team wins the match.\" (past, future, present perfect)",
+          "topics": [
+            "Sentence structure",
+            "Word usage",
+            "Academic vocabulary"
+          ],
+          "sourceGroup": "languageArts"
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "title": "History",
+      "folders": [
+        {
+          "name": "World History",
+          "description": "World history traces how human societies developed over thousands of years, from ancient civilisations through empires, revolutions, and world wars to the modern global order. History helps us understand why the world is the way it is.",
+          "keyPoints": [
+            "Mesopotamia (Iraq) and Egypt are among the earliest known civilisations.",
+            "The Industrial Revolution (18th–19th c.) transformed economies from farming to manufacturing.",
+            "World War I (1914–1918) and World War II (1939–1945) reshaped the global order.",
+            "The Cold War (1947–1991) divided the world between the US and Soviet Union.",
+            "Globalisation from the 1990s created interconnected economies and cultures."
+          ],
+          "miniTask": "Choose one major historical event and explain: (1) its cause, (2) what happened, (3) its long-term effect.",
+          "topics": [
+            "Ancient civilizations",
+            "Industrial era",
+            "Global conflicts"
+          ],
+          "sourceGroup": "socialScience"
+        },
+        {
+          "name": "Primary Sources",
+          "description": "Primary sources are original documents or artefacts from the period being studied — letters, speeches, photos, laws, diaries. Historians use them to reconstruct the past as accurately as possible.",
+          "keyPoints": [
+            "Primary sources include diaries, laws, photographs, speeches, and treaties.",
+            "Secondary sources interpret primary sources: textbooks, biographies, documentaries.",
+            "Ask: Who wrote this? When? For what audience? What is their perspective?",
+            "Bias does not make a source useless — it reveals the author’s worldview.",
+            "Corroboration: check the source against other evidence to assess reliability."
+          ],
+          "miniTask": "Find a short historical quote (from a speech or letter). Identify the author, date, and one potential bias.",
+          "topics": [
+            "Source evaluation",
+            "Bias detection",
+            "Context analysis"
+          ],
+          "sourceGroup": "socialScience"
+        }
+      ]
+    },
+    {
+      "id": "geography",
+      "title": "Geography",
+      "folders": [
+        {
+          "name": "Physical Geography",
+          "description": "Physical geography studies Earth’s natural features — landforms, rivers, climate, and ecosystems. Understanding physical geography explains why cities, trade routes, and civilisations developed where they did.",
+          "keyPoints": [
+            "Plate tectonics: Earth’s crust is divided into plates that move, causing earthquakes and volcanoes.",
+            "The water cycle: evaporation → condensation → precipitation → runoff → repeat.",
+            "Climate zones: tropical, arid, temperate, continental, polar.",
+            "A river system has a source (high land), tributaries, and a mouth (where it meets the sea).",
+            "Natural hazards (earthquakes, floods, hurricanes) are shaped by geography."
+          ],
+          "miniTask": "Explain why earthquakes happen along the \"Ring of Fire\" using plate tectonics.",
+          "topics": [
+            "Landforms",
+            "Weather systems",
+            "Natural hazards"
+          ],
+          "sourceGroup": "geography"
+        },
+        {
+          "name": "Human Geography",
+          "description": "Human geography studies how people interact with their environment and how they organise space. Topics include where people live, why cities grow, and how economies differ around the world.",
+          "keyPoints": [
+            "Population density = people ÷ area. Dense in coastal and fertile regions; sparse in deserts and mountains.",
+            "Urbanisation: people moving from rural to urban areas for jobs and services.",
+            "Push factors drive people away (e.g. poverty, conflict); pull factors attract them (e.g. jobs, safety).",
+            "Globalisation: goods, capital, people, and ideas move across borders more freely.",
+            "Development can be measured by GDP per capita, life expectancy, and education (HDI)."
+          ],
+          "miniTask": "Compare two countries by their HDI. Identify two reasons one might rank higher than the other.",
+          "topics": [
+            "Population",
+            "Urbanization",
+            "Migration"
+          ],
+          "sourceGroup": "geography"
+        }
+      ]
+    },
+    {
+      "id": "economics",
+      "title": "Economics",
+      "folders": [
+        {
+          "name": "Microeconomics",
+          "description": "Microeconomics studies how individuals and firms make decisions about resources. It explains how prices are set, why markets sometimes fail, and how incentives shape behaviour.",
+          "keyPoints": [
+            "Demand: as price falls, quantity demanded rises (inverse relationship).",
+            "Supply: as price rises, quantity supplied rises (direct relationship).",
+            "Equilibrium: where supply meets demand — the market-clearing price.",
+            "Elasticity measures how sensitive demand or supply is to price changes.",
+            "Market failure: when markets produce too much (negative externalities) or too little (public goods)."
+          ],
+          "miniTask": "If the price of coffee rises, what happens to demand for tea? Explain using substitute goods.",
+          "topics": [
+            "Supply and demand",
+            "Market structures",
+            "Consumer behavior"
+          ],
+          "sourceGroup": "economics"
+        },
+        {
+          "name": "Personal Finance",
+          "description": "Personal finance helps you manage your money wisely. Understanding budgeting, saving, and credit means you can make informed decisions throughout your life.",
+          "keyPoints": [
+            "A budget tracks income and expenses. Spend less than you earn to save.",
+            "Simple interest: I = P × r × t (Principal × rate × time).",
+            "Compound interest grows savings exponentially — start early.",
+            "Credit: borrowing now and repaying later with interest; use it carefully.",
+            "An emergency fund should cover 3–6 months of expenses."
+          ],
+          "miniTask": "You earn €800/month. List 5 categories of expenses and allocate a budget for each that adds up to €800.",
+          "topics": [
+            "Budgeting",
+            "Interest rates",
+            "Saving and credit"
+          ],
+          "sourceGroup": "economics"
+        }
+      ]
+    },
+    {
+      "id": "earth-science",
+      "title": "Earth Science",
+      "folders": [
+        {
+          "name": "Geology",
+          "description": "Geology studies the Earth’s structure, the rocks it is made of, and how it changes over time. Earth is about 4.5 billion years old. Its layers — crust, mantle, outer core, inner core — have different properties.",
+          "keyPoints": [
+            "The rock cycle: igneous → sedimentary → metamorphic → back to magma.",
+            "Igneous rocks form from cooled magma or lava (e.g. granite, basalt).",
+            "Sedimentary rocks form from compressed layers of sediment (e.g. sandstone, limestone).",
+            "Metamorphic rocks are changed by heat and pressure (e.g. marble, slate).",
+            "Plate tectonics explains earthquakes, volcanoes, and mountain building."
+          ],
+          "miniTask": "A lava flow cools and hardens. What type of rock forms? What could turn it into metamorphic rock over time?",
+          "topics": [
+            "Rock cycle",
+            "Plate tectonics",
+            "Earthquakes"
+          ],
+          "sourceGroup": "earthScience"
+        },
+        {
+          "name": "Astronomy Basics",
+          "description": "Astronomy studies everything beyond Earth — planets, stars, galaxies, and the universe itself. Our solar system formed about 4.6 billion years ago. The universe is estimated to be 13.8 billion years old.",
+          "keyPoints": [
+            "Our solar system: 8 planets orbit the Sun. Order: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.",
+            "Stars produce energy through nuclear fusion: hydrogen atoms fuse to form helium.",
+            "A light-year is the distance light travels in one year (≈9.46 trillion km).",
+            "The Milky Way is our galaxy; it contains over 200 billion stars.",
+            "The Big Bang theory: the universe began as an extremely hot, dense point ∼13.8 billion years ago."
+          ],
+          "miniTask": "Calculate: light travels at 300,000 km/s. How far does light travel in 1 minute? In 1 hour?",
+          "topics": [
+            "Solar system",
+            "Stars and galaxies",
+            "Space exploration"
+          ],
+          "sourceGroup": "earthScience"
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "title": "Health Education",
+      "folders": [
+        {
+          "name": "Personal Health",
+          "description": "Personal health covers the habits and choices that affect your physical and mental well-being. Small daily actions — sleep, nutrition, exercise — have long-term effects on health.",
+          "keyPoints": [
+            "Adults need 7–9 hours of sleep per night; teenagers need 8–10 hours.",
+            "A balanced diet includes carbohydrates, proteins, healthy fats, vitamins, and minerals.",
+            "Regular physical activity (150 min/week moderate intensity) reduces disease risk.",
+            "Hydration: aim for ≈2 litres of water per day depending on activity and climate.",
+            "Preventive healthcare: regular check-ups, vaccinations, and dental visits."
+          ],
+          "miniTask": "Plan a balanced meal with at least 4 food groups. Identify one nutrient and its function for each food.",
+          "topics": [
+            "Nutrition",
+            "Sleep",
+            "Physical activity"
+          ],
+          "sourceGroup": "health"
+        },
+        {
+          "name": "Mental Health",
+          "description": "Mental health is as important as physical health. It affects how we think, feel, and act. Understanding stress and emotions — and where to find help — is a life skill.",
+          "keyPoints": [
+            "Stress is a normal response to challenges; chronic stress harms health.",
+            "Techniques: deep breathing, physical exercise, talking to someone, time management.",
+            "Anxiety and depression are common — they are medical conditions, not weaknesses.",
+            "Helping a friend: listen without judgment, encourage professional support.",
+            "Sleep, exercise, and social connection improve mental health."
+          ],
+          "miniTask": "List 3 healthy ways you manage stress. Explain why each strategy works physiologically or psychologically.",
+          "topics": [
+            "Stress management",
+            "Help resources",
+            "Healthy habits"
+          ],
+          "sourceGroup": "health"
+        }
+      ]
+    },
+    {
+      "id": "arts",
+      "title": "Arts and Design",
+      "folders": [
+        {
+          "name": "Visual Arts",
+          "description": "Visual arts express ideas, emotions, and stories through images and objects. Drawing, painting, sculpture, and design all use the same foundational elements: line, shape, colour, texture, space, and form.",
+          "keyPoints": [
+            "The colour wheel: primary (red, yellow, blue) → secondary (orange, green, violet).",
+            "Complementary colours sit opposite each other on the wheel (red–green, blue–orange).",
+            "Composition: how elements are arranged. Rule of thirds divides the frame into 9 equal parts.",
+            "Line: can suggest movement, emotion, direction.",
+            "Negative space: the background around a subject — as important as the subject itself."
+          ],
+          "miniTask": "Sketch any object using only contour lines (outline only). Then shade one area to show depth.",
+          "topics": [
+            "Drawing",
+            "Color theory",
+            "Composition"
+          ],
+          "sourceGroup": "arts"
+        }
+      ]
+    },
+    {
+      "id": "music",
+      "title": "Music",
+      "folders": [
+        {
+          "name": "Music Theory",
+          "description": "Music theory is the language of music. It explains how sounds are organised into melodies, harmonies, and rhythms. Reading music notation is like reading a map of sound.",
+          "keyPoints": [
+            "Pitch: the highness or lowness of a sound. Measured in Hz.",
+            "Notes on the staff: Treble clef lines (EGBDF), spaces (FACE).",
+            "Beat = the steady pulse. Tempo = speed (BPM). Rhythm = patterns of long and short sounds.",
+            "A scale is a sequence of notes in a specific pattern (e.g. major scale: whole-whole-half-whole-whole-whole-half).",
+            "A chord is 3+ notes played together; major chords sound bright, minor chords sound darker."
+          ],
+          "miniTask": "Clap the rhythm of a song you know. Write it using long (—) and short (·) symbols. How many beats per bar?",
+          "topics": [
+            "Rhythm and meter",
+            "Scales and harmony",
+            "Notation"
+          ],
+          "sourceGroup": "arts"
+        }
+      ]
+    },
+    {
+      "id": "physical-education",
+      "title": "Physical Education",
+      "folders": [
+        {
+          "name": "Fitness Fundamentals",
+          "description": "Physical fitness has four main components: cardiovascular endurance, muscular strength, flexibility, and body composition. Training each area regularly improves health and performance.",
+          "keyPoints": [
+            "Aerobic exercise (running, swimming) strengthens the heart and lungs.",
+            "Anaerobic exercise (weightlifting, sprinting) builds muscle strength.",
+            "Progressive overload: gradually increase intensity to keep improving.",
+            "Rest and recovery are when muscles actually grow stronger.",
+            "FITT principle: Frequency, Intensity, Time, Type — the pillars of a training plan."
+          ],
+          "miniTask": "Design a 30-minute weekly workout plan using the FITT principle. Include at least 2 types of exercise.",
+          "topics": [
+            "Endurance",
+            "Strength",
+            "Mobility"
+          ],
+          "sourceGroup": "health"
+        }
+      ]
+    }
+  ],
+  "university": [
+    {
+      "id": "mathematics",
+      "title": "Mathematics",
+      "folders": [
+        {
+          "name": "Calculus",
+          "description": "Calculus is the mathematics of change. Differential calculus finds rates of change (derivatives); integral calculus finds accumulated quantities (integrals). It underpins physics, engineering, economics, and all quantitative sciences.",
+          "keyPoints": [
+            "A limit describes the value a function approaches as x approaches a point.",
+            "Derivative: f′(x) = rate of change. For f(x) = xⁿ, f′(x) = nxⁿ⁻¹ (power rule).",
+            "Chain rule: d/dx[f(g(x))] = f′(g(x)) · g′(x).",
+            "Integral = area under a curve. ∫xⁿ dx = xⁿ⁺¹/(n+1) + C.",
+            "Fundamental theorem of calculus: differentiation and integration are inverse operations."
+          ],
+          "miniTask": "Find the derivative of f(x) = 3x³ − 2x² + 5x − 7. Show each step using the power rule.",
+          "topics": [
+            "Limits and continuity",
+            "Differentiation",
+            "Integration"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Linear Algebra",
+          "description": "Linear algebra is the mathematics of vectors, matrices, and linear transformations. It is essential in machine learning, computer graphics, engineering, and data science.",
+          "keyPoints": [
+            "A vector has magnitude and direction. Vectors can be added and scaled.",
+            "A matrix represents a linear transformation or a system of equations.",
+            "Matrix multiplication is not commutative: AB ≠ BA in general.",
+            "Determinant: a scalar that tells whether a matrix is invertible. det(A) = 0 → not invertible.",
+            "Eigenvalues and eigenvectors: Av = λv. Used in PCA, physics, and Google’s PageRank."
+          ],
+          "miniTask": "Multiply matrix A = [[1,2],[3,4]] by matrix B = [[5,6],[7,8]]. Show all calculations.",
+          "topics": [
+            "Vectors and matrices",
+            "Linear transformations",
+            "Eigenvalues"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Statistics and Probability",
+          "description": "University statistics moves from descriptive to inferential — using sample data to draw conclusions about populations. Probability theory provides the rigorous foundation.",
+          "keyPoints": [
+            "Random variable: a variable whose value is determined by a random event.",
+            "Normal distribution: bell curve, mean = median = mode; 68-95-99.7 rule.",
+            "Hypothesis testing: H₀ (null) vs H₁ (alternative). p-value < 0.05 → reject H₀.",
+            "Confidence interval: range in which the true parameter lies with stated probability.",
+            "Correlation coefficient r: −1 = perfect negative, 0 = no linear relationship, +1 = perfect positive."
+          ],
+          "miniTask": "A sample of 30 students has mean height 170 cm, SD 8 cm. Calculate the 95% confidence interval.",
+          "topics": [
+            "Probability distributions",
+            "Statistical inference",
+            "Regression analysis"
+          ],
+          "sourceGroup": "math"
+        }
+      ]
+    },
+    {
+      "id": "physics",
+      "title": "Physics",
+      "folders": [
+        {
+          "name": "Classical Mechanics",
+          "description": "Classical mechanics describes the motion of macroscopic objects using Newton’s laws. Lagrangian and Hamiltonian mechanics are more powerful reformulations used in advanced physics.",
+          "keyPoints": [
+            "Newton’s 2nd law in vector form: ΣF = ma.",
+            "Conservation of momentum: total momentum of a closed system is constant.",
+            "Conservation of energy: in a closed system, total mechanical energy is constant.",
+            "Angular momentum L = Iω (moment of inertia × angular velocity).",
+            "Lagrangian mechanics: L = T − V (kinetic minus potential energy). Euler-Lagrange equations derive motion."
+          ],
+          "miniTask": "A 3 kg mass slides down a frictionless incline of 30°. Calculate its acceleration using Newton’s 2nd law.",
+          "topics": [
+            "Newtonian mechanics",
+            "Conservation laws",
+            "Rotational motion"
+          ],
+          "sourceGroup": "physics"
+        },
+        {
+          "name": "Electromagnetism",
+          "description": "Electromagnetism unifies electricity, magnetism, and light. Maxwell’s four equations completely describe electromagnetic phenomena and predict electromagnetic waves.",
+          "keyPoints": [
+            "Coulomb’s law: F = kq₁q₂/r² (force between charges).",
+            "Gauss’s law: electric flux through a closed surface ∝ enclosed charge.",
+            "Faraday’s law: changing magnetic flux induces an EMF.",
+            "Maxwell’s equations predict that electromagnetic waves travel at the speed of light.",
+            "Light is an electromagnetic wave: E and B fields oscillate perpendicular to each other and to the direction of travel."
+          ],
+          "miniTask": "State Faraday’s law and give one real-world application (e.g. electric generator or transformer).",
+          "topics": [
+            "Electric fields",
+            "Magnetic fields",
+            "Maxwell’s equations"
+          ],
+          "sourceGroup": "physics"
+        }
+      ]
+    },
+    {
+      "id": "computer-science",
+      "title": "Computer Science",
+      "folders": [
+        {
+          "name": "Data Structures and Algorithms",
+          "description": "Data structures organise data efficiently; algorithms process it. Choosing the right data structure and algorithm determines whether a program runs in milliseconds or hours on large datasets.",
+          "keyPoints": [
+            "Array: fixed-size, O(1) access. Linked list: dynamic size, O(n) access.",
+            "Stack (LIFO) and Queue (FIFO): used in undo systems, BFS/DFS traversal.",
+            "Hash table: O(1) average lookup using a hash function.",
+            "Binary search: O(log n) — requires sorted data. Linear search: O(n).",
+            "Big-O notation measures how runtime grows with input size: O(1) < O(log n) < O(n) < O(n²)."
+          ],
+          "miniTask": "Trace through binary search on the sorted array [2, 5, 8, 12, 16, 23] looking for 12. How many steps?",
+          "topics": [
+            "Arrays and lists",
+            "Sorting algorithms",
+            "Big-O complexity"
+          ],
+          "sourceGroup": "cs"
+        },
+        {
+          "name": "Databases",
+          "description": "Databases store and organise data for efficient retrieval and manipulation. Relational databases use tables and SQL; NoSQL databases handle unstructured or distributed data.",
+          "keyPoints": [
+            "A relational database stores data in tables (rows = records, columns = attributes).",
+            "SQL SELECT query: SELECT column FROM table WHERE condition ORDER BY column.",
+            "Primary key: unique identifier for each row. Foreign key: links rows across tables.",
+            "JOIN combines rows from multiple tables: INNER JOIN returns matching rows.",
+            "ACID properties: Atomicity, Consistency, Isolation, Durability — ensure reliable transactions."
+          ],
+          "miniTask": "Write a SQL query to find all students with a grade above 80 from a table called \"students\" with columns (id, name, grade).",
+          "topics": [
+            "SQL",
+            "Relational data models",
+            "Query optimisation"
+          ],
+          "sourceGroup": "cs"
+        }
+      ]
+    },
+    {
+      "id": "economics",
+      "title": "Economics",
+      "folders": [
+        {
+          "name": "Macroeconomics",
+          "description": "Macroeconomics studies the economy as a whole: GDP, inflation, unemployment, monetary and fiscal policy. Central banks and governments use these tools to promote stable growth.",
+          "keyPoints": [
+            "GDP = C + I + G + (X−M): consumption + investment + government spending + net exports.",
+            "Inflation: general rise in prices. Deflation: fall in prices. Both can be harmful if extreme.",
+            "Unemployment: frictional (between jobs), structural (skills mismatch), cyclical (recession).",
+            "Central banks raise interest rates to fight inflation; lower them to stimulate growth.",
+            "Keynesian economics: governments should increase spending during recessions."
+          ],
+          "miniTask": "If a central bank raises interest rates, what happens to borrowing, investment, and inflation? Explain the chain of effects.",
+          "topics": [
+            "GDP and growth",
+            "Inflation and deflation",
+            "Fiscal and monetary policy"
+          ],
+          "sourceGroup": "economics"
+        }
+      ]
+    },
+    {
+      "id": "biology",
+      "title": "Biology",
+      "folders": [
+        {
+          "name": "Molecular Biology",
+          "description": "Molecular biology studies the molecular mechanisms of life — DNA replication, transcription, translation, and gene regulation. It is the basis of biotechnology, medicine, and genetics.",
+          "keyPoints": [
+            "DNA → RNA → Protein: the central dogma of molecular biology.",
+            "Transcription: DNA is copied into messenger RNA (mRNA) in the nucleus.",
+            "Translation: ribosomes read mRNA and assemble amino acids into a protein.",
+            "A codon is a 3-nucleotide sequence encoding one amino acid.",
+            "CRISPR-Cas9: a gene-editing tool that can precisely cut and modify DNA sequences."
+          ],
+          "miniTask": "Given the DNA sequence ATG-GCC-TAA, what is the mRNA sequence? (Replace T with U, and A↔T, C↔G)",
+          "topics": [
+            "DNA replication",
+            "Transcription and translation",
+            "Gene regulation"
+          ],
+          "sourceGroup": "biology"
+        },
+        {
+          "name": "Genetics and Evolution",
+          "description": "Genetics explains how traits are inherited. Evolution explains how species change over time through natural selection and genetic variation. Together they explain the diversity of life.",
+          "keyPoints": [
+            "Mendel’s laws: law of segregation (alleles separate during gamete formation); law of independent assortment.",
+            "Dominant alleles mask recessive alleles in a heterozygote (Aa).",
+            "Hardy-Weinberg equilibrium: allele frequencies stay constant in the absence of evolution.",
+            "Natural selection: individuals with traits better suited to the environment survive and reproduce more.",
+            "Mutations are the ultimate source of genetic variation; most are neutral."
+          ],
+          "miniTask": "Use a Punnett square to show the cross Aa × Aa. What are the genotype and phenotype ratios?",
+          "topics": [
+            "Mendelian genetics",
+            "Population genetics",
+            "Natural selection"
+          ],
+          "sourceGroup": "biology"
+        }
+      ]
+    }
+  ]
+};
 })();

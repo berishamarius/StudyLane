@@ -263,7 +263,23 @@
   "learnExamBasicsHint": "Focus mode: strong basics first, then a small practice set.",
   "learnExamBalancedHint": "Focus mode: balanced understanding, practice, and review.",
   "learnExamHardHint": "Focus mode: exam-style tasks with time pressure and quick feedback.",
-  "demoModeEnabled": "Demo mode enabled. Authentication is bypassed for testing."
+  "demoModeEnabled": "Demo mode enabled. Authentication is bypassed for testing.",
+  "dashWelcome": "Welcome back",
+  "student": "student",
+  "dashStatTasks": "Open tasks",
+  "dashStatLessons": "Today’s lessons",
+  "dashStatRooms": "Learning rooms",
+  "dashStatCourses": "Courses",
+  "dashCardSchedule": "Today’s schedule",
+  "dashCardRooms": "Learning rooms",
+  "dashCardUpcoming": "Upcoming tasks",
+  "dashCardTasks": "Open tasks",
+  "dashCardHomeschool": "Homeschooling guide",
+  "learnFolderDesc": "Description",
+  "learnKeyPoints": "Key concepts",
+  "learnSources": "Sources",
+  "learnSelectSubject": "Select a subject above to start learning",
+  "learnTopicTask": "Practice task",
+  "learnTopicKeyPoints": "Key concepts",
+  "learnTopicSources": "Sources"
 }
-
-
