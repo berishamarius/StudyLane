@@ -5,6 +5,14 @@ registerPageModule('dashboard', function dashboardPage() {
       <div class="dash-stats" id="dashStats"></div>
       <div class="dash-grid">
         <div class="dash-card">
+          <div class="dash-card-title">Today’s schedule</div>
+          <div id="dashSchedule" class="dash-list-placeholder">Loading...</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-title">Learning rooms</div>
+          <div id="dashRooms" class="dash-list-placeholder">Loading...</div>
+        </div>
+        <div class="dash-card">
           <div class="dash-card-title">Upcoming</div>
           <div id="dashUpcoming" class="dash-list-placeholder">Loading...</div>
         </div>
@@ -13,8 +21,8 @@ registerPageModule('dashboard', function dashboardPage() {
           <div id="dashTasks" class="dash-list-placeholder">Loading...</div>
         </div>
         <div class="dash-card">
-          <div class="dash-card-title">My Courses</div>
-          <div id="dashCourses" class="dash-list-placeholder">Loading...</div>
+          <div class="dash-card-title">Homeschooling guide</div>
+          <div id="dashHomeschool" class="dash-list-placeholder">Loading...</div>
         </div>
       </div>
     </section>

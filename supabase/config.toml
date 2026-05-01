@@ -1,10 +1,29 @@
 [project]
-name = "study-lane"
+name = "lyceon"
 organization_id = "YOUR_SUPABASE_ORG_ID"
 
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[studio]
+port = 54323
+api_url = "http://localhost"
+
+[api]
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
 [functions]
-# Local function entry must point to built JavaScript or TypeScript sources.
-# The Supabase CLI uses ./supabase/functions by default.
+# Edge Functions are located in ./supabase/functions/<name>/index.ts
+verify_jwt = true
 
 [auth]
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://localhost:3000"]
+jwt_expiry = 3600
+enable_signup = false
 auto_generate_sign_in_page = false

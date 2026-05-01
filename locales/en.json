@@ -1,5 +1,5 @@
 {
-  "appTitle": "Paideon",
+  "appTitle": "Lyceon",
   "modeMitarbeiter": "Pupil",
   "modeAzubi": "Student",
   "navPlans": "Plans",
@@ -177,6 +177,11 @@
   "learnLibraryTitle": "Open Learning Library",
   "learnLibrarySubtitle": "Structured by subject folders with trusted sources for school and university.",
   "learnCurrentMode": "Current mode",
+  "learnHomeschoolTitle": "Homeschooling & Learning Rooms",
+  "learnHomeschoolSubtitle": "Build a home learning routine, choose the right room, and keep your weekly plan on track.",
+  "learnRoomBestFor": "Best for",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Teacher Tools",
   "learnTopics": "Topics",
   "learnTrustedSources": "Trusted sources",
   "learnEmpty": "No learning areas available for this mode.",

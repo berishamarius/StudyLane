@@ -47,6 +47,25 @@ const DEMO_DATA = {
     { id: 'd-event-1', title: 'Mathematics Quiz', starts_at: '2026-05-05T09:00:00Z', location: 'Room A-12' },
     { id: 'd-event-2', title: 'Biology Lab', starts_at: '2026-05-07T12:00:00Z', location: 'Lab B-3' },
   ],
+  schedules: [
+    { id: 'd-sched-1', day: 'Monday', time: '08:00 - 09:00', subject: 'Mathematics', location: 'Room A-12', type: 'Lesson' },
+    { id: 'd-sched-2', day: 'Monday', time: '09:15 - 10:00', subject: 'Biology', location: 'Lab B-3', type: 'Lab' },
+    { id: 'd-sched-3', day: 'Monday', time: '10:30 - 11:15', subject: 'English Language', location: 'Room C-4', type: 'Class' },
+    { id: 'd-sched-4', day: 'Monday', time: '11:30 - 12:15', subject: 'History', location: 'Room D-1', type: 'Seminar' },
+    { id: 'd-sched-5', day: 'Monday', time: '13:30 - 14:15', subject: 'Computer Science', location: 'Room E-2', type: 'Project' },
+  ],
+  learningRooms: [
+    { id: 'd-room-1', name: 'Quiet Study', description: 'A focused space for homework, revision and deep thinking.', status: 'Available', bestFor: 'Individual work' },
+    { id: 'd-room-2', name: 'Homeschool Hub', description: 'A home classroom setup for parents and learners with daily routine support.', status: 'Ready', bestFor: 'Routine & family study' },
+    { id: 'd-room-3', name: 'Group Room', description: 'A team space for group projects, video calls and collaborative review.', status: 'Open', bestFor: 'Project work' },
+    { id: 'd-room-4', name: 'Online Tutor', description: 'A digital room for remote tutoring, exam prep and live support.', status: 'Booked', bestFor: 'Remote coaching' },
+  ],
+  homeschoolTips: [
+    'Use a weekly timetable and block time for lessons, revision and breaks.',
+    'Set up one dedicated study space with good light, clear surfaces and minimal distractions.',
+    'Mix quiet solo work with short group or tutor sessions to stay motivated.',
+    'Review your schedule each evening and plan the next day before you start.',
+  ],
   grades: [
     { id: 'd-grade-1', course_name: 'Mathematics', value: 2, notes: 'Strong progress', updated_at: '2026-04-20' },
     { id: 'd-grade-2', course_name: 'Biology', value: 1, notes: 'Excellent practical work', updated_at: '2026-04-18' },
@@ -167,6 +186,18 @@ const setLearnBookmark = (bookmark) => {
 const getLearnBookmark = (mode) => {
   const all = loadLearnBookmarks();
   return all[mode] || null;
+};
+
+const showAuthPanel = (panel) => {
+  const loginEl = document.getElementById('authPanelLogin');
+  const regEl = document.getElementById('authPanelRegister');
+  const loginBtn = document.getElementById('authShowLogin');
+  const regBtn = document.getElementById('authShowRegister');
+  if (!loginEl || !regEl) return;
+  loginEl.classList.toggle('hidden', panel !== 'login');
+  regEl.classList.toggle('hidden', panel !== 'register');
+  loginBtn?.classList.toggle('active', panel === 'login');
+  regBtn?.classList.toggle('active', panel === 'register');
 };
 
 const showAuthTab = (tab) => {
@@ -454,18 +485,40 @@ const loadProfile = async () => {
 
 const renderDashboard = async () => {
   document.getElementById('dashGreeting').textContent = `Welcome back, ${state.profile?.full_name || 'student'}!`;
-  document.getElementById('dashStats').innerHTML = `<div class="dash-stat"><span class="dash-stat-value">—</span><span class="dash-stat-label">Tasks</span></div><div class="dash-stat"><span class="dash-stat-value">—</span><span class="dash-stat-label">Messages</span></div><div class="dash-stat"><span class="dash-stat-value">—</span><span class="dash-stat-label">Courses</span></div>`;
+  const scheduleCount = state.demoMode ? DEMO_DATA.schedules.length : 0;
+  const roomCount = state.demoMode ? DEMO_DATA.learningRooms.length : 0;
+  const taskCount = state.demoMode ? DEMO_DATA.tasks.filter((task) => task.status !== 'done').length : 0;
+  const courseCount = state.demoMode ? DEMO_DATA.courses.length : 0;
+  document.getElementById('dashStats').innerHTML = `
+    <div class="dash-stat"><span class="dash-stat-value">${taskCount}</span><span class="dash-stat-label">Open Tasks</span></div>
+    <div class="dash-stat"><span class="dash-stat-value">${scheduleCount}</span><span class="dash-stat-label">Today’s lessons</span></div>
+    <div class="dash-stat"><span class="dash-stat-value">${roomCount}</span><span class="dash-stat-label">Learning rooms</span></div>
+    <div class="dash-stat"><span class="dash-stat-value">${courseCount}</span><span class="dash-stat-label">Courses</span></div>
+  `;
 
+  const dashSchedule = document.getElementById('dashSchedule');
+  const dashRooms = document.getElementById('dashRooms');
   const dashUpcoming = document.getElementById('dashUpcoming');
   const dashTasks = document.getElementById('dashTasks');
   const dashCourses = document.getElementById('dashCourses');
+  const dashHomeschool = document.getElementById('dashHomeschool');
+  dashSchedule.textContent = 'Loading…';
+  dashRooms.textContent = 'Loading…';
   dashUpcoming.textContent = 'Loading…';
   dashTasks.textContent = 'Loading…';
   dashCourses.textContent = 'Loading…';
+  dashHomeschool.textContent = 'Loading…';
 
   if (state.demoMode) {
     const tasks = DEMO_DATA.tasks;
     const courses = DEMO_DATA.courses;
+    const schedule = DEMO_DATA.schedules;
+    const rooms = DEMO_DATA.learningRooms;
+    const tips = DEMO_DATA.homeschoolTips;
+
+    dashSchedule.innerHTML = schedule.slice(0, 4).map((item) => `<div class="dash-list-item"><span class="dash-dot" style="background:#7f95ff"></span><div><div class="dash-list-title">${item.time} • ${item.subject}</div><div class="dash-list-sub">${item.location} · ${item.type}</div></div></div>`).join('') || '<div class="dash-list-placeholder">No classes scheduled for today.</div>';
+    dashRooms.innerHTML = rooms.map((room) => `<div class="dash-list-item"><span class="dash-dot" style="background:${room.status === 'Open' ? '#22c55e' : room.status === 'Booked' ? '#ef4444' : '#7180ff'}"></span><div><div class="dash-list-title">${room.name}</div><div class="dash-list-sub">${room.bestFor} · ${room.status}</div><div class="dash-list-sub">${room.description}</div></div></div>`).join('');
+    dashHomeschool.innerHTML = `<div class="dash-list-sub">Use separate learning spaces for focus, group work, and online study.</div><ul style="padding-left:16px;margin-top:10px;display:grid;gap:6px">${tips.map((tip) => `<li>${tip}</li>`).join('')}</ul>`;
     dashUpcoming.innerHTML = tasks.slice(0, 4).map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : task.status === 'overdue' ? '#ef4444' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">Due ${new Date(task.due_date).toLocaleDateString()}</div></div></div>`).join('');
     dashTasks.innerHTML = tasks.map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">${task.status}</div></div></div>`).join('');
     dashCourses.innerHTML = courses.map((course) => `<div class="dash-list-item"><span class="dash-dot" style="background:linear-gradient(135deg,#7180ff,#7f95ff)"></span><div><div class="dash-list-title">${course.name}</div><div class="dash-list-sub">${course.teacher_name}</div></div></div>`).join('');
@@ -480,6 +533,9 @@ const renderDashboard = async () => {
   dashUpcoming.innerHTML = tasks?.length ? tasks.slice(0, 4).map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : task.status === 'overdue' ? '#ef4444' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">Due ${new Date(task.due_date).toLocaleDateString()}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No upcoming tasks found.</div>';
   dashTasks.innerHTML = tasks?.length ? tasks.map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">${task.status}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No tasks available.</div>';
   dashCourses.innerHTML = courses?.length ? courses.map((course) => `<div class="dash-list-item"><span class="dash-dot" style="background:linear-gradient(135deg,#7180ff,#7f95ff)"></span><div><div class="dash-list-title">${course.name}</div><div class="dash-list-sub">${course.teacher_name}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No courses yet.</div>';
+  dashSchedule.innerHTML = '<div class="dash-list-placeholder">Your schedule is not available yet. Add lessons to create a timetable.</div>';
+  dashRooms.innerHTML = '<div class="dash-list-placeholder">Learning rooms will appear here once you add them.</div>';
+  dashHomeschool.innerHTML = '<div class="dash-list-placeholder">Add a homeschooling routine in Learn to get helpful guidance.</div>';
 };
 
 const renderCourses = async () => {
@@ -612,9 +668,37 @@ const renderLearn = async () => {
   const mode = state.ui.studyMode;
   const activeLang = getActiveLanguage();
   const bookmark = getLearnBookmark(mode);
+
+  // Subject → visual identity map
+  const SUBJECT_META = {
+    mathematics: { icon: '📐', color: 'var(--subject-math)' },
+    physics: { icon: '⚛️', color: 'var(--subject-physics)' },
+    chemistry: { icon: '⚗️', color: 'var(--subject-chemistry)' },
+    biology: { icon: '🌿', color: 'var(--subject-biology)' },
+    'computer-science': { icon: '💻', color: 'var(--subject-cs)' },
+    'language-arts': { icon: '📝', color: 'var(--subject-lang)' },
+    'english-language': { icon: '🇬🇧', color: 'var(--subject-lang)' },
+    'german-language': { icon: '🇩🇪', color: 'var(--subject-lang)' },
+    'french-language': { icon: '🇫🇷', color: 'var(--subject-lang)' },
+    'spanish-language': { icon: '🇪🇸', color: 'var(--subject-lang)' },
+    history: { icon: '📜', color: 'var(--subject-hist)' },
+    geography: { icon: '🌍', color: 'var(--subject-geo)' },
+    economics: { icon: '📊', color: 'var(--subject-eco)' },
+    arts: { icon: '🎨', color: 'var(--subject-art)' },
+    music: { icon: '🎵', color: 'var(--subject-music)' },
+    'health': { icon: '💚', color: 'var(--subject-biology)' },
+    'earth-science': { icon: '🌎', color: 'var(--subject-geo)' },
+    'religion-and-ethics': { icon: '⚖️', color: 'var(--subject-default)' },
+    'physical-education': { icon: '🏃', color: 'var(--subject-green)' },
+    'social-studies': { icon: '🏛️', color: 'var(--subject-hist)' },
+  };
+  const getMeta = (id) => SUBJECT_META[id] || { icon: '📚', color: 'var(--subject-default)' };
+
   const copy = {
-    title: tr('learnLibraryTitle', 'Open Learning Library'),
-    subtitle: tr('learnLibrarySubtitle', 'Structured by subject folders with trusted sources for school and university.'),
+    homeschoolTitle: tr('learnHomeschoolTitle', 'Homeschooling & Learning Rooms'),
+    homeschoolSub: tr('learnHomeschoolSubtitle', 'Build a home learning routine, choose the right room, and keep your weekly plan on track.'),
+    roomBestFor: tr('learnRoomBestFor', 'Best for'),
+    roomStatus: tr('learnRoomStatus', 'Status'),
     modeLabel: tr('learnCurrentMode', 'Current mode'),
     modeValue: mode === 'school' ? tr('studyModeSchool', 'School') : tr('studyModeUniversity', 'University'),
     modeContext: tr('learnModeContext', 'Learning profile'),
@@ -623,18 +707,14 @@ const renderLearn = async () => {
     bookmarkAt: tr('learnBookmarkedAt', 'Saved topic'),
     resume: tr('learnResume', 'Resume'),
     clearBookmark: tr('learnClearBookmark', 'Clear bookmark'),
-    markHere: tr('learnMarkHere', 'Mark this topic'),
-    topics: tr('learnTopics', 'Topics'),
-    summary: tr('learnSummary', 'Simple explanation'),
-    hints: tr('learnHints', 'Learning help'),
-    inAppTitle: tr('learnInAppTitle', 'In-app learning cards'),
-    inAppSubtitle: tr('learnInAppSubtitle', 'Everything below is directly usable in the app without opening external links.'),
+    markHere: tr('learnMarkHere', '🔖 Mark'),
+    hints: tr('learnHints', 'Study tips'),
     lessonPlan: tr('learnLessonPlan', 'Lesson plan'),
     level: tr('learnLevel', 'Level'),
     explain: tr('learnExplain', 'Easy explanation'),
     steps: tr('learnSteps', 'Steps'),
     miniTask: tr('learnMiniTaskLabel', 'Mini practice'),
-    sourcesOptional: tr('learnSourcesOptional', 'Trusted sources (optional)'),
+    sourcesOptional: tr('learnSourcesOptional', '📎 Trusted sources'),
     sources: tr('learnTrustedSources', 'Trusted sources'),
     empty: tr('learnEmpty', 'No learning areas available for this mode.')
   };
@@ -663,83 +743,124 @@ const renderLearn = async () => {
           hint: await localizeLearnText(plan.hint, activeLang),
         };
       }));
-      const summaryBase = `This module explains ${folder.name} in easy steps. First learn the basics, then practice with examples, and finally test your understanding with exercises.`;
       return {
         ...folder,
         name: translatedName,
         topics: translatedTopics,
         helps: translatedHelps,
         lessonCards,
-        summary: await localizeLearnText(summaryBase, activeLang),
       };
     }));
     return { ...subject, title: translatedTitle, folders: translatedFolders };
   }));
 
-  container.innerHTML = `
-    <div class="card" style="margin-bottom:16px">
-      <div class="card-title">${copy.title}</div>
-      <p class="card-sub">${copy.subtitle}</p>
-      <p class="card-sub">${copy.modeLabel}: <strong style="color:var(--text)">${copy.modeValue}</strong></p>
-      <p class="card-sub">${copy.modeContext}: <strong style="color:var(--text)">${getLearningContextLine(mode)}</strong></p>
-    </div>
-    <div class="card" style="margin-bottom:16px">
-      <div class="card-title">${copy.bookmarkTitle}</div>
-      ${bookmark
-        ? `<p class="card-sub">${copy.bookmarkAt}: <strong style="color:var(--text)">${bookmark.subjectTitle} - ${bookmark.folderName} - ${bookmark.topic}</strong></p>
-           <div style="display:flex;gap:8px;flex-wrap:wrap">
-             <button class="btn btn-primary" onclick="resumeLearnBookmark()">${copy.resume}</button>
-             <button class="btn btn-secondary" onclick="clearLearnBookmark()">${copy.clearBookmark}</button>
-           </div>`
-        : `<p class="card-sub">${copy.bookmarkEmpty}</p>`}
-    </div>
-    <div class="dash-grid">
-      ${localizedSubjects.length ? localizedSubjects.map((subject) => `
-        <article class="dash-card">
-          <div class="dash-card-title">${subject.title}</div>
-          <div style="display:grid;gap:10px">
-            ${(subject.folders || []).map((folder, folderIndex) => `
-              <details class="card" data-learn-anchor="${subject.id}::${folderIndex}" style="padding:12px;border-radius:14px;margin:0">
-                <summary style="cursor:pointer;font-weight:700">${folder.name}</summary>
-                <div style="margin-top:8px" class="card-sub">${copy.summary}</div>
-                <p style="margin-top:6px">${folder.summary || ''}</p>
-                <div style="margin-top:8px" class="card-sub">${copy.hints}</div>
-                <ul style="padding-left:16px;margin-top:6px;display:grid;gap:4px">
-                  ${(folder.helps || []).map((hint) => `<li>${hint}</li>`).join('')}
-                </ul>
-                <div style="margin-top:10px" class="card-sub">${copy.inAppTitle}</div>
-                <p style="margin-top:6px" class="card-sub">${copy.inAppSubtitle}</p>
-                <div style="margin-top:8px" class="card-sub">${copy.topics}</div>
-                <ul style="padding-left:16px;margin-top:6px;display:grid;gap:4px">
-                  ${(folder.topics || []).map((topic, topicIndex) => `<li><button class="btn btn-secondary" style="padding:4px 8px;font-size:12px;margin-right:8px" onclick="markLearnTopic('${subject.id}','${encodeURIComponent(subject.title)}','${encodeURIComponent(folder.name)}',${folderIndex},'${encodeURIComponent(topic)}',${topicIndex})">${copy.markHere}</button>${topic}</li>`).join('')}
-                </ul>
-                <div style="margin-top:10px;display:grid;gap:10px">
-                  ${(folder.lessonCards || []).map((card, idx) => `
-                    <div class="card" style="padding:10px;border-radius:12px">
-                      <div class="card-sub" style="font-weight:700">${copy.lessonPlan} ${idx + 1}</div>
-                      <div style="margin-top:6px"><strong>${copy.level}:</strong> ${card.level}</div>
-                      <div style="margin-top:4px"><strong>${copy.explain}:</strong> ${card.explain}</div>
-                      <div style="margin-top:4px"><strong>${copy.steps}:</strong></div>
-                      <ul style="padding-left:16px;margin-top:4px;display:grid;gap:3px">
-                        ${(card.steps || []).map((step) => `<li>${step}</li>`).join('')}
-                      </ul>
-                      <div style="margin-top:4px"><strong>${copy.miniTask}:</strong> ${card.miniTask}</div>
-                      <div style="margin-top:4px" class="card-sub">${card.hint}</div>
-                    </div>
-                  `).join('')}
-                </div>
-                <details style="margin-top:10px">
-                  <summary class="card-sub" style="cursor:pointer">${copy.sourcesOptional}</summary>
-                  <div style="margin-top:6px" class="card-sub">${copy.sources}</div>
-                  <ul style="padding-left:16px;margin-top:6px;display:grid;gap:4px">
-                    ${(model.core[folder.sourceGroup] || []).map((source) => `<li><a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.title}</a></li>`).join('')}
-                  </ul>
-                </details>
-              </details>
-            `).join('')}
+  // Bookmark card
+  const bookmarkHtml = bookmark
+    ? `<div class="learn-bookmark-card">
+        <div style="font-weight:700;margin-bottom:8px;font-size:15px">🔖 ${copy.bookmarkTitle}</div>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:12px">${copy.bookmarkAt}: <strong>${bookmark.subjectTitle} › ${bookmark.folderName} › ${bookmark.topic}</strong></p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="resumeLearnBookmark()">${copy.resume}</button>
+          <button class="btn btn-secondary" onclick="clearLearnBookmark()">${copy.clearBookmark}</button>
+        </div>
+      </div>`
+    : `<div class="learn-bookmark-card" style="opacity:.7">
+        <div style="font-weight:700;margin-bottom:6px;font-size:15px">🔖 ${copy.bookmarkTitle}</div>
+        <p style="font-size:13px;color:var(--text2)">${copy.bookmarkEmpty}</p>
+      </div>`;
+
+  // Homeschool + rooms card
+  const homeschoolHtml = `
+    <div class="learn-homeschool-card">
+      <div style="font-weight:700;font-size:16px;margin-bottom:6px">🏠 ${copy.homeschoolTitle}</div>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:14px">${copy.homeschoolSub}</p>
+      <div style="display:grid;gap:10px;margin-bottom:14px">
+        ${DEMO_DATA.learningRooms.map((room) => `
+          <div class="learn-room-row">
+            <div style="flex:1">
+              <div style="font-weight:700;font-size:13px;margin-bottom:3px">${room.name}</div>
+              <div style="font-size:12px;color:var(--text2)">${room.description}</div>
+              <div style="font-size:11px;color:var(--text3);margin-top:5px">${copy.roomBestFor}: ${room.bestFor}</div>
+            </div>
+            <span class="learn-room-status ${(room.status || '').toLowerCase()}">${room.status}</span>
           </div>
-        </article>
-      `).join('') : `<div class="dash-list-placeholder">${copy.empty}</div>`}
+        `).join('')}
+      </div>
+      <div style="font-weight:700;font-size:13px;margin-bottom:8px">Quick setup tips</div>
+      ${DEMO_DATA.homeschoolTips.map((tip) => `<div class="learn-tip">${tip}</div>`).join('')}
+    </div>`;
+
+  // Mode context bar
+  const modeBarHtml = `
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:20px;padding:14px 18px;background:rgba(255,255,255,.72);border:1px solid rgba(176,127,82,.12);border-radius:18px">
+      <span style="font-size:13px;color:var(--text2)">${copy.modeLabel}:</span>
+      <span style="font-weight:700;color:var(--text)">${copy.modeValue}</span>
+      <span style="color:var(--text3);font-size:12px">·</span>
+      <span style="font-size:13px;color:var(--text2)">${copy.modeContext}:</span>
+      <span style="font-weight:700;color:var(--text)">${getLearningContextLine(mode)}</span>
+    </div>`;
+
+  // Subject cards with folder details
+  const subjectsHtml = localizedSubjects.length
+    ? localizedSubjects.map((subject) => {
+        const meta = getMeta(subject.id);
+        return `
+          <article class="learn-subject-card" data-subject="${subject.id}">
+            <div class="learn-subject-header" style="border-bottom:1px solid rgba(176,127,82,.1)">
+              <div class="learn-subject-icon" style="background:${meta.color}">${meta.icon}</div>
+              <div class="learn-subject-name">${subject.title}</div>
+            </div>
+            <div class="learn-subject-body">
+              ${(subject.folders || []).map((folder, folderIndex) => `
+                <details class="learn-folder" data-learn-anchor="${subject.id}::${folderIndex}">
+                  <summary>${folder.name}</summary>
+                  <div class="learn-folder-body">
+                    ${folder.helps?.length ? `
+                      <div class="learn-card">
+                        <div class="learn-card-label">${copy.hints}</div>
+                        ${folder.helps.map((hint) => `<div class="learn-tip">${hint}</div>`).join('')}
+                      </div>` : ''}
+                    <div class="learn-card" style="padding:10px 12px">
+                      <div class="learn-card-label" style="margin-bottom:8px">Topics</div>
+                      ${(folder.topics || []).map((topic, topicIndex) => `
+                        <div class="learn-topic-row">
+                          <div class="learn-topic-dot" style="background:${meta.color.includes('gradient') ? 'var(--accent2)' : meta.color}"></div>
+                          <span class="learn-topic-label">${topic}</span>
+                          <button class="learn-bookmark-btn${bookmark && bookmark.subjectId === subject.id && bookmark.folderIndex === folderIndex && bookmark.topicIndex === topicIndex ? ' bookmarked' : ''}"
+                            onclick="markLearnTopic('${subject.id}','${encodeURIComponent(subject.title)}','${encodeURIComponent(folder.name)}',${folderIndex},'${encodeURIComponent(topic)}',${topicIndex})">${copy.markHere}</button>
+                        </div>
+                      `).join('')}
+                    </div>
+                    ${(folder.lessonCards || []).map((card, idx) => `
+                      <div class="learn-card">
+                        <div class="learn-card-label">${copy.lessonPlan} ${idx + 1} · ${card.level}</div>
+                        <p style="font-size:13px;margin:6px 0 8px">${card.explain}</p>
+                        ${card.steps.map((step, si) => `<div class="learn-card-step" data-n="${si + 1}">${step}</div>`).join('')}
+                        <div class="learn-mini-task">${card.miniTask}</div>
+                        <p style="font-size:12px;color:var(--text3);margin-top:8px">${card.hint}</p>
+                      </div>
+                    `).join('')}
+                    ${(model.core[folder.sourceGroup] || []).length ? `
+                      <details class="learn-folder" style="margin-top:2px">
+                        <summary class="learn-sources-toggle">${copy.sourcesOptional}</summary>
+                        <div style="padding:8px 14px 10px;display:grid;gap:4px">
+                          ${(model.core[folder.sourceGroup] || []).map((src) => `<a class="learn-source-link" href="${src.url}" target="_blank" rel="noopener noreferrer">${src.title}</a>`).join('')}
+                        </div>
+                      </details>` : ''}
+                  </div>
+                </details>
+              `).join('')}
+            </div>
+          </article>`;
+      }).join('')
+    : `<div class="dash-list-placeholder">${copy.empty}</div>`;
+
+  container.innerHTML = `
+    ${modeBarHtml}
+    ${bookmarkHtml}
+    ${homeschoolHtml}
+    <div class="dash-grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px">
+      ${subjectsHtml}
     </div>
   `;
 };

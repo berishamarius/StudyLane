@@ -29,50 +29,112 @@
       <p>Lyceon gives students a calm, clean workspace for homework, schedules and revision planning.</p>
       <div class="auth-feature-grid">
         <div class="auth-feature">
-          <div class="feature-icon">🧠</div>
+          <div class="feature-icon feature-icon--amber">🧠</div>
           <div><strong>Study planner</strong><p>Keep all lessons, deadlines and revision sessions organised.</p></div>
         </div>
         <div class="auth-feature">
-          <div class="feature-icon">📘</div>
-          <div><strong>Notes & flashcards</strong><p>Capture class notes, summaries and study cards in one place.</p></div>
+          <div class="feature-icon feature-icon--blue">📘</div>
+          <div><strong>Open learning library</strong><p>Trusted sources and in-app cards for every school subject.</p></div>
         </div>
         <div class="auth-feature">
-          <div class="feature-icon">🎯</div>
+          <div class="feature-icon feature-icon--green">🎯</div>
           <div><strong>Exam-ready routines</strong><p>Track priorities and stay focused with simple, student-first tools.</p></div>
         </div>
+        <div class="auth-feature">
+          <div class="feature-icon feature-icon--rose">🏠</div>
+          <div><strong>Homeschooling support</strong><p>Dedicated learning rooms and home-classroom routines built in.</p></div>
+        </div>
+      </div>
+      <div class="auth-trust-strip">
+        <span>🔒 Your data stays private</span>
+        <span>🌍 85+ languages</span>
+        <span>📱 Works offline</span>
       </div>
     </div>
     <div class="auth-panel">
       <div class="auth-card auth-login-card">
-        <div class="auth-form-tabs">
-          <button type="button" class="auth-tab active" onclick="setAuthMode('student')">Student access</button>
-          <button type="button" class="auth-tab" onclick="setAuthMode('teacher')">Teacher / Lecturer</button>
+        <div class="auth-mode-toggle">
+          <button type="button" class="auth-mode-btn active" id="authShowLogin" onclick="showAuthPanel('login')">Sign in</button>
+          <button type="button" class="auth-mode-btn" id="authShowRegister" onclick="showAuthPanel('register')">New account</button>
         </div>
-        <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
-          <input type="hidden" id="loginRole" value="student" />
-          <div class="field">
-            <label for="loginEmail">Email</label>
-            <input id="loginEmail" class="input" type="email" placeholder="you@student.school" required />
+
+        <!-- LOGIN -->
+        <div id="authPanelLogin">
+          <div class="auth-form-tabs">
+            <button type="button" class="auth-tab active" onclick="setAuthMode('student')">Student</button>
+            <button type="button" class="auth-tab" onclick="setAuthMode('teacher')">Teacher</button>
           </div>
-          <div class="field">
-            <label for="loginPassword">Password</label>
-            <input id="loginPassword" class="input" type="password" placeholder="••••••••" required />
-          </div>
-          <div id="teacherFields" class="teacher-fields hidden">
+          <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+            <input type="hidden" id="loginRole" value="student" />
             <div class="field">
-              <label for="loginStaffCode">Lecturer code</label>
-              <input id="loginStaffCode" class="input" type="text" placeholder="Staff code or faculty ID" />
+              <label for="loginEmail">Email</label>
+              <input id="loginEmail" class="input" type="email" placeholder="you@student.school" autocomplete="email" required />
             </div>
-          </div>
-          <div class="auth-row">
-            <label class="auth-checkbox"><input id="loginRemember" type="checkbox" checked /> Keep me signed in</label>
-            <span class="auth-login-note">Student access is the default. Teachers can switch to faculty mode.</span>
-          </div>
-          <div class="field">
-            <button class="btn btn-primary btn-full" type="submit" id="loginSubmit">Continue as student</button>
-          </div>
-          <div class="auth-error" id="loginError"></div>
-        </form>
+            <div class="field">
+              <label for="loginPassword">Password</label>
+              <input id="loginPassword" class="input" type="password" placeholder="••••••••" autocomplete="current-password" required />
+            </div>
+            <div id="teacherFields" class="teacher-fields hidden">
+              <div class="field">
+                <label for="loginStaffCode">Staff / faculty code</label>
+                <input id="loginStaffCode" class="input" type="text" placeholder="Staff code or faculty ID" autocomplete="off" />
+              </div>
+            </div>
+            <label class="auth-checkbox" style="margin-bottom:14px"><input id="loginRemember" type="checkbox" checked /> Keep me signed in</label>
+            <button class="btn btn-primary btn-full btn-lg" type="submit" id="loginSubmit">Continue as student</button>
+            <div class="auth-error" id="loginError"></div>
+          </form>
+        </div>
+
+        <!-- REGISTER -->
+        <div id="authPanelRegister" class="hidden">
+          <p class="auth-register-intro">Create your Lyceon account. You may need an invite code from your school.</p>
+          <form id="registerForm" class="auth-form" onsubmit="handleRegister(event)">
+            <div class="field">
+              <label for="regName">Full name</label>
+              <input id="regName" class="input" type="text" placeholder="Your full name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="regEmail">Email</label>
+              <input id="regEmail" class="input" type="email" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="regPassword">Password</label>
+              <input id="regPassword" class="input" type="password" placeholder="Min. 8 characters" autocomplete="new-password" minlength="8" required />
+            </div>
+            <div class="auth-register-row">
+              <div class="field" style="flex:1">
+                <label for="regStudyType">I study at</label>
+                <select id="regStudyType" class="select">
+                  <option value="school">School</option>
+                  <option value="university">University / College</option>
+                  <option value="homeschool">Home school</option>
+                </select>
+              </div>
+              <div class="field" style="flex:1">
+                <label for="regRole">I am a</label>
+                <select id="regRole" class="select">
+                  <option value="student">Student</option>
+                  <option value="teacher">Teacher</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="regInstitution">School / University <span class="field-hint">(optional)</span></label>
+              <input id="regInstitution" class="input" type="text" placeholder="Name of your school or university" />
+            </div>
+            <div class="field">
+              <label for="regLevel">Year / Semester <span class="field-hint">(optional)</span></label>
+              <input id="regLevel" class="input" type="text" placeholder="e.g. Year 10 or Semester 3" />
+            </div>
+            <div class="field">
+              <label for="regCode">Invite code <span class="field-hint">(if required by your school)</span></label>
+              <input id="regCode" class="input" type="text" placeholder="INV-XXXXXX" autocomplete="off" />
+            </div>
+            <button class="btn btn-primary btn-full btn-lg" type="submit">Create account</button>
+            <div class="auth-error" id="regError"></div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

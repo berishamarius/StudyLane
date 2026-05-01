@@ -10,6 +10,7 @@
     "build": "electron-builder --win --publish never",
     "build:web": "node scripts/build-web.js",
     "i18n:fill": "node scripts/fill-locales-native.js",
+    "i18n:sync": "node scripts/sync-locales.js",
     "i18n:translate-all": "node scripts/translate-locales.js",
     "i18n:verify": "node scripts/verify-locales.js",
     "i18n:all": "npm run i18n:translate-all && npm run i18n:verify",
@@ -36,7 +37,8 @@
     "@capacitor/ios": "^6.0.0",
     "@capacitor/keyboard": "^6.0.0",
     "@capacitor/splash-screen": "^6.0.0",
-    "@capacitor/status-bar": "^6.0.0"
+    "@capacitor/status-bar": "^6.0.0",
+    "@supabase/supabase-js": "^2.43.0"
   },
   "build": {
     "appId": "com.kronix.lyceon",
