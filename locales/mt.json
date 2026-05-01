@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Modalità ta 'fokus: bażiċi b'saħħithom l-ewwel, imbagħad sett ta' prattika żgħir.",
   "learnExamBalancedHint": "Modalità ta 'fokus: fehim bilanċjat, prattika, u reviżjoni.",
   "learnExamHardHint": "Modalità ta 'fokus: kompiti ta' stil ta 'eżami bi pressjoni tal-ħin u feedback malajr.",
-  "demoModeEnabled": "Modalità Demo attivata. L-awtentikazzjoni tiġi evitata għall-ittestjar."
+  "demoModeEnabled": "Modalità Demo attivata. L-awtentikazzjoni tiġi evitata għall-ittestjar.",
+  "learnHomeschoolTitle": "Edukazzjoni d-Dar u Kmamar tal-Tagħlim",
+  "learnHomeschoolSubtitle": "Ibni rutina ta' tagħlim id-dar, agħżel il-kamra t-tajba u segwi l-pjan tal-ġimgħa tiegħek.",
+  "learnRoomBestFor": "L-aħjar għal",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Għodod tal-Għalliem"
 }
-

@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Yanayin mai da hankali: ƙaƙƙarfan tushe na farko, sannan ƙaramin saiti.",
   "learnExamBalancedHint": "Yanayin mayar da hankali: daidaitaccen fahimta, aiki, da bita.",
   "learnExamHardHint": "Yanayin mai da hankali: ayyuka irin na jarrabawa tare da matsin lokaci da saurin amsawa.",
-  "demoModeEnabled": "An kunna yanayin demo. Ana ƙetare tabbaci don gwaji."
+  "demoModeEnabled": "An kunna yanayin demo. Ana ƙetare tabbaci don gwaji.",
+  "learnHomeschoolTitle": "Koyarwa a Gida da Dakunan Koyo",
+  "learnHomeschoolSubtitle": "Gina tsarin koyon gida, zaɓi ɗakin da ya dace kuma bi tsarin mako-makon ka.",
+  "learnRoomBestFor": "Mafi kyau don",
+  "learnRoomStatus": "Halin da ake ciki",
+  "pageTeacherTools": "Kayan Aikin Malami"
 }
-

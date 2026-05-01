@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Fokusmodus: sterke grunnleggende først, deretter et lite treningssett.",
   "learnExamBalancedHint": "Fokusmodus: balansert forståelse, praksis og gjennomgang.",
   "learnExamHardHint": "Fokusmodus: oppgaver i eksamensstil med tidspress og rask tilbakemelding.",
-  "demoModeEnabled": "Demomodus aktivert. Autentisering omgås for testing."
+  "demoModeEnabled": "Demomodus aktivert. Autentisering omgås for testing.",
+  "learnHomeschoolTitle": "Hjemmeundervisning og læringsrom",
+  "learnHomeschoolSubtitle": "Bygg en hjemmelæringsrutine, velg riktig rom og hold styr på ukeplanen din.",
+  "learnRoomBestFor": "Best egnet for",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Lærerverktøy"
 }
-

@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Focus mode: matibay muna ang mga pangunahing kaalaman, pagkatapos ay isang maliit na hanay ng pagsasanay.",
   "learnExamBalancedHint": "Focus mode: balanseng pag-unawa, pagsasanay, at pagsusuri.",
   "learnExamHardHint": "Focus mode: exam-style na mga gawain na may time pressure at mabilis na feedback.",
-  "demoModeEnabled": "Pinagana ang demo mode. Ang pagpapatunay ay na-bypass para sa pagsubok."
+  "demoModeEnabled": "Pinagana ang demo mode. Ang pagpapatunay ay na-bypass para sa pagsubok.",
+  "learnHomeschoolTitle": "Pag-aaral sa Bahay at mga Silid-Aralan",
+  "learnHomeschoolSubtitle": "Bumuo ng rutina ng pag-aaral sa bahay, pumili ng tamang silid, at subaybayan ang lingguhang plano.",
+  "learnRoomBestFor": "Pinakaangkop para sa",
+  "learnRoomStatus": "Katayuan",
+  "pageTeacherTools": "Mga Kagamitan ng Guro"
 }
-

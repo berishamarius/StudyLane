@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Konsantre mòd: debaz fò an premye, Lè sa a, yon seri ti pratik.",
   "learnExamBalancedHint": "Mòd konsantre: konpreyansyon ekilibre, pratik, ak revizyon.",
   "learnExamHardHint": "Mòd Konsantre: travay-style egzamen ak presyon tan ak fidbak rapid.",
-  "demoModeEnabled": "Mòd Demo aktive. Otantifikasyon iyore pou tès la."
+  "demoModeEnabled": "Mòd Demo aktive. Otantifikasyon iyore pou tès la.",
+  "learnHomeschoolTitle": "Lekòl lakay ak Chanm Aprantisaj",
+  "learnHomeschoolSubtitle": "Bati yon woutin aprantisaj lakay ou, chwazi chanm ki apwopriye a, epi swiv plan semèn ou.",
+  "learnRoomBestFor": "Pi bon pou",
+  "learnRoomStatus": "Estati",
+  "pageTeacherTools": "Zouti Ensèyan"
 }
-

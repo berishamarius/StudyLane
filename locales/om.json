@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Haala xiyyeeffannoo: dursa bu’uuraalee ciccimoo, sana booda tuuta shaakala xiqqaa.",
   "learnExamBalancedHint": "Haala xiyyeeffannoo: hubannoo madaalawaa, shaakala, fi gamaaggama.",
   "learnExamHardHint": "Haala xiyyeeffannoo: hojiiwwan akkaataa qormaataa dhiibbaa yeroo fi yaada ariifataa qaban.",
-  "demoModeEnabled": "Haalli agarsiisaa dandeessifameera. Mirkaneessi qorannoof ni bira darba."
+  "demoModeEnabled": "Haalli agarsiisaa dandeessifameera. Mirkaneessi qorannoof ni bira darba.",
+  "learnHomeschoolTitle": "Barnootaa Manaa fi Kutaawwan Barumsaa",
+  "learnHomeschoolSubtitle": "Tartiiba barnoota manaa ijaaraa, kutaa sirrii filadhu, karoora torban hordofi.",
+  "learnRoomBestFor": "Gaarii ta'e kan",
+  "learnRoomStatus": "Haala",
+  "pageTeacherTools": "Meeshaalee Barsiisaa"
 }
-

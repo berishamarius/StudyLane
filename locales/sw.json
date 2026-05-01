@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Njia ya kuzingatia: misingi imara kwanza, kisha seti ndogo ya mazoezi.",
   "learnExamBalancedHint": "Hali ya Kuzingatia: uelewa sawia, mazoezi, na mapitio.",
   "learnExamHardHint": "Hali ya umakini: kazi za mtindo wa mitihani zenye shinikizo la wakati na maoni ya haraka.",
-  "demoModeEnabled": "Hali ya onyesho imewashwa. Uthibitishaji umepuuzwa kwa majaribio."
+  "demoModeEnabled": "Hali ya onyesho imewashwa. Uthibitishaji umepuuzwa kwa majaribio.",
+  "learnHomeschoolTitle": "Kujifunza Nyumbani na Vyumba vya Kujifunza",
+  "learnHomeschoolSubtitle": "Jenga utaratibu wa kujifunza nyumbani, chagua chumba kinachofaa na ufuate mpango wa wiki.",
+  "learnRoomBestFor": "Bora kwa",
+  "learnRoomStatus": "Hali",
+  "pageTeacherTools": "Zana za Mwalimu"
 }
-

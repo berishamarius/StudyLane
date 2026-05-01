@@ -258,5 +258,10 @@
   "learnExamBasicsHint": "Tryb skupienia: najpierw mocne podstawy, a potem mały zestaw ćwiczeń.",
   "learnExamBalancedHint": "Tryb skupienia: zrównoważone zrozumienie, praktyka i przegląd.",
   "learnExamHardHint": "Tryb skupienia: zadania przypominające egzamin z presją czasu i szybką informacją zwrotną.",
-  "demoModeEnabled": "Włączono tryb demonstracyjny. Uwierzytelnianie jest pomijane na potrzeby testów."
+  "demoModeEnabled": "Włączono tryb demonstracyjny. Uwierzytelnianie jest pomijane na potrzeby testów.",
+  "learnHomeschoolTitle": "Edukacja domowa i sale do nauki",
+  "learnHomeschoolSubtitle": "Stwórz domową rutynę nauki, wybierz odpowiednie pomieszczenie i śledź swój tygodniowy plan.",
+  "learnRoomBestFor": "Najlepsze do",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Narzędzia nauczyciela"
 }

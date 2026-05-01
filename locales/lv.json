@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Fokusa režīms: vispirms spēcīgi pamati, tad neliels treniņu komplekts.",
   "learnExamBalancedHint": "Fokusa režīms: līdzsvarota izpratne, prakse un pārskatīšana.",
   "learnExamHardHint": "Fokusa režīms: eksāmena stila uzdevumi ar laika spiedienu un ātru atgriezenisko saiti.",
-  "demoModeEnabled": "Demonstrācijas režīms ir iespējots. Autentifikācija tiek apieta testēšanai."
+  "demoModeEnabled": "Demonstrācijas režīms ir iespējots. Autentifikācija tiek apieta testēšanai.",
+  "learnHomeschoolTitle": "Mājas apmācība un mācību telpas",
+  "learnHomeschoolSubtitle": "Izveidojiet mājas mācību rutīnu, izvēlieties pareizo istabu un sekojiet savam nedēļas plānam.",
+  "learnRoomBestFor": "Vislabāk piemērots",
+  "learnRoomStatus": "Statuss",
+  "pageTeacherTools": "Skolotāja rīki"
 }
-

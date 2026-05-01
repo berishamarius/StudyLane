@@ -258,5 +258,10 @@
   "learnExamBasicsHint": "フォーカス モード: 最初に強力な基本、次に小さな練習セット。",
   "learnExamBalancedHint": "フォーカス モード: バランスの取れた理解、練習、復習。",
   "learnExamHardHint": "フォーカス モード: 時間的プレッシャーと素早いフィードバックを必要とする試験形式のタスク。",
-  "demoModeEnabled": "デモモードが有効になりました。テストのために認証はバイパスされます。"
+  "demoModeEnabled": "デモモードが有効になりました。テストのために認証はバイパスされます。",
+  "learnHomeschoolTitle": "ホームスクーリングと学習部屋",
+  "learnHomeschoolSubtitle": "家庭学習のルーティンを作り、適切な部屋を選び、週間計画を管理しましょう。",
+  "learnRoomBestFor": "最適な用途",
+  "learnRoomStatus": "状態",
+  "pageTeacherTools": "教師ツール"
 }

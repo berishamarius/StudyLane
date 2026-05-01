@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Fókusz mód: először erős alapok, majd egy kis gyakorló készlet.",
   "learnExamBalancedHint": "Fókusz mód: kiegyensúlyozott megértés, gyakorlás és áttekintés.",
   "learnExamHardHint": "Fókusz mód: vizsga jellegű feladatok időnyomással és gyors visszajelzéssel.",
-  "demoModeEnabled": "Demo mód engedélyezve. A hitelesítést megkerüli a tesztelés."
+  "demoModeEnabled": "Demo mód engedélyezve. A hitelesítést megkerüli a tesztelés.",
+  "learnHomeschoolTitle": "Otthoni oktatás és tanulószobák",
+  "learnHomeschoolSubtitle": "Alakíts ki otthoni tanulási rutint, válaszd ki a megfelelő szobát és kövesd nyomon a heti tervedet.",
+  "learnRoomBestFor": "A legjobb",
+  "learnRoomStatus": "Állapot",
+  "pageTeacherTools": "Tanári eszközök"
 }
-

@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Režim zaostrenia: najprv silné základy, potom malá cvičná súprava.",
   "learnExamBalancedHint": "Režim zaostrenia: vyvážené porozumenie, precvičenie a preskúmanie.",
   "learnExamHardHint": "Režim sústredenia: úlohy v štýle skúšky s časovým tlakom a rýchlou spätnou väzbou.",
-  "demoModeEnabled": "Demo režim je povolený. Pri testovaní sa autentifikácia vynechá."
+  "demoModeEnabled": "Demo režim je povolený. Pri testovaní sa autentifikácia vynechá.",
+  "learnHomeschoolTitle": "Domáce vzdelávanie a výukové miestnosti",
+  "learnHomeschoolSubtitle": "Vytvorte domácu študijnú rutinu, zvoľte správnu miestnosť a sledujte svoj týždenný plán.",
+  "learnRoomBestFor": "Najlepšie pre",
+  "learnRoomStatus": "Stav",
+  "pageTeacherTools": "Nástroje učiteľa"
 }
-

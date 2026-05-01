@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Moda Focusê: Pêşî bingehên bihêz, dûv re komek pratîkek piçûk.",
   "learnExamBalancedHint": "Moda Focus: têgihîştina hevseng, pratîk û vekolîn.",
   "learnExamHardHint": "Moda Focusê: Karên şêwaza azmûnê bi zexta dem û bertekên bilez.",
-  "demoModeEnabled": "Moda Demo çalak kirin. Nasname ji bo ceribandinê derbas dibe."
+  "demoModeEnabled": "Moda Demo çalak kirin. Nasname ji bo ceribandinê derbas dibe.",
+  "learnHomeschoolTitle": "Xwendina Malê û Jûreyên Fêrbûnê",
+  "learnHomeschoolSubtitle": "Xebateke fêrbûna malê ava bikin, jûreya rast hilbijêrin û plana hefteya xwe bişopînin.",
+  "learnRoomBestFor": "Çêtirîn ji bo",
+  "learnRoomStatus": "Rewş",
+  "pageTeacherTools": "Amûrên Mamosteyê"
 }
-

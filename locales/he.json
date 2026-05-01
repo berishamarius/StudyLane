@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "מצב פוקוס: תחילה יסודות חזקים, ולאחר מכן ערכת תרגול קטנה.",
   "learnExamBalancedHint": "מצב מיקוד: הבנה מאוזנת, תרגול וסקירה.",
   "learnExamHardHint": "מצב מיקוד: משימות בסגנון בחינה עם לחץ זמן ומשוב מהיר.",
-  "demoModeEnabled": "מצב הדגמה מופעל. האימות מעקף לבדיקה."
+  "demoModeEnabled": "מצב הדגמה מופעל. האימות מעקף לבדיקה.",
+  "learnHomeschoolTitle": "חינוך ביתי וחדרי למידה",
+  "learnHomeschoolSubtitle": "בנה שגרת למידה ביתית, בחר את החדר המתאים ועקוב אחר התוכנית השבועית שלך.",
+  "learnRoomBestFor": "מתאים ביותר ל",
+  "learnRoomStatus": "סטטוס",
+  "pageTeacherTools": "כלי מורה"
 }
-

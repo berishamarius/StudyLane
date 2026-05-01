@@ -258,5 +258,10 @@
   "learnExamBasicsHint": "Mode Focus : des bases solides d'abord, puis un petit ensemble d'entraînement.",
   "learnExamBalancedHint": "Mode Focus : compréhension, pratique et révision équilibrées.",
   "learnExamHardHint": "Mode Focus : tâches de type examen avec pression de temps et retour rapide.",
-  "demoModeEnabled": "Mode démo activé. L'authentification est contournée pour les tests."
+  "demoModeEnabled": "Mode démo activé. L'authentification est contournée pour les tests.",
+  "learnHomeschoolTitle": "Apprentissage à la maison & salles d'étude",
+  "learnHomeschoolSubtitle": "Créez une routine d'apprentissage à domicile, choisissez la bonne salle et suivez votre plan hebdomadaire.",
+  "learnRoomBestFor": "Le mieux pour",
+  "learnRoomStatus": "Statut",
+  "pageTeacherTools": "Outils de l'enseignant"
 }

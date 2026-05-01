@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Modul de focalizare: mai întâi elementele de bază puternice, apoi un mic set de practică.",
   "learnExamBalancedHint": "Modul de focalizare: înțelegere echilibrată, practică și revizuire.",
   "learnExamHardHint": "Modul de focalizare: sarcini de tip examen cu presiune de timp și feedback rapid.",
-  "demoModeEnabled": "Modul demonstrativ activat. Autentificarea este ocolită pentru testare."
+  "demoModeEnabled": "Modul demonstrativ activat. Autentificarea este ocolită pentru testare.",
+  "learnHomeschoolTitle": "Educație la domiciliu și camere de învățare",
+  "learnHomeschoolSubtitle": "Construiți o rutină de învățare acasă, alegeți camera potrivită și urmăriți planul săptămânal.",
+  "learnRoomBestFor": "Cel mai potrivit pentru",
+  "learnRoomStatus": "Stare",
+  "pageTeacherTools": "Instrumente pentru profesori"
 }
-

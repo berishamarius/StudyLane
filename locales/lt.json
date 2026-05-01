@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Fokusavimo režimas: pirmiausia stiprūs pagrindai, tada nedidelis pratimų rinkinys.",
   "learnExamBalancedHint": "Fokusavimo režimas: subalansuotas supratimas, praktika ir peržiūra.",
   "learnExamHardHint": "Fokusavimo režimas: egzaminų tipo užduotys su laiko spaudimu ir greitu atsiliepimu.",
-  "demoModeEnabled": "Demonstracinis režimas įjungtas. Atliekant bandymus autentifikavimas apeinamas."
+  "demoModeEnabled": "Demonstracinis režimas įjungtas. Atliekant bandymus autentifikavimas apeinamas.",
+  "learnHomeschoolTitle": "Namų mokymas ir mokymosi kambariai",
+  "learnHomeschoolSubtitle": "Sukurkite namų mokymosi rutiną, pasirinkite tinkamą kambarį ir laikykitės savo savaitinio plano.",
+  "learnRoomBestFor": "Geriausia",
+  "learnRoomStatus": "Būsena",
+  "pageTeacherTools": "Mokytojo įrankiai"
 }
-

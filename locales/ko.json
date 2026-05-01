@@ -258,5 +258,10 @@
   "learnExamBasicsHint": "집중 모드: 먼저 탄탄한 기본을 다진 다음 작은 연습 세트를 진행합니다.",
   "learnExamBalancedHint": "집중 모드: 균형 잡힌 이해, 연습, 복습.",
   "learnExamHardHint": "집중 모드: 시간 압박과 빠른 피드백이 있는 시험 스타일 작업입니다.",
-  "demoModeEnabled": "데모 모드가 활성화되었습니다. 테스트를 위해 인증이 우회됩니다."
+  "demoModeEnabled": "데모 모드가 활성화되었습니다. 테스트를 위해 인증이 우회됩니다.",
+  "learnHomeschoolTitle": "홈스쿨링 및 학습실",
+  "learnHomeschoolSubtitle": "가정 학습 루틴을 만들고, 알맞은 방을 선택하고, 주간 계획을 관리하세요.",
+  "learnRoomBestFor": "최적 대상",
+  "learnRoomStatus": "상태",
+  "pageTeacherTools": "교사 도구"
 }

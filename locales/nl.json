@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Focusmodus: eerst een sterke basis, daarna een kleine oefenset.",
   "learnExamBalancedHint": "Focusmodus: evenwichtig begrijpen, oefenen en beoordelen.",
   "learnExamHardHint": "Focusmodus: taken in examenstijl met tijdsdruk en snelle feedback.",
-  "demoModeEnabled": "Demomodus ingeschakeld. Authenticatie wordt omzeild voor testen."
+  "demoModeEnabled": "Demomodus ingeschakeld. Authenticatie wordt omzeild voor testen.",
+  "learnHomeschoolTitle": "Thuisonderwijs en leerkamers",
+  "learnHomeschoolSubtitle": "Bouw een thuisleerroutine op, kies de juiste kamer en houd je weekplan bij.",
+  "learnRoomBestFor": "Geschikt voor",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Docententools"
 }
-

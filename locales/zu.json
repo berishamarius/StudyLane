@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Imodi yokugxila: izisekelo eziqinile kuqala, bese kuba yisethi encane yokuzilolonga.",
   "learnExamBalancedHint": "Imodi yokugxila: ukuqonda okunokulinganisela, ukuzijwayeza, nokubuyekeza.",
   "learnExamHardHint": "Imodi yokugxila: imisebenzi yesitayela sokuhlolwa enengcindezi yesikhathi kanye nempendulo esheshayo.",
-  "demoModeEnabled": "Imodi yedemo inikwe amandla. Ukuqinisekisa kudlulwa ukuze kuhlolwe."
+  "demoModeEnabled": "Imodi yedemo inikwe amandla. Ukuqinisekisa kudlulwa ukuze kuhlolwe.",
+  "learnHomeschoolTitle": "Ukufunda Ekhaya ne-Zindawo Zokufunda",
+  "learnHomeschoolSubtitle": "Yakha isiqhelo sokufunda ekhaya, khetha igumbi elifanele, ulandele uhlelo lwesonto.",
+  "learnRoomBestFor": "Kuhle kakhulu ku",
+  "learnRoomStatus": "Isimo",
+  "pageTeacherTools": "Amathuluzi Othisha"
 }
-

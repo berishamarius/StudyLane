@@ -258,5 +258,10 @@
   "learnExamBasicsHint": "Modaliteti i fokusit: fillimisht bazat e forta, pastaj një grup i vogël praktikash.",
   "learnExamBalancedHint": "Mënyra e fokusimit: kuptim, praktikë dhe rishikim i balancuar.",
   "learnExamHardHint": "Modaliteti i fokusit: detyra të stilit të provimit me presion kohe dhe reagime të shpejta.",
-  "demoModeEnabled": "Modaliteti demonstrues është aktivizuar. Autentifikimi është anashkaluar për testim."
+  "demoModeEnabled": "Modaliteti demonstrues është aktivizuar. Autentifikimi është anashkaluar për testim.",
+  "learnHomeschoolTitle": "Arsimimi në shtëpi dhe dhomët e mësimit",
+  "learnHomeschoolSubtitle": "Ndërtoni një rutinë mësimi në shtëpi, zgjidhni dhomën e duhur dhe ndiqni planin javor.",
+  "learnRoomBestFor": "Më i miri për",
+  "learnRoomStatus": "Statusi",
+  "pageTeacherTools": "Mjetet e mësuesit"
 }

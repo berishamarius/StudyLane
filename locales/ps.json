@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "د تمرکز حالت: قوي اساسات لومړی، بیا یو کوچنی تمرین.",
   "learnExamBalancedHint": "د تمرکز حالت: متوازن پوهه، تمرین، او بیاکتنه.",
   "learnExamHardHint": "د تمرکز حالت: د ازموینې سټایل دندې د وخت فشار او ګړندي فیډبیک سره.",
-  "demoModeEnabled": "د ډیمو حالت فعال شوی. تصدیق د ازموینې لپاره تیریږي."
+  "demoModeEnabled": "د ډیمو حالت فعال شوی. تصدیق د ازموینې لپاره تیریږي.",
+  "learnHomeschoolTitle": "د کور زده کړه او د زده کړې خونې",
+  "learnHomeschoolSubtitle": "د کور د زده کړې عادت جوړ کړئ، سمه خونه غوره کړئ، او اونیزه پلان تعقیب کړئ.",
+  "learnRoomBestFor": "د ... لپاره غوره",
+  "learnRoomStatus": "حالت",
+  "pageTeacherTools": "د ښوونکي وسایل"
 }
-

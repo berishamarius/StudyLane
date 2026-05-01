@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Način osredotočenosti: najprej močne osnove, nato majhen niz vaj.",
   "learnExamBalancedHint": "Način osredotočenosti: uravnoteženo razumevanje, vadba in pregled.",
   "learnExamHardHint": "Način osredotočenosti: naloge v slogu izpita s časovnim pritiskom in hitrimi povratnimi informacijami.",
-  "demoModeEnabled": "Demo način je omogočen. Preverjanje pristnosti je zaobljeno za testiranje."
+  "demoModeEnabled": "Demo način je omogočen. Preverjanje pristnosti je zaobljeno za testiranje.",
+  "learnHomeschoolTitle": "Domače izobraževanje in učilnice",
+  "learnHomeschoolSubtitle": "Ustvarite domačo učno rutino, izberite pravo sobo in sledite tedenskemu načrtu.",
+  "learnRoomBestFor": "Najboljše za",
+  "learnRoomStatus": "Stanje",
+  "pageTeacherTools": "Učiteljska orodja"
 }
-

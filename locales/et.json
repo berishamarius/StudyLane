@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Fookusrežiim: esmalt tugevad põhitõed, seejärel väike harjutuskomplekt.",
   "learnExamBalancedHint": "Fookusrežiim: tasakaalustatud mõistmine, harjutamine ja ülevaatamine.",
   "learnExamHardHint": "Fookusrežiim: eksamilaadsed ülesanded ajasurve ja kiire tagasisidega.",
-  "demoModeEnabled": "Demorežiim on lubatud. Autentimisest jäetakse testimiseks mööda."
+  "demoModeEnabled": "Demorežiim on lubatud. Autentimisest jäetakse testimiseks mööda.",
+  "learnHomeschoolTitle": "Kodune õppetöö ja õpperuumid",
+  "learnHomeschoolSubtitle": "Looge kodus õpperutiin, valige õige ruum ja jälgige oma nädalaplaani.",
+  "learnRoomBestFor": "Parim",
+  "learnRoomStatus": "Staatus",
+  "pageTeacherTools": "Õpetaja tööriistad"
 }
-

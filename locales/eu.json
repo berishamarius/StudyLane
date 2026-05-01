@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Foku modua: oinarrizko oinarri sendoak lehenik, gero praktika multzo txiki bat.",
   "learnExamBalancedHint": "Focus modua: ulermen, praktika eta berrikuspen orekatua.",
   "learnExamHardHint": "Foku-modua: azterketa moduko zereginak denbora-presioarekin eta feedback azkarrarekin.",
-  "demoModeEnabled": "Demo modua gaituta. Autentifikazioa saihestu egiten da probak egiteko."
+  "demoModeEnabled": "Demo modua gaituta. Autentifikazioa saihestu egiten da probak egiteko.",
+  "learnHomeschoolTitle": "Etxeko hezkuntza eta ikasketa gelak",
+  "learnHomeschoolSubtitle": "Sortu etxeko ikasketa-erroutina bat, aukeratu gela egokia eta jarrai iezaiozu asteko planari.",
+  "learnRoomBestFor": "Hoberena",
+  "learnRoomStatus": "Egoera",
+  "pageTeacherTools": "Irakaslearen tresnak"
 }
-

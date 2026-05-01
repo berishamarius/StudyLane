@@ -258,5 +258,10 @@
   "learnExamBasicsHint": "Modalità Focus: prima le nozioni di base, poi un piccolo esercizio pratico.",
   "learnExamBalancedHint": "Modalità Focus: comprensione equilibrata, pratica e revisione.",
   "learnExamHardHint": "Modalità Focus: attività in stile esame con tempi ristretti e feedback rapido.",
-  "demoModeEnabled": "Modalità demo abilitata. L'autenticazione viene ignorata per il test."
+  "demoModeEnabled": "Modalità demo abilitata. L'autenticazione viene ignorata per il test.",
+  "learnHomeschoolTitle": "Istruzione domestica e aule di apprendimento",
+  "learnHomeschoolSubtitle": "Costruisci una routine di apprendimento domestica, scegli la stanza giusta e tieni traccia del piano settimanale.",
+  "learnRoomBestFor": "Ideale per",
+  "learnRoomStatus": "Stato",
+  "pageTeacherTools": "Strumenti per insegnanti"
 }

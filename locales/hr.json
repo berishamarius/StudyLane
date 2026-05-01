@@ -259,6 +259,10 @@
   "learnExamBasicsHint": "Način fokusiranja: prvo snažne osnove, a zatim mala vježba.",
   "learnExamBalancedHint": "Način fokusiranja: uravnoteženo razumijevanje, vježbanje i pregled.",
   "learnExamHardHint": "Način fokusiranja: zadaci u stilu ispita s vremenskim pritiskom i brzim povratnim informacijama.",
-  "demoModeEnabled": "Demo način rada omogućen. Provjera autentičnosti je zaobiđena za testiranje."
+  "demoModeEnabled": "Demo način rada omogućen. Provjera autentičnosti je zaobiđena za testiranje.",
+  "learnHomeschoolTitle": "Kućno obrazovanje i prostorije za učenje",
+  "learnHomeschoolSubtitle": "Izgradite rutinu učenja kod kuće, odaberite pravu prostoriju i pratite tjedni plan.",
+  "learnRoomBestFor": "Najprikladnije za",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Nastavnički alati"
 }
-

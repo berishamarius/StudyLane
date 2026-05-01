@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "የትኩረት ሁነታ: መጀመሪያ ጠንካራ መሰረታዊ ነገሮች, ከዚያም ትንሽ ልምምድ ስብስብ.",
   "learnExamBalancedHint": "የትኩረት ሁነታ፡ ሚዛናዊ ግንዛቤ፣ ልምምድ እና ግምገማ።",
   "learnExamHardHint": "የትኩረት ሁነታ፡ የፈተና አይነት ስራዎች በጊዜ ግፊት እና ፈጣን ግብረመልስ።",
-  "demoModeEnabled": "የማሳያ ሁነታ ነቅቷል። ማረጋገጫ ለሙከራ ተላልፏል።"
+  "demoModeEnabled": "የማሳያ ሁነታ ነቅቷል። ማረጋገጫ ለሙከራ ተላልፏል።",
+  "learnHomeschoolTitle": "ቤት ትምህርት እና የትምህርት ክፍሎች",
+  "learnHomeschoolSubtitle": "የቤት ትምህርት ዕቅድ ይፍጠሩ፣ ትክክለኛ ክፍል ይምረጡ እና ሳምንታዊ ዕቅድዎን ይከታተሉ።",
+  "learnRoomBestFor": "ለ",
+  "learnRoomStatus": "ሁኔታ",
+  "pageTeacherTools": "የአስተማሪ መሳሪያዎች"
 }
-

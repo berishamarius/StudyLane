@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Modo de enfoque: ñawpaqta sinchi básicos, chaymanta huk huch’uy ruway huñu.",
   "learnExamBalancedHint": "Modo de enfoque: allinta hamut’ay, ruway, qhawariy ima.",
   "learnExamHardHint": "Modo de enfoque: examen-hina ruwanakuna pacha ñit'iywan chaymanta utqaylla kutichiywan.",
-  "demoModeEnabled": "Modo demostración nisqa atichisqa. Chiqaqchayqa pruebapaq muyurisqa kachkan."
+  "demoModeEnabled": "Modo demostración nisqa atichisqa. Chiqaqchayqa pruebapaq muyurisqa kachkan.",
+  "learnHomeschoolTitle": "Yachay Wasichakuq & Yachay Kutakuna",
+  "learnHomeschoolSubtitle": "Wasipa yachay rutinan ruraspa, allin cuartuta akllarispa, semana planninchikta qhawasunchik.",
+  "learnRoomBestFor": "Aswan allin",
+  "learnRoomStatus": "Estado",
+  "pageTeacherTools": "Yachachiq Ruwanakuna"
 }
-

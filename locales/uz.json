@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Fokus rejimi: avval kuchli asoslar, keyin kichik amaliyot to'plami.",
   "learnExamBalancedHint": "Fokus rejimi: muvozanatli tushunish, amaliyot va ko'rib chiqish.",
   "learnExamHardHint": "Fokus rejimi: vaqt bosimi va tezkor fikr-mulohazalarga ega imtihon uslubidagi vazifalar.",
-  "demoModeEnabled": "Demo rejimi yoqilgan. Sinov uchun autentifikatsiya chetlab o'tiladi."
+  "demoModeEnabled": "Demo rejimi yoqilgan. Sinov uchun autentifikatsiya chetlab o'tiladi.",
+  "learnHomeschoolTitle": "Uyda ta'lim va o'quv xonalari",
+  "learnHomeschoolSubtitle": "Uyda o'qish tartibini o'rnating, to'g'ri xonani tanlang va haftalik rejani kuzatib boring.",
+  "learnRoomBestFor": "Eng yaxshisi",
+  "learnRoomStatus": "Holat",
+  "pageTeacherTools": "O'qituvchi vositalari"
 }
-

@@ -258,7 +258,10 @@
   "learnExamBasicsHint": "Афокустә режим: раԥхьа иӷәӷәоу ашьаҭақәа, нас апрактикатә еизга хәыҷы.",
   "learnExamBalancedHint": "Ахшыҩзышьҭра амод: иҭышәынтәалоу аилкаара, апрактика, ахҳәаа.",
   "learnExamHardHint": "Афокустә режим: аамҭа ақәыӷәӷәареи ирццаку аҭакҟаҵареи змоу аԥышәаратә стиль змоу аусқәа.",
-  "demoModeEnabled": "Адемо режим аус ауеит. Аутентификациа аԥышәаразы иаҩсуеит."
+  "demoModeEnabled": "Адемо режим аус ауеит. Аутентификациа аԥышәаразы иаҩсуеит.",
+  "learnHomeschoolTitle": "Homeschooling & Learning Rooms",
+  "learnHomeschoolSubtitle": "Build a home learning routine, choose the right room, and keep your weekly plan on track.",
+  "learnRoomBestFor": "Best for",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Teacher Tools"
 }
-
-

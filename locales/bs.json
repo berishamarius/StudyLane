@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "NaÄin fokusa: prvo jake osnove, a zatim mali set za vjeÅ¾banje.",
   "learnExamBalancedHint": "NaÄin fokusa: uravnoteÅ¾eno razumijevanje, vjeÅ¾banje i pregled.",
   "learnExamHardHint": "NaÄin fokusa: zadaci u stilu ispita sa vremenskim pritiskom i brzim povratnim informacijama.",
-  "demoModeEnabled": "Demo naÄin rada je omoguÄ‡en. Autentifikacija se zaobilazi radi testiranja."
+  "demoModeEnabled": "Demo naÄin rada je omoguÄ‡en. Autentifikacija se zaobilazi radi testiranja.",
+  "learnHomeschoolTitle": "Kućno obrazovanje i prostorije za učenje",
+  "learnHomeschoolSubtitle": "Izgradite rutinu učenja kod kuće, odaberite pravu prostoriju i pratite sedmični plan.",
+  "learnRoomBestFor": "Najbolje za",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Nastavnički alati"
 }
-

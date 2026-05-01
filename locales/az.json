@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Fokus rejimi: É™vvÉ™lcÉ™ gÃ¼clÃ¼ É™saslar, sonra kiÃ§ik tÉ™crÃ¼bÉ™ dÉ™sti.",
   "learnExamBalancedHint": "Fokus rejimi: balanslaÅŸdÄ±rÄ±lmÄ±ÅŸ anlayÄ±ÅŸ, tÉ™crÃ¼bÉ™ vÉ™ nÉ™zÉ™rdÉ™n keÃ§irmÉ™.",
   "learnExamHardHint": "Fokus rejimi: vaxt tÉ™zyiqi vÉ™ sÃ¼rÉ™tli rÉ™y ilÉ™ imtahan tÉ™rzi tapÅŸÄ±rÄ±qlarÄ±.",
-  "demoModeEnabled": "Demo rejimi aktivdir. DoÄŸrulama test Ã¼Ã§Ã¼n yan keÃ§ilir."
+  "demoModeEnabled": "Demo rejimi aktivdir. DoÄŸrulama test Ã¼Ã§Ã¼n yan keÃ§ilir.",
+  "learnHomeschoolTitle": "Evdə Təhsil və Öyrənmə Otaqları",
+  "learnHomeschoolSubtitle": "Evdə öyrənmə rutini yaradın, düzgün otağı seçin və həftəlik planınızı izləyin.",
+  "learnRoomBestFor": "Ən yaxşısı üçün",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Müəllim Alətləri"
 }
-

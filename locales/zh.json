@@ -258,5 +258,10 @@
   "learnExamBasicsHint": "专注模式：先打好基础，然后进行少量练习。",
   "learnExamBalancedHint": "专注模式：平衡理解、实践、复习。",
   "learnExamHardHint": "专注模式：具有时间压力和快速反馈的考试式任务。",
-  "demoModeEnabled": "演示模式已启用。测试时绕过身份验证。"
+  "demoModeEnabled": "演示模式已启用。测试时绕过身份验证。",
+  "learnHomeschoolTitle": "家庭学习与学习室",
+  "learnHomeschoolSubtitle": "建立家庭学习习惯，选择合适的房间，追踪您的每周计划。",
+  "learnRoomBestFor": "最适合",
+  "learnRoomStatus": "状态",
+  "pageTeacherTools": "教师工具"
 }

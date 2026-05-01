@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Fokustilstand: Stærk grundlæggende først, derefter et lille øvelsessæt.",
   "learnExamBalancedHint": "Fokustilstand: afbalanceret forståelse, praksis og gennemgang.",
   "learnExamHardHint": "Fokustilstand: opgaver i eksamensstil med tidspres og hurtig feedback.",
-  "demoModeEnabled": "Demotilstand aktiveret. Godkendelse omgås til test."
+  "demoModeEnabled": "Demotilstand aktiveret. Godkendelse omgås til test.",
+  "learnHomeschoolTitle": "Hjemmeundervisning og læringsrum",
+  "learnHomeschoolSubtitle": "Byg en hjemmelæringsrutine, vælg det rigtige rum og hold styr på din ugentlige plan.",
+  "learnRoomBestFor": "Bedst til",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Lærerværktøjer"
 }
-

@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Habka diiradda: marka hore aasaaska xooggan, ka dibna hab-dhaqan yar.",
   "learnExamBalancedHint": "Habka diiradda: faham dheellitiran, ku celcelinta, iyo dib u eegista.",
   "learnExamHardHint": "Habka diiradda: hawlaha qaabka imtixaan oo leh cadaadis waqti iyo jawaab celin degdeg ah.",
-  "demoModeEnabled": "Qaabka muujinta waa la furay Xaqiijinta waa laga gudbay si loo tijaabiyo."
+  "demoModeEnabled": "Qaabka muujinta waa la furay Xaqiijinta waa laga gudbay si loo tijaabiyo.",
+  "learnHomeschoolTitle": "Waxbarashada Guriga & Qolalka Barasho",
+  "learnHomeschoolSubtitle": "Dhis hab barashad guriga, dooro qolka saxda ah, oo raac qorshaha toddobaadlaha.",
+  "learnRoomBestFor": "U fiican",
+  "learnRoomStatus": "Xaalad",
+  "pageTeacherTools": "Agabka Macalinka"
 }
-

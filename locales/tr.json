@@ -258,5 +258,10 @@
   "learnExamBasicsHint": "Odaklanma modu: Önce güçlü temel bilgiler, ardından küçük bir uygulama seti.",
   "learnExamBalancedHint": "Odaklanma modu: dengeli anlama, uygulama ve inceleme.",
   "learnExamHardHint": "Odaklanma modu: Zaman baskısı ve hızlı geri bildirim içeren sınav tarzı görevler.",
-  "demoModeEnabled": "Demo modu etkinleştirildi. Kimlik doğrulama, test amacıyla atlanır."
+  "demoModeEnabled": "Demo modu etkinleştirildi. Kimlik doğrulama, test amacıyla atlanır.",
+  "learnHomeschoolTitle": "Evde Eğitim ve Öğrenim Odaları",
+  "learnHomeschoolSubtitle": "Evde öğrenme rutini oluşturun, doğru odayı seçin ve haftalık planınızı takip edin.",
+  "learnRoomBestFor": "En uygun",
+  "learnRoomStatus": "Durum",
+  "pageTeacherTools": "Öğretmen Araçları"
 }

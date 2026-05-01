@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Chế độ tập trung: những kiến ​​thức cơ bản vững chắc trước tiên, sau đó là một bộ thực hành nhỏ.",
   "learnExamBalancedHint": "Chế độ tập trung: cân bằng giữa hiểu biết, thực hành và ôn tập.",
   "learnExamHardHint": "Chế độ tập trung: các bài tập kiểu kỳ thi với áp lực về thời gian và phản hồi nhanh.",
-  "demoModeEnabled": "Đã bật chế độ demo. Xác thực được bỏ qua để thử nghiệm."
+  "demoModeEnabled": "Đã bật chế độ demo. Xác thực được bỏ qua để thử nghiệm.",
+  "learnHomeschoolTitle": "Học tại nhà và các phòng học",
+  "learnHomeschoolSubtitle": "Xây dựng thói quen học tại nhà, chọn phòng phù hợp và theo dõi kế hoạch hàng tuần.",
+  "learnRoomBestFor": "Phù hợp nhất cho",
+  "learnRoomStatus": "Trạng thái",
+  "pageTeacherTools": "Công cụ giáo viên"
 }
-

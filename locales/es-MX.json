@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Modo de enfoque: primero conceptos básicos sólidos, luego una pequeña serie de práctica.",
   "learnExamBalancedHint": "Modo de enfoque: comprensión, práctica y revisión equilibradas.",
   "learnExamHardHint": "Modo de enfoque: tareas tipo examen con presión de tiempo y retroalimentación rápida.",
-  "demoModeEnabled": "Modo de demostración habilitado. Se omite la autenticación para realizar pruebas."
+  "demoModeEnabled": "Modo de demostración habilitado. Se omite la autenticación para realizar pruebas.",
+  "learnHomeschoolTitle": "Educación en casa y salas de aprendizaje",
+  "learnHomeschoolSubtitle": "Crea una rutina de aprendizaje en casa, elige la sala adecuada y mantén tu plan semanal al día.",
+  "learnRoomBestFor": "Mejor para",
+  "learnRoomStatus": "Estado",
+  "pageTeacherTools": "Herramientas del maestro"
 }
-

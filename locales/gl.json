@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Modo de enfoque: primeiro conceptos básicos sólidos, despois un pequeno conxunto de prácticas.",
   "learnExamBalancedHint": "Modo de enfoque: comprensión, práctica e revisión equilibradas.",
   "learnExamHardHint": "Modo de enfoque: tarefas tipo exame con presión de tempo e comentarios rápidos.",
-  "demoModeEnabled": "Modo de demostración activado. Omitase a autenticación para a proba."
+  "demoModeEnabled": "Modo de demostración activado. Omitase a autenticación para a proba.",
+  "learnHomeschoolTitle": "Educación no fogar e salas de aprendizaxe",
+  "learnHomeschoolSubtitle": "Crea unha rutina de aprendizaxe no fogar, escolle a sala adecuada e mantén o teu plan semanal.",
+  "learnRoomBestFor": "Mellor para",
+  "learnRoomStatus": "Estado",
+  "pageTeacherTools": "Ferramentas do profesor"
 }
-

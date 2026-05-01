@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Mode d'enfocament: primers conceptes bàsics forts, després un petit conjunt de pràctiques.",
   "learnExamBalancedHint": "Mode d'enfocament: comprensió, pràctica i revisió equilibrades.",
   "learnExamHardHint": "Mode d'enfocament: tasques d'estil d'examen amb pressió de temps i comentaris ràpids.",
-  "demoModeEnabled": "Mode de demostració activat. S'omet l'autenticació per a la prova."
+  "demoModeEnabled": "Mode de demostració activat. S'omet l'autenticació per a la prova.",
+  "learnHomeschoolTitle": "Educació a casa i sales d'aprenentatge",
+  "learnHomeschoolSubtitle": "Creeu una rutina d'aprenentatge a casa, trieu la sala adequada i seguiu el vostre pla setmanal.",
+  "learnRoomBestFor": "El millor per a",
+  "learnRoomStatus": "Estat",
+  "pageTeacherTools": "Eines per al professor"
 }
-

@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Mod fokus: asas yang kukuh dahulu, kemudian set latihan kecil.",
   "learnExamBalancedHint": "Mod fokus: pemahaman, amalan dan semakan yang seimbang.",
   "learnExamHardHint": "Mod fokus: tugasan gaya peperiksaan dengan tekanan masa dan maklum balas pantas.",
-  "demoModeEnabled": "Mod demo didayakan. Pengesahan dipintas untuk ujian."
+  "demoModeEnabled": "Mod demo didayakan. Pengesahan dipintas untuk ujian.",
+  "learnHomeschoolTitle": "Pendidikan Rumah & Bilik Pembelajaran",
+  "learnHomeschoolSubtitle": "Bina rutin pembelajaran di rumah, pilih bilik yang sesuai dan pantau rancangan mingguan anda.",
+  "learnRoomBestFor": "Terbaik untuk",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Alat Guru"
 }
-

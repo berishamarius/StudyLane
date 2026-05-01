@@ -258,5 +258,10 @@
   "learnExamBasicsHint": "專注模式：先打好基礎，然後再進行少量練習。",
   "learnExamBalancedHint": "專注模式：平衡理解、練習、複習。",
   "learnExamHardHint": "專注模式：具有時間壓力和快速回饋的考試式任務。",
-  "demoModeEnabled": "演示模式已啟用。測試時繞過身份驗證。"
+  "demoModeEnabled": "演示模式已啟用。測試時繞過身份驗證。",
+  "learnHomeschoolTitle": "在家教育與學習空間",
+  "learnHomeschoolSubtitle": "建立居家學習慣例，選擇合適的空間，並追蹤每週計畫。",
+  "learnRoomBestFor": "最適合",
+  "learnRoomStatus": "狀態",
+  "pageTeacherTools": "教師工具"
 }

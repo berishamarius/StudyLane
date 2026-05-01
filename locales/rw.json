@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Uburyo bwibanze: gukomera shingiro ubanza, hanyuma imyitozo ntoya.",
   "learnExamBalancedHint": "Uburyo bwibanze: gusobanukirwa kuringaniza, kwitoza, no gusuzuma.",
   "learnExamHardHint": "Uburyo bwibanze: ibizamini-byuburyo bwimikorere hamwe nigitutu cyigihe hamwe nibitekerezo byihuse.",
-  "demoModeEnabled": "Uburyo bwa Demo burashoboka. Kwemeza kurengana kugirango ugerageze."
+  "demoModeEnabled": "Uburyo bwa Demo burashoboka. Kwemeza kurengana kugirango ugerageze.",
+  "learnHomeschoolTitle": "Kwiga Mu Rugo no mu Masomo",
+  "learnHomeschoolSubtitle": "Senga imyitwarire yo kwiga mu rugo, hitamo icumbi cyiza, kandi ukurikire gahunda ya buri cyumweru.",
+  "learnRoomBestFor": "Igikwiye kuruta",
+  "learnRoomStatus": "Imiterere",
+  "pageTeacherTools": "Ibikoresho by'Umwalimu"
 }
-

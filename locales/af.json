@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Fokusmodus: eers sterk basiese beginsels, dan 'n klein oefenstel.",
   "learnExamBalancedHint": "Fokusmodus: gebalanseerde begrip, oefening en hersiening.",
   "learnExamHardHint": "Fokusmodus: eksamenstyltake met tyddruk en vinnige terugvoer.",
-  "demoModeEnabled": "Demo-modus geaktiveer. Stawing word omseil vir toetsing."
+  "demoModeEnabled": "Demo-modus geaktiveer. Stawing word omseil vir toetsing.",
+  "learnHomeschoolTitle": "Tuisonderwys & Leerkamers",
+  "learnHomeschoolSubtitle": "Bou 'n tuisleerroutine, kies die regte kamer en hou jou weeklikse plan op koers.",
+  "learnRoomBestFor": "Die beste vir",
+  "learnRoomStatus": "Status",
+  "pageTeacherTools": "Onderwyserhulpmiddels"
 }
-

@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Modo de enfoque: umi mba’e básico mbarete tenonderã, upéi peteĩ conjunto de práctica michĩva.",
   "learnExamBalancedHint": "Modo de enfoque: entendimiento equilibrado, práctica ha revisión.",
   "learnExamHardHint": "Modo de enfoque: tembiapo estilo examen rehegua oguerekóva presión tiempo ha retroalimentación pyaꞌe.",
-  "demoModeEnabled": "Modo demostración rehegua oñembohapéva. Ojeheja rei jekuaauka ojejapo hag̃ua prueba."
+  "demoModeEnabled": "Modo demostración rehegua oñembohapéva. Ojeheja rei jekuaauka ojejapo hag̃ua prueba.",
+  "learnHomeschoolTitle": "Aprendizaje en el hogar y salas de aprendizaje",
+  "learnHomeschoolSubtitle": "Construye una rutina de aprendizaje en casa, elige la sala correcta y sigue tu plan semanal.",
+  "learnRoomBestFor": "Mejor para",
+  "learnRoomStatus": "Estado",
+  "pageTeacherTools": "Herramientas del profesor"
 }
-

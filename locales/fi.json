@@ -258,6 +258,10 @@
   "learnExamBasicsHint": "Tarkennustila: ensin vahvat perusasiat, sitten pieni harjoitussarja.",
   "learnExamBalancedHint": "Tarkennustila: tasapainoinen ymmärrys, harjoittelu ja tarkastelu.",
   "learnExamHardHint": "Tarkennustila: tenttityylisiä tehtäviä ajanpaineella ja nopealla palautteella.",
-  "demoModeEnabled": "Demotila käytössä. Todennus ohitetaan testausta varten."
+  "demoModeEnabled": "Demotila käytössä. Todennus ohitetaan testausta varten.",
+  "learnHomeschoolTitle": "Kotiopetus ja oppimishuoneet",
+  "learnHomeschoolSubtitle": "Rakenna kotiopetuksen rutiini, valitse oikea huone ja pidä viikoittainen suunnitelma kurissa.",
+  "learnRoomBestFor": "Sopii parhaiten",
+  "learnRoomStatus": "Tila",
+  "pageTeacherTools": "Opettajan työkalut"
 }
-
