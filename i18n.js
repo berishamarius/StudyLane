@@ -131,7 +131,7 @@ const localeCache = Object.create(null);
 let currentLang = 'en';
 window.currentLang = currentLang;
 const AUTO_TRANSLATION_CACHE_KEY = 'lyceon_auto_translation_cache_v1';
-const AUTO_TRANSLATION_PREFILL_KEY = 'lyceon_auto_translation_prefill_done_v1';
+const AUTO_TRANSLATION_PREFILL_KEY = 'lyceon_auto_translation_prefill_done_v2';
 const autoTranslationCache = (() => {
 	try {
 		const raw = localStorage.getItem(AUTO_TRANSLATION_CACHE_KEY);

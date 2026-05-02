@@ -193,6 +193,96 @@
             "Unit circle basics"
           ],
           "sourceGroup": "math"
+        },
+        {
+          "name": "Number Theory",
+          "description": "Number theory studies the properties of integers — especially prime numbers, divisibility, and factorization. It is one of the oldest branches of mathematics and underlies modern cryptography.",
+          "keyPoints": [
+            "A prime number has exactly two factors: 1 and itself (e.g. 2, 3, 5, 7, 11).",
+            "Every integer > 1 can be written as a unique product of primes (fundamental theorem of arithmetic).",
+            "Divisibility rules: a number is divisible by 3 if the sum of its digits is divisible by 3.",
+            "GCD (greatest common divisor): largest number dividing both. Use Euclidean algorithm: GCD(a, b) = GCD(b, a mod b).",
+            "LCM (least common multiple): LCM(a, b) = (a × b) ÷ GCD(a, b)."
+          ],
+          "miniTask": "Find GCD(48, 18) using the Euclidean algorithm. Then find LCM(48, 18).",
+          "topics": [
+            "Prime numbers",
+            "Divisibility",
+            "GCD and LCM"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Vectors",
+          "description": "A vector has both magnitude (size) and direction. Vectors are essential in physics (forces, velocity) and higher mathematics. They can be added, subtracted, and scaled, and they generalize naturally to 3D space.",
+          "keyPoints": [
+            "A vector is written as an arrow or as coordinates: v = (3, 4) means 3 units right, 4 units up.",
+            "Magnitude: |v| = √(x² + y²). For v = (3, 4): |v| = √(9+16) = 5.",
+            "Vector addition: (a, b) + (c, d) = (a+c, b+d). Subtraction is the same with minus.",
+            "Scalar multiplication: 2·(3, 4) = (6, 8) — scales the vector.",
+            "Dot product: (a, b)·(c, d) = ac + bd. If dot product = 0, vectors are perpendicular."
+          ],
+          "miniTask": "Given u = (2, 3) and v = (4, -1), find: (a) u + v, (b) |u|, (c) u · v. Are u and v perpendicular?",
+          "topics": [
+            "Vector operations",
+            "Magnitude and direction",
+            "Dot product"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Sequences and Series",
+          "description": "A sequence is an ordered list of numbers following a pattern. A series is the sum of the terms of a sequence. Both appear throughout mathematics and real-world modelling (growth, finance, physics).",
+          "keyPoints": [
+            "Arithmetic sequence: each term differs by a fixed amount d (common difference). aₙ = a₁ + (n−1)d.",
+            "Sum of arithmetic sequence: Sₙ = n/2 · (a₁ + aₙ).",
+            "Geometric sequence: each term is multiplied by a fixed ratio r. aₙ = a₁ · rⁿ⁻¹.",
+            "Sum of geometric sequence: Sₙ = a₁ · (1 − rⁿ) / (1 − r) for r ≠ 1.",
+            "An infinite geometric series converges to S = a₁ / (1 − r) when |r| < 1."
+          ],
+          "miniTask": "A sequence starts 2, 6, 18, 54, … (a) Is it arithmetic or geometric? (b) Find the 7th term. (c) Find the sum of the first 5 terms.",
+          "topics": [
+            "Arithmetic sequences",
+            "Geometric sequences",
+            "Sum formulas"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Differential Calculus",
+          "description": "Differential calculus studies rates of change and slopes of curves. The derivative tells you how quickly a function is changing at any point. It is fundamental to physics, engineering, economics, and all quantitative sciences.",
+          "keyPoints": [
+            "The derivative f′(x) gives the slope of the tangent line to f(x) at point x.",
+            "Power rule: if f(x) = xⁿ, then f′(x) = nxⁿ⁻¹. Example: (x³)′ = 3x².",
+            "Sum rule: (f + g)′ = f′ + g′. Product rule: (fg)′ = f′g + fg′.",
+            "Chain rule: derivative of f(g(x)) is f′(g(x)) · g′(x).",
+            "A function has a local maximum or minimum where f′(x) = 0 (critical point)."
+          ],
+          "miniTask": "Find the derivative of f(x) = 4x³ − 2x² + 5. Then find where the slope equals zero.",
+          "topics": [
+            "Limits and derivatives",
+            "Differentiation rules",
+            "Maxima and minima"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Integral Calculus",
+          "description": "Integral calculus computes areas under curves and accumulated quantities. It is the reverse operation of differentiation. Integrals are used in physics (work, distance), statistics (probability), and engineering.",
+          "keyPoints": [
+            "The indefinite integral ∫f(x)dx gives a family of functions whose derivative is f.",
+            "Power rule for integrals: ∫xⁿ dx = xⁿ⁺¹/(n+1) + C (for n ≠ −1).",
+            "The definite integral ∫ₐᵇ f(x)dx gives the exact area between the curve and x-axis from a to b.",
+            "Fundamental theorem of calculus: ∫ₐᵇ f(x)dx = F(b) − F(a), where F′ = f.",
+            "Area between two curves: ∫ₐᵇ [f(x) − g(x)] dx, where f(x) ≥ g(x)."
+          ],
+          "miniTask": "Evaluate ∫₀² (3x² + 2) dx. Show all steps using the fundamental theorem of calculus.",
+          "topics": [
+            "Antiderivatives",
+            "Definite integrals",
+            "Area under a curve"
+          ],
+          "sourceGroup": "math"
         }
       ]
     },
@@ -777,6 +867,430 @@
           "sourceGroup": "health"
         }
       ]
+    },
+    {
+      "id": "german-language",
+      "title": "German Language",
+      "folders": [
+        {
+          "name": "Grammar and Sentence Structure",
+          "description": "German grammar is built on four cases (Nominativ, Akkusativ, Dativ, Genitiv) that determine noun and article forms. Understanding cases is the key to forming correct German sentences.",
+          "keyPoints": [
+            "Nominativ = subject (Who does the action?). Akkusativ = direct object (What?). Dativ = indirect object (To/for whom?). Genitiv = possession.",
+            "Definite articles change by case: der/die/das (Nom.) → den/die/das (Akk.) → dem/der/dem (Dat.).",
+            "Verb position: in main clauses, the verb is always second. In subordinate clauses, the verb goes to the end.",
+            "Adjective endings change depending on the article and case (strong, weak, mixed declension).",
+            "Modal verbs (können, müssen, dürfen, sollen, wollen, mögen) always pair with an infinitive at the end."
+          ],
+          "miniTask": "Rewrite in the correct case: 'Der Hund (beißen) ___ Mann.' Insert the correct Akkusativ article for 'Mann'.",
+          "topics": ["Cases", "Articles", "Verb position"],
+          "sourceGroup": "languageLearning"
+        },
+        {
+          "name": "Reading and Text Analysis",
+          "description": "German text analysis teaches you to identify literary devices, interpret meaning, and write structured arguments. These skills apply to poems, short stories, and longer prose.",
+          "keyPoints": [
+            "Analyse structure: introduction, main body, conclusion (Einleitung, Hauptteil, Schluss).",
+            "Literary devices: Metapher (metaphor), Vergleich (simile), Alliteration, Personifikation.",
+            "Textsorte matters: a poem is analysed differently from a news report.",
+            "Thesis (These) + evidence (Beleg) + commentary (Deutung) = standard analysis structure.",
+            "Indirect speech uses Konjunktiv I: Er sagt, er könne helfen."
+          ],
+          "miniTask": "Find one metaphor and one simile in a short German poem. Write one sentence explaining what each one means.",
+          "topics": ["Text types", "Literary devices", "Essay writing"],
+          "sourceGroup": "languageLearning"
+        },
+        {
+          "name": "Writing and Style",
+          "description": "Good German writing is precise, well-structured, and uses varied vocabulary and sentence lengths. Practising different text types builds confidence for exams and real-life communication.",
+          "keyPoints": [
+            "An Erörterung (discursive essay) presents pro and contra arguments and a personal conclusion.",
+            "Kommentar (commentary) argues one position with evidence and rhetorical questions.",
+            "Zusammenfassung (summary): concise, third-person, present tense, no opinions.",
+            "Vary sentence starters: use subordinating conjunctions (weil, obwohl, damit, wenn) for complex structures.",
+            "Punctuation: commas before all subordinate clauses (Nebensätze)."
+          ],
+          "miniTask": "Write a 5-sentence Erörterung on: 'Sollten Smartphones in der Schule verboten werden?' Use 'einerseits…andererseits'.",
+          "topics": ["Essay types", "Argumentation", "Style"],
+          "sourceGroup": "languageLearning"
+        }
+      ]
+    },
+    {
+      "id": "religion-ethics",
+      "title": "Religion & Ethics",
+      "folders": [
+        {
+          "name": "World Religions",
+          "description": "Understanding the world's major religions helps develop respect, empathy, and cultural literacy. Each tradition offers unique answers to questions about life, death, justice, and meaning.",
+          "keyPoints": [
+            "Christianity: belief in one God, Jesus as saviour; sacred text = Bible; ~2.4 billion followers.",
+            "Islam: belief in Allah, Muhammad as prophet; sacred text = Quran; five pillars guide daily life.",
+            "Judaism: monotheistic; Torah (Hebrew Bible); 613 commandments (mitzvot); ~15 million followers.",
+            "Hinduism: multiple deities, one ultimate reality (Brahman); concepts of karma, dharma, reincarnation.",
+            "Buddhism: teachings of the Buddha; Four Noble Truths, Eightfold Path; goal = Nirvana (liberation from suffering)."
+          ],
+          "miniTask": "Compare how two religions you have studied answer the question: 'What happens after death?' Write 3 sentences for each.",
+          "topics": ["World religions", "Sacred texts", "Religious practice"],
+          "sourceGroup": "socialScience"
+        },
+        {
+          "name": "Ethical Theories",
+          "description": "Ethics asks: what is right and wrong, and why? The main ethical theories give different frameworks for making moral decisions. Understanding them helps you reason about real-world dilemmas.",
+          "keyPoints": [
+            "Consequentialism (e.g. Utilitarianism): judge actions by their outcomes. Greatest good for the greatest number (Bentham, Mill).",
+            "Deontology (Kant): some acts are right or wrong in themselves, regardless of consequences. The Categorical Imperative: act only as you could will everyone to act.",
+            "Virtue Ethics (Aristotle): focus on character, not rules. The virtuous person chooses the golden mean between extremes.",
+            "Contractarianism (Rawls): justice is what rational people would agree to behind a 'veil of ignorance' (not knowing their place in society).",
+            "Applied ethics: how these theories inform real debates — euthanasia, animal rights, AI, climate justice."
+          ],
+          "miniTask": "A self-driving car must choose: hit 1 person or swerve and hit 5. Analyse this dilemma from a utilitarian AND a deontological perspective.",
+          "topics": ["Utilitarianism", "Kantian ethics", "Virtue ethics"],
+          "sourceGroup": "socialScience"
+        }
+      ]
+    },
+    {
+      "id": "social-studies",
+      "title": "Social Studies",
+      "folders": [
+        {
+          "name": "Democracy and Government",
+          "description": "Understanding how governments work is essential for active citizenship. Democratic systems protect rights, separate powers, and give citizens a voice through elections.",
+          "keyPoints": [
+            "Democracy: power rests with the people, expressed through free elections and protected rights.",
+            "Separation of powers: legislative (makes laws), executive (implements laws), judicial (interprets laws).",
+            "Federal systems divide power between central and regional governments (e.g. Germany, USA).",
+            "Human rights are universal, inalienable rights (e.g. UN Declaration of Human Rights, 1948).",
+            "Parliamentary vs presidential systems: in parliamentary systems the executive comes from the legislature."
+          ],
+          "miniTask": "Describe the three branches of government in your country. Give one example of each branch's power.",
+          "topics": ["Democracy", "Separation of powers", "Citizenship"],
+          "sourceGroup": "socialScience"
+        },
+        {
+          "name": "Society and Culture",
+          "description": "Society is shaped by culture, economy, institutions, and historical forces. Sociology and cultural studies help us understand inequality, identity, and social change.",
+          "keyPoints": [
+            "Socialisation: the process by which individuals learn the norms, values, and roles of their society.",
+            "Social stratification: structured inequality in society (class, gender, ethnicity).",
+            "Culture: shared values, beliefs, practices, and symbols that bind a group together.",
+            "Globalization has accelerated cultural exchange and economic interdependence.",
+            "Media literacy: evaluating sources for bias, perspective, and evidence is a critical 21st-century skill."
+          ],
+          "miniTask": "Give one example of how globalization has changed daily life in your country. Is the effect positive, negative, or both? Explain.",
+          "topics": ["Socialization", "Inequality", "Globalization"],
+          "sourceGroup": "socialScience"
+        }
+      ]
+    },
+    {
+      "id": "philosophy",
+      "title": "Philosophy",
+      "folders": [
+        {
+          "name": "Theory of Knowledge",
+          "description": "Epistemology asks: what can we know, and how do we know it? It examines the sources and limits of human knowledge — reason, experience, intuition, and authority.",
+          "keyPoints": [
+            "Rationalism (Descartes, Kant): reason is the primary source of knowledge. 'Cogito ergo sum' — I think, therefore I am.",
+            "Empiricism (Locke, Hume): knowledge comes from sensory experience. The mind starts as a blank slate (tabula rasa).",
+            "Skepticism: we should doubt all claims and accept only what can be proven.",
+            "Justified True Belief (Plato): knowledge = something is true, you believe it, and you have justification.",
+            "Gettier problems show that justified true belief is not always enough for knowledge."
+          ],
+          "miniTask": "Is it possible to know something with absolute certainty? Write a 4-sentence response from a rationalist AND an empiricist perspective.",
+          "topics": ["Epistemology", "Rationalism", "Empiricism"],
+          "sourceGroup": "socialScience"
+        },
+        {
+          "name": "Philosophy of Mind and Free Will",
+          "description": "What is the mind? Are we free to make genuine choices? These questions sit at the intersection of philosophy, neuroscience, and everyday life.",
+          "keyPoints": [
+            "Dualism (Descartes): mind and body are separate substances. Problem: how do they interact?",
+            "Physicalism: the mind is entirely a product of brain activity.",
+            "Functionalism: mental states are defined by their functional role, not their physical substance.",
+            "Hard problem of consciousness: why does physical processing give rise to subjective experience?",
+            "Compatibilism: free will and determinism can coexist — freedom = acting according to your own reasons, even if caused."
+          ],
+          "miniTask": "Are humans truly free? Write a 5-sentence argument either for compatibilism or hard determinism.",
+          "topics": ["Consciousness", "Free will", "Philosophy of mind"],
+          "sourceGroup": "socialScience"
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "title": "Technology & Design",
+      "folders": [
+        {
+          "name": "Design Thinking",
+          "description": "Design thinking is a human-centered approach to solving problems creatively and systematically. It is used in product design, engineering, UX, and innovation across all industries.",
+          "keyPoints": [
+            "5 stages: Empathize → Define → Ideate → Prototype → Test.",
+            "Empathize: understand users' real needs through research and observation.",
+            "Ideate: generate many ideas without judgment; quantity before quality.",
+            "Prototype: build quick, cheap models to test ideas before investing resources.",
+            "Iteration: design is a cycle; feedback improves every version."
+          ],
+          "miniTask": "Pick a problem in your school. Apply the first 3 design thinking stages: describe the problem, define who is affected, and generate 3 ideas.",
+          "topics": ["Design process", "Prototyping", "User research"],
+          "sourceGroup": "engineering"
+        },
+        {
+          "name": "Digital Literacy and AI",
+          "description": "Digital literacy means understanding how technology works, how data is used, and how to navigate the digital world safely and critically. AI is transforming every field.",
+          "keyPoints": [
+            "Algorithms are step-by-step procedures that computers follow. They power search, recommendations, and AI.",
+            "Machine learning: systems that improve from data without being explicitly programmed.",
+            "Data privacy: understand what apps collect about you and how it is used.",
+            "Misinformation: deepfakes, filter bubbles, and algorithmic amplification make critical evaluation essential.",
+            "Cybersecurity basics: use strong passwords, enable 2FA, recognize phishing attempts."
+          ],
+          "miniTask": "List 3 types of personal data your phone collects. For each, explain one risk and one benefit of that data collection.",
+          "topics": ["Algorithms", "AI basics", "Digital safety"],
+          "sourceGroup": "cs"
+        }
+      ]
+    },
+    {
+      "id": "arabic-language",
+      "title": "Arabic Language",
+      "folders": [
+        {
+          "name": "The Arabic Script",
+          "description": "Arabic is written right-to-left using 28 letters. Letters change shape depending on position in the word (initial, medial, final, isolated). Arabic has its own numeral system alongside the Western system.",
+          "keyPoints": [
+            "Arabic is read and written from right to left (RTL).",
+            "The alphabet has 28 letters; most are consonants. Vowels are often shown as diacritics (ḥarakāt).",
+            "Each letter has up to 4 forms: isolated (م), initial (مـ), medial (ـمـ), final (ـم).",
+            "Eastern Arabic numerals: ٠ ١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ (these are the traditional Arabic digits, distinct from Western 0–9).",
+            "Modern Standard Arabic (Fuṣḥā) is used in education and media; Darija/Levantine/Gulf dialects vary by region."
+          ],
+          "miniTask": "Write the numbers 1 to 10 in Eastern Arabic numerals (١ ٢ ٣ ...). Then identify 5 Arabic letters and their names.",
+          "topics": [
+            "Arabic alphabet",
+            "Letter forms",
+            "Eastern Arabic numerals"
+          ],
+          "sourceGroup": "languageLearning"
+        },
+        {
+          "name": "Arabic Grammar Basics",
+          "description": "Arabic grammar is based on three-letter roots (جذور) that generate related words. Nouns have grammatical gender (masculine/feminine), number (singular/dual/plural), and case. Verbs are conjugated for person, gender, and number.",
+          "keyPoints": [
+            "Trilateral root system: the root ك-ت-ب (k-t-b) gives: كَتَبَ (kataba, he wrote), كِتَاب (kitāb, book), مَكْتَبَة (maktaba, library).",
+            "Nouns are masculine or feminine. Feminine nouns usually end in ة (tā' marbūṭa).",
+            "Dual is formed by adding ان- (nominative) to a noun: كِتَابَان = two books.",
+            "Broken plural: many Arabic plurals change the internal vowels, e.g. كِتَاب → كُتُب (books).",
+            "Verb-subject-object (VSO) is the default word order in classical Arabic; SVO is common in Modern Standard Arabic."
+          ],
+          "miniTask": "Identify the root letters of: كَاتِب (writer), مَكْتُوب (written), كِتَابَة (writing). What is the common root?",
+          "topics": [
+            "Root system",
+            "Gender and number",
+            "Verb conjugation"
+          ],
+          "sourceGroup": "languageLearning"
+        },
+        {
+          "name": "Vocabulary and Everyday Arabic",
+          "description": "Building Arabic vocabulary is easier once you understand the root system. Common greetings, numbers, and everyday words give you a foundation for real communication.",
+          "keyPoints": [
+            "Greeting: السلام عليكم (As-salāmu ʿalaykum) — Peace be upon you. Response: وعليكم السلام.",
+            "Numbers: وَاحِد (1), اثْنَان (2), ثَلَاثَة (3), أَرْبَعَة (4), خَمْسَة (5), سِتَّة (6), سَبْعَة (7), ثَمَانِيَة (8), تِسْعَة (9), عَشَرَة (10).",
+            "Days: الأحد (Sunday), الاثنين (Monday), الثلاثاء (Tuesday), الأربعاء (Wednesday), الخميس (Thursday), الجمعة (Friday), السبت (Saturday).",
+            "Common verbs: ذَهَبَ (dhahaba, to go), أَكَلَ (akala, to eat), قَرَأَ (qara'a, to read), كَتَبَ (kataba, to write).",
+            "Formal vs informal: Modern Standard Arabic is used in education; colloquial dialects vary across the Arab world."
+          ],
+          "miniTask": "Translate into Arabic: 'He reads a book.' (هو يقرأ كتاباً). Then write the sentence using the verb-first (VSO) classical order.",
+          "topics": [
+            "Greetings",
+            "Numbers in Arabic",
+            "Basic vocabulary"
+          ],
+          "sourceGroup": "languageLearning"
+        }
+      ]
+    },
+    {
+      "id": "french-language",
+      "title": "French Language",
+      "folders": [
+        {
+          "name": "Pronunciation and Phonetics",
+          "description": "French pronunciation can be challenging for English speakers due to nasal vowels, silent letters, and liaisons. Mastering the sounds early makes speaking and understanding much easier.",
+          "keyPoints": [
+            "Nasal vowels: en/em, in/im/ain/ein, on/om, un — the final consonant is not pronounced: 'bon' = /bɔ̃/.",
+            "Silent letters: final consonants are usually silent (e.g. 'vous' = /vu/), except before a vowel (liaison).",
+            "Liaison: a normally silent final consonant is pronounced when the next word starts with a vowel: 'les amis' = /le.z‿ami/.",
+            "R in French is a guttural sound (uvular), unlike English r.",
+            "Accent marks: é (closed e), è (open e), ê (historical), ç (soft c = /s/), î, ô, û (mostly historical)."
+          ],
+          "miniTask": "Read aloud: 'Les enfants ont un ami anglais.' Mark which liaisons you need to make. Practice 3 times.",
+          "topics": [
+            "Nasal vowels",
+            "Liaisons",
+            "Accent marks"
+          ],
+          "sourceGroup": "languageLearning"
+        },
+        {
+          "name": "French Grammar Essentials",
+          "description": "French grammar uses gendered nouns, verb conjugations across 6 persons, and a range of tenses. The most important skill is mastering the present, past (passé composé), and imperfect tenses.",
+          "keyPoints": [
+            "All French nouns are masculine or feminine: le livre (m.), la table (f.). Articles agree: un/une, le/la, les.",
+            "Adjectives agree in gender and number: un grand livre / une grande maison.",
+            "Passé composé = avoir/être + past participle: j'ai mangé (I ate), il est allé (he went).",
+            "Imperfect (imparfait) describes ongoing past states: je mangeais (I was eating), il faisait chaud.",
+            "Negation: ne ... pas surrounds the verb: Je ne sais pas (I don't know)."
+          ],
+          "miniTask": "Conjugate 'parler' (to speak) in the present tense for all 6 persons. Then write 2 sentences using passé composé.",
+          "topics": [
+            "Gendered nouns",
+            "Verb tenses",
+            "Negation"
+          ],
+          "sourceGroup": "languageLearning"
+        },
+        {
+          "name": "Writing in French",
+          "description": "Writing in French requires attention to agreement rules, punctuation (spaces before ! ? ; :), and formal register. Clear structure — introduction, development, conclusion — is central to French academic writing.",
+          "keyPoints": [
+            "French punctuation adds a space before : ; ! ? and inside « guillemets » (quotation marks).",
+            "The subjunctive (subjonctif) expresses doubt, emotion, or necessity: Il faut que tu viennes.",
+            "Discourse connectors: d'abord (first), ensuite/puis (then), enfin (finally), cependant (however), en effet (indeed).",
+            "Impersonal structures are common: Il est important de + infinitive; On peut dire que...",
+            "Letter format: Madame/Monsieur (formal opening), Veuillez agréer l'expression de mes salutations distinguées (formal close)."
+          ],
+          "miniTask": "Write a 6-sentence French paragraph on your favourite season. Use at least 3 discourse connectors and one subjunctive.",
+          "topics": [
+            "Formal writing",
+            "Subjunctive",
+            "Argumentation"
+          ],
+          "sourceGroup": "languageLearning"
+        }
+      ]
+    },
+    {
+      "id": "spanish-language",
+      "title": "Spanish Language",
+      "folders": [
+        {
+          "name": "Pronunciation and Basics",
+          "description": "Spanish is a phonetically consistent language — words are pronounced exactly as written. This makes it one of the most accessible languages for beginners. Mastering the sounds and accent system early is key.",
+          "keyPoints": [
+            "Spanish has 5 pure vowels: a, e, i, o, u — all consistently pronounced.",
+            "The letter ñ sounds like 'ny' (España, mañana). The double ll sounds like 'y' in most dialects.",
+            "Stress: words ending in a vowel, n, or s are stressed on the second-to-last syllable. Accent marks (á, é) override this.",
+            "The letter h is always silent: hola = /ola/.",
+            "Dialects: Castilian (Spain) uses /θ/ for c/z; Latin American Spanish uses /s/."
+          ],
+          "miniTask": "Mark the stress in: universidad, hablar, árbol, joven. Apply the default rule and check which need an accent mark.",
+          "topics": [
+            "Vowels and consonants",
+            "Stress rules",
+            "Regional dialects"
+          ],
+          "sourceGroup": "languageLearning"
+        },
+        {
+          "name": "Spanish Grammar Essentials",
+          "description": "Spanish grammar is systematic and regular. Mastering noun gender, verb conjugations, and the two past tenses (preterite and imperfect) gives you the tools to communicate confidently.",
+          "keyPoints": [
+            "Nouns are masculine or feminine: el libro (m.), la mesa (f.). Adjectives agree: un libro interesante / una mesa interesante.",
+            "Ser vs. estar: both mean 'to be'. Ser = permanent traits; estar = temporary states: Soy médico / Estoy cansado.",
+            "Preterite (indefinido) = completed past: Ayer comí pizza. Imperfect (imperfecto) = ongoing past: Cuando era niño, jugaba...",
+            "Reflexive verbs: me lavo (I wash myself), se llama (his/her name is).",
+            "Subjunctive for wishes/doubt: Quiero que vengas. Es posible que llueva."
+          ],
+          "miniTask": "Explain when to use ser vs. estar. Write 4 example sentences: 2 with ser, 2 with estar.",
+          "topics": [
+            "Ser vs. estar",
+            "Verb tenses",
+            "Subjunctive"
+          ],
+          "sourceGroup": "languageLearning"
+        },
+        {
+          "name": "Writing and Communication",
+          "description": "Spanish writing follows clear conventions. Academic texts use formal register, while everyday communication is often warm and direct. A strong command of connectors and subjunctive elevates your writing.",
+          "keyPoints": [
+            "Spanish uses inverted question ¿ and exclamation ¡ marks at the start of sentences.",
+            "Formal register: usted (formal you), no contractions, subjunctive for polite requests.",
+            "Connectors: sin embargo (however), además (furthermore), por lo tanto (therefore), aunque (although), es decir (that is).",
+            "Letter opening: Estimado/a Sr./Sra. + surname. Closing: Le saluda atentamente / Un cordial saludo.",
+            "Essay structure: introducción (tesis), desarrollo (argumentos con ejemplos), conclusión."
+          ],
+          "miniTask": "Write a short email (6 sentences) in Spanish inviting a friend to a birthday party. Use formal and informal register — then compare them.",
+          "topics": [
+            "Formal vs. informal register",
+            "Connectors",
+            "Essay structure"
+          ],
+          "sourceGroup": "languageLearning"
+        }
+      ]
+    },
+    {
+      "id": "english-as-foreign-language",
+      "title": "English Language",
+      "folders": [
+        {
+          "name": "Grammar Foundations",
+          "description": "English grammar is relatively simple in structure but has many irregular patterns. Understanding tenses, articles, and modal verbs is the key to accurate communication.",
+          "keyPoints": [
+            "English has 12 verb tenses. The most common: simple present (I work), present continuous (I am working), simple past (I worked), present perfect (I have worked).",
+            "Articles: 'a/an' for non-specific nouns (a book); 'the' for specific nouns (the book we discussed).",
+            "Modal verbs (can, could, must, should, will, would, may, might) express ability, permission, obligation, or probability.",
+            "Conditionals: If + simple past → would + infinitive (2nd conditional: If I had time, I would travel).",
+            "Passive voice: The object becomes the subject: 'The paper was written by the student.'"
+          ],
+          "miniTask": "Rewrite these active sentences in passive voice: (1) 'The teacher explained the lesson.' (2) 'Scientists discovered a new species.'",
+          "topics": [
+            "Tenses",
+            "Modal verbs",
+            "Passive voice"
+          ],
+          "sourceGroup": "languageArts"
+        },
+        {
+          "name": "Reading and Comprehension",
+          "description": "Strong reading comprehension means understanding explicit meaning, making inferences, and evaluating the author's purpose and technique. It is essential for academic success in any subject.",
+          "keyPoints": [
+            "Skimming: read quickly to get the main idea. Scanning: look for specific details.",
+            "Inference: reading 'between the lines' — what is implied but not directly stated?",
+            "Author's purpose: to inform, persuade, entertain, or describe.",
+            "Vocabulary in context: use surrounding words to work out the meaning of unknown words.",
+            "Critical reading: identify claims, evaluate evidence, and question assumptions."
+          ],
+          "miniTask": "Read any one-paragraph news article. Write: (1) the main idea, (2) one piece of evidence given, (3) the author's likely purpose.",
+          "topics": [
+            "Skimming and scanning",
+            "Inference skills",
+            "Critical reading"
+          ],
+          "sourceGroup": "languageArts"
+        },
+        {
+          "name": "Academic Writing",
+          "description": "Academic English writing follows clear conventions: formal register, precise vocabulary, and logical structure. Mastering these conventions helps in exams, university applications, and professional life.",
+          "keyPoints": [
+            "Essay structure: Introduction (hook + context + thesis), Body (point, evidence, explanation per paragraph), Conclusion (restate thesis + wider significance).",
+            "Thesis statement: one clear sentence stating the main argument of the essay.",
+            "Hedging language in academic writing: 'It could be argued that…', 'Evidence suggests…', 'This may indicate…'",
+            "Avoid informal language: do not use contractions (don't → do not), slang, or first-person narrative unless asked.",
+            "Referencing: cite sources correctly (APA, MLA, Harvard) to avoid plagiarism."
+          ],
+          "miniTask": "Write a 5-sentence introduction for an essay on: 'The impact of social media on teenage mental health.' Include a thesis statement.",
+          "topics": [
+            "Essay structure",
+            "Thesis writing",
+            "Formal register"
+          ],
+          "sourceGroup": "languageArts"
+        }
+      ]
     }
   ],
   "university": [
@@ -835,6 +1349,42 @@
             "Probability distributions",
             "Statistical inference",
             "Regression analysis"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Differential Equations",
+          "description": "Differential equations describe how quantities change with respect to other quantities. They are the language of physics, engineering, biology, and economics — modelling everything from population growth to planetary orbits.",
+          "keyPoints": [
+            "An ODE (ordinary differential equation) involves derivatives with respect to one variable: dy/dx = f(x, y).",
+            "Separable ODE: dy/dx = g(x)·h(y) → separate variables and integrate both sides.",
+            "First-order linear ODE: dy/dx + P(x)y = Q(x), solved with integrating factor μ = e^∫P(x)dx.",
+            "Second-order linear ODE with constant coefficients: ay″ + by′ + cy = 0. Solve via characteristic equation ar² + br + c = 0.",
+            "Initial value problems (IVP): use given initial conditions to find the particular solution constant C."
+          ],
+          "miniTask": "Solve dy/dx = 2xy with y(0) = 1. Separate variables, integrate, apply the initial condition.",
+          "topics": [
+            "Separable equations",
+            "Linear ODEs",
+            "Applications in physics"
+          ],
+          "sourceGroup": "math"
+        },
+        {
+          "name": "Complex Numbers",
+          "description": "Complex numbers extend the real numbers by introducing i = √(−1). They are essential in electrical engineering, signal processing, quantum mechanics, and complex analysis.",
+          "keyPoints": [
+            "A complex number: z = a + bi, where a is the real part and b the imaginary part.",
+            "Modulus: |z| = √(a² + b²). Argument: θ = arctan(b/a).",
+            "Polar form: z = r(cosθ + i·sinθ) = re^(iθ) (Euler's formula).",
+            "Euler's identity: e^(iπ) + 1 = 0 — often called the most beautiful equation in mathematics.",
+            "De Moivre's theorem: (cosθ + i·sinθ)ⁿ = cos(nθ) + i·sin(nθ)."
+          ],
+          "miniTask": "Express z = 1 + i in polar form. Find its modulus, argument, and write it as re^(iθ).",
+          "topics": [
+            "Complex arithmetic",
+            "Polar form",
+            "Euler's formula"
           ],
           "sourceGroup": "math"
         }

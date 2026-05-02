@@ -1,6 +1,6 @@
-{
-  "name": "Lyceon",
-  "short_name": "Lyceon",
+﻿{
+  "name": "Nexus",
+  "short_name": "Nexus",
   "description": "Dein digitaler Lernbegleiter fuer Schule und Universitaet",
   "start_url": "./index.html",
   "scope": "./",
@@ -22,3 +22,4 @@
     { "name": "Berichte", "short_name": "Berichte", "url": "./index.html#grades",   "description": "Berichte & Auswertungen" }
   ]
 }
+

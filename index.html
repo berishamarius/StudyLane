@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#f2bc6c" />
+  <meta name="theme-color" content="#0e1421" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Lyceon</title>
+  <title>Nexus</title>
   <link rel="icon" type="image/png" href="assets/icon-48.png" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
@@ -17,16 +17,21 @@
 </head>
 <body>
 
+<!-- ELECTRON WINDOW CONTROLS – rendered inside topbar via JS at runtime -->
+
 <!-- AUTH SCREEN -->
 <div id="authScreen" class="auth-screen">
   <div class="auth-inner auth-login-layout">
     <div class="auth-branding">
+      <button class="auth-win-close" onclick="window.api?.close()" title="Close app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
       <div class="auth-logo">
-        <img class="brand-mark" src="assets/icon-48.png" width="44" height="44" alt="Lyceon icon" />
-        <span class="auth-logo-text">Lyceon</span>
+        <img class="brand-mark" src="assets/icon-128.png" width="64" height="64" alt="Nexus icon" style="border-radius:16px" />
+        <span class="auth-logo-text">Nexus</span>
       </div>
-      <h2>Schoolwork, revision and routines—made human</h2>
-      <p>Lyceon gives students a calm, clean workspace for homework, schedules and revision planning.</p>
+      <h2>Study smarter. Every subject. Every stage.</h2>
+      <p>Nexus gives students a calm, clean workspace for homework, schedules and revision planning.</p>
       <div class="auth-feature-grid">
         <div class="auth-feature">
           <div class="feature-icon feature-icon--amber">🧠</div>
@@ -88,7 +93,7 @@
 
         <!-- REGISTER -->
         <div id="authPanelRegister" class="hidden">
-          <p class="auth-register-intro">Create your Lyceon account. You may need an invite code from your school.</p>
+          <p class="auth-register-intro">Create your Nexus account. You may need an invite code from your school.</p>
           <form id="registerForm" class="auth-form" onsubmit="handleRegister(event)">
             <div class="field">
               <label for="regName">Full name</label>
@@ -146,25 +151,42 @@
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-        <img class="brand-mark sidebar-mark" src="assets/icon-48.png" width="30" height="30" alt="Lyceon" />
-        <span class="sidebar-logo-text">Lyceon</span>
-        <button class="icon-btn sidebar-collapse-btn" onclick="toggleSidebarCollapse()" title="Collapse sidebar" style="margin-left:auto;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.7)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19l-7-7 7-7"/><path d="M21 12H4"/></svg>
-        </button>
+        <img class="brand-mark sidebar-mark" src="assets/icon-48.png" width="34" height="34" alt="Nexus" style="border-radius:10px;flex-shrink:0" />
+        <span class="sidebar-logo-text">Nexus</span>
       </div>
     <nav class="sidebar-nav">
+      <!-- Overview -->
+      <div class="nav-cat" data-i18n="navCatOverview">Overview</div>
       <a class="nav-item active" data-page="dashboard" onclick="navigate('dashboard')">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
         <span data-i18n="pageDashboard">Dashboard</span>
       </a>
+      <a class="nav-item" data-page="learn" onclick="navigate('learn')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        <span data-i18n="pageLearn">Learn</span>
+      </a>
+
+      <!-- Organisation -->
+      <div class="nav-cat" data-i18n="navCatOrganise">Organisation</div>
+      <a class="nav-item" data-page="tasks" onclick="navigate('tasks')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg>
+        <span data-i18n="pagePlanner">Planner</span>
+        <span class="nav-badge hidden" id="navTaskBadge"></span>
+      </a>
+      <a class="nav-item" data-page="calendar" onclick="navigate('calendar')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span data-i18n="pageCalendar">Calendar</span>
+      </a>
+      <a class="nav-item" data-page="grades" onclick="navigate('grades')">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span data-i18n="pageGrades">Grades</span>
+      </a>
+
+      <!-- Communication -->
+      <div class="nav-cat" data-i18n="navCatCommunication">Communication</div>
       <a class="nav-item" data-page="courses" onclick="navigate('courses')">
         <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
         <span data-i18n="pageCourses">Courses</span>
-      </a>
-      <a class="nav-item" data-page="tasks" onclick="navigate('tasks')">
-        <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-        <span data-i18n="pageTasks">Tasks</span>
-        <span class="nav-badge hidden" id="navTaskBadge"></span>
       </a>
       <a class="nav-item" data-page="messages" onclick="navigate('messages')">
         <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -175,28 +197,20 @@
         <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
         <span data-i18n="pageFiles">Files</span>
       </a>
-      <a class="nav-item" data-page="calendar" onclick="navigate('calendar')">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span data-i18n="pageCalendar">Calendar</span>
-      </a>
-      <a class="nav-item" data-page="grades" onclick="navigate('grades')">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        <span data-i18n="pageGrades">Grades</span>
-      </a>
-      <a class="nav-item teacher-only" data-page="teacher-tools" onclick="navigate('teacher-tools')">
-        <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M7 9h10"/><path d="M7 13h6"/><path d="M14 4v4"/></svg>
-        <span data-i18n="pageTeacherTools">Teacher Tools</span>
-      </a>
-      <a class="nav-item" data-page="learn" onclick="navigate('learn')">
-        <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
-        <span data-i18n="pageLearn">Learn</span>
-      </a>
+
+      <!-- System -->
+      <div class="nav-cat" data-i18n="navCatSystem">System</div>
       <a class="nav-item" data-page="settings" onclick="navigate('settings')">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 000-6l2.1-1.2-2-3.4-2.3 1a1.65 1.65 0 00-5.2 0l-2.3-1-2 3.4L4.6 9a1.65 1.65 0 000 6l-2.1 1.2 2 3.4 2.3-1a1.65 1.65 0 005.2 0l2.3 1 2-3.4z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
         <span data-i18n="pageSettings">Settings</span>
       </a>
-      <div class="nav-divider admin-only"></div>
-      <div class="nav-section-label admin-only">Admin</div>
+      <a class="nav-item teacher-only" data-page="teacher-tools" onclick="navigate('teacher-tools')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <span data-i18n="pageTeacherTools">Teacher Tools</span>
+      </a>
+
+      <!-- Admin (hidden unless role=admin) -->
+      <div class="nav-cat admin-only" data-i18n="navCatAdmin">Admin</div>
       <a class="nav-item admin-only" data-page="admin" onclick="navigate('admin')">
         <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         <span data-i18n="pageAdmin">Users &amp; Roles</span>
@@ -214,9 +228,14 @@
           <span class="user-chip-role" id="userChipRole">—</span>
         </div>
       </div>
-      <button class="icon-btn logout-btn" title="Sign out" onclick="handleSignOut()">
-        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-      </button>
+      <div class="sidebar-footer-actions">
+        <button class="icon-btn sidebar-footer-btn sidebar-collapse-btn" onclick="toggleSidebarCollapse()" title="Collapse sidebar" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.55)">
+          <svg class="collapse-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19l-7-7 7-7"/><path d="M21 12H4"/></svg>
+        </button>
+        <button class="icon-btn sidebar-footer-btn logout-btn" title="Sign out" onclick="handleSignOut()" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.55)">
+          <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
     </div>
   </aside>
 
@@ -228,9 +247,6 @@
       </button>
       <h2 class="topbar-title" id="topbarTitle">Dashboard</h2>
       <div class="topbar-right">
-        <button class="icon-btn" onclick="openSearch()">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </button>
         <button class="icon-btn notif-btn" id="notifBtn" onclick="toggleNotifs()">
           <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
           <span class="notif-dot hidden" id="notifDot"></span>
@@ -239,6 +255,18 @@
           <svg id="langFlag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
           <span id="langLabel" style="font-size:11px;font-weight:700">EN</span>
         </button>
+        <!-- Window controls – inline with topbar, no-drag -->
+        <div class="win-btns-inline" id="winBtns">
+          <button class="win-btn win-btn-minimize" onclick="window.api?.minimize()" title="Minimize">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <button class="win-btn win-btn-max" onclick="window.api?.maximize()" title="Maximize">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
+          </button>
+          <button class="win-btn win-btn-close" onclick="window.api?.close()" title="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
       </div>
       <!-- Language picker dropdown -->
       <div class="lang-picker-dropdown hidden" id="langPickerDropdown">
@@ -259,6 +287,27 @@
     <div class="modal-title"><span id="globalModalTitle"></span><button class="modal-close" onclick="closeModal()">✕</button></div>
     <div id="globalModalBody"></div>
   </div>
+</div>
+
+<!-- Search Modal -->
+<div class="modal-bg" id="searchModal" onclick="closeSearch(event)">
+  <div class="search-modal-inner" onclick="event.stopPropagation()">
+    <div class="search-modal-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex-shrink:0;color:var(--text3)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search courses and messages..." oninput="runSearch(this.value)" autofocus />
+      <button onclick="closeSearch()" style="color:var(--text3);font-size:18px;cursor:pointer;background:none;border:none">✕</button>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+<!-- Notifications Panel -->
+<div class="notif-panel hidden" id="notifPanel">
+  <div class="notif-panel-header">
+    <span data-i18n="notifPanelTitle">Notifications</span>
+    <button onclick="clearAllNotifs()" data-i18n="notifClearAll" style="font-size:12px;color:var(--text3);cursor:pointer;background:none;border:none">Clear all</button>
+  </div>
+  <div class="notif-list" id="notifList"></div>
 </div>
 
 <!-- Toast -->
@@ -283,3 +332,5 @@
 <script src="app.js"></script>
 </body>
 </html>
+
+

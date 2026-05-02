@@ -17,7 +17,7 @@ function createWindow() {
     frame:     false,
     fullscreen: true,
     show:      false,
-    backgroundColor: '#f8ecd9',
+    backgroundColor: '#0e1421',
     title: 'Lyceon',
     webPreferences: {
       contextIsolation: true,

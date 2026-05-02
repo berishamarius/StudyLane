@@ -6,13 +6,18 @@
   tasks: [],
   messages: [],
   notifications: [],
+  notifUnread: 0,
   courses: [],
   invites: [],
+  calendarEvents: [],
+  calendarYear: null,
+  calendarMonth: null,
   ui: {
     studyMode: 'school',
     schoolStage: 'grade-9-10',
     uniSemester: 'semester-1-2',
     examMode: 'balanced',
+    country: 'de',
   },
   taskFilter: 'all',
   chat: {
@@ -21,38 +26,57 @@
   },
 };
 
-const UI_SETTINGS_KEY = 'lyceon_ui_settings';
-const DEMO_MODE_KEY = 'lyceon_demo_mode';
-const AUTH_REMEMBER_KEY = 'lyceon_remember_me';
+const UI_SETTINGS_KEY = 'nexus_ui_settings';
+const DEMO_MODE_KEY = 'nexus_demo_mode';
+const AUTH_REMEMBER_KEY = 'nexus_remember_me';
 const FORCE_DEMO_MODE = true;
-const LEARN_BOOKMARKS_KEY = 'lyceon_learn_bookmarks_v1';
+const LEARN_BOOKMARKS_KEY = 'nexus_learn_bookmarks_v1';
 
 const DEMO_DATA = {
   tasks: [
-    { id: 'd-task-1', title: 'Math worksheet: quadratic equations', status: 'open', course_name: 'Mathematics', due_date: '2026-05-02' },
-    { id: 'd-task-2', title: 'Read chapter on cell respiration', status: 'open', course_name: 'Biology', due_date: '2026-05-03' },
-    { id: 'd-task-3', title: 'Finish seminar abstract draft', status: 'overdue', course_name: 'Academic Writing', due_date: '2026-04-25' },
-    { id: 'd-task-4', title: 'Submit lab report', status: 'done', course_name: 'Physics', due_date: '2026-04-22' },
+    { id: 'd-task-1', title: 'Mathematics: Solve quadratic equations worksheet', status: 'open', course_name: 'Mathematics', due_date: '2026-05-02' },
+    { id: 'd-task-2', title: 'Biology: Read chapter on genetics and heredity', status: 'open', course_name: 'Biology', due_date: '2026-05-03' },
+    { id: 'd-task-3', title: 'German: Write analytical essay on "Der Vorleser"', status: 'open', course_name: 'German Language', due_date: '2026-05-05' },
+    { id: 'd-task-4', title: 'Chemistry: Lab report – Acid-base titration', status: 'overdue', course_name: 'Chemistry', due_date: '2026-04-25' },
+    { id: 'd-task-5', title: 'Physics: Lab report – Ohm\'s Law experiment', status: 'done', course_name: 'Physics', due_date: '2026-04-22' },
+    { id: 'd-task-6', title: 'CS: Implement binary search algorithm in Python', status: 'open', course_name: 'Computer Science', due_date: '2026-05-06' },
+    { id: 'd-task-7', title: 'History: Present on causes of World War I', status: 'open', course_name: 'History', due_date: '2026-05-08' },
+    { id: 'd-task-8', title: 'English: Write argumentative essay on social media', status: 'open', course_name: 'English Language', due_date: '2026-05-04' },
+    { id: 'd-task-9', title: 'Mathematics: Prepare for upcoming analysis exam', status: 'open', course_name: 'Mathematics', due_date: '2026-05-12' },
+    { id: 'd-task-10', title: 'Biology: Prepare evolution presentation slides', status: 'done', course_name: 'Biology', due_date: '2026-04-28' },
   ],
   courses: [
-    { id: 'd-course-1', name: 'Mathematics', teacher_name: 'Dr. Weber', level: 'Intermediate', description: 'Core algebra, geometry, and statistics with weekly practice.' },
-    { id: 'd-course-2', name: 'Biology', teacher_name: 'Prof. Klein', level: 'Intermediate', description: 'Cell biology, genetics, and ecology with structured revision blocks.' },
-    { id: 'd-course-3', name: 'Computer Science', teacher_name: 'Ms. Novak', level: 'Beginner', description: 'Programming, algorithms, and project-based learning.' },
+    { id: 'd-course-1', name: 'Mathematics', teacher_name: 'Dr. Weber', level: 'Advanced', description: 'Algebra, geometry, differential calculus, and statistics with weekly problem sets.' },
+    { id: 'd-course-2', name: 'Physics', teacher_name: 'Mr. Hoffmann', level: 'Intermediate', description: 'Mechanics, electricity, thermodynamics and waves with lab experiments.' },
+    { id: 'd-course-3', name: 'Chemistry', teacher_name: 'Dr. Müller', level: 'Intermediate', description: 'Atomic structure, chemical reactions, acids and bases, organic chemistry.' },
+    { id: 'd-course-4', name: 'Biology', teacher_name: 'Prof. Klein', level: 'Intermediate', description: 'Cell biology, genetics, ecology, and human physiology with practicals.' },
+    { id: 'd-course-5', name: 'Computer Science', teacher_name: 'Ms. Novak', level: 'Beginner', description: 'Programming, algorithms, data structures, and digital systems.' },
+    { id: 'd-course-6', name: 'German Language', teacher_name: 'Mr. Bauer', level: 'Advanced', description: 'Grammar, text analysis, essay writing, and literature study.' },
+    { id: 'd-course-7', name: 'History', teacher_name: 'Dr. Schmidt', level: 'Intermediate', description: 'Modern history 1800–present: revolutions, world wars, and contemporary events.' },
+    { id: 'd-course-8', name: 'English Language', teacher_name: 'Ms. Turner', level: 'Intermediate', description: 'Reading comprehension, grammar, writing, and oral communication.' },
   ],
   files: [
     { id: 'd-file-1', name: 'Semester_Plan.pdf', size: 640 },
     { id: 'd-file-2', name: 'Physics_Formula_Sheet.pdf', size: 220 },
+    { id: 'd-file-3', name: 'Chemistry_Lab_Protocol.pdf', size: 185 },
+    { id: 'd-file-4', name: 'German_Essay_Template.docx', size: 95 },
   ],
   events: [
-    { id: 'd-event-1', title: 'Mathematics Quiz', starts_at: '2026-05-05T09:00:00Z', location: 'Room A-12' },
-    { id: 'd-event-2', title: 'Biology Lab', starts_at: '2026-05-07T12:00:00Z', location: 'Lab B-3' },
+    { id: 'd-event-1', title: 'Mathematics Exam', starts_at: '2026-05-12T09:00:00Z', location: 'Exam Hall A' },
+    { id: 'd-event-2', title: 'Chemistry Lab', starts_at: '2026-05-07T12:00:00Z', location: 'Lab 1B' },
+    { id: 'd-event-3', title: 'History Presentation', starts_at: '2026-05-08T10:30:00Z', location: 'Room 305' },
+    { id: 'd-event-4', title: 'Biology Field Trip', starts_at: '2026-05-14T08:00:00Z', location: 'Nature Reserve' },
+    { id: 'd-event-5', title: 'Sports Day', starts_at: '2026-05-20T09:00:00Z', location: 'School Grounds' },
   ],
   schedules: [
-    { id: 'd-sched-1', day: 'Monday', time: '08:00 - 09:00', subject: 'Mathematics', location: 'Room A-12', type: 'Lesson' },
-    { id: 'd-sched-2', day: 'Monday', time: '09:15 - 10:00', subject: 'Biology', location: 'Lab B-3', type: 'Lab' },
-    { id: 'd-sched-3', day: 'Monday', time: '10:30 - 11:15', subject: 'English Language', location: 'Room C-4', type: 'Class' },
-    { id: 'd-sched-4', day: 'Monday', time: '11:30 - 12:15', subject: 'History', location: 'Room D-1', type: 'Seminar' },
-    { id: 'd-sched-5', day: 'Monday', time: '13:30 - 14:15', subject: 'Computer Science', location: 'Room E-2', type: 'Project' },
+    { id: 'd-sched-1', day: 'Monday', time: '07:45 – 08:30', subject: 'Mathematics', location: 'Room 201', type: 'Lesson' },
+    { id: 'd-sched-2', day: 'Monday', time: '08:35 – 09:20', subject: 'German Language', location: 'Room 112', type: 'Lesson' },
+    { id: 'd-sched-3', day: 'Monday', time: '09:30 – 10:15', subject: 'Physics', location: 'Lab 3A', type: 'Lab' },
+    { id: 'd-sched-4', day: 'Monday', time: '10:30 – 11:15', subject: 'English Language', location: 'Room 108', type: 'Class' },
+    { id: 'd-sched-5', day: 'Monday', time: '11:20 – 12:05', subject: 'History', location: 'Room 305', type: 'Seminar' },
+    { id: 'd-sched-6', day: 'Monday', time: '13:00 – 13:45', subject: 'Chemistry', location: 'Lab 1B', type: 'Lab' },
+    { id: 'd-sched-7', day: 'Monday', time: '13:50 – 14:35', subject: 'Biology', location: 'Room 204', type: 'Lesson' },
+    { id: 'd-sched-8', day: 'Monday', time: '14:40 – 15:25', subject: 'Computer Science', location: 'Room PC-2', type: 'Project' },
   ],
   learningRooms: [
     { id: 'd-room-1', name: 'Quiet Study', description: 'A focused space for homework, revision and deep thinking.', status: 'Available', bestFor: 'Individual work' },
@@ -67,8 +91,14 @@ const DEMO_DATA = {
     'Review your schedule each evening and plan the next day before you start.',
   ],
   grades: [
-    { id: 'd-grade-1', course_name: 'Mathematics', value: 2, notes: 'Strong progress', updated_at: '2026-04-20' },
-    { id: 'd-grade-2', course_name: 'Biology', value: 1, notes: 'Excellent practical work', updated_at: '2026-04-18' },
+    { id: 'd-grade-1', course_name: 'Mathematics', value: 2, notes: 'Strong algebra performance', updated_at: '2026-04-20' },
+    { id: 'd-grade-2', course_name: 'Physics', value: 2, notes: 'Good lab work, theory improving', updated_at: '2026-04-18' },
+    { id: 'd-grade-3', course_name: 'Chemistry', value: 3, notes: 'Solid understanding of reactions', updated_at: '2026-04-15' },
+    { id: 'd-grade-4', course_name: 'Biology', value: 1, notes: 'Excellent practical work', updated_at: '2026-04-18' },
+    { id: 'd-grade-5', course_name: 'Computer Science', value: 2, notes: 'Great coding projects', updated_at: '2026-04-12' },
+    { id: 'd-grade-6', course_name: 'German Language', value: 3, notes: 'Essays improving – keep up revision', updated_at: '2026-04-22' },
+    { id: 'd-grade-7', course_name: 'History', value: 2, notes: 'Strong source analysis skills', updated_at: '2026-04-10' },
+    { id: 'd-grade-8', course_name: 'English Language', value: 1, notes: 'Exceptional oral and written work', updated_at: '2026-04-08' },
   ],
   chats: [
     { id: 'd-room-1', room_name: 'General Study', last_message: 'Remember to review chapters 3 and 4.', updated_at: '2026-04-30T10:00:00Z' },
@@ -105,6 +135,19 @@ const getActiveLanguage = () => {
   if (typeof window.currentLang === 'string' && window.currentLang) return window.currentLang;
   return (navigator.language || 'en');
 };
+
+// Eastern Arabic and Persian digit maps for locale-aware number formatting
+const _EAD = '٠١٢٣٤٥٦٧٨٩'; // Eastern Arabic digits (used in ar, ar-PS)
+const _PD  = '۰۱۲۳۴۵۶۷۸۹'; // Persian/Urdu digits  (used in fa, ur)
+const formatNumber = (n, lang) => {
+  if (n === undefined || n === null) return '';
+  const str = String(n);
+  const l = lang || getActiveLanguage();
+  if (l === 'ar' || l === 'ar-PS') return str.replace(/[0-9]/g, d => _EAD[Number(d)]);
+  if (l === 'fa' || l === 'ur')    return str.replace(/[0-9]/g, d => _PD[Number(d)]);
+  return str;
+};
+window.formatNumber = formatNumber;
 
 const localizeLearnText = async (text, lang) => {
   const normalized = (lang || 'en').toLowerCase();
@@ -340,12 +383,14 @@ const loadUiSettings = () => {
       if (parsed.schoolStage) state.ui.schoolStage = parsed.schoolStage;
       if (parsed.uniSemester) state.ui.uniSemester = parsed.uniSemester;
       if (parsed.examMode) state.ui.examMode = parsed.examMode;
+      if (parsed.country) state.ui.country = parsed.country;
     }
   } catch (_) {
     state.ui.studyMode = 'school';
     state.ui.schoolStage = 'grade-9-10';
     state.ui.uniSemester = 'semester-1-2';
     state.ui.examMode = 'balanced';
+    state.ui.country = 'de';
   }
 };
 
@@ -484,88 +529,288 @@ const loadProfile = async () => {
 };
 
 const renderDashboard = async () => {
-  document.getElementById('dashGreeting').textContent = `${tr('dashWelcome', 'Welcome back')}, ${state.profile?.full_name || tr('student', 'student')}!`;
-  const scheduleCount = 0;
-  const roomCount = 0;
-  const taskCount = 0;
-  const courseCount = 0;
-  document.getElementById('dashStats').innerHTML = `
-    <div class="dash-stat"><span class="dash-stat-value">${taskCount}</span><span class="dash-stat-label">${tr('dashStatTasks','Open tasks')}</span></div>
-    <div class="dash-stat"><span class="dash-stat-value">${scheduleCount}</span><span class="dash-stat-label">${tr('dashStatLessons',"Today's lessons")}</span></div>
-    <div class="dash-stat"><span class="dash-stat-value">${roomCount}</span><span class="dash-stat-label">${tr('dashStatRooms','Learning rooms')}</span></div>
-    <div class="dash-stat"><span class="dash-stat-value">${courseCount}</span><span class="dash-stat-label">${tr('dashStatCourses','Courses')}</span></div>
+  // Greeting based on time of day
+  const now = new Date();
+  const hour = now.getHours();
+  const greetingKey = hour < 12 ? 'dashGoodMorning' : hour < 17 ? 'dashGoodAfternoon' : 'dashGoodEvening';
+  const greetingFallback = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+  const name = state.profile?.full_name || tr('student', 'Student');
+  const greetEl = document.getElementById('dashGreeting');
+  const dateEl = document.getElementById('dashDate');
+  if (greetEl) greetEl.innerHTML = `${tr(greetingKey, greetingFallback)}, <strong>${name}</strong>!`;
+  if (dateEl) dateEl.textContent = now.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  // Quick actions
+  const qaEl = document.getElementById('dashQuickActions');
+  if (qaEl) qaEl.innerHTML = `
+    <button class="dash-quick-btn dash-quick-learn" onclick="navigate('learn')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      <span>${tr('pageLearn', 'Learn')}</span>
+    </button>
+    <button class="dash-quick-btn dash-quick-tasks" onclick="navigate('tasks')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <span>${tr('pageTasks', 'Tasks')}</span>
+    </button>
+    <button class="dash-quick-btn dash-quick-calendar" onclick="navigate('calendar')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>${tr('pageCalendar', 'Calendar')}</span>
+    </button>
+    <button class="dash-quick-btn dash-quick-grades" onclick="navigate('grades')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+      <span>${tr('pageGrades', 'Grades')}</span>
+    </button>
   `;
 
-  const dashSchedule = document.getElementById('dashSchedule');
-  const dashRooms = document.getElementById('dashRooms');
-  const dashUpcoming = document.getElementById('dashUpcoming');
-  const dashTasks = document.getElementById('dashTasks');
-  const dashHomeschool = document.getElementById('dashHomeschool');
-  dashSchedule.textContent = 'Loading…';
-  dashRooms.textContent = 'Loading…';
-  dashUpcoming.textContent = 'Loading…';
-  dashTasks.textContent = 'Loading…';
-  dashHomeschool.textContent = 'Loading…';
+  // Data source: demo vs real
+  const tasks = state.demoMode ? DEMO_DATA.tasks : (state.tasks || []);
+  const courses = state.demoMode ? DEMO_DATA.courses : (state.courses || []);
+  const schedules = state.demoMode ? DEMO_DATA.schedules : [];
+  const openTasks = tasks.filter(t => t.status !== 'done');
 
-  if (state.demoMode) {
-    dashSchedule.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoSchedule','No classes scheduled yet.')}</div>`;
-    dashRooms.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoRooms','No learning rooms available.')}</div>`;
-    dashUpcoming.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoUpcoming','No upcoming tasks.')}</div>`;
-    dashTasks.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoTasks','No tasks yet.')}</div>`;
-    dashHomeschool.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoHomeschool','Set up a routine in Learn to get guidance here.')}</div>`;
-    return;
+  // Stats
+  const statsEl = document.getElementById('dashStats');
+  if (statsEl) statsEl.innerHTML = `
+    <div class="dash-stat dash-stat-purple">
+      <div class="dash-stat-icon">📋</div>
+      <span class="dash-stat-value">${formatNumber(openTasks.length)}</span>
+      <span class="dash-stat-label">${tr('dashStatTasks', 'Open tasks')}</span>
+    </div>
+    <div class="dash-stat dash-stat-blue">
+      <div class="dash-stat-icon">📅</div>
+      <span class="dash-stat-value">${formatNumber(schedules.length)}</span>
+      <span class="dash-stat-label">${tr('dashStatLessons', "Today's lessons")}</span>
+    </div>
+    <div class="dash-stat dash-stat-emerald">
+      <div class="dash-stat-icon">📚</div>
+      <span class="dash-stat-value">${formatNumber(courses.length)}</span>
+      <span class="dash-stat-label">${tr('dashStatCourses', 'Courses')}</span>
+    </div>
+    <div class="dash-stat dash-stat-amber">
+      <div class="dash-stat-icon">🔥</div>
+      <span class="dash-stat-value">${formatNumber(3)}</span>
+      <span class="dash-stat-label">${tr('dashStreak', 'Day streak')}</span>
+    </div>
+  `;
+
+  // Schedule
+  const dashSchedule = document.getElementById('dashSchedule');
+  if (dashSchedule) {
+    if (schedules.length) {
+      dashSchedule.innerHTML = schedules.map(s => `
+        <div class="dash-schedule-item">
+          <div class="dash-schedule-time">${s.time}</div>
+          <div class="dash-schedule-info">
+            <div class="dash-list-title">${s.subject}</div>
+            <div class="dash-list-sub">${s.type} · ${s.location}</div>
+          </div>
+        </div>`).join('');
+    } else {
+      dashSchedule.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoSchedule', 'No classes scheduled yet.')}</div>`;
+    }
   }
 
-  const { data: tasks } = await sb.from('tasks').select('*').order('due_date', { ascending: true }).limit(5);
+  // Upcoming tasks
+  const dashUpcoming = document.getElementById('dashUpcoming');
+  if (dashUpcoming) {
+    const upcoming = openTasks.slice(0, 4);
+    if (upcoming.length) {
+      dashUpcoming.innerHTML = upcoming.map(task => {
+        const overdue = task.status === 'overdue';
+        const color = overdue ? '#ef4444' : '#7180ff';
+        return `<div class="dash-list-item">
+          <span class="dash-dot" style="background:${color};margin-top:5px"></span>
+          <div>
+            <div class="dash-list-title">${task.title}</div>
+            <div class="dash-list-sub">${task.course_name || ''} · ${tr('dashDue', 'Due')} ${new Date(task.due_date).toLocaleDateString()}</div>
+          </div>
+          ${overdue ? `<span class="dash-overdue-badge">${tr('dashOverdue', 'Overdue')}</span>` : ''}
+        </div>`;
+      }).join('');
+    } else {
+      dashUpcoming.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoUpcoming', 'No upcoming tasks.')}</div>`;
+    }
+  }
 
-  dashUpcoming.innerHTML = tasks?.length ? tasks.slice(0, 4).map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : task.status === 'overdue' ? '#ef4444' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">Due ${new Date(task.due_date).toLocaleDateString()}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No upcoming tasks found.</div>';
-  dashTasks.innerHTML = tasks?.length ? tasks.map((task) => `<div class="dash-list-item"><span class="dash-dot" style="background:${task.status === 'done' ? '#22c55e' : '#7180ff'}"></span><div><div class="dash-list-title">${task.title}</div><div class="dash-list-sub">${task.status}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No tasks available.</div>';
-  dashSchedule.innerHTML = '<div class="dash-list-placeholder">Your schedule is not available yet.</div>';
-  dashRooms.innerHTML = '<div class="dash-list-placeholder">Learning rooms will appear here once you add them.</div>';
-  dashHomeschool.innerHTML = '<div class="dash-list-placeholder">Add a homeschooling routine in Learn to get helpful guidance.</div>';
+  // Open tasks (compact list)
+  const dashTasks = document.getElementById('dashTasks');
+  if (dashTasks) {
+    if (tasks.length) {
+      dashTasks.innerHTML = tasks.map(task => {
+        const icon = task.status === 'done' ? '✓' : task.status === 'overdue' ? '!' : '○';
+        const color = task.status === 'done' ? '#22c55e' : task.status === 'overdue' ? '#ef4444' : '#7180ff';
+        return `<div class="dash-task-row">
+          <span class="dash-task-icon" style="color:${color};font-weight:700;font-size:13px;width:14px;flex-shrink:0">${icon}</span>
+          <span class="dash-task-title" style="font-size:13px;flex:1;${task.status === 'done' ? 'text-decoration:line-through;color:var(--text3)' : ''}">${task.title}</span>
+        </div>`;
+      }).join('');
+    } else {
+      dashTasks.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoTasks', 'No tasks yet.')}</div>`;
+    }
+  }
+
+  // Rooms
+  const dashRooms = document.getElementById('dashRooms');
+  if (dashRooms) dashRooms.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoRooms', 'No learning rooms available.')}</div>`;
 };
 
 const renderCourses = async () => {
   const grid = document.getElementById('courseGrid');
-  grid.innerHTML = '<div class="dash-list-placeholder">Loading courses…</div>';
+  grid.innerHTML = `<div class="dash-list-placeholder">${tr('loadingLabel','Loading...')}</div>`;
   if (state.demoMode) {
-    state.courses = [];
-    grid.innerHTML = '<div class="dash-list-placeholder">No courses yet.</div>';
+    // keep existing state.courses (may have been joined)
+    renderCourseGrid();
     return;
   }
   const { data, error } = await sb.from('courses').select('*').order('name', { ascending: true });
-  if (error) return (grid.innerHTML = '<div class="dash-list-placeholder">Unable to load courses.</div>');
+  if (error) return (grid.innerHTML = `<div class="dash-list-placeholder">${tr('courseLoadError','Unable to load courses.')}</div>`);
   state.courses = data;
-  if (!data.length) {
-    grid.innerHTML = '<div class="dash-list-placeholder">No courses found.</div>';
+  renderCourseGrid();
+};
+
+const COURSE_COLORS = [
+  ['#3b5bdb','#5c7cfa'],['#0ea5e9','#38bdf8'],['#7c3aed','#a78bfa'],
+  ['#059669','#34d399'],['#dc2626','#f87171'],['#d97706','#fbbf24'],
+  ['#db2777','#f472b6'],['#0891b2','#22d3ee'],
+];
+
+const renderCourseGrid = () => {
+  const grid = document.getElementById('courseGrid');
+  if (!grid) return;
+  if (!state.courses.length) {
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1">
+        <div class="empty-state-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <h3>${tr('emptyCourses','No courses yet')}</h3>
+        <p>${tr('emptyCoursesDesc','Join an existing course with a code or create your own.')}</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="openJoinCourse()">${tr('courseJoin','Join Course')}</button>
+          <button class="btn btn-secondary" onclick="openCreateCourse()">${tr('courseCreate','Create Course')}</button>
+        </div>
+      </div>`;
     return;
   }
-  grid.innerHTML = data.map((course) => `<div class="course-card" onclick="showCourseDetail('${course.id}')"><div class="course-card-banner"></div><div class="course-card-body"><div class="course-card-name">${course.name}</div><div class="course-card-teacher">${course.teacher_name}</div><div class="course-card-chips"><span class="chip">${course.level || 'General'}</span></div></div></div>`).join('');
+  grid.innerHTML = state.courses.map((course, i) => {
+    const [c1, c2] = COURSE_COLORS[i % COURSE_COLORS.length];
+    const abbr = (course.name || '?').split(' ').slice(0,2).map(w => w[0]).join('').toUpperCase();
+    return `<div class="course-card" onclick="showCourseDetail('${course.id}')">
+      <div class="course-card-banner" style="background:linear-gradient(135deg,${c1},${c2})">
+        <div class="course-card-abbr">${abbr}</div>
+      </div>
+      <div class="course-card-body">
+        <div class="course-card-name">${course.name}</div>
+        <div class="course-card-teacher">${course.teacher_name || course.owner_name || tr('noInstructor','No instructor')}</div>
+        <div class="course-card-chips">
+          <span class="chip">${course.level || tr('levelGeneral','General')}</span>
+          ${course.code ? `<span class="chip" style="font-family:monospace;letter-spacing:.06em">${course.code}</span>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+};
+
+const openJoinCourse = () => {
+  showModal(tr('joinCourseTitle','Join a Course'), `
+    <div style="display:flex;flex-direction:column;gap:14px;padding:4px 0">
+      <p style="color:var(--text2);font-size:14px">${tr('joinCourseDesc','Enter the 6-character course code from your teacher or classmate.')}</p>
+      <input id="joinCodeInput" type="text" placeholder="${tr('joinCoursePlaceholder','e.g. ABC123')}" maxlength="8" style="border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:16px;font-family:monospace;letter-spacing:.1em;text-transform:uppercase;outline:none;width:100%;box-sizing:border-box" oninput="this.value=this.value.toUpperCase()" />
+      <button class="btn btn-primary" onclick="submitJoinCourse()">${tr('joinCourseBtn','Join')}</button>
+    </div>
+  `);
+  setTimeout(() => document.getElementById('joinCodeInput')?.focus(), 100);
+};
+
+const submitJoinCourse = () => {
+  const code = (document.getElementById('joinCodeInput')?.value || '').trim().toUpperCase();
+  if (code.length < 4) { Notifications.show(tr('joinCourseInvalidCode','Please enter a valid course code.'), 'warn'); return; }
+  const existing = state.courses.find(c => c.code === code);
+  if (existing) { Notifications.show(tr('joinCourseAlreadyJoined','You already joined this course.'), 'warn'); closeModal(); return; }
+  const fakeName = tr('courseCodeLabel','Course') + ' ' + code;
+  const newCourse = { id: 'c-' + Date.now(), name: fakeName, code, teacher_name: tr('unknownInstructor','Unknown'), level: tr('levelGeneral','General'), owner: false };
+  state.courses.push(newCourse);
+  addNotification('invite', `${tr('courseJoinedNotif','Joined')} "${fakeName}"`, `${tr('courseJoinedCode','Successfully joined with code')} ${code}`, new Date().toISOString());
+  const today = new Date();
+  state.calendarEvents.push({ date: today.toISOString().slice(0,10), title: `${tr('courseJoin','Joined')}: ${fakeName}`, type: 'course', color: '#3b5bdb' });
+  closeModal();
+  renderCourseGrid();
+  Notifications.show(`${tr('courseJoinedNotif','Joined')} ${fakeName}!`);
+};
+
+const openCreateCourse = () => {
+  showModal(tr('createCourseTitle','Create a Course'), `
+    <div style="display:flex;flex-direction:column;gap:14px;padding:4px 0">
+      <input id="createCourseNameInput" type="text" placeholder="${tr('createCoursePlaceholder','Course name')}" style="border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:14px;outline:none;width:100%;box-sizing:border-box" />
+      <button class="btn btn-primary" onclick="submitCreateCourse()">${tr('createCourseBtn','Create')}</button>
+    </div>
+  `);
+  setTimeout(() => document.getElementById('createCourseNameInput')?.focus(), 100);
+};
+
+const submitCreateCourse = () => {
+  const name = (document.getElementById('createCourseNameInput')?.value || '').trim();
+  if (!name) { Notifications.show(tr('createCourseNameRequired','Enter a course name.'), 'warn'); return; }
+  const code = Math.random().toString(36).slice(2,8).toUpperCase();
+  const newCourse = { id: 'c-' + Date.now(), name, code, teacher_name: state.profile?.full_name || tr('you','You'), level: tr('levelGeneral','General'), owner: true };
+  state.courses.push(newCourse);
+  addNotification('invite', `${tr('courseCreatedNotif','Course created')}: "${name}"`, `${tr('courseCreatedShareCode','Share code')}: ${code}`, new Date().toISOString());
+  closeModal();
+  renderCourseGrid();
+  showModal(tr('courseCreatedTitle','Course Created!'), `
+    <div style="text-align:center;padding:16px 8px">
+      <p style="color:var(--text2);font-size:14px;margin-bottom:16px">${tr('courseCreatedShareHint','Share this code with students:')}</p>
+      <div style="font-size:32px;font-weight:900;font-family:monospace;letter-spacing:.15em;color:var(--accent);background:rgba(59,91,219,.1);padding:20px;border-radius:16px">${code}</div>
+      <button class="btn btn-primary" style="margin-top:20px" onclick="closeModal()">${tr('courseCreatedDone','Done')}</button>
+    </div>
+  `);
 };
 
 const showCourseDetail = async (courseId) => {
   const course = state.courses.find((c) => c.id === courseId);
   if (!course) return;
   navigate('course-detail');
-  document.getElementById('courseDetailContent').innerHTML = `<div class="card"><div class="card-title">${course.name}</div><div class="card-sub">Instructor: ${course.teacher_name}</div><p>${course.description || 'No description available for this course.'}</p></div>`;
+  const el = document.getElementById('courseDetailContent');
+  if (el) el.innerHTML = `<div class="card"><div class="card-title">${course.name}</div><div class="card-sub">${tr('courseInstructor','Instructor')}: ${course.teacher_name || '—'}</div>${course.code ? `<p style="font-family:monospace;font-size:13px;color:var(--text3)">${tr('courseCodeLabel','Code')}: ${course.code}</p>` : ''}<p>${course.description || tr('courseNoDesc','No description available for this course.')}</p></div>`;
 };
 
 const filterCourses = () => {
-  const term = document.getElementById('courseSearch').value.toLowerCase();
-  const filtered = state.courses.filter((course) => course.name.toLowerCase().includes(term) || course.teacher_name.toLowerCase().includes(term));
-  document.getElementById('courseGrid').innerHTML = filtered.length ? filtered.map((course) => `<div class="course-card" onclick="showCourseDetail('${course.id}')"><div class="course-card-banner"></div><div class="course-card-body"><div class="course-card-name">${course.name}</div><div class="course-card-teacher">${course.teacher_name}</div></div></div>`).join('') : '<div class="dash-list-placeholder">No matching courses.</div>';
+  const term = (document.getElementById('courseSearch')?.value || '').toLowerCase();
+  const filtered = state.courses.filter((course) => (course.name||'').toLowerCase().includes(term) || (course.teacher_name||'').toLowerCase().includes(term));
+  document.getElementById('courseGrid').innerHTML = filtered.length ? filtered.map((course, i) => {
+    const [c1, c2] = COURSE_COLORS[i % COURSE_COLORS.length];
+    const abbr = (course.name || '?').split(' ').slice(0,2).map(w => w[0]).join('').toUpperCase();
+    return `<div class="course-card" onclick="showCourseDetail('${course.id}')"><div class="course-card-banner" style="background:linear-gradient(135deg,${c1},${c2})"><div class="course-card-abbr">${abbr}</div></div><div class="course-card-body"><div class="course-card-name">${course.name}</div><div class="course-card-teacher">${course.teacher_name || '—'}</div></div></div>`;
+  }).join('') : `<div class="dash-list-placeholder">${tr('courseSearchNoMatch','No matching courses.')}</div>`;
 };
 
 const renderTasks = async () => {
+  // Render schedule in planner
+  const plannerSchedule = document.getElementById('plannerSchedule');
+  if (plannerSchedule) {
+    const schedules = state.demoMode ? DEMO_DATA.schedules : [];
+    if (schedules.length) {
+      plannerSchedule.innerHTML = schedules.map(s => `
+        <div class="dash-schedule-item">
+          <div class="dash-schedule-time">${s.time}</div>
+          <div class="dash-schedule-info">
+            <div class="dash-list-title">${s.subject}</div>
+            <div class="dash-list-sub">${s.type} · ${s.location}</div>
+          </div>
+        </div>`).join('');
+    } else {
+      plannerSchedule.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoSchedule','No classes scheduled.')}</div>`;
+    }
+  }
   const container = document.getElementById('taskList');
-  container.innerHTML = '<div class="dash-list-placeholder">Loading tasks…</div>';
+  if (!container) return;
+  container.innerHTML = `<div class="dash-list-placeholder">${tr('loadingLabel','Loading...')}</div>`;
   if (state.demoMode) {
-    state.tasks = [];
+    state.tasks = [...DEMO_DATA.tasks];
     filterTasks(state.taskFilter || 'all');
     return;
   }
   const { data, error } = await sb.from('tasks').select('*').order('due_date', { ascending: false });
-  if (error) return (container.innerHTML = '<div class="dash-list-placeholder">Unable to load tasks.</div>');
+  if (error) return (container.innerHTML = `<div class="dash-list-placeholder">${tr('tasksLoadError','Unable to load tasks.')}</div>`);
   state.tasks = data || [];
   filterTasks(state.taskFilter || 'all');
 };
@@ -576,7 +821,7 @@ const renderMessages = async () => {
   if (state.demoMode) {
     list.innerHTML = state.messages.length
       ? state.messages.map((room) => `<div class="msg-room-item ${state.chat.currentRoomId === room.id ? 'active' : ''}" onclick="openChat('${room.id}')"><div class="msg-room-avatar">${(room.room_name || 'R').charAt(0).toUpperCase()}</div><div class="msg-room-info"><div class="msg-room-name">${room.room_name || tr('chatRoom', 'Room')}</div><div class="msg-room-preview">${room.last_message || tr('chatNoMessagesYet', 'No messages yet')}</div></div></div>`).join('')
-      : `<div class="dash-list-placeholder">${tr('chatNoRooms', 'No chats available.')}</div>`;
+      : `<div class="msg-empty-state" style="padding:30px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:40px;height:40px;stroke:var(--text3);opacity:.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><h3 style="font-size:14px;color:var(--text2);margin:8px 0 4px">No chats yet</h3><p style="font-size:12px;color:var(--text3);margin:0 0 12px">Create a room to start chatting.</p><button class="btn btn-primary" style="font-size:12px;padding:7px 14px" onclick="startNewChat()">+ New chat</button></div>`;
     if (state.chat.currentRoomId) {
       await openChat(state.chat.currentRoomId);
     } else {
@@ -616,39 +861,660 @@ const renderMessages = async () => {
 
 const renderFiles = async () => {
   const grid = document.getElementById('fileGrid');
-  grid.innerHTML = '<div class="dash-list-placeholder">Loading files…</div>';
+  grid.innerHTML = `<div class="dash-list-placeholder">${tr('loadingLabel','Loading...')}</div>`;
   if (state.demoMode) {
-    grid.innerHTML = '<div class="dash-list-placeholder">No files uploaded yet.</div>';
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1">
+        <div class="empty-state-icon"><svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg></div>
+        <h3>${tr('emptyFiles','No files yet')}</h3>
+        <p>${tr('emptyFilesDesc','Upload study materials, notes, or resources for your courses.')}</p>
+        <button class="btn btn-primary" onclick="openFileUpload()">${tr('uploadFile','Upload file')}</button>
+      </div>`;
     return;
   }
   const { data, error } = await sb.from('files').select('*').order('created_at', { ascending: false });
-  if (error) return (grid.innerHTML = '<div class="dash-list-placeholder">Unable to load files.</div>');
-  grid.innerHTML = data.length ? data.map((file) => `<div class="file-item"><div class="file-icon">📄</div><div class="file-name">${file.name}</div><div class="file-size">${file.size || '—'} KB</div></div>`).join('') : '<div class="dash-list-placeholder">No files uploaded yet.</div>';
+  if (error) return (grid.innerHTML = `<div class="dash-list-placeholder">${tr('filesLoadError','Unable to load files.')}</div>`);
+  grid.innerHTML = data.length ? data.map((file) => `<div class="file-item"><div class="file-icon">📄</div><div class="file-name">${file.name}</div><div class="file-size">${file.size || '—'} KB</div></div>`).join('') : `<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon"><svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg></div><h3>${tr('filesNone','No files uploaded yet')}</h3></div>`;
 };
 
 const renderCalendar = async () => {
-  document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">Loading calendar…</div>';
-  if (state.demoMode) {
-    document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">No events scheduled.</div>';
-    return;
+  const container = document.getElementById('calendarContainer');
+  if (!container) return;
+  // Init calendar state
+  if (!state.calendarYear) {
+    const now = new Date();
+    state.calendarYear = now.getFullYear();
+    state.calendarMonth = now.getMonth(); // 0-11
   }
-  const { data, error } = await sb.from('events').select('*').order('starts_at', { ascending: true });
-  if (error) return (document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">Unable to load events.</div>');
-  if (!data.length) return (document.getElementById('calendarContainer').innerHTML = '<div class="dash-list-placeholder">No events scheduled.</div>');
-  document.getElementById('calendarContainer').innerHTML = `<div class="dash-list-item">${data.map((event) => `<div class="dash-card"><div class="dash-card-title">${event.title}</div><div class="dash-list-sub">${new Date(event.starts_at).toLocaleDateString()} • ${event.location || 'No location'}</div></div>`).join('')}</div>`;
+  if (!state.calendarEvents) state.calendarEvents = [];
+  renderCalendarGrid();
+};
+
+const getMonthName = (idx) => new Intl.DateTimeFormat(getActiveLanguage(), { month: 'long' }).format(new Date(2000, idx, 1));
+const getShortDayNames = () => Array.from({length:7}, (_,i) => new Intl.DateTimeFormat(getActiveLanguage(), { weekday: 'short' }).format(new Date(2000, 0, 2 + i)));
+
+const calNav = (dir) => {
+  const now = new Date();
+  const maxYear = now.getFullYear() + 10;
+  let m = state.calendarMonth + dir;
+  let y = state.calendarYear;
+  if (m > 11) { m = 0; y++; }
+  if (m < 0) { m = 11; y--; }
+  if (y < now.getFullYear() || (y === now.getFullYear() && m < now.getMonth() - 120)) return;
+  if (y > maxYear) return;
+  state.calendarYear = y;
+  state.calendarMonth = m;
+  renderCalendarGrid();
+};
+
+const calGoToday = () => {
+  const now = new Date();
+  state.calendarYear = now.getFullYear();
+  state.calendarMonth = now.getMonth();
+  renderCalendarGrid();
+};
+
+const renderCalendarGrid = () => {
+  const container = document.getElementById('calendarContainer');
+  if (!container) return;
+  const y = state.calendarYear;
+  const m = state.calendarMonth;
+  const now = new Date();
+  const todayStr = now.toISOString().slice(0,10);
+  // Build days array
+  const firstDay = new Date(y, m, 1).getDay(); // 0=Sun
+  const daysInMonth = new Date(y, m + 1, 0).getDate();
+  const prevDays = new Date(y, m, 0).getDate();
+  // Build events map { 'YYYY-MM-DD': [{title,type,color},...] }
+  const evMap = {};
+  (state.calendarEvents || []).forEach(ev => {
+    if (!evMap[ev.date]) evMap[ev.date] = [];
+    evMap[ev.date].push(ev);
+  });
+  // Build cells
+  const cells = [];
+  // Prev month padding
+  for (let d = firstDay - 1; d >= 0; d--) {
+    cells.push({ day: prevDays - d, cur: false, date: null });
+  }
+  // Current month days
+  for (let d = 1; d <= daysInMonth; d++) {
+    const mm = String(m+1).padStart(2,'0');
+    const dd = String(d).padStart(2,'0');
+    cells.push({ day: d, cur: true, date: `${y}-${mm}-${dd}` });
+  }
+  // Next month padding
+  let next = 1;
+  while (cells.length % 7 !== 0) {
+    cells.push({ day: next++, cur: false, date: null });
+  }
+  // Upcoming events sidebar
+  const monthStart = `${y}-${String(m+1).padStart(2,'0')}-01`;
+  const monthEnd = `${y}-${String(m+1).padStart(2,'0')}-${String(daysInMonth).padStart(2,'0')}`;
+  const monthEvs = (state.calendarEvents || []).filter(ev => ev.date >= monthStart && ev.date <= monthEnd).sort((a,b) => a.date.localeCompare(b.date));
+  const evColors = { course:'#3b5bdb', task:'#f59e0b', invite:'#22c55e', default:'#8896a8' };
+  container.innerHTML = `
+    <div class="cal-wrap">
+      <div class="cal-nav">
+        <button class="cal-nav-btn" onclick="calNav(-1)" title="Previous month"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="cal-nav-title">${getMonthName(m)} ${y}</div>
+        <button class="cal-nav-btn" onclick="calNav(1)" title="Next month"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <button class="cal-nav-btn cal-today-btn" onclick="calGoToday()">${tr('calToday','Today')}</button>
+      </div>
+      <div class="cal-layout">
+        <div class="cal-grid-wrap">
+          <div class="cal-weekdays">${getShortDayNames().map(d => `<div class="cal-wd">${d}</div>`).join('')}</div>
+          <div class="cal-days">${cells.map(cell => {
+            const evs = cell.date ? (evMap[cell.date] || []) : [];
+            const isToday = cell.date === todayStr;
+            return `<div class="cal-cell${cell.cur ? '' : ' other-month'}${isToday ? ' today' : ''}" onclick="${cell.date ? `calDayClick('${cell.date}')` : ''}"><div class="cal-day-num">${cell.day}</div>${evs.slice(0,3).map(ev => `<div class="cal-event-chip ${ev.type||'course'}" title="${ev.title}">${ev.title}</div>`).join('')}${evs.length > 3 ? `<div style="font-size:10px;color:var(--text3);margin-top:2px">+${evs.length-3} more</div>` : ''}</div>`;
+          }).join('')}</div>
+        </div>
+        <div class="cal-sidebar">
+          <div class="cal-sidebar-title">${getMonthName(m)}</div>
+          ${monthEvs.length ? monthEvs.map(ev => `<div class="cal-event-row"><div class="cal-event-dot" style="background:${evColors[ev.type]||evColors.default}"></div><div><div style="font-size:13px;font-weight:700">${ev.title}</div><div style="font-size:12px;color:var(--text3)">${ev.date}</div></div></div>`).join('') : `<div style="font-size:13px;color:var(--text3);padding:8px 0">${tr('calNoEventsMonth','No events this month.')}</div>`}
+        </div>
+      </div>
+    </div>`;
+};
+
+const calDayClick = (dateStr) => {
+  showModal(tr('calEventAdd','Add Event'), `
+    <div style="display:flex;flex-direction:column;gap:14px;padding:4px 0">
+      <p style="color:var(--text3);font-size:13px">${dateStr}</p>
+      <input id="newEvTitle" placeholder="${tr('calEventTitlePlaceholder','Event title')}" style="border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:14px;outline:none;width:100%;box-sizing:border-box" />
+      <select id="newEvType" style="border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:14px;outline:none;background:#fff">
+        <option value="course">${tr('calEventTypeCourse','Course')}</option>
+        <option value="task">${tr('calEventTypeTask','Task')}</option>
+        <option value="invite">${tr('calEventTypeEvent','Event')}</option>
+      </select>
+      <button class="btn btn-primary" onclick="submitCalEvent('${dateStr}')">${tr('calAddBtn','Add')}</button>
+    </div>
+  `);
+  setTimeout(() => document.getElementById('newEvTitle')?.focus(), 100);
+};
+
+const submitCalEvent = (dateStr) => {
+  const title = (document.getElementById('newEvTitle')?.value || '').trim();
+  const type = document.getElementById('newEvType')?.value || 'course';
+  if (!title) { Notifications.show(tr('calEventTitleRequired','Enter an event title.'),'warn'); return; }
+  if (!state.calendarEvents) state.calendarEvents = [];
+  state.calendarEvents.push({ date: dateStr, title, type });
+  closeModal();
+  renderCalendarGrid();
+  Notifications.show(tr('calEventAdded','Event added!'));
 };
 
 const renderGrades = async () => {
   const content = document.getElementById('gradesContent');
-  content.innerHTML = '<div class="dash-list-placeholder">Loading grades…</div>';
+  content.innerHTML = `<div class="dash-list-placeholder">${tr('loadingLabel','Loading...')}</div>`;
   if (state.demoMode) {
-    content.innerHTML = '<div class="dash-list-placeholder">No grades available.</div>';
+    const grades = DEMO_DATA.grades || [];
+    if (!grades.length) {
+      content.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <h3>${tr('emptyGrades','No grades yet')}</h3>
+          <p>${tr('emptyGradesDesc','Your grades will appear here once your teacher adds them.')}</p>
+        </div>`;
+      return;
+    }
+    const lang = getActiveLanguage();
+    const sys = getSchoolSystem();
+    const scaleInfo = `<div style="font-size:12px;color:var(--text3);margin-bottom:12px">📊 ${sys.flag} ${sys.name} — ${sys.gradeScale.scaleDesc}</div>`;
+    content.innerHTML = scaleInfo + `<table class="grade-table"><thead><tr><th>${tr('grSubject','Course')}</th><th>${tr('grGrade','Grade')}</th><th>${tr('grNote','Notes')}</th><th>${tr('grDate','Date')}</th></tr></thead><tbody>${grades.map((grade) => {
+      const dispVal = formatGradeValue(grade.value, lang);
+      const cssC = gradeClass(grade.value);
+      const dateStr = new Date(grade.updated_at).toLocaleDateString(lang, { day: 'numeric', month: 'short', year: 'numeric' });
+      return `<tr><td>${grade.course_name}</td><td class="grade-val ${cssC}">${dispVal}</td><td>${grade.notes || '—'}</td><td style="color:var(--text3);font-size:12px">${dateStr}</td></tr>`;
+    }).join('')}</tbody></table>`;
     return;
   }
   const { data, error } = await sb.from('grades').select('*').order('updated_at', { ascending: false });
-  if (error) return (content.innerHTML = '<div class="dash-list-placeholder">Unable to load grades.</div>');
-  content.innerHTML = data.length ? `<table class="grade-table"><thead><tr><th>Course</th><th>Grade</th><th>Notes</th></tr></thead><tbody>${data.map((grade) => `<tr><td>${grade.course_name}</td><td class="grade-val grade-${Math.min(6, Math.max(1, grade.value))}">${grade.value}</td><td>${grade.notes || '—'}</td></tr>`).join('')}</tbody></table>` : '<div class="dash-list-placeholder">No grades available.</div>';
+  if (error) return (content.innerHTML = `<div class="dash-list-placeholder">${tr('dashLoadError','Unable to load data.')}</div>`);
+  content.innerHTML = data.length ? `<table class="grade-table"><thead><tr><th>${tr('grSubject','Course')}</th><th>${tr('grGrade','Grade')}</th><th>${tr('grNote','Notes')}</th></tr></thead><tbody>${data.map((grade) => `<tr><td>${grade.course_name}</td><td class="grade-val grade-${Math.min(6, Math.max(1, grade.value))}">${grade.value}</td><td>${grade.notes || '—'}</td></tr>`).join('')}</tbody></table>` : `<div class="empty-state"><div class="empty-state-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3>${tr('emptyGrades','No grades available')}</h3></div>`;
 };
+
+const SUBJECT_META = {
+  mathematics:                  { icon: '📐', color: '#e8a020' },
+  physics:                      { icon: '⚛️',  color: '#4a90d9' },
+  chemistry:                    { icon: '⚗️',  color: '#9b59b6' },
+  biology:                      { icon: '🌿', color: '#27ae60' },
+  'computer-science':           { icon: '💻', color: '#2980b9' },
+  'language-arts':              { icon: '📝', color: '#e67e22' },
+  'english-language':           { icon: '🇬🇧', color: '#c0392b' },
+  'english-as-foreign-language':{ icon: '🇬🇧', color: '#c0392b' },
+  'german-language':            { icon: '🇩🇪', color: '#f39c12' },
+  'french-language':            { icon: '🇫🇷', color: '#2980b9' },
+  'spanish-language':           { icon: '🇪🇸', color: '#c0392b' },
+  'arabic-language':            { icon: '🌙', color: '#16a085' },
+  history:                      { icon: '📜', color: '#8e6b3e' },
+  geography:                    { icon: '🌍', color: '#16a085' },
+  civics:                       { icon: '🏛️',  color: '#2c3e50' },
+  economics:                    { icon: '📊', color: '#2c3e50' },
+  'earth-science':              { icon: '🌎', color: '#16a085' },
+  arts:                         { icon: '🎨', color: '#c0392b' },
+  health:                       { icon: '💚', color: '#27ae60' },
+  'religion-ethics':            { icon: '⚖️',  color: '#7f8c8d' },
+  'religion-and-ethics':        { icon: '⚖️',  color: '#7f8c8d' },
+  music:                        { icon: '🎵', color: '#8e44ad' },
+  'physical-education':         { icon: '🏃', color: '#2ecc71' },
+  'technology-and-design':      { icon: '🔧', color: '#34495e' },
+  'technology':                 { icon: '🔧', color: '#34495e' },
+  'social-studies':             { icon: '🏛️',  color: '#2c3e50' },
+  'philosophy':                 { icon: '🧠', color: '#6c3483' },
+  'media-literacy':             { icon: '📱', color: '#3498db' },
+};
+const getLearnMeta = (id) => SUBJECT_META[id] || { icon: '📚', color: 'var(--accent2)' };
+
+// ─── School Systems & Grade Scales ───────────────────────────────────────────
+// Each entry: flag, name, gradeScale { type, min, max, passing, inverted, suffix, best, worst,
+//   scaleDesc, cssClass(value)→string, letterFromPct(pct)→string [optional] }, stages[]
+const SCHOOL_SYSTEMS = {
+  // ── Europe ──────────────────────────────────────────────────────────────
+  de: {
+    flag: '🇩🇪', name: 'Germany',
+    gradeScale: {
+      type: 'numeric', min: 1, max: 6, passing: 4, inverted: true,
+      suffix: '', best: '1', worst: '6',
+      labels: { 1: 'sehr gut', 2: 'gut', 3: 'befriedigend', 4: 'ausreichend', 5: 'mangelhaft', 6: 'ungenügend' },
+      scaleDesc: '1 (sehr gut) → 6 (ungenügend)',
+      cssClass: (v) => v <= 2 ? 'grade-1' : v <= 3 ? 'grade-2' : v <= 4 ? 'grade-4' : 'grade-6',
+    },
+    stages: ['Grundschule Klasse 1–4', 'Mittelstufe Klasse 5–10', 'Gymnasium / Oberstufe 11–13'],
+  },
+  at: {
+    flag: '🇦🇹', name: 'Austria',
+    gradeScale: {
+      type: 'numeric', min: 1, max: 5, passing: 4, inverted: true,
+      suffix: '', best: '1', worst: '5',
+      labels: { 1: 'Sehr gut', 2: 'Gut', 3: 'Befriedigend', 4: 'Genügend', 5: 'Nicht genügend' },
+      scaleDesc: '1 (Sehr gut) → 5 (Nicht genügend)',
+      cssClass: (v) => v <= 2 ? 'grade-1' : v <= 3 ? 'grade-2' : v <= 4 ? 'grade-4' : 'grade-6',
+    },
+    stages: ['Volksschule 1–4', 'Mittelschule / AHS-Unterstufe 5–8', 'AHS-Oberstufe 9–12'],
+  },
+  ch: {
+    flag: '🇨🇭', name: 'Switzerland',
+    gradeScale: {
+      type: 'numeric', min: 1, max: 6, passing: 4, inverted: false,
+      suffix: '', best: '6', worst: '1',
+      labels: { 6: 'sehr gut', 5: 'gut', 4: 'genügend', 3: 'ungenügend', 2: 'schwach', 1: 'sehr schwach' },
+      scaleDesc: '6 (sehr gut) → 1 (sehr schwach)',
+      cssClass: (v) => v >= 5 ? 'grade-1' : v >= 4 ? 'grade-3' : v >= 3 ? 'grade-4' : 'grade-6',
+    },
+    stages: ['Primarstufe 1–6', 'Sekundarstufe I 7–9', 'Gymnasium / Mittelschule 10–12'],
+  },
+  fr: {
+    flag: '🇫🇷', name: 'France',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 20, passing: 10, inverted: false,
+      suffix: '/20', best: '20', worst: '0',
+      labels: {},
+      scaleDesc: '0–20 (réussite ≥ 10)',
+      cssClass: (v) => v >= 16 ? 'grade-1' : v >= 12 ? 'grade-2' : v >= 10 ? 'grade-3' : v >= 8 ? 'grade-4' : 'grade-6',
+    },
+    stages: ['École primaire CP–CM2', 'Collège 6e–3e', 'Lycée 2nde–Terminale'],
+  },
+  nl: {
+    flag: '🇳🇱', name: 'Netherlands',
+    gradeScale: {
+      type: 'numeric', min: 1, max: 10, passing: 6, inverted: false,
+      suffix: '', best: '10', worst: '1',
+      labels: {},
+      scaleDesc: '1–10 (voldoende ≥ 6)',
+      cssClass: (v) => v >= 8 ? 'grade-1' : v >= 7 ? 'grade-2' : v >= 6 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Basisschool 1–8', 'VMBO / HAVO / VWO 1–4/5/6'],
+  },
+  be: {
+    flag: '🇧🇪', name: 'Belgium',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 20, passing: 10, inverted: false,
+      suffix: '/20', best: '20', worst: '0',
+      labels: {},
+      scaleDesc: '0–20 (réussite ≥ 10)',
+      cssClass: (v) => v >= 16 ? 'grade-1' : v >= 12 ? 'grade-2' : v >= 10 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Primaire 1–6', 'Secondaire 7–12'],
+  },
+  it: {
+    flag: '🇮🇹', name: 'Italy',
+    gradeScale: {
+      type: 'numeric', min: 1, max: 10, passing: 6, inverted: false,
+      suffix: '/10', best: '10', worst: '1',
+      labels: { 10: 'Eccellente', 9: 'Ottimo', 8: 'Buono', 7: 'Discreto', 6: 'Sufficiente', 5: 'Mediocre', 4: 'Insufficiente' },
+      scaleDesc: '1–10 (sufficiente ≥ 6)',
+      cssClass: (v) => v >= 9 ? 'grade-1' : v >= 7 ? 'grade-2' : v >= 6 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Scuola primaria 1–5', 'Scuola media 6–8', 'Liceo / Istituto 9–13'],
+  },
+  es: {
+    flag: '🇪🇸', name: 'Spain',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 10, passing: 5, inverted: false,
+      suffix: '/10', best: '10', worst: '0',
+      labels: { 10: 'Sobresaliente', 9: 'Sobresaliente', 8: 'Notable', 7: 'Notable', 6: 'Bien', 5: 'Aprobado' },
+      scaleDesc: '0–10 (aprobado ≥ 5)',
+      cssClass: (v) => v >= 9 ? 'grade-1' : v >= 7 ? 'grade-2' : v >= 5 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Primaria 6–12', 'ESO 12–16', 'Bachillerato 16–18'],
+  },
+  pl: {
+    flag: '🇵🇱', name: 'Poland',
+    gradeScale: {
+      type: 'numeric', min: 1, max: 6, passing: 2, inverted: false,
+      suffix: '', best: '6', worst: '1',
+      labels: { 6: 'celujący', 5: 'bardzo dobry', 4: 'dobry', 3: 'dostateczny', 2: 'dopuszczający', 1: 'niedostateczny' },
+      scaleDesc: '1 (niedostateczny) → 6 (celujący)',
+      cssClass: (v) => v >= 5 ? 'grade-1' : v >= 4 ? 'grade-2' : v >= 3 ? 'grade-3' : v >= 2 ? 'grade-4' : 'grade-6',
+    },
+    stages: ['Szkoła podstawowa 1–8', 'Liceum / Technikum 9–12'],
+  },
+  ru: {
+    flag: '🇷🇺', name: 'Russia',
+    gradeScale: {
+      type: 'numeric', min: 1, max: 5, passing: 3, inverted: false,
+      suffix: '', best: '5', worst: '1',
+      labels: { 5: 'отлично', 4: 'хорошо', 3: 'удовлетворительно', 2: 'неудовлетворительно', 1: 'плохо' },
+      scaleDesc: '1 → 5 (зачёт ≥ 3)',
+      cssClass: (v) => v >= 5 ? 'grade-1' : v >= 4 ? 'grade-2' : v >= 3 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Начальная школа 1–4', 'Основная школа 5–9', 'Средняя школа 10–11'],
+  },
+  ua: {
+    flag: '🇺🇦', name: 'Ukraine',
+    gradeScale: {
+      type: 'numeric', min: 1, max: 12, passing: 4, inverted: false,
+      suffix: '', best: '12', worst: '1',
+      labels: {},
+      scaleDesc: '1–12 (зараховано ≥ 4)',
+      cssClass: (v) => v >= 10 ? 'grade-1' : v >= 7 ? 'grade-2' : v >= 4 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Початкова школа 1–4', 'Основна школа 5–9', 'Старша школа 10–12'],
+  },
+  tr: {
+    flag: '🇹🇷', name: 'Turkey',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 100, passing: 50, inverted: false,
+      suffix: '', best: '100', worst: '0',
+      labels: {},
+      scaleDesc: '0–100 (geçme ≥ 50)',
+      cssClass: (v) => v >= 85 ? 'grade-1' : v >= 70 ? 'grade-2' : v >= 50 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['İlkokul 1–4', 'Ortaokul 5–8', 'Lise 9–12'],
+  },
+  // ── Americas ────────────────────────────────────────────────────────────
+  us: {
+    flag: '🇺🇸', name: 'United States',
+    gradeScale: {
+      type: 'letter', min: 0, max: 100, passing: 60, inverted: false,
+      suffix: '', best: 'A', worst: 'F',
+      labels: {},
+      scaleDesc: 'A (90-100) · B (80-89) · C (70-79) · D (60-69) · F (<60)',
+      cssClass: (v) => v >= 90 ? 'grade-1' : v >= 80 ? 'grade-2' : v >= 70 ? 'grade-3' : v >= 60 ? 'grade-4' : 'grade-6',
+      letterFromPct: (v) => v >= 90 ? 'A' : v >= 80 ? 'B' : v >= 70 ? 'C' : v >= 60 ? 'D' : 'F',
+    },
+    stages: ['Elementary School K–5', 'Middle School 6–8', 'High School 9–12'],
+  },
+  ca: {
+    flag: '🇨🇦', name: 'Canada',
+    gradeScale: {
+      type: 'letter', min: 0, max: 100, passing: 50, inverted: false,
+      suffix: '', best: 'A+', worst: 'F',
+      labels: {},
+      scaleDesc: 'A+ (95-100) · A (87-94) · B (73-86) · C (60-72) · F (<50)',
+      cssClass: (v) => v >= 87 ? 'grade-1' : v >= 73 ? 'grade-2' : v >= 60 ? 'grade-3' : v >= 50 ? 'grade-4' : 'grade-6',
+      letterFromPct: (v) => v >= 95 ? 'A+' : v >= 87 ? 'A' : v >= 80 ? 'B+' : v >= 73 ? 'B' : v >= 67 ? 'C+' : v >= 60 ? 'C' : v >= 50 ? 'D' : 'F',
+    },
+    stages: ['Elementary K–6', 'Junior High / Middle 7–9', 'Secondary 9–12'],
+  },
+  mx: {
+    flag: '🇲🇽', name: 'Mexico',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 10, passing: 6, inverted: false,
+      suffix: '/10', best: '10', worst: '0',
+      labels: {},
+      scaleDesc: '0–10 (aprobado ≥ 6)',
+      cssClass: (v) => v >= 9 ? 'grade-1' : v >= 7 ? 'grade-2' : v >= 6 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Primaria 1–6', 'Secundaria 7–9', 'Preparatoria / Bachillerato 10–12'],
+  },
+  br: {
+    flag: '🇧🇷', name: 'Brazil',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 10, passing: 5, inverted: false,
+      suffix: '/10', best: '10', worst: '0',
+      labels: {},
+      scaleDesc: '0–10 (aprovado ≥ 5)',
+      cssClass: (v) => v >= 8 ? 'grade-1' : v >= 7 ? 'grade-2' : v >= 5 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Ensino Fundamental I 1–5', 'Ensino Fundamental II 6–9', 'Ensino Médio 10–12'],
+  },
+  arg: {
+    flag: '🇦🇷', name: 'Argentina',
+    gradeScale: {
+      type: 'numeric', min: 1, max: 10, passing: 6, inverted: false,
+      suffix: '/10', best: '10', worst: '1',
+      labels: {},
+      scaleDesc: '1–10 (aprobado ≥ 6)',
+      cssClass: (v) => v >= 8 ? 'grade-1' : v >= 6 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Primaria 1–6', 'Secundaria 7–12'],
+  },
+  // ── UK & Commonwealth ───────────────────────────────────────────────────
+  gb: {
+    flag: '🇬🇧', name: 'United Kingdom',
+    gradeScale: {
+      type: 'letter', min: 0, max: 100, passing: 40, inverted: false,
+      suffix: '', best: 'A*', worst: 'U',
+      labels: {},
+      scaleDesc: 'A* · A · B · C · D · E · U',
+      cssClass: (v) => v >= 80 ? 'grade-1' : v >= 70 ? 'grade-2' : v >= 40 ? 'grade-3' : 'grade-6',
+      letterFromPct: (v) => v >= 90 ? 'A*' : v >= 80 ? 'A' : v >= 70 ? 'B' : v >= 60 ? 'C' : v >= 50 ? 'D' : v >= 40 ? 'E' : 'U',
+    },
+    stages: ['Primary School Y1–Y6', 'Secondary School Y7–Y11', 'Sixth Form Y12–Y13'],
+  },
+  au: {
+    flag: '🇦🇺', name: 'Australia',
+    gradeScale: {
+      type: 'letter', min: 0, max: 100, passing: 50, inverted: false,
+      suffix: '', best: 'A', worst: 'E',
+      labels: {},
+      scaleDesc: 'A (85-100) · B (75-84) · C (65-74) · D (50-64) · E (<50)',
+      cssClass: (v) => v >= 85 ? 'grade-1' : v >= 75 ? 'grade-2' : v >= 65 ? 'grade-3' : v >= 50 ? 'grade-4' : 'grade-6',
+      letterFromPct: (v) => v >= 85 ? 'A' : v >= 75 ? 'B' : v >= 65 ? 'C' : v >= 50 ? 'D' : 'E',
+    },
+    stages: ['Primary School Prep–6', 'Secondary School 7–10', 'Senior Secondary 11–12'],
+  },
+  // ── Asia & Middle East ──────────────────────────────────────────────────
+  cn: {
+    flag: '🇨🇳', name: 'China',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 100, passing: 60, inverted: false,
+      suffix: '', best: '100', worst: '0',
+      labels: {},
+      scaleDesc: '0–100 (及格 ≥ 60) · 优 ≥90 · 良 ≥75 · 中 ≥60 · 差 <60',
+      cssClass: (v) => v >= 90 ? 'grade-1' : v >= 75 ? 'grade-2' : v >= 60 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['小学 Primary 1–6', '初中 Middle School 7–9', '高中 High School 10–12'],
+  },
+  jp: {
+    flag: '🇯🇵', name: 'Japan',
+    gradeScale: {
+      type: 'letter', min: 0, max: 100, passing: 60, inverted: false,
+      suffix: '', best: 'S', worst: 'D',
+      labels: {},
+      scaleDesc: 'S (90-100) · A (80-89) · B (70-79) · C (60-69) · D (<60)',
+      cssClass: (v) => v >= 90 ? 'grade-1' : v >= 80 ? 'grade-2' : v >= 70 ? 'grade-3' : v >= 60 ? 'grade-4' : 'grade-6',
+      letterFromPct: (v) => v >= 90 ? 'S' : v >= 80 ? 'A' : v >= 70 ? 'B' : v >= 60 ? 'C' : 'D',
+    },
+    stages: ['小学校 Elementary 1–6', '中学校 Junior High 7–9', '高等学校 High School 10–12'],
+  },
+  kr: {
+    flag: '🇰🇷', name: 'South Korea',
+    gradeScale: {
+      type: 'letter', min: 0, max: 100, passing: 60, inverted: false,
+      suffix: '', best: 'A', worst: 'F',
+      labels: {},
+      scaleDesc: 'A (90-100) · B (80-89) · C (70-79) · D (60-69) · F (<60)',
+      cssClass: (v) => v >= 90 ? 'grade-1' : v >= 80 ? 'grade-2' : v >= 60 ? 'grade-3' : 'grade-6',
+      letterFromPct: (v) => v >= 90 ? 'A' : v >= 80 ? 'B' : v >= 70 ? 'C' : v >= 60 ? 'D' : 'F',
+    },
+    stages: ['초등학교 Elementary 1–6', '중학교 Middle 7–9', '고등학교 High School 10–12'],
+  },
+  in: {
+    flag: '🇮🇳', name: 'India',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 100, passing: 33, inverted: false,
+      suffix: '%', best: '100%', worst: '0%',
+      labels: {},
+      scaleDesc: '0–100% (pass ≥ 33%)',
+      cssClass: (v) => v >= 75 ? 'grade-1' : v >= 60 ? 'grade-2' : v >= 33 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Primary 1–5', 'Upper Primary 6–8', 'Secondary 9–10', 'Higher Secondary 11–12'],
+  },
+  pk: {
+    flag: '🇵🇰', name: 'Pakistan',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 100, passing: 33, inverted: false,
+      suffix: '%', best: '100%', worst: '0%',
+      labels: {},
+      scaleDesc: '0–100% (pass ≥ 33%)',
+      cssClass: (v) => v >= 80 ? 'grade-1' : v >= 60 ? 'grade-2' : v >= 33 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Primary 1–5', 'Middle 6–8', 'Secondary 9–10', 'Higher Secondary 11–12'],
+  },
+  sa: {
+    flag: '🇸🇦', name: 'Saudi Arabia',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 100, passing: 50, inverted: false,
+      suffix: '', best: '100', worst: '0',
+      labels: {},
+      scaleDesc: '٠–١٠٠ (ناجح ≥ ٥٠) · ممتاز ≥90 · جيد جداً ≥80 · جيد ≥70 · مقبول ≥50',
+      cssClass: (v) => v >= 90 ? 'grade-1' : v >= 80 ? 'grade-2' : v >= 50 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['الابتدائية Primary 1–6', 'المتوسطة Middle 7–9', 'الثانوية High School 10–12'],
+  },
+  ir: {
+    flag: '🇮🇷', name: 'Iran',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 20, passing: 10, inverted: false,
+      suffix: '/۲۰', best: '۲۰', worst: '۰',
+      labels: {},
+      scaleDesc: '۰–۲۰ (قبولی ≥ ۱۰)',
+      cssClass: (v) => v >= 17 ? 'grade-1' : v >= 14 ? 'grade-2' : v >= 10 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['ابتدایی 1–6', 'متوسطه اول 7–9', 'متوسطه دوم 10–12'],
+  },
+  // ── Africa ──────────────────────────────────────────────────────────────
+  za: {
+    flag: '🇿🇦', name: 'South Africa',
+    gradeScale: {
+      type: 'numeric', min: 0, max: 100, passing: 30, inverted: false,
+      suffix: '%', best: '100%', worst: '0%',
+      labels: {},
+      scaleDesc: '0–100% · Level 7 (80-100) · Level 4 (50-59) · Level 2 (30-39)',
+      cssClass: (v) => v >= 70 ? 'grade-1' : v >= 50 ? 'grade-2' : v >= 30 ? 'grade-3' : 'grade-6',
+    },
+    stages: ['Foundation Phase R–3', 'Intermediate Phase 4–6', 'Senior Phase 7–9', 'FET 10–12'],
+  },
+};
+window.SCHOOL_SYSTEMS = SCHOOL_SYSTEMS;
+
+// Returns the active school system object
+const getSchoolSystem = () => SCHOOL_SYSTEMS[state.ui.country || 'de'] || SCHOOL_SYSTEMS.de;
+
+// Maps German 1-6 grade (1=best) to a 0-100 percentage for cross-system conversion
+const _deGradeToPercent = (v) => ({ 1: 97, 2: 83, 3: 67, 4: 55, 5: 38, 6: 20 })[Math.round(v)] || 50;
+
+// Converts a German 1-6 grade value to the display string for the current school system
+const formatGradeValue = (germanValue, lang) => {
+  const sys = getSchoolSystem();
+  const scale = sys.gradeScale;
+  // If we're on German scale, just format the number
+  if (state.ui.country === 'de') return formatNumber(germanValue, lang);
+  const pct = _deGradeToPercent(germanValue);
+  if (scale.type === 'letter') {
+    return scale.letterFromPct ? scale.letterFromPct(pct) : (pct >= scale.passing ? 'P' : 'F');
+  }
+  // Numeric system
+  const range = scale.max - scale.min;
+  let converted;
+  if (scale.inverted) {
+    converted = scale.max - Math.round((pct / 100) * range);
+  } else {
+    converted = scale.min + Math.round((pct / 100) * range);
+  }
+  converted = Math.max(scale.min, Math.min(scale.max, converted));
+  // Round to 1 decimal for scales like Austria 1–5
+  const val = Number.isInteger(converted) ? converted : converted.toFixed(1);
+  return formatNumber(val, lang) + (scale.suffix || '');
+};
+
+// Returns the CSS grade class for a German 1-6 value in the current school system
+const gradeClass = (germanValue) => {
+  const sys = getSchoolSystem();
+  if (state.ui.country === 'de') return `grade-${Math.min(6, Math.max(1, Math.round(germanValue)))}`;
+  const pct = _deGradeToPercent(germanValue);
+  return sys.gradeScale.cssClass(pct);
+};
+
+const renderLearnTopicDetail = async (subjectId, folderIdx, topicIdx) => {
+  const container = document.getElementById('learnContent');
+  if (!container) return;
+  const model = window.LEARN_SOURCES || { core: {}, school: [], university: [] };
+  const mode = state.ui.studyMode;
+  const subjects = model[mode] || [];
+  const subject = subjects.find(s => s.id === subjectId);
+  if (!subject) return renderLearn();
+  const folder = (subject.folders || [])[folderIdx];
+  if (!folder) return renderLearn();
+  const topicRaw = (folder.topics || [])[topicIdx];
+  if (!topicRaw) return renderLearn();
+
+  const lang = getActiveLanguage();
+  const meta = getLearnMeta(subjectId);
+
+  const [subjectTl, folderTl, topicTl, descTl, miniTaskTl] = await Promise.all([
+    localizeLearnText(subject.title, lang),
+    localizeLearnText(folder.name, lang),
+    localizeLearnText(topicRaw, lang),
+    localizeLearnText(folder.description || '', lang),
+    localizeLearnText(folder.miniTask || '', lang),
+  ]);
+  const keyPointsTl = await Promise.all((folder.keyPoints || []).map(kp => localizeLearnText(kp, lang)));
+  const allTopicsTl = await Promise.all((folder.topics || []).map(t => localizeLearnText(t, lang)));
+  const sourceNames = (model.core[folder.sourceGroup] || []).join(', ');
+
+  // Filter key points relevant to the clicked topic (heuristic: include all for now)
+  const kpHtml = keyPointsTl.length
+    ? `<ul class="learn-key-points">${keyPointsTl.map(kp => `<li>${kp}</li>`).join('')}</ul>`
+    : '';
+
+  // Other topics in the folder (excluding current)
+  const otherTopics = allTopicsTl
+    .map((t, i) => ({ t, i }))
+    .filter(({ i }) => i !== topicIdx);
+  const relatedHtml = otherTopics.length
+    ? `<div class="learn-topic-related-row">${otherTopics.map(({ t, i }) =>
+        `<button class="learn-topic-chip learn-topic-chip-btn" onclick="renderLearnTopicDetail('${subjectId}',${folderIdx},${i})">${t}</button>`
+      ).join('')}</div>`
+    : '';
+
+  container.innerHTML = `
+    <div class="learn-wrap">
+      <div class="learn-mode-bar" style="display:flex;align-items:center;gap:12px">
+        <button class="learn-back-btn" onclick="renderLearn()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><polyline points="15 18 9 12 15 6"/></svg>
+          ${tr('learnBack', 'Back')}
+        </button>
+        <span style="color:var(--text3);font-size:13px">${subjectTl} › ${folderTl}</span>
+      </div>
+
+      <div class="learn-topic-detail">
+        <div class="learn-topic-detail-header" style="border-left:4px solid ${meta.color}">
+          <span style="font-size:32px;line-height:1">${meta.icon}</span>
+          <div>
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--text3);margin-bottom:4px">${folderTl}</div>
+            <h2 class="learn-topic-detail-title">${topicTl}</h2>
+          </div>
+        </div>
+
+        ${descTl ? `
+        <div class="learn-topic-section">
+          <div class="learn-topic-section-label">${tr('learnSummary', 'Overview')}</div>
+          <p class="learn-folder-desc">${descTl}</p>
+        </div>` : ''}
+
+        ${kpHtml ? `
+        <div class="learn-topic-section">
+          <div class="learn-topic-section-label">${tr('learnTopicKeyPoints', 'Key concepts')}</div>
+          ${kpHtml}
+        </div>` : ''}
+
+        ${miniTaskTl ? `
+        <div class="learn-topic-section">
+          <div class="learn-topic-section-label">${tr('learnTopicTask', 'Practice task')}</div>
+          <div class="learn-mini-task">${miniTaskTl}</div>
+        </div>` : ''}
+
+        ${sourceNames ? `
+        <div class="learn-topic-section">
+          <div class="learn-topic-section-label">${tr('learnTopicSources', 'Sources')}</div>
+          <p class="learn-sources-line">${sourceNames}</p>
+        </div>` : ''}
+
+        ${relatedHtml ? `
+        <div class="learn-topic-section">
+          <div class="learn-topic-section-label">${tr('learnTopicRelated', 'Related topics')}</div>
+          ${relatedHtml}
+        </div>` : ''}
+      </div>
+    </div>`;
+};
+
+window.renderLearnTopicDetail = renderLearnTopicDetail;
 
 const renderLearn = async () => {
   const container = document.getElementById('learnContent');
@@ -664,100 +1530,62 @@ const renderLearn = async () => {
     return;
   }
 
-  const SUBJECT_META = {
-    mathematics:          { icon: '📐', color: '#e8a020' },
-    physics:              { icon: '⚛️',  color: '#4a90d9' },
-    chemistry:            { icon: '⚗️',  color: '#9b59b6' },
-    biology:              { icon: '🌿', color: '#27ae60' },
-    'computer-science':   { icon: '💻', color: '#2980b9' },
-    'language-arts':      { icon: '📝', color: '#e67e22' },
-    'english-language':   { icon: '🇬🇧', color: '#c0392b' },
-    'german-language':    { icon: '🇩🇪', color: '#f39c12' },
-    'french-language':    { icon: '🇫🇷', color: '#2980b9' },
-    'spanish-language':   { icon: '🇪🇸', color: '#c0392b' },
-    history:              { icon: '📜', color: '#8e6b3e' },
-    geography:            { icon: '🌍', color: '#16a085' },
-    civics:               { icon: '🏛️',  color: '#2c3e50' },
-    economics:            { icon: '📊', color: '#2c3e50' },
-    'earth-science':      { icon: '🌎', color: '#16a085' },
-    arts:                 { icon: '🎨', color: '#c0392b' },
-    health:               { icon: '💚', color: '#27ae60' },
-    'religion-and-ethics':{ icon: '⚖️',  color: '#7f8c8d' },
-    music:                { icon: '🎵', color: '#8e44ad' },
-    'physical-education': { icon: '🏃', color: '#2ecc71' },
-    'technology-and-design': { icon: '🔧', color: '#34495e' },
-    'media-literacy':     { icon: '📱', color: '#3498db' },
-  };
-  const getMeta = (id) => SUBJECT_META[id] || { icon: '📚', color: 'var(--accent2)' };
-
-  // Ensure a subject is selected
   if (!state.ui.learnSelectedSubject || !subjects.find(s => s.id === state.ui.learnSelectedSubject)) {
     state.ui.learnSelectedSubject = subjects[0].id;
   }
   const selId = state.ui.learnSelectedSubject;
   const subject = subjects.find(s => s.id === selId) || subjects[0];
-  const meta = getMeta(subject.id);
+  const meta = getLearnMeta(subject.id);
 
-  // Translate subject title for the panel header
-  const subjectTitle = await localizeLearnText(subject.title, activeLang);
+  // Translate ALL subject titles (for pills) in parallel
+  const subjectTitlesTl = await Promise.all(subjects.map(s => localizeLearnText(s.title, activeLang)));
 
-  // Subject pills — show native English titles for speed (language switching retranslates on next render)
-  const pillsHtml = subjects.map(s => {
-    const m = getMeta(s.id);
+  // Subject pills (scrollable row)
+  const pillsHtml = subjects.map((s, si) => {
+    const m = getLearnMeta(s.id);
     const active = s.id === selId;
     return `<button class="learn-pill${active ? ' active' : ''}"
       onclick="selectLearnSubject('${s.id}')"
       style="${active ? `background:${m.color};color:#fff;border-color:${m.color}` : `border-color:${m.color}40`}">
       <span style="font-size:16px;line-height:1">${m.icon}</span>
-      <span>${s.title}</span>
+      <span>${subjectTitlesTl[si]}</span>
     </button>`;
   }).join('');
 
-  // Translate all folder content in parallel
-  const localizedFolders = await Promise.all((subject.folders || []).map(async (folder) => {
-    const [name, description, miniTask] = await Promise.all([
+  const subjectTitle = subjectTitlesTl[subjects.findIndex(s => s.id === selId)] || subject.title;
+
+  // Translate folder names, short desc, and topic chips only (detail is in topic view)
+  const localizedFolders = await Promise.all((subject.folders || []).map(async (folder, fi) => {
+    const rawDesc = folder.description ? folder.description.slice(0, 130) : '';
+    const [name, descShort] = await Promise.all([
       localizeLearnText(folder.name, activeLang),
-      localizeLearnText(folder.description || '', activeLang),
-      localizeLearnText(folder.miniTask || '', activeLang)
+      rawDesc ? localizeLearnText(rawDesc, activeLang) : Promise.resolve(''),
     ]);
-    const keyPoints = folder.keyPoints
-      ? await Promise.all(folder.keyPoints.map(kp => localizeLearnText(kp, activeLang)))
-      : [];
     const topics = folder.topics
       ? await Promise.all(folder.topics.map(t => localizeLearnText(t, activeLang)))
       : [];
-    const sourceNames = (model.core[folder.sourceGroup] || []).join(', ');
-    return { ...folder, name, description, miniTask, keyPoints, topics, sourceNames };
+    return { name, descShort, topics, fi };
   }));
 
-  // Build folder cards
-  const foldersHtml = localizedFolders.map((folder, fi) => {
-    const kpHtml = folder.keyPoints.length
-      ? `<ul class="learn-key-points">${folder.keyPoints.map(kp => `<li>${kp}</li>`).join('')}</ul>`
+  // Compact folder rows — no accordion, no nested lists
+  const foldersHtml = localizedFolders.map(({ name, descShort, topics, fi }) => {
+    const topicsHtml = topics.length
+      ? `<div class="learn-topics-row">${topics.map((t, ti) =>
+          `<button class="learn-topic-chip learn-topic-chip-btn" onclick="renderLearnTopicDetail('${selId}',${fi},${ti})">${t}</button>`
+        ).join('')}</div>`
       : '';
-    const topicsHtml = folder.topics.length
-      ? `<div class="learn-topics-row">${folder.topics.map(t => `<span class="learn-topic-chip">${t}</span>`).join('')}</div>`
-      : '';
-    const miniTaskHtml = folder.miniTask
-      ? `<div class="learn-mini-task"><strong>${tr('learnTopicTask','Practice task')}:</strong> ${folder.miniTask}</div>`
-      : '';
-    const sourcesHtml = folder.sourceNames
-      ? `<p class="learn-sources-line">${tr('learnTopicSources','Sources')}: ${folder.sourceNames}</p>`
-      : '';
+    const trailDot = descShort && descShort.length >= 130 ? '…' : '';
     return `
-      <details class="learn-folder-card" ${fi === 0 ? 'open' : ''}>
-        <summary class="learn-folder-header">
+      <div class="learn-folder-row">
+        <div class="learn-folder-row-hdr">
           <span class="learn-folder-num">${fi + 1}</span>
-          <span>${folder.name}</span>
-        </summary>
-        <div class="learn-folder-body">
-          ${folder.description ? `<p class="learn-folder-desc">${folder.description}</p>` : ''}
-          ${kpHtml}
-          ${topicsHtml}
-          ${miniTaskHtml}
-          ${sourcesHtml}
+          <div class="learn-folder-row-info">
+            <div class="learn-folder-row-name">${name}</div>
+            ${descShort ? `<div class="learn-folder-row-desc">${descShort}${trailDot}</div>` : ''}
+          </div>
         </div>
-      </details>`;
+        ${topicsHtml}
+      </div>`;
   }).join('');
 
   container.innerHTML = `
@@ -821,41 +1649,196 @@ const renderSettings = () => {
   if (!container) return;
 
   const isSchool = state.ui.studyMode === 'school';
+  const currentLang = (window.i18nCurrentLang || 'en').toUpperCase();
+  const sys = getSchoolSystem();
+
+  // Build sorted country option list grouped by region
+  const regions = [
+    { label: 'Europe', ids: ['de','at','ch','fr','nl','be','it','es','pl','ru','ua','tr','gb'] },
+    { label: 'Americas', ids: ['us','ca','mx','br','arg'] },
+    { label: 'Asia & Middle East', ids: ['cn','jp','kr','in','pk','sa','ir'] },
+    { label: 'Africa & Oceania', ids: ['za','au'] },
+  ];
+  const countryOptionsHtml = regions.map(r =>
+    `<optgroup label="${r.label}">${r.ids.map(id => {
+      const s = SCHOOL_SYSTEMS[id];
+      if (!s) return '';
+      return `<option value="${id}" ${state.ui.country === id ? 'selected' : ''}>${s.flag} ${s.name}</option>`;
+    }).join('')}</optgroup>`
+  ).join('');
+
   container.innerHTML = `
-    <div class="card" style="max-width:860px">
-      <div class="card-title">${tr('studyModeTitle', 'Study mode')}</div>
-      <p class="card-sub" style="margin-bottom:14px">${tr('studyModeDescription', 'Choose whether your learning layout is optimized for school or university.')}</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
-        <button class="btn ${isSchool ? 'btn-primary' : 'btn-secondary'}" onclick="setStudyMode('school')">${tr('studyModeSchool', 'School')}</button>
-        <button class="btn ${!isSchool ? 'btn-primary' : 'btn-secondary'}" onclick="setStudyMode('university')">${tr('studyModeUniversity', 'University')}</button>
+    <div class="settings-grid">
+
+      <!-- Study Mode -->
+      <div class="settings-card">
+        <div class="settings-card-header">
+          <div class="settings-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          </div>
+          <div>
+            <div class="settings-card-title">${tr('studyModeTitle', 'Study mode')}</div>
+            <div class="settings-card-sub">${tr('studyModeDescription', 'Choose whether your learning layout is optimized for school or university.')}</div>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <button class="settings-mode-btn ${isSchool ? 'active' : ''}" onclick="setStudyMode('school')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            ${tr('studyModeSchool', 'School')}
+          </button>
+          <button class="settings-mode-btn ${!isSchool ? 'active' : ''}" onclick="setStudyMode('university')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            ${tr('studyModeUniversity', 'University')}
+          </button>
+        </div>
+        <div class="settings-field">
+          <label>${isSchool ? tr('studySchoolStage', 'School stage') : tr('studyUniSemester', 'University semester range')}</label>
+          ${isSchool ? `
+          <select class="select" onchange="setSchoolStage(this.value)">
+            <option value="grade-5-6" ${state.ui.schoolStage === 'grade-5-6' ? 'selected' : ''}>${tr('learnSchoolStage56', 'School stage: Grade 5-6')}</option>
+            <option value="grade-7-8" ${state.ui.schoolStage === 'grade-7-8' ? 'selected' : ''}>${tr('learnSchoolStage78', 'School stage: Grade 7-8')}</option>
+            <option value="grade-9-10" ${state.ui.schoolStage === 'grade-9-10' ? 'selected' : ''}>${tr('learnSchoolStage910', 'School stage: Grade 9-10')}</option>
+            <option value="grade-11-13" ${state.ui.schoolStage === 'grade-11-13' ? 'selected' : ''}>${tr('learnSchoolStage1113', 'School stage: Grade 11-13')}</option>
+          </select>` : `
+          <select class="select" onchange="setUniSemester(this.value)">
+            <option value="semester-1-2" ${state.ui.uniSemester === 'semester-1-2' ? 'selected' : ''}>${tr('learnUniSem12', 'University stage: Semester 1-2')}</option>
+            <option value="semester-3-4" ${state.ui.uniSemester === 'semester-3-4' ? 'selected' : ''}>${tr('learnUniSem34', 'University stage: Semester 3-4')}</option>
+            <option value="semester-5-6" ${state.ui.uniSemester === 'semester-5-6' ? 'selected' : ''}>${tr('learnUniSem56', 'University stage: Semester 5-6')}</option>
+            <option value="semester-7-plus" ${state.ui.uniSemester === 'semester-7-plus' ? 'selected' : ''}>${tr('learnUniSem7Plus', 'University stage: Semester 7+')}</option>
+          </select>`}
+        </div>
+        <div class="settings-field">
+          <label>${tr('studyExamMode', 'Practice focus')}</label>
+          <select class="select" onchange="setExamMode(this.value)">
+            <option value="basics" ${state.ui.examMode === 'basics' ? 'selected' : ''}>${tr('studyExamModeBasics', 'Basics first')}</option>
+            <option value="balanced" ${state.ui.examMode === 'balanced' ? 'selected' : ''}>${tr('studyExamModeBalanced', 'Balanced')}</option>
+            <option value="exam" ${state.ui.examMode === 'exam' ? 'selected' : ''}>${tr('studyExamModeExam', 'Exam prep')}</option>
+          </select>
+        </div>
       </div>
-      <div class="field" style="margin-top:10px">
-        <label>${tr('studySchoolStage', 'School stage')}</label>
-        <select class="select" onchange="setSchoolStage(this.value)">
-          <option value="grade-5-6" ${state.ui.schoolStage === 'grade-5-6' ? 'selected' : ''}>${tr('learnSchoolStage56', 'School stage: Grade 5-6')}</option>
-          <option value="grade-7-8" ${state.ui.schoolStage === 'grade-7-8' ? 'selected' : ''}>${tr('learnSchoolStage78', 'School stage: Grade 7-8')}</option>
-          <option value="grade-9-10" ${state.ui.schoolStage === 'grade-9-10' ? 'selected' : ''}>${tr('learnSchoolStage910', 'School stage: Grade 9-10')}</option>
-          <option value="grade-11-13" ${state.ui.schoolStage === 'grade-11-13' ? 'selected' : ''}>${tr('learnSchoolStage1113', 'School stage: Grade 11-13')}</option>
-        </select>
+
+      <!-- Country & School System -->
+      <div class="settings-card">
+        <div class="settings-card-header">
+          <div class="settings-card-icon" style="font-size:20px">${sys.flag}</div>
+          <div>
+            <div class="settings-card-title">${tr('settingsCountryTitle','Country & School System')}</div>
+            <div class="settings-card-sub">${tr('settingsCountrySub','Adapts grade scales, school stages, and number formats to your education system.')}</div>
+          </div>
+        </div>
+        <div class="settings-field">
+          <label>${tr('settingsCountryLabel','Country')}</label>
+          <select class="select" onchange="setCountry(this.value)">${countryOptionsHtml}</select>
+        </div>
+        <div class="settings-info-row" style="gap:8px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span style="font-size:13px">${tr('settingsGradeScaleLabel','Grade scale')}: <strong>${sys.gradeScale.scaleDesc}</strong></span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;padding:10px 0 4px">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:6px">${tr('settingsSchoolStagesLabel','School stages')}</div>
+          ${sys.stages.map(s => `<div style="font-size:13px;color:var(--text2);padding:3px 0;border-bottom:1px solid var(--border)">${s}</div>`).join('')}
+        </div>
       </div>
-      <div class="field" style="margin-top:10px">
-        <label>${tr('studyUniSemester', 'University semester range')}</label>
-        <select class="select" onchange="setUniSemester(this.value)">
-          <option value="semester-1-2" ${state.ui.uniSemester === 'semester-1-2' ? 'selected' : ''}>${tr('learnUniSem12', 'University stage: Semester 1-2')}</option>
-          <option value="semester-3-4" ${state.ui.uniSemester === 'semester-3-4' ? 'selected' : ''}>${tr('learnUniSem34', 'University stage: Semester 3-4')}</option>
-          <option value="semester-5-6" ${state.ui.uniSemester === 'semester-5-6' ? 'selected' : ''}>${tr('learnUniSem56', 'University stage: Semester 5-6')}</option>
-          <option value="semester-7-plus" ${state.ui.uniSemester === 'semester-7-plus' ? 'selected' : ''}>${tr('learnUniSem7Plus', 'University stage: Semester 7+')}</option>
-        </select>
+
+      <!-- Appearance -->
+      <div class="settings-card">
+        <div class="settings-card-header">
+          <div class="settings-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <div>
+            <div class="settings-card-title" data-i18n="settingsAppearanceTitle">${tr('settingsAppearanceTitle','Appearance')}</div>
+            <div class="settings-card-sub" data-i18n="settingsAppearanceSub">${tr('settingsAppearanceSub','Dark theme is active and optimized for focus.')}</div>
+          </div>
+        </div>
+        <div class="settings-info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          ${tr('settingsDarkModeActive','Dark mode active')}
+        </div>
+        <div class="settings-field">
+          <label data-i18n="settingsLanguageLabel">${tr('settingsLanguageLabel','Language')}</label>
+          <button class="settings-action-btn" onclick="toggleLangPicker()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            ${tr('settingsChangeLanguage','Change language')} (${currentLang})
+          </button>
+        </div>
       </div>
-      <div class="field" style="margin-top:10px">
-        <label>${tr('studyExamMode', 'Practice focus')}</label>
-        <select class="select" onchange="setExamMode(this.value)">
-          <option value="basics" ${state.ui.examMode === 'basics' ? 'selected' : ''}>${tr('studyExamModeBasics', 'Basics first')}</option>
-          <option value="balanced" ${state.ui.examMode === 'balanced' ? 'selected' : ''}>${tr('studyExamModeBalanced', 'Balanced')}</option>
-          <option value="exam" ${state.ui.examMode === 'exam' ? 'selected' : ''}>${tr('studyExamModeExam', 'Exam prep')}</option>
-        </select>
+
+      <!-- Notifications -->
+      <div class="settings-card">
+        <div class="settings-card-header">
+          <div class="settings-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          </div>
+          <div>
+            <div class="settings-card-title" data-i18n="settingsNotifTitle">${tr('settingsNotifTitle','Notifications')}</div>
+            <div class="settings-card-sub" data-i18n="settingsNotifSub">${tr('settingsNotifSub','Manage alerts and reminders.')}</div>
+          </div>
+        </div>
+        <div class="settings-toggle-item">
+          <div>
+            <div class="settings-toggle-label" data-i18n="settingsStudyReminders">${tr('settingsStudyReminders','Study reminders')}</div>
+            <div class="settings-toggle-sub" data-i18n="settingsStudyRemindersSub">${tr('settingsStudyRemindersSub',"Get reminded when it's time to study")}</div>
+          </div>
+          <label class="settings-switch">
+            <input type="checkbox" checked onchange="Notifications.show(tr('settingsReminderSaved','Reminder setting saved.'))">
+            <span class="settings-switch-track"></span>
+          </label>
+        </div>
+        <div class="settings-toggle-item">
+          <div>
+            <div class="settings-toggle-label" data-i18n="settingsTaskDeadlines">${tr('settingsTaskDeadlines','Task deadlines')}</div>
+            <div class="settings-toggle-sub" data-i18n="settingsTaskDeadlinesSub">${tr('settingsTaskDeadlinesSub','Alerts before task due dates')}</div>
+          </div>
+          <label class="settings-switch">
+            <input type="checkbox" checked onchange="Notifications.show(tr('settingsDeadlineSaved','Deadline alerts saved.'))">
+            <span class="settings-switch-track"></span>
+          </label>
+        </div>
       </div>
-      <div class="card-sub">${tr('studyModeCurrent', 'Current mode')}: <strong style="color:var(--text)">${isSchool ? tr('studyModeSchool', 'School') : tr('studyModeUniversity', 'University')}</strong></div>
+
+      <!-- Account -->
+      <div class="settings-card">
+        <div class="settings-card-header">
+          <div class="settings-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <div class="settings-card-title" data-i18n="settingsAccountTitle">${tr('settingsAccountTitle','Account')}</div>
+            <div class="settings-card-sub" data-i18n="settingsAccountSub">${tr('settingsAccountSub','Your profile and account information.')}</div>
+          </div>
+        </div>
+        <div class="settings-info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          ${state.user?.email || state.profile?.name || 'Demo user'}
+        </div>
+        <div class="settings-info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          ${state.demoMode ? tr('settingsDemoMode','Demo mode — no sync') : tr('settingsSignedIn','Signed in')}
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="settings-card">
+        <div class="settings-card-header">
+          <div class="settings-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <div class="settings-card-title" data-i18n="settingsAboutTitle">${tr('settingsAboutTitle','About Nexus')}</div>
+            <div class="settings-card-sub" data-i18n="settingsAboutSub">${tr('settingsAboutSub','Version and app information.')}</div>
+          </div>
+        </div>
+        <div class="settings-info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          ${tr('settingsVersion','Nexus v1.0.0')}
+        </div>
+        <div class="settings-info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          ${tr('settingsDataLocal','All data stored locally')}
+        </div>
+      </div>
+
     </div>
   `;
 };
@@ -898,6 +1881,17 @@ const setExamMode = (mode) => {
   renderLearn();
 };
 
+const setCountry = (countryId) => {
+  if (!SCHOOL_SYSTEMS[countryId]) return;
+  state.ui.country = countryId;
+  saveUiSettings();
+  renderSettings();
+  renderGrades();
+  const sys = SCHOOL_SYSTEMS[countryId];
+  Notifications.show(`${tr('settingsCountrySaved','School system updated')}: ${sys.flag} ${sys.name}`);
+};
+window.setCountry = setCountry;
+
 const filterTasks = (filter, button) => {
   state.taskFilter = filter;
   const chips = Array.from(document.querySelectorAll('#page-tasks .filter-chip'));
@@ -905,53 +1899,61 @@ const filterTasks = (filter, button) => {
   if (button) {
     button.classList.add('active');
   } else {
-    const match = chips.find((chip) => chip.textContent.trim().toLowerCase() === filter.toLowerCase());
+    const match = chips.find((chip) => chip.dataset.i18n && ['hwFilterAll','hwFilterOpen','hwFilterDone','hwOverdue'].includes(chip.dataset.i18n) && filter === ({'hwFilterAll':'all','hwFilterOpen':'open','hwFilterDone':'done','hwOverdue':'overdue'}[chip.dataset.i18n]));
     if (match) match.classList.add('active');
   }
 
   const filtered = (state.tasks || []).filter((task) => {
     if (filter === 'all') return true;
     if (filter === 'done') return task.status === 'done';
-    if (filter === 'open') return task.status !== 'done';
+    if (filter === 'open') return task.status !== 'done' && task.status !== 'overdue';
     if (filter === 'overdue') return task.status === 'overdue';
     return true;
   });
 
   const container = document.getElementById('taskList');
   if (!container) return;
+
+  const statusLabel = (s) => s === 'done' ? tr('hwDone','Done') : s === 'overdue' ? tr('hwOverdue','Overdue') : tr('hwOpen','Open');
+  const statusClass = (s) => s === 'done' ? 'submitted' : s === 'overdue' ? 'overdue' : 'due-soon';
+
   container.innerHTML = filtered.length
-    ? filtered.map((task) => `<div class="task-item ${task.status === 'overdue' ? 'overdue' : task.status === 'done' ? '' : 'due-soon'}"><div class="task-check ${task.status === 'done' ? 'checked' : ''}" onclick="toggleTaskDone(event, '${task.id}')"></div><div class="task-body"><div class="task-title">${task.title}</div><div class="task-meta"><span>${task.course_name || 'General'}</span><span>Due ${new Date(task.due_date).toLocaleDateString()}</span></div></div><div class="task-badge ${task.status === 'overdue' ? 'overdue' : task.status === 'done' ? 'submitted' : 'due-soon'}">${task.status}</div></div>`).join('')
-    : '<div class="dash-list-placeholder">No tasks in this filter.</div>';
+    ? filtered.map((task) => `<div class="task-item ${task.status === 'overdue' ? 'overdue' : task.status === 'done' ? '' : 'due-soon'}"><div class="task-check ${task.status === 'done' ? 'checked' : ''}" onclick="toggleTaskDone(event, '${task.id}')"></div><div class="task-body"><div class="task-title">${task.title}</div><div class="task-meta"><span>${task.course_name || ''}</span><span>${tr('dashDue','Due')} ${new Date(task.due_date).toLocaleDateString(getActiveLanguage())}</span></div></div><div class="task-badge ${statusClass(task.status)}">${statusLabel(task.status)}</div></div>`).join('')
+    : `<div class="empty-state">
+        <div class="empty-state-icon"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <h3>${state.tasks.length === 0 ? tr('tasksNoTasks','No tasks yet') : tr('tasksNothingInFilter','Nothing in this filter')}</h3>
+        <p>${state.tasks.length === 0 ? tr('tasksAddHint','Add tasks to track your assignments and deadlines.') : tr('tasksTryFilter','Try a different filter above.')}</p>
+      </div>`;
 };
 
 const renderProfile = () => {
-  document.getElementById('profileContent').innerHTML = `<div class="card profile-avatar-wrap"><div class="profile-avatar-large">${state.profile?.full_name?.charAt(0).toUpperCase() || '?'}</div><div class="card-title">${state.profile?.full_name || 'Profile'}</div><p class="card-sub">${state.profile?.role || ''}</p></div><div class="card"><div class="field"><label>Email</label><input class="input" disabled value="${state.user.email}" /></div><div class="field"><label>Role</label><input class="input" disabled value="${state.profile?.role || 'Member'}" /></div></div>`;
+  document.getElementById('profileContent').innerHTML = `<div class="card profile-avatar-wrap"><div class="profile-avatar-large">${state.profile?.full_name?.charAt(0).toUpperCase() || '?'}</div><div class="card-title">${state.profile?.full_name || tr('profileTitle','Profile')}</div><p class="card-sub">${state.profile?.role || ''}</p></div><div class="card"><div class="field"><label>${tr('profileEmail','Email')}</label><input class="input" disabled value="${state.user?.email || ''}" /></div><div class="field"><label>${tr('profileRole','Role')}</label><input class="input" disabled value="${state.profile?.role || tr('memberRole','Member')}" /></div></div>`;
 };
 
 const renderTeacherTools = () => {
   const container = document.getElementById('page-teacher-tools');
   if (!container) return;
   container.innerHTML = `
-      <div class="page-header"><div><h1>Teacher tools</h1><p class="card-sub">Manage class access, lock student modes and distribute study content without giving students lecturer rights.</p></div></div>
-      <div class="card"><div class="field"><label>Class control</label><p class="card-sub">Lock student switching between school and university mode and keep the class focused on the current curriculum.</p></div><button class="btn btn-secondary" onclick="Notifications.show('Class mode locked for students.')">Lock student mode</button></div>
-      <div class="card"><div class="field"><label>Share study material</label><p class="card-sub">Publish assignments or quick revision notes for your class.</p></div><button class="btn btn-primary" onclick="Notifications.show('Study materials shared with class.')">Share a new resource</button></div>
+      <div class="page-header"><div><h1>${tr('teacherToolsTitle','Teacher Tools')}</h1><p class="card-sub">${tr('teacherToolsSubtitle','Manage class access, lock student modes and distribute study content without giving students lecturer rights.')}</p></div></div>
+      <div class="card"><div class="field"><label>${tr('teacherClassControl','Class control')}</label><p class="card-sub">${tr('teacherClassControlDesc','Lock student switching between school and university mode and keep the class focused on the current curriculum.')}</p></div><button class="btn btn-secondary" onclick="Notifications.show(tr('teacherLockSuccess','Class mode locked for students.'))">${tr('teacherLockBtn','Lock student mode')}</button></div>
+      <div class="card"><div class="field"><label>${tr('teacherShareMaterial','Share study material')}</label><p class="card-sub">${tr('teacherShareMaterialDesc','Publish assignments or quick revision notes for your class.')}</p></div><button class="btn btn-primary" onclick="Notifications.show(tr('teacherShareSuccess','Study materials shared with class.'))">${tr('teacherShareBtn','Share a new resource')}</button></div>
   `;
 };
 
 const renderAdmin = async () => {
   const container = document.getElementById('adminUserList');
-  container.innerHTML = '<div class="dash-list-placeholder">Loading users…</div>';
+  container.innerHTML = `<div class="dash-list-placeholder">${tr('loadingLabel','Loading...')}</div>`;
   const { data, error } = await sb.from('profiles').select('*').order('full_name', { ascending: true });
-  if (error) return (container.innerHTML = '<div class="dash-list-placeholder">Unable to load users.</div>');
-  container.innerHTML = `<table class="user-table"><thead><tr><th>Name</th><th>Email</th><th>Role</th></tr></thead><tbody>${data.map((profile) => `<tr><td>${profile.full_name}</td><td>${profile.email}</td><td><span class="role-badge ${profile.role}">${profile.role}</span></td></tr>`).join('')}</tbody></table>`;
+  if (error) return (container.innerHTML = `<div class="dash-list-placeholder">${tr('adminLoadError','Unable to load users.')}</div>`);
+  container.innerHTML = `<table class="user-table"><thead><tr><th>${tr('adminColName','Name')}</th><th>${tr('adminColEmail','Email')}</th><th>${tr('adminColRole','Role')}</th></tr></thead><tbody>${data.map((profile) => `<tr><td>${profile.full_name}</td><td>${profile.email}</td><td><span class="role-badge ${profile.role}">${profile.role}</span></td></tr>`).join('')}</tbody></table>`;
 };
 
 const renderInvites = async () => {
   const container = document.getElementById('inviteList');
-  container.innerHTML = '<div class="dash-list-placeholder">Loading invite codes…</div>';
+  container.innerHTML = `<div class="dash-list-placeholder">${tr('loadingLabel','Loading...')}</div>`;
   const { data, error } = await sb.from('invite_codes').select('*').order('created_at', { ascending: false });
-  if (error) return (container.innerHTML = '<div class="dash-list-placeholder">Unable to load invites.</div>');
-  container.innerHTML = data.length ? `<div class="invite-grid">${data.map((invite) => `<div class="invite-card ${invite.used_at ? 'invite-used' : ''}"><div class="invite-code">${invite.code}</div><div class="invite-meta">Role: ${invite.role}</div><div class="invite-meta">Created: ${new Date(invite.created_at).toLocaleDateString()}</div></div>`).join('')}</div>` : '<div class="dash-list-placeholder">No invite codes yet.</div>';
+  if (error) return (container.innerHTML = `<div class="dash-list-placeholder">${tr('invitesLoadError','Unable to load invites.')}</div>`);
+  container.innerHTML = data.length ? `<div class="invite-grid">${data.map((invite) => `<div class="invite-card ${invite.used_at ? 'invite-used' : ''}"><div class="invite-code">${invite.code}</div><div class="invite-meta">${tr('inviteRole','Role')}: ${invite.role}</div><div class="invite-meta">${tr('inviteCreated','Created')}: ${new Date(invite.created_at).toLocaleDateString(getActiveLanguage())}</div></div>`).join('')}</div>` : `<div class="dash-list-placeholder">${tr('invitesNone','No invite codes yet.')}</div>`;
 };
 
 const generateInviteCode = async () => {
@@ -992,6 +1994,8 @@ const openModal = (title, html) => {
   document.getElementById('globalModal').classList.add('open');
 };
 
+const showModal = openModal;
+
 const closeModal = () => {
   document.getElementById('globalModal').classList.remove('open');
 };
@@ -1016,11 +2020,117 @@ const closeSidebar = () => {
 };
 
 const openSearch = () => {
-  Notifications.show('Search is coming soon.');
+  const modal = document.getElementById('searchModal');
+  if (!modal) return;
+  modal.style.display = 'flex';
+  setTimeout(() => document.getElementById('searchInput')?.focus(), 80);
+  runSearch('');
+};
+
+const closeSearch = (e) => {
+  if (e && e.target !== document.getElementById('searchModal') && e.type === 'click') return;
+  const modal = document.getElementById('searchModal');
+  if (modal) modal.style.display = 'none';
+  const inp = document.getElementById('searchInput');
+  if (inp) inp.value = '';
+};
+
+const runSearch = (term) => {
+  const results = document.getElementById('searchResults');
+  if (!results) return;
+  const q = (term || '').toLowerCase().trim();
+  if (!q) {
+    results.innerHTML = `<div class="search-empty">Type to search courses and messages…</div>`;
+    return;
+  }
+  const matchedCourses = state.courses.filter(c => (c.name||'').toLowerCase().includes(q) || (c.code||'').toLowerCase().includes(q));
+  const matchedMsgs = state.messages.filter(r => (r.room_name||'').toLowerCase().includes(q));
+  if (!matchedCourses.length && !matchedMsgs.length) {
+    results.innerHTML = `<div class="search-empty">No results for “${term}”</div>`;
+    return;
+  }
+  let html = '';
+  if (matchedCourses.length) {
+    html += `<div class="search-section-label">Courses</div>`;
+    html += matchedCourses.map((c,i) => {
+      const [col] = COURSE_COLORS[i % COURSE_COLORS.length];
+      return `<div class="search-result-item" onclick="closeSearch();navigate('courses')">
+        <div class="search-result-icon" style="background:${col}20;color:${col}">📚</div>
+        <div><div class="search-result-title">${c.name}</div><div class="search-result-sub">${c.teacher_name||'General'}</div></div>
+      </div>`;
+    }).join('');
+  }
+  if (matchedMsgs.length) {
+    html += `<div class="search-section-label">Messages</div>`;
+    html += matchedMsgs.map(r => `<div class="search-result-item" onclick="closeSearch();openChat('${r.id}')">
+      <div class="search-result-icon" style="background:rgba(59,91,219,.1);color:var(--accent)">💬</div>
+      <div><div class="search-result-title">${r.room_name}</div><div class="search-result-sub">${r.last_message||'No messages'}</div></div>
+    </div>`).join('');
+  }
+  results.innerHTML = html;
+};
+
+// ── Notifications ──────────────────────────────────────────────────
+if (!state.notifications) state.notifications = [];
+if (!state.notifUnread) state.notifUnread = 0;
+
+const addNotification = (type, title, body, date) => {
+  if (!state.notifications) state.notifications = [];
+  state.notifications.unshift({ id: Date.now(), type, title, body, date: date || new Date().toISOString(), unread: true });
+  state.notifUnread = state.notifications.filter(n => n.unread).length;
+  renderNotifDot();
+};
+
+const renderNotifDot = () => {
+  const dot = document.getElementById('notifDot');
+  if (!dot) return;
+  if (state.notifUnread > 0) { dot.textContent = state.notifUnread > 9 ? '9+' : state.notifUnread; dot.classList.remove('hidden'); }
+  else dot.classList.add('hidden');
 };
 
 const toggleNotifs = () => {
-  Notifications.show('Notifications panel not implemented yet.');
+  const panel = document.getElementById('notifPanel');
+  if (!panel) return;
+  const isOpen = !panel.classList.contains('hidden');
+  if (isOpen) { panel.classList.add('hidden'); return; }
+  // Mark all read
+  state.notifications.forEach(n => n.unread = false);
+  state.notifUnread = 0;
+  renderNotifDot();
+  // Render notifications
+  const list = document.getElementById('notifList');
+  const iconMap = { invite: 'invite', event: 'event', task: 'task', info: 'info', course: 'invite' };
+  if (!state.notifications.length) {
+    list.innerHTML = '<div class="notif-empty">No notifications yet</div>';
+  } else {
+    list.innerHTML = state.notifications.slice(0,20).map(n => `
+      <div class="notif-item">
+        <div class="notif-icon ${iconMap[n.type]||'info'}">${n.type==='invite'||n.type==='course'?'🏃':n.type==='event'?'📅':n.type==='task'?'✅':'🔔'}</div>
+        <div class="notif-body">
+          <div class="notif-title">${n.title}</div>
+          ${n.body ? `<div class="notif-sub">${n.body}</div>` : ''}
+          <div class="notif-time">${n.date ? new Date(n.date).toLocaleString([], {dateStyle:'short',timeStyle:'short'}) : ''}</div>
+        </div>
+      </div>`).join('');
+  }
+  panel.classList.remove('hidden');
+  // Close on outside click
+  setTimeout(() => {
+    const handler = (e) => {
+      if (!panel.contains(e.target) && e.target.id !== 'notifBtn') {
+        panel.classList.add('hidden');
+        document.removeEventListener('click', handler);
+      }
+    };
+    document.addEventListener('click', handler);
+  }, 10);
+};
+
+const clearAllNotifs = () => {
+  state.notifications = [];
+  state.notifUnread = 0;
+  renderNotifDot();
+  document.getElementById('notifList').innerHTML = '<div class="notif-empty">No notifications yet</div>';
 };
 
 const openChat = async (roomId) => {
@@ -1172,11 +2282,37 @@ const startNewChat = async () => {
 };
 
 const openFileUpload = () => {
-  Notifications.show('File upload functionality is coming soon.');
+  Notifications.show('File upload coming soon.');
 };
 
 const openCreateEvent = () => {
-  Notifications.show('Event creation coming soon.');
+  const today = new Date().toISOString().slice(0,10);
+  showModal('Add Calendar Event', `
+    <div style="display:flex;flex-direction:column;gap:14px;padding:4px 0">
+      <input id="newEvTitle" placeholder="Event title" style="border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:14px;outline:none;width:100%;box-sizing:border-box" />
+      <input id="newEvDate" type="date" value="${today}" style="border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:14px;outline:none;width:100%;box-sizing:border-box" />
+      <select id="newEvType" style="border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:14px;outline:none;background:#fff">
+        <option value="course">Course</option>
+        <option value="task">Task</option>
+        <option value="invite">Event</option>
+      </select>
+      <button class="btn btn-primary" onclick="submitCalEventFromModal()">Add</button>
+    </div>
+  `);
+  setTimeout(() => document.getElementById('newEvTitle')?.focus(), 100);
+};
+
+const submitCalEventFromModal = () => {
+  const title = (document.getElementById('newEvTitle')?.value || '').trim();
+  const dateStr = document.getElementById('newEvDate')?.value;
+  const type = document.getElementById('newEvType')?.value || 'course';
+  if (!title || !dateStr) { Notifications.show('Fill in all fields.','warn'); return; }
+  if (!state.calendarEvents) state.calendarEvents = [];
+  state.calendarEvents.push({ date: dateStr, title, type });
+  closeModal();
+  if (state.page === 'calendar') renderCalendarGrid();
+  addNotification('event', title, `Scheduled for ${dateStr}`, new Date().toISOString());
+  Notifications.show('Event added to calendar!');
 };
 
 const toggleTaskDone = async (event, taskId) => {
@@ -1237,16 +2373,22 @@ Object.assign(window, {
   toggleSidebarCollapse,
   closeSidebar,
   openSearch,
+  closeSearch,
+  runSearch,
   toggleNotifs,
+  clearAllNotifs,
+  addNotification,
   openChat,
   startNewChat,
   sendChatMessage,
   openFileUpload,
   openCreateEvent,
+  submitCalEventFromModal,
   toggleTaskDone,
   openCreateUser,
   submitCreateUser,
   closeModal,
+  showModal,
   generateInviteCode,
   setStudyMode,
   setSchoolStage,
@@ -1256,6 +2398,15 @@ Object.assign(window, {
   markLearnTopic,
   resumeLearnBookmark,
   clearLearnBookmark,
+  calNav,
+  calGoToday,
+  calDayClick,
+  submitCalEvent,
+  openJoinCourse,
+  openCreateCourse,
+  submitJoinCourse,
+  submitCreateCourse,
+  showCourseDetail,
 });
 
 if (window.registerPageModule) {
@@ -1270,6 +2421,16 @@ window.addEventListener('DOMContentLoaded', async () => {
     loadPage(state.page);
   };
 
+  // Close search modal on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const sm = document.getElementById('searchModal');
+      if (sm && sm.style.display !== 'none') closeSearch();
+      const np = document.getElementById('notifPanel');
+      if (np && !np.classList.contains('hidden')) np.classList.add('hidden');
+    }
+  });
+
   if (!localStorage.getItem('lyceon_sw_cleared')) {
     const cleared = await clearOldServiceWorker();
     if (cleared) {
@@ -1283,3 +2444,4 @@ window.addEventListener('DOMContentLoaded', async () => {
   setAuthMode('student');
   init();
 });
+
