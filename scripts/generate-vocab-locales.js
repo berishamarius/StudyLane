@@ -229,47 +229,6 @@ main().catch(err => {
   process.exit(1);
 });
 
- *     { "trans": "…", "ex_trans": "…" },  ← index 0
- *     { "trans": "…", "ex_trans": "…" },  ← index 1
- *     …
- *   ] } } }
- *
- * The app merges the overlay with the base file at runtime:
- *   base[wordKey]  → shown as the foreign word
- *   overlay.trans  → shown as the localised translation
- *
- * Exclusion rules (native speakers don't need that vocab):
- *   german.json   → skip: de
- *   french.json   → skip: fr
- *   spanish.json  → skip: es, es-AR, es-MX, es-US, es-UY
- *   arabic.json   → skip: ar, ar-PS
- *   chinese.json  → skip: zh, zh-TW
- *   english.json  → skip: en
- *   latin.json    → skip: nobody (Latin is a dead language — all locales get it)
- *
- * Usage:
- *   node scripts/generate-vocab-locales.js                   # all languages, all locales
- *   node scripts/generate-vocab-locales.js --lang=german     # one language only
- *   node scripts/generate-vocab-locales.js --locale=ja       # one target locale only
- *   node scripts/generate-vocab-locales.js --force           # re-translate existing files
- *   node scripts/generate-vocab-locales.js --dry-run         # preview, no writes
- *   node scripts/generate-vocab-locales.js --delay=80        # ms between requests (default 60)
- *
- * Translation: Google Translate public endpoint (same approach as fill-locales.js)
- */
-
-'use strict';
-
-const fs    = require('fs');
-const path  = require('path');
-const https = require('https');
-
-// ── Paths ─────────────────────────────────────────────────────────────────────
-const ROOT       = path.join(__dirname, '..');
-const VOCAB_DIR  = path.join(ROOT, 'locales', 'vocab');
-
-// ── CLI flags ─────────────────────────────────────────────────────────────────
-const argv     = process.argv.slice(2);
 const FORCE    = argv.includes('--force');
 const DRY_RUN  = argv.includes('--dry-run');
 const ONLY_LANG   = (argv.find(a => a.startsWith('--lang='))   || '').split('=')[1] || null;
