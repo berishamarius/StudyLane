@@ -1,0 +1,366 @@
+{
+  "meta": {
+    "language": "Spanish (Español)",
+    "script": "Latin",
+    "note": "Each entry: Spanish word, English meaning, example sentence (Spanish + English). Gender indicated for nouns (m = masculine, f = feminine). Variants (Spain / Latin America) noted where relevant.",
+    "totalEntries": 500
+  },
+  "categories": {
+    "greetings_and_basics": {
+      "label": "Greetings & Basic Expressions / Saludos y expresiones básicas",
+      "entries": [
+        { "es": "Hola", "en": "Hello / Hi", "ex_es": "Hola, ¿cómo estás?", "ex_en": "Hello, how are you?" },
+        { "es": "Buenos días", "en": "Good morning", "ex_es": "Buenos días, ¿cómo te va?", "ex_en": "Good morning, how are you doing?" },
+        { "es": "Buenas tardes", "en": "Good afternoon / Good evening", "ex_es": "Buenas tardes, bienvenido a nuestra casa.", "ex_en": "Good afternoon, welcome to our home." },
+        { "es": "Buenas noches", "en": "Good night / Good evening (greeting)", "ex_es": "Buenas noches, que descanses.", "ex_en": "Good night, rest well." },
+        { "es": "Adiós", "en": "Goodbye", "ex_es": "Adiós, hasta pronto.", "ex_en": "Goodbye, see you soon." },
+        { "es": "Hasta luego", "en": "See you later", "ex_es": "Hasta luego, fue un placer.", "ex_en": "See you later, it was a pleasure." },
+        { "es": "Por favor", "en": "Please", "ex_es": "Por favor, ¿me puedes ayudar?", "ex_en": "Please, can you help me?" },
+        { "es": "Gracias", "en": "Thank you", "ex_es": "Muchas gracias por tu ayuda.", "ex_en": "Thank you very much for your help." },
+        { "es": "De nada", "en": "You're welcome", "ex_es": "De nada, con mucho gusto.", "ex_en": "You're welcome, with pleasure." },
+        { "es": "Perdón / Disculpe", "en": "Sorry / Excuse me", "ex_es": "Perdón, no entendí.", "ex_en": "Sorry, I didn't understand." },
+        { "es": "No entiendo", "en": "I don't understand", "ex_es": "No entiendo esta regla.", "ex_en": "I don't understand this rule." },
+        { "es": "¿Habla inglés?", "en": "Do you speak English? (formal)", "ex_es": "¿Habla inglés? Hablo poco español.", "ex_en": "Do you speak English? I speak little Spanish." },
+        { "es": "¿Cómo se llama usted?", "en": "What is your name? (formal)", "ex_es": "¿Cómo se llama usted, por favor?", "ex_en": "What is your name, please?" },
+        { "es": "Me llamo …", "en": "My name is …", "ex_es": "Me llamo Carlos.", "ex_en": "My name is Carlos." },
+        { "es": "Mucho gusto", "en": "Nice to meet you", "ex_es": "Mucho gusto, encantado de conocerte.", "ex_en": "Nice to meet you, pleased to meet you." }
+      ]
+    },
+    "numbers": {
+      "label": "Numbers / Los números",
+      "entries": [
+        { "es": "cero", "en": "zero", "ex_es": "El resultado es cero.", "ex_en": "The result is zero." },
+        { "es": "uno / una", "en": "one (m/f)", "ex_es": "Tengo un hermano.", "ex_en": "I have one brother." },
+        { "es": "dos", "en": "two", "ex_es": "Hay dos libros sobre la mesa.", "ex_en": "There are two books on the table." },
+        { "es": "tres", "en": "three", "ex_es": "Tenemos tres hijos.", "ex_en": "We have three children." },
+        { "es": "cuatro", "en": "four", "ex_es": "El año tiene cuatro estaciones.", "ex_en": "The year has four seasons." },
+        { "es": "cinco", "en": "five", "ex_es": "Hay cinco dedos en cada mano.", "ex_en": "There are five fingers on each hand." },
+        { "es": "seis", "en": "six", "ex_es": "La tienda cierra a las seis.", "ex_en": "The shop closes at six." },
+        { "es": "siete", "en": "seven", "ex_es": "La semana tiene siete días.", "ex_en": "The week has seven days." },
+        { "es": "ocho", "en": "eight", "ex_es": "Duermo ocho horas por noche.", "ex_en": "I sleep eight hours a night." },
+        { "es": "nueve", "en": "nine", "ex_es": "Mi edificio tiene nueve pisos.", "ex_en": "My building has nine floors." },
+        { "es": "diez", "en": "ten", "ex_es": "Tengo diez euros.", "ex_en": "I have ten euros." },
+        { "es": "veinte", "en": "twenty", "ex_es": "Ella tiene veinte años.", "ex_en": "She is twenty years old." },
+        { "es": "cien / ciento", "en": "one hundred", "ex_es": "Pagué cien euros.", "ex_en": "I paid one hundred euros." },
+        { "es": "mil", "en": "one thousand", "ex_es": "La distancia es de mil kilómetros.", "ex_en": "The distance is one thousand kilometres." },
+        { "es": "un millón", "en": "one million", "ex_es": "La ciudad tiene un millón de habitantes.", "ex_en": "The city has one million inhabitants." }
+      ]
+    },
+    "family": {
+      "label": "Family / La familia",
+      "entries": [
+        { "es": "la familia", "en": "family (f)", "ex_es": "Mi familia es grande.", "ex_en": "My family is large." },
+        { "es": "el padre", "en": "father (m)", "ex_es": "Mi padre es médico.", "ex_en": "My father is a doctor." },
+        { "es": "la madre", "en": "mother (f)", "ex_es": "Mi madre cocina cada día.", "ex_en": "My mother cooks every day." },
+        { "es": "el hermano", "en": "brother (m)", "ex_es": "Mi hermano es mayor que yo.", "ex_en": "My brother is older than me." },
+        { "es": "la hermana", "en": "sister (f)", "ex_es": "Mi hermana estudia medicina.", "ex_en": "My sister is studying medicine." },
+        { "es": "el abuelo", "en": "grandfather (m)", "ex_es": "Mi abuelo cuenta historias bonitas.", "ex_en": "My grandfather tells beautiful stories." },
+        { "es": "la abuela", "en": "grandmother (f)", "ex_es": "Mi abuela vive en el campo.", "ex_en": "My grandmother lives in the countryside." },
+        { "es": "el tío", "en": "uncle (m)", "ex_es": "Mi tío vive en Madrid.", "ex_en": "My uncle lives in Madrid." },
+        { "es": "la tía", "en": "aunt (f)", "ex_es": "Mi tía es profesora.", "ex_en": "My aunt is a teacher." },
+        { "es": "el hijo", "en": "son (m)", "ex_es": "Mi hijo está en la universidad.", "ex_en": "My son is at university." },
+        { "es": "la hija", "en": "daughter (f)", "ex_es": "Mi hija adora leer.", "ex_en": "My daughter loves reading." },
+        { "es": "el marido / el esposo", "en": "husband (m)", "ex_es": "Mi marido es ingeniero.", "ex_en": "My husband is an engineer." },
+        { "es": "la mujer / la esposa", "en": "wife (f)", "ex_es": "Mi esposa es dentista.", "ex_en": "My wife is a dentist." },
+        { "es": "el primo / la prima", "en": "cousin (m/f)", "ex_es": "Mi primo vive en Argentina.", "ex_en": "My cousin lives in Argentina." },
+        { "es": "los niños / los hijos", "en": "children (m pl)", "ex_es": "Los niños juegan en el jardín.", "ex_en": "The children are playing in the garden." }
+      ]
+    },
+    "body": {
+      "label": "Body / El cuerpo",
+      "entries": [
+        { "es": "la cabeza", "en": "head (f)", "ex_es": "Me duele la cabeza.", "ex_en": "I have a headache." },
+        { "es": "la cara / el rostro", "en": "face (f/m)", "ex_es": "Tiene una cara bonita.", "ex_en": "She has a pretty face." },
+        { "es": "el ojo / los ojos", "en": "eye / eyes (m)", "ex_es": "Sus ojos son azules.", "ex_en": "His eyes are blue." },
+        { "es": "la oreja / el oído", "en": "ear (outer/inner) (f/m)", "ex_es": "Me duele el oído.", "ex_en": "My ear hurts." },
+        { "es": "la nariz", "en": "nose (f)", "ex_es": "Tengo la nariz tapada.", "ex_en": "My nose is blocked." },
+        { "es": "la boca", "en": "mouth (f)", "ex_es": "Abre la boca, por favor.", "ex_en": "Open your mouth, please." },
+        { "es": "los dientes", "en": "teeth (m pl)", "ex_es": "Cepíllate los dientes dos veces al día.", "ex_en": "Brush your teeth twice a day." },
+        { "es": "la mano", "en": "hand (f)", "ex_es": "Lávate las manos antes de comer.", "ex_en": "Wash your hands before eating." },
+        { "es": "el pie", "en": "foot (m)", "ex_es": "Me duele el pie después de caminar.", "ex_en": "My foot hurts after walking." },
+        { "es": "el corazón", "en": "heart (m)", "ex_es": "El corazón bombea la sangre.", "ex_en": "The heart pumps blood." },
+        { "es": "la espalda", "en": "back (f)", "ex_es": "Me duele la espalda.", "ex_en": "I have back pain." },
+        { "es": "el estómago / la barriga", "en": "stomach / belly (m/f)", "ex_es": "Me duele el estómago.", "ex_en": "I have a stomachache." },
+        { "es": "el cuello", "en": "neck (m)", "ex_es": "Me duele el cuello.", "ex_en": "My neck hurts." },
+        { "es": "el hombro", "en": "shoulder (m)", "ex_es": "Se lesionó el hombro.", "ex_en": "He injured his shoulder." },
+        { "es": "la rodilla", "en": "knee (f)", "ex_es": "Se hizo daño en la rodilla.", "ex_en": "He hurt his knee." }
+      ]
+    },
+    "colors": {
+      "label": "Colors / Los colores",
+      "entries": [
+        { "es": "rojo / roja", "en": "red (m/f)", "ex_es": "Compré una camisa roja.", "ex_en": "I bought a red shirt." },
+        { "es": "azul", "en": "blue", "ex_es": "El cielo es azul en verano.", "ex_en": "The sky is blue in summer." },
+        { "es": "verde", "en": "green", "ex_es": "Los árboles son verdes en primavera.", "ex_en": "Trees are green in spring." },
+        { "es": "amarillo / amarilla", "en": "yellow (m/f)", "ex_es": "Los plátanos son amarillos.", "ex_en": "Bananas are yellow." },
+        { "es": "blanco / blanca", "en": "white (m/f)", "ex_es": "La nieve es blanca.", "ex_en": "Snow is white." },
+        { "es": "negro / negra", "en": "black (m/f)", "ex_es": "El gato es negro.", "ex_en": "The cat is black." },
+        { "es": "naranja", "en": "orange (invariable)", "ex_es": "Compré un bolso naranja.", "ex_en": "I bought an orange bag." },
+        { "es": "morado / púrpura", "en": "purple / violet", "ex_es": "La flor es morada.", "ex_en": "The flower is purple." },
+        { "es": "rosa", "en": "pink (invariable)", "ex_es": "Le gusta el color rosa.", "ex_en": "She likes the colour pink." },
+        { "es": "marrón / café", "en": "brown (Sp./LatAm)", "ex_es": "Su cabello es marrón.", "ex_en": "Her hair is brown." },
+        { "es": "gris", "en": "grey", "ex_es": "El cielo está gris hoy.", "ex_en": "The sky is grey today." },
+        { "es": "dorado / dorada", "en": "golden (m/f)", "ex_es": "El anillo es dorado.", "ex_en": "The ring is golden." }
+      ]
+    },
+    "food_and_drink": {
+      "label": "Food & Drink / La comida y las bebidas",
+      "entries": [
+        { "es": "el pan", "en": "bread (m)", "ex_es": "Comemos pan en cada comida.", "ex_en": "We eat bread at every meal." },
+        { "es": "el arroz", "en": "rice (m)", "ex_es": "Comimos arroz con pollo.", "ex_en": "We ate rice with chicken." },
+        { "es": "la carne", "en": "meat (f)", "ex_es": "Me encanta la carne a la parrilla.", "ex_en": "I love grilled meat." },
+        { "es": "el pollo", "en": "chicken (m)", "ex_es": "El pollo asado está delicioso.", "ex_en": "Roast chicken is delicious." },
+        { "es": "el pescado", "en": "fish (m)", "ex_es": "Comemos pescado los viernes.", "ex_en": "We eat fish on Fridays." },
+        { "es": "las verduras / los vegetales", "en": "vegetables (f/m pl)", "ex_es": "Las verduras son buenas para la salud.", "ex_en": "Vegetables are good for health." },
+        { "es": "la fruta", "en": "fruit (f)", "ex_es": "Comí fruta en el desayuno.", "ex_en": "I ate fruit for breakfast." },
+        { "es": "el agua", "en": "water (f, but el)", "ex_es": "Bebe mucha agua cada día.", "ex_en": "Drink lots of water every day." },
+        { "es": "el jugo / el zumo", "en": "juice (LatAm/Spain) (m)", "ex_es": "Bebí jugo de naranja esta mañana.", "ex_en": "I drank orange juice this morning." },
+        { "es": "el té", "en": "tea (m)", "ex_es": "Tomo el té con leche.", "ex_en": "I take my tea with milk." },
+        { "es": "el café", "en": "coffee (m)", "ex_es": "Un café con leche, por favor.", "ex_en": "A coffee with milk, please." },
+        { "es": "la leche", "en": "milk (f)", "ex_es": "Los niños beben leche cada mañana.", "ex_en": "Children drink milk every morning." },
+        { "es": "el azúcar", "en": "sugar (m)", "ex_es": "No pongo azúcar en el café.", "ex_en": "I don't put sugar in my coffee." },
+        { "es": "la sal", "en": "salt (f)", "ex_es": "Agrega un poco de sal a la comida.", "ex_en": "Add a little salt to the food." },
+        { "es": "el aceite de oliva", "en": "olive oil (m)", "ex_es": "Uso aceite de oliva para cocinar.", "ex_en": "I use olive oil for cooking." },
+        { "es": "la comida", "en": "meal / food (f)", "ex_es": "Hacemos tres comidas al día.", "ex_en": "We have three meals a day." },
+        { "es": "el desayuno", "en": "breakfast (m)", "ex_es": "El desayuno es la comida más importante.", "ex_en": "Breakfast is the most important meal." },
+        { "es": "el almuerzo", "en": "lunch (m)", "ex_es": "Almorzamos al mediodía.", "ex_en": "We have lunch at noon." },
+        { "es": "la cena", "en": "dinner (f)", "ex_es": "La familia se reúne en la cena.", "ex_en": "The family gathers for dinner." }
+      ]
+    },
+    "time": {
+      "label": "Time / El tiempo",
+      "entries": [
+        { "es": "ahora", "en": "now", "ex_es": "Estoy ocupado ahora.", "ex_en": "I am busy now." },
+        { "es": "hoy", "en": "today", "ex_es": "Hoy es viernes.", "ex_en": "Today is Friday." },
+        { "es": "mañana", "en": "tomorrow", "ex_es": "Saldremos mañana.", "ex_en": "We will go out tomorrow." },
+        { "es": "ayer", "en": "yesterday", "ex_es": "Fui al mercado ayer.", "ex_en": "I went to the market yesterday." },
+        { "es": "la hora", "en": "hour / time (f)", "ex_es": "¿Qué hora es?", "ex_en": "What time is it?" },
+        { "es": "el minuto", "en": "minute (m)", "ex_es": "Espera un minuto, por favor.", "ex_en": "Wait a minute, please." },
+        { "es": "el día", "en": "day (m)", "ex_es": "Hoy es un día bonito.", "ex_en": "Today is a beautiful day." },
+        { "es": "la semana", "en": "week (f)", "ex_es": "Volveré en una semana.", "ex_en": "I will return in a week." },
+        { "es": "el mes", "en": "month (m)", "ex_es": "Ha pasado un mes desde su partida.", "ex_en": "A month has passed since his departure." },
+        { "es": "el año", "en": "year (m)", "ex_es": "El año nuevo comienza en enero.", "ex_en": "The new year begins in January." },
+        { "es": "la mañana", "en": "morning (f)", "ex_es": "Me levanto temprano por la mañana.", "ex_en": "I get up early in the morning." },
+        { "es": "el mediodía", "en": "noon (m)", "ex_es": "Nos encontramos al mediodía.", "ex_en": "We meet at noon." },
+        { "es": "la tarde", "en": "afternoon / evening (f)", "ex_es": "Camino por las tardes.", "ex_en": "I walk in the afternoons." },
+        { "es": "la noche", "en": "night (f)", "ex_es": "Me acuesto temprano por la noche.", "ex_en": "I go to sleep early at night." }
+      ]
+    },
+    "days_and_months": {
+      "label": "Days & Months / Días y meses",
+      "entries": [
+        { "es": "lunes", "en": "Monday", "ex_es": "La escuela reanuda el lunes.", "ex_en": "School resumes on Monday." },
+        { "es": "martes", "en": "Tuesday", "ex_es": "Mi cita es el martes.", "ex_en": "My appointment is on Tuesday." },
+        { "es": "miércoles", "en": "Wednesday", "ex_es": "Nos vemos el miércoles.", "ex_en": "We see each other on Wednesday." },
+        { "es": "jueves", "en": "Thursday", "ex_es": "La reunión es el jueves.", "ex_en": "The meeting is on Thursday." },
+        { "es": "viernes", "en": "Friday", "ex_es": "El viernes es día de descanso.", "ex_en": "Friday is a rest day." },
+        { "es": "sábado", "en": "Saturday", "ex_es": "Hacemos deporte el sábado.", "ex_en": "We do sport on Saturday." },
+        { "es": "domingo", "en": "Sunday", "ex_es": "El domingo vamos a la iglesia.", "ex_en": "On Sunday we go to church." },
+        { "es": "enero", "en": "January", "ex_es": "Nací en enero.", "ex_en": "I was born in January." },
+        { "es": "febrero", "en": "February", "ex_es": "Febrero es el mes más corto.", "ex_en": "February is the shortest month." },
+        { "es": "marzo", "en": "March", "ex_es": "La primavera comienza en marzo.", "ex_en": "Spring begins in March." },
+        { "es": "abril", "en": "April", "ex_es": "Las flores florecen en abril.", "ex_en": "Flowers bloom in April." },
+        { "es": "mayo", "en": "May", "ex_es": "El tiempo es agradable en mayo.", "ex_en": "The weather is mild in May." },
+        { "es": "junio", "en": "June", "ex_es": "El verano empieza en junio.", "ex_en": "Summer begins in June." },
+        { "es": "diciembre", "en": "December", "ex_es": "La Navidad se celebra en diciembre.", "ex_en": "Christmas is celebrated in December." }
+      ]
+    },
+    "weather": {
+      "label": "Weather / El tiempo (meteorológico)",
+      "entries": [
+        { "es": "el tiempo / la meteorología", "en": "weather (m/f)", "ex_es": "¿Qué tiempo hace hoy?", "ex_en": "What is the weather like today?" },
+        { "es": "caluroso / cálido", "en": "hot / warm", "ex_es": "Hace mucho calor en verano.", "ex_en": "It is very hot in summer." },
+        { "es": "frío / fresca", "en": "cold (m/f)", "ex_es": "Hace frío en invierno.", "ex_en": "It is cold in winter." },
+        { "es": "soleado / soleada", "en": "sunny (m/f)", "ex_es": "Hoy está soleado y bonito.", "ex_en": "Today is sunny and beautiful." },
+        { "es": "lluvioso / lluviosa", "en": "rainy (m/f)", "ex_es": "Está lloviendo, no olvides el paraguas.", "ex_en": "It's raining, don't forget the umbrella." },
+        { "es": "la lluvia", "en": "rain (f)", "ex_es": "La lluvia es necesaria para las plantas.", "ex_en": "Rain is necessary for plants." },
+        { "es": "la nieve", "en": "snow (f)", "ex_es": "Nieva en las montañas.", "ex_en": "It snows in the mountains." },
+        { "es": "el viento", "en": "wind (m)", "ex_es": "El viento es fuerte hoy.", "ex_en": "The wind is strong today." },
+        { "es": "la nube", "en": "cloud (f)", "ex_es": "El cielo está cubierto de nubes.", "ex_en": "The sky is covered with clouds." },
+        { "es": "la tormenta", "en": "storm (f)", "ex_es": "Hubo una tormenta fuerte anoche.", "ex_en": "There was a strong storm last night." },
+        { "es": "la niebla / el bruma", "en": "fog / mist (f/m)", "ex_es": "Había mucha niebla esta mañana.", "ex_en": "There was thick fog this morning." },
+        { "es": "la temperatura", "en": "temperature (f)", "ex_es": "La temperatura es de treinta y cinco grados.", "ex_en": "The temperature is thirty-five degrees." }
+      ]
+    },
+    "travel_and_places": {
+      "label": "Travel & Places / Viajes y lugares",
+      "entries": [
+        { "es": "el aeropuerto", "en": "airport (m)", "ex_es": "Llegué al aeropuerto temprano.", "ex_en": "I arrived at the airport early." },
+        { "es": "la estación", "en": "station (f)", "ex_es": "Nos encontramos en la estación.", "ex_en": "We met at the station." },
+        { "es": "el hotel", "en": "hotel (m)", "ex_es": "Nos alojamos en un hotel de cinco estrellas.", "ex_en": "We stayed in a five-star hotel." },
+        { "es": "el hospital", "en": "hospital (m)", "ex_es": "El hospital está cerca de mi casa.", "ex_en": "The hospital is near my home." },
+        { "es": "el mercado", "en": "market (m)", "ex_es": "Compré especias en el mercado.", "ex_en": "I bought spices at the market." },
+        { "es": "la tienda", "en": "shop / store (f)", "ex_es": "Fui a la tienda a comprar pan.", "ex_en": "I went to the shop to buy bread." },
+        { "es": "la iglesia", "en": "church (f)", "ex_es": "La iglesia está en el centro del pueblo.", "ex_en": "The church is in the centre of the town." },
+        { "es": "la ciudad", "en": "city / town (f)", "ex_es": "Madrid es una gran ciudad.", "ex_en": "Madrid is a large city." },
+        { "es": "el pueblo / la aldea", "en": "village / town (m/f)", "ex_es": "Crecí en un pequeño pueblo.", "ex_en": "I grew up in a small village." },
+        { "es": "la calle", "en": "street (f)", "ex_es": "Vivo en la calle principal.", "ex_en": "I live on the main street." },
+        { "es": "el banco", "en": "bank (m)", "ex_es": "Saqué dinero del banco.", "ex_en": "I withdrew money from the bank." },
+        { "es": "el restaurante", "en": "restaurant (m)", "ex_es": "Cenamos en un restaurante español.", "ex_en": "We dined in a Spanish restaurant." },
+        { "es": "la farmacia", "en": "pharmacy (f)", "ex_es": "Compré el medicamento en la farmacia.", "ex_en": "I bought the medicine at the pharmacy." },
+        { "es": "la escuela", "en": "school (f)", "ex_es": "Los niños van a la escuela.", "ex_en": "Children go to school." },
+        { "es": "la universidad", "en": "university (f)", "ex_es": "Estudio en la Universidad Complutense.", "ex_en": "I study at the Complutense University." }
+      ]
+    },
+    "transport": {
+      "label": "Transport / El transporte",
+      "entries": [
+        { "es": "el coche / el carro", "en": "car (m) (Spain/LatAm)", "ex_es": "Mi padre compró un coche nuevo.", "ex_en": "My father bought a new car." },
+        { "es": "el autobús / el bus", "en": "bus (m)", "ex_es": "Tomo el autobús todos los días.", "ex_en": "I take the bus every day." },
+        { "es": "el tren", "en": "train (m)", "ex_es": "El tren es más rápido que el autobús.", "ex_en": "The train is faster than the bus." },
+        { "es": "el avión", "en": "aeroplane (m)", "ex_es": "Viajé en avión hasta Estambul.", "ex_en": "I travelled by plane to Istanbul." },
+        { "es": "el barco / el buque", "en": "boat / ship (m)", "ex_es": "Cruzamos el mar en barco.", "ex_en": "We crossed the sea by boat." },
+        { "es": "la bicicleta / la bici", "en": "bicycle (f)", "ex_es": "Monto en bici por las mañanas.", "ex_en": "I ride my bicycle in the mornings." },
+        { "es": "el taxi", "en": "taxi (m)", "ex_es": "Tomé un taxi desde el aeropuerto.", "ex_en": "I took a taxi from the airport." },
+        { "es": "el metro / el subte", "en": "metro / underground (m)", "ex_es": "El metro es muy práctico en Madrid.", "ex_en": "The metro is very practical in Madrid." }
+      ]
+    },
+    "school_and_work": {
+      "label": "School & Work / La escuela y el trabajo",
+      "entries": [
+        { "es": "el profesor / la profesora", "en": "teacher / professor (m/f)", "ex_es": "El profesor explica la lección claramente.", "ex_en": "The teacher explains the lesson clearly." },
+        { "es": "el estudiante / la estudiante", "en": "student (m/f)", "ex_es": "El estudiante está escribiendo su trabajo.", "ex_en": "The student is writing his essay." },
+        { "es": "el libro", "en": "book (m)", "ex_es": "He leído este libro dos veces.", "ex_en": "I have read this book twice." },
+        { "es": "el bolígrafo / la pluma", "en": "pen (m/f) (Spain/LatAm)", "ex_es": "Pásame tu bolígrafo, por favor.", "ex_en": "Pass me your pen, please." },
+        { "es": "la lección", "en": "lesson (f)", "ex_es": "La lección es fácil e interesante.", "ex_en": "The lesson is easy and interesting." },
+        { "es": "el examen", "en": "exam (m)", "ex_es": "El examen es mañana por la mañana.", "ex_en": "The exam is tomorrow morning." },
+        { "es": "la oficina", "en": "office (f)", "ex_es": "Trabajo en una gran oficina.", "ex_en": "I work in a large office." },
+        { "es": "el ingeniero / la ingeniera", "en": "engineer (m/f)", "ex_es": "Mi hermano es ingeniero eléctrico.", "ex_en": "My brother is an electrical engineer." },
+        { "es": "el médico / la médica", "en": "doctor (m/f)", "ex_es": "Fui al médico ayer.", "ex_en": "I went to the doctor yesterday." },
+        { "es": "el abogado / la abogada", "en": "lawyer (m/f)", "ex_es": "La consulta jurídica es con el abogado.", "ex_en": "The legal consultation is with the lawyer." }
+      ]
+    },
+    "house_and_home": {
+      "label": "House & Home / La casa",
+      "entries": [
+        { "es": "la casa", "en": "house / home (f)", "ex_es": "Mi casa es tu casa.", "ex_en": "My home is your home." },
+        { "es": "la habitación / el cuarto", "en": "room (f/m)", "ex_es": "Mi habitación es amplia y luminosa.", "ex_en": "My room is spacious and bright." },
+        { "es": "la cocina", "en": "kitchen (f)", "ex_es": "Mi madre está en la cocina.", "ex_en": "My mother is in the kitchen." },
+        { "es": "el baño / el cuarto de baño", "en": "bathroom (m)", "ex_es": "El baño está al final del pasillo.", "ex_en": "The bathroom is at the end of the corridor." },
+        { "es": "el salón / la sala", "en": "living room (m/f)", "ex_es": "Nos reunimos en el salón.", "ex_en": "We gather in the living room." },
+        { "es": "la puerta", "en": "door (f)", "ex_es": "Cierra la puerta, por favor.", "ex_en": "Close the door, please." },
+        { "es": "la ventana", "en": "window (f)", "ex_es": "Abre la ventana para que entre el aire.", "ex_en": "Open the window to let air in." },
+        { "es": "el piso / la planta", "en": "floor / storey (m/f)", "ex_es": "Vivo en el tercer piso.", "ex_en": "I live on the third floor." },
+        { "es": "la cama", "en": "bed (f)", "ex_es": "Duermo en una cama cómoda.", "ex_en": "I sleep in a comfortable bed." },
+        { "es": "la silla", "en": "chair (f)", "ex_es": "Siéntate en la silla.", "ex_en": "Sit on the chair." }
+      ]
+    },
+    "nature": {
+      "label": "Nature / La naturaleza",
+      "entries": [
+        { "es": "la montaña", "en": "mountain (f)", "ex_es": "Escalamos la montaña en verano.", "ex_en": "We climbed the mountain in summer." },
+        { "es": "el mar", "en": "sea (m)", "ex_es": "El Mediterráneo es un mar hermoso.", "ex_en": "The Mediterranean is a beautiful sea." },
+        { "es": "el río", "en": "river (m)", "ex_es": "El Ebro es el río más largo de España.", "ex_en": "The Ebro is the longest river in Spain." },
+        { "es": "el desierto", "en": "desert (m)", "ex_es": "El Sahara es el mayor desierto caliente.", "ex_en": "The Sahara is the largest hot desert." },
+        { "es": "el bosque / la selva", "en": "forest / jungle (m/f)", "ex_es": "El león vive en el bosque.", "ex_en": "The lion lives in the forest." },
+        { "es": "el árbol", "en": "tree (m)", "ex_es": "Plantamos un árbol en el jardín.", "ex_en": "We planted a tree in the garden." },
+        { "es": "la flor", "en": "flower (f)", "ex_es": "La flor bonita está en el jardín.", "ex_en": "The beautiful flower is in the garden." },
+        { "es": "el sol", "en": "sun (m)", "ex_es": "El sol sale por el este.", "ex_en": "The sun rises in the east." },
+        { "es": "la luna", "en": "moon (f)", "ex_es": "La luna ilumina el cielo de noche.", "ex_en": "The moon illuminates the sky at night." },
+        { "es": "la estrella", "en": "star (f)", "ex_es": "El cielo está lleno de estrellas.", "ex_en": "The sky is full of stars." }
+      ]
+    },
+    "adjectives": {
+      "label": "Adjectives / Los adjetivos",
+      "entries": [
+        { "es": "grande", "en": "big / large", "ex_es": "La ciudad es muy grande.", "ex_en": "The city is very large." },
+        { "es": "pequeño / pequeña", "en": "small (m/f)", "ex_es": "La casa es pequeña pero cómoda.", "ex_en": "The house is small but comfortable." },
+        { "es": "bonito / bonita", "en": "beautiful / pretty (m/f)", "ex_es": "El paisaje es bonito.", "ex_en": "The landscape is beautiful." },
+        { "es": "rápido / rápida", "en": "fast / quick (m/f)", "ex_es": "El tren es muy rápido.", "ex_en": "The train is very fast." },
+        { "es": "lento / lenta", "en": "slow (m/f)", "ex_es": "La tortuga es lenta.", "ex_en": "The turtle is slow." },
+        { "es": "difícil", "en": "difficult / hard", "ex_es": "El examen es difícil.", "ex_en": "The exam is difficult." },
+        { "es": "fácil", "en": "easy", "ex_es": "La pregunta es fácil.", "ex_en": "The question is easy." },
+        { "es": "nuevo / nueva", "en": "new (m/f)", "ex_es": "Compré un teléfono nuevo.", "ex_en": "I bought a new phone." },
+        { "es": "viejo / vieja", "en": "old (m/f)", "ex_es": "La casa es vieja pero bonita.", "ex_en": "The house is old but beautiful." },
+        { "es": "fuerte", "en": "strong", "ex_es": "El viento es fuerte hoy.", "ex_en": "The wind is strong today." },
+        { "es": "caro / cara", "en": "expensive (m/f)", "ex_es": "Este teléfono es muy caro.", "ex_en": "This phone is very expensive." },
+        { "es": "barato / barata", "en": "cheap (m/f)", "ex_es": "Este restaurante es barato.", "ex_en": "This restaurant is cheap." },
+        { "es": "feliz / contento", "en": "happy", "ex_es": "Estoy feliz por mi éxito.", "ex_en": "I am happy about my success." },
+        { "es": "triste", "en": "sad", "ex_es": "Está triste por las malas noticias.", "ex_en": "He is sad after the bad news." },
+        { "es": "cansado / cansada", "en": "tired (m/f)", "ex_es": "Estoy cansado después del trabajo.", "ex_en": "I am tired after work." },
+        { "es": "enfermo / enferma", "en": "sick / ill (m/f)", "ex_es": "No vino porque está enfermo.", "ex_en": "He didn't come because he is sick." }
+      ]
+    },
+    "verbs": {
+      "label": "Common Verbs / Los verbos más comunes",
+      "entries": [
+        { "es": "ir", "en": "to go", "ex_es": "Voy a la escuela cada mañana.", "ex_en": "I go to school every morning." },
+        { "es": "venir", "en": "to come", "ex_es": "Mi amigo viene a casa esta noche.", "ex_en": "My friend is coming to my house tonight." },
+        { "es": "comer", "en": "to eat", "ex_es": "Comemos juntos al mediodía.", "ex_en": "We eat together at noon." },
+        { "es": "beber / tomar", "en": "to drink", "ex_es": "Bebe agua después del deporte.", "ex_en": "Drink water after sport." },
+        { "es": "escribir", "en": "to write", "ex_es": "Escribe una carta a su amiga.", "ex_en": "She is writing a letter to her friend." },
+        { "es": "leer", "en": "to read", "ex_es": "Leyó el libro en una noche.", "ex_en": "He read the book in one night." },
+        { "es": "estudiar", "en": "to study", "ex_es": "Estudia español en Madrid.", "ex_en": "She is studying Spanish in Madrid." },
+        { "es": "trabajar", "en": "to work", "ex_es": "Trabaja mucho para terminar el proyecto.", "ex_en": "He works hard to finish the project." },
+        { "es": "dormir", "en": "to sleep", "ex_es": "Duermo temprano cada noche.", "ex_en": "I sleep early every night." },
+        { "es": "despertarse", "en": "to wake up", "ex_es": "Me despierto con el sonido del despertador.", "ex_en": "I wake up to the sound of the alarm." },
+        { "es": "hablar", "en": "to speak / talk", "ex_es": "Habla español con fluidez.", "ex_en": "He speaks Spanish fluently." },
+        { "es": "escuchar", "en": "to listen", "ex_es": "Escucha la canción con atención.", "ex_en": "She listens to the song attentively." },
+        { "es": "ver", "en": "to see", "ex_es": "Vi algo extraño en la calle.", "ex_en": "I saw something strange on the street." },
+        { "es": "viajar", "en": "to travel", "ex_es": "Viajó a Europa el verano pasado.", "ex_en": "He travelled to Europe last summer." },
+        { "es": "comprar", "en": "to buy", "ex_es": "Compró un regalo para su madre.", "ex_en": "She bought a gift for her mother." },
+        { "es": "entender / comprender", "en": "to understand", "ex_es": "Entendió la lección rápidamente.", "ex_en": "He understood the lesson quickly." },
+        { "es": "saber", "en": "to know (a fact)", "ex_es": "Sé la respuesta correcta.", "ex_en": "I know the correct answer." },
+        { "es": "querer / amar", "en": "to want / to love", "ex_es": "Quiero el español desde niño.", "ex_en": "I have loved Spanish since childhood." },
+        { "es": "ayudar", "en": "to help", "ex_es": "Ayudó a su vecino a mudarse.", "ex_en": "He helped his neighbour to move." },
+        { "es": "poder", "en": "to be able to / can", "ex_es": "Puedo venir mañana.", "ex_en": "I can come tomorrow." }
+      ]
+    },
+    "question_words": {
+      "label": "Question Words / Las palabras interrogativas",
+      "entries": [
+        { "es": "¿Quién?", "en": "Who?", "ex_es": "¿Quién llamó a la puerta?", "ex_en": "Who knocked on the door?" },
+        { "es": "¿Qué?", "en": "What?", "ex_es": "¿Qué estás haciendo?", "ex_en": "What are you doing?" },
+        { "es": "¿Dónde?", "en": "Where?", "ex_es": "¿Dónde vives?", "ex_en": "Where do you live?" },
+        { "es": "¿Cuándo?", "en": "When?", "ex_es": "¿Cuándo empieza la clase?", "ex_en": "When does the lesson begin?" },
+        { "es": "¿Por qué?", "en": "Why?", "ex_es": "¿Por qué llegas tarde?", "ex_en": "Why are you late?" },
+        { "es": "¿Cómo?", "en": "How?", "ex_es": "¿Cómo estás?", "ex_en": "How are you?" },
+        { "es": "¿Cuánto / Cuántos?", "en": "How much / many?", "ex_es": "¿Cuántos años llevas estudiando español?", "ex_en": "How many years have you been studying Spanish?" },
+        { "es": "¿Cuál / Cuáles?", "en": "Which?", "ex_es": "¿Cuál color prefieres?", "ex_en": "Which colour do you prefer?" }
+      ]
+    },
+    "health_and_medicine": {
+      "label": "Health & Medicine / La salud y la medicina",
+      "entries": [
+        { "es": "la salud", "en": "health (f)", "ex_es": "La salud es la riqueza más valiosa.", "ex_en": "Health is the most precious wealth." },
+        { "es": "la enfermedad", "en": "illness / disease (f)", "ex_es": "La enfermedad le impide trabajar.", "ex_en": "The illness prevents him from working." },
+        { "es": "el medicamento / la medicina", "en": "medicine / medication (m/f)", "ex_es": "Tomo el medicamento después de comer.", "ex_en": "I take the medicine after eating." },
+        { "es": "el dolor", "en": "pain (m)", "ex_es": "Siento un fuerte dolor de cabeza.", "ex_en": "I feel a severe headache." },
+        { "es": "la fiebre", "en": "fever (f)", "ex_es": "Tiene una fiebre alta.", "ex_en": "He has a high fever." },
+        { "es": "la tos", "en": "cough (f)", "ex_es": "Esta tos me molesta mucho.", "ex_en": "This cough bothers me a lot." },
+        { "es": "el resfriado", "en": "cold (illness) (m)", "ex_es": "Me resfrié por el frío.", "ex_en": "I caught a cold because of the cold weather." }
+      ]
+    },
+    "emotions": {
+      "label": "Emotions / Las emociones",
+      "entries": [
+        { "es": "la alegría", "en": "joy / happiness (f)", "ex_es": "La alegría llena su corazón.", "ex_en": "Joy fills his heart." },
+        { "es": "la tristeza", "en": "sadness (f)", "ex_es": "La tristeza es visible en su cara.", "ex_en": "Sadness is visible on his face." },
+        { "es": "el miedo", "en": "fear (m)", "ex_es": "El miedo es natural en situaciones peligrosas.", "ex_en": "Fear is natural in dangerous situations." },
+        { "es": "la ira / el enojo", "en": "anger (f/m)", "ex_es": "La ira daña la salud.", "ex_en": "Anger is harmful to health." },
+        { "es": "el amor", "en": "love (m)", "ex_es": "El amor hace la vida más bonita.", "ex_en": "Love makes life more beautiful." },
+        { "es": "el cansancio / la fatiga", "en": "tiredness / fatigue (m/f)", "ex_es": "Siento cansancio después de un día largo.", "ex_en": "I feel tiredness after a long day." },
+        { "es": "la sorpresa", "en": "surprise (f)", "ex_es": "Tuvo una gran sorpresa.", "ex_en": "He had a great surprise." }
+      ]
+    },
+    "grammar_essentials": {
+      "label": "Grammar Essentials / Palabras gramaticales esenciales",
+      "entries": [
+        { "es": "en", "en": "in / at", "ex_es": "Estoy en la habitación.", "ex_en": "I am in the room." },
+        { "es": "de", "en": "from / of", "ex_es": "Vengo de España.", "ex_en": "I come from Spain." },
+        { "es": "a", "en": "to / at", "ex_es": "Fue a Madrid.", "ex_en": "He went to Madrid." },
+        { "es": "con", "en": "with", "ex_es": "Vine con mi hermano.", "ex_en": "I came with my brother." },
+        { "es": "sobre / encima de", "en": "on / upon", "ex_es": "El libro está sobre la mesa.", "ex_en": "The book is on the table." },
+        { "es": "debajo de", "en": "under / beneath", "ex_es": "El gato está debajo de la cama.", "ex_en": "The cat is under the bed." },
+        { "es": "para / por", "en": "for / in order to / because of", "ex_es": "Este libro es para ti.", "ex_en": "This book is for you." },
+        { "es": "y / e", "en": "and", "ex_es": "Fue y volvió.", "ex_en": "He went and came back." },
+        { "es": "o / u", "en": "or", "ex_es": "¿Quieres té o café?", "ex_en": "Do you want tea or coffee?" },
+        { "es": "pero / sino", "en": "but / rather", "ex_es": "La lección es difícil pero interesante.", "ex_en": "The lesson is difficult but interesting." },
+        { "es": "porque", "en": "because", "ex_es": "No dormí porque había mucho ruido.", "ex_en": "I didn't sleep because there was too much noise." },
+        { "es": "si", "en": "if", "ex_es": "Si estudias, aprobarás.", "ex_en": "If you study, you will pass." },
+        { "es": "hay", "en": "there is / there are", "ex_es": "Hay una escuela cerca.", "ex_en": "There is a school nearby." },
+        { "es": "no", "en": "not / no", "ex_es": "Esto no es correcto.", "ex_en": "This is not correct." }
+      ]
+    }
+  }
+}

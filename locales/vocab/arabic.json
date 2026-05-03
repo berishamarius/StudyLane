@@ -1,0 +1,383 @@
+{
+  "meta": {
+    "language": "Arabic (Modern Standard Arabic — MSA / الفصحى)",
+    "script": "Arabic (right-to-left)",
+    "note": "Each entry: word (Arabic script), transliteration (transliteration), English meaning, example sentence (Arabic + English translation). Vowel marks (harakat) are included for learners.",
+    "totalEntries": 504
+  },
+  "categories": {
+    "greetings_and_basics": {
+      "label": "Greetings & Basic Expressions / التحيات والتعبيرات الأساسية",
+      "entries": [
+        { "ar": "مَرْحَبًا", "tr": "marḥaban", "en": "Hello / Welcome", "ex_ar": "مَرْحَبًا، كَيْفَ حَالُكَ؟", "ex_en": "Hello, how are you?" },
+        { "ar": "أَهْلاً وَسَهْلاً", "tr": "ahlan wa-sahlan", "en": "Welcome (warm greeting)", "ex_ar": "أَهْلاً وَسَهْلاً بِكَ فِي بَيْتِنَا!", "ex_en": "Welcome to our home!" },
+        { "ar": "السَّلَامُ عَلَيْكُم", "tr": "as-salāmu ʿalaykum", "en": "Peace be upon you (Islamic greeting)", "ex_ar": "السَّلَامُ عَلَيْكُم، كَيْفَ أَنْتُم؟", "ex_en": "Peace be upon you, how are you all?" },
+        { "ar": "وَعَلَيْكُمُ السَّلَام", "tr": "wa-ʿalaykum as-salām", "en": "And peace be upon you (response)", "ex_ar": "وَعَلَيْكُمُ السَّلَام وَرَحْمَةُ اللَّه", "ex_en": "And upon you peace and God's mercy." },
+        { "ar": "مَعَ السَّلَامَة", "tr": "maʿa s-salāma", "en": "Goodbye (stay safe)", "ex_ar": "مَعَ السَّلَامَة، إِلَى اللِّقَاء", "ex_en": "Goodbye, see you soon." },
+        { "ar": "إِلَى اللِّقَاء", "tr": "ilā l-liqāʾ", "en": "See you soon", "ex_ar": "إِلَى اللِّقَاء غَدًا إِنْ شَاءَ اللَّه", "ex_en": "See you tomorrow, God willing." },
+        { "ar": "صَبَاحُ الخَيْر", "tr": "ṣabāḥu l-khayr", "en": "Good morning", "ex_ar": "صَبَاحُ الخَيْر يَا أُسْتَاذ", "ex_en": "Good morning, teacher." },
+        { "ar": "مَسَاءُ الخَيْر", "tr": "masāʾu l-khayr", "en": "Good evening", "ex_ar": "مَسَاءُ الخَيْر، كَيْفَ كَانَ يَوْمُكَ؟", "ex_en": "Good evening, how was your day?" },
+        { "ar": "تَصْبَحُ عَلَى خَيْر", "tr": "tiṣbaḥu ʿalā khayr", "en": "Good night", "ex_ar": "تَصْبَحُ عَلَى خَيْر وَأَنْعِم", "ex_en": "Good night and sweet dreams." },
+        { "ar": "مِنْ فَضْلِكَ", "tr": "min faḍlika", "en": "Please (to a male)", "ex_ar": "مِنْ فَضْلِكَ، أَعْطِنِي الكِتَاب", "ex_en": "Please give me the book." },
+        { "ar": "شُكْرًا", "tr": "shukran", "en": "Thank you", "ex_ar": "شُكْرًا جَزِيلاً عَلَى مُسَاعَدَتِكَ", "ex_en": "Thank you very much for your help." },
+        { "ar": "عَفْوًا", "tr": "ʿafwan", "en": "You're welcome / Excuse me", "ex_ar": "عَفْوًا، لَا شُكْرَ عَلَى وَاجِب", "ex_en": "You're welcome, it's no trouble." },
+        { "ar": "آسِف", "tr": "āsif", "en": "Sorry (male)", "ex_ar": "آسِف، لَمْ أَفْهَم", "ex_en": "Sorry, I didn't understand." },
+        { "ar": "لَا أَفْهَم", "tr": "lā afham", "en": "I don't understand", "ex_ar": "لَا أَفْهَم، هَلْ يُمْكِنُكَ الشَّرْح مَرَّة أُخْرَى؟", "ex_en": "I don't understand, can you explain again?" },
+        { "ar": "هَلْ تَتَكَلَّمُ الإِنْجِلِيزِيَّة؟", "tr": "hal tatakallamu l-injilīziyya?", "en": "Do you speak English?", "ex_ar": "هَلْ تَتَكَلَّمُ الإِنْجِلِيزِيَّة؟ لَا أَتَكَلَّمُ العَرَبِيَّة جَيِّدًا", "ex_en": "Do you speak English? I don't speak Arabic well." }
+      ]
+    },
+    "numbers": {
+      "label": "Numbers / الأعداد",
+      "entries": [
+        { "ar": "صِفْر", "tr": "ṣifr", "en": "zero", "ex_ar": "الإِجَابَة هِيَ صِفْر", "ex_en": "The answer is zero." },
+        { "ar": "وَاحِد", "tr": "wāḥid", "en": "one", "ex_ar": "عِنْدِي وَلَد وَاحِد", "ex_en": "I have one child." },
+        { "ar": "اثْنَان", "tr": "ithnān", "en": "two", "ex_ar": "اشْتَرَيْتُ كِتَابَيْن اثْنَيْن", "ex_en": "I bought two books." },
+        { "ar": "ثَلَاثَة", "tr": "thalātha", "en": "three", "ex_ar": "الصَّفّ فِيهِ ثَلَاثُون طَالِبًا", "ex_en": "The class has thirty students." },
+        { "ar": "أَرْبَعَة", "tr": "arbaʿa", "en": "four", "ex_ar": "السَّنَة فِيهَا أَرْبَعَة فُصُول", "ex_en": "The year has four seasons." },
+        { "ar": "خَمْسَة", "tr": "khamsa", "en": "five", "ex_ar": "الأُسْبُوع فِيهِ خَمْسَة أَيَّام عَمَل", "ex_en": "The week has five working days." },
+        { "ar": "سِتَّة", "tr": "sitta", "en": "six", "ex_ar": "البَيْت فِيهِ سِتَّة غُرَف", "ex_en": "The house has six rooms." },
+        { "ar": "سَبْعَة", "tr": "sabʿa", "en": "seven", "ex_ar": "الأُسْبُوع فِيهِ سَبْعَة أَيَّام", "ex_en": "The week has seven days." },
+        { "ar": "ثَمَانِيَة", "tr": "thamāniya", "en": "eight", "ex_ar": "الفِيل لَه ثَمَانِيَة أَصَابِع فِي كُلّ يَد", "ex_en": "The elephant has eight toes on each foot." },
+        { "ar": "تِسْعَة", "tr": "tisʿa", "en": "nine", "ex_ar": "البِطَاقَة رَقْمُهَا تِسْعَة", "ex_en": "The card number is nine." },
+        { "ar": "عَشَرَة", "tr": "ʿashara", "en": "ten", "ex_ar": "عِنْدِي عَشَرَة دَرَاهِم", "ex_en": "I have ten dirhams." },
+        { "ar": "عِشْرُون", "tr": "ʿishrūn", "en": "twenty", "ex_ar": "عُمْرِي عِشْرُون سَنَة", "ex_en": "I am twenty years old." },
+        { "ar": "مِئَة", "tr": "miʾa", "en": "one hundred", "ex_ar": "دَفَعْتُ مِئَة دِينَار", "ex_en": "I paid one hundred dinars." },
+        { "ar": "أَلْف", "tr": "alf", "en": "one thousand", "ex_ar": "المَسَافَة أَلْف كِيلُومِتْر", "ex_en": "The distance is one thousand kilometres." },
+        { "ar": "مَلِيُون", "tr": "malyūn", "en": "one million", "ex_ar": "عَدَد السُّكَّان مَلِيُون شَخْص", "ex_en": "The population is one million people." }
+      ]
+    },
+    "family": {
+      "label": "Family / العائلة",
+      "entries": [
+        { "ar": "أُسْرَة / عَائِلَة", "tr": "usra / ʿāʾila", "en": "family", "ex_ar": "أُسْرَتِي كَبِيرَة وَسَعِيدَة", "ex_en": "My family is large and happy." },
+        { "ar": "أَب", "tr": "ab", "en": "father", "ex_ar": "أَبِي طَبِيب فِي المُسْتَشْفَى", "ex_en": "My father is a doctor at the hospital." },
+        { "ar": "أُمّ", "tr": "umm", "en": "mother", "ex_ar": "أُمِّي تَطْبُخ كُلَّ يَوْم", "ex_en": "My mother cooks every day." },
+        { "ar": "أَخ", "tr": "akh", "en": "brother", "ex_ar": "أَخِي أَكْبَر مِنِّي بِثَلَاث سَنَوَات", "ex_en": "My brother is three years older than me." },
+        { "ar": "أُخْت", "tr": "ukht", "en": "sister", "ex_ar": "أُخْتِي تَدْرُس الطِّبّ", "ex_en": "My sister is studying medicine." },
+        { "ar": "جَدّ", "tr": "jadd", "en": "grandfather", "ex_ar": "جَدِّي يَحْكِي قِصَصًا جَمِيلَة", "ex_en": "My grandfather tells beautiful stories." },
+        { "ar": "جَدَّة", "tr": "jadda", "en": "grandmother", "ex_ar": "جَدَّتِي تَعِيش فِي القَرْيَة", "ex_en": "My grandmother lives in the village." },
+        { "ar": "عَمّ", "tr": "ʿamm", "en": "paternal uncle", "ex_ar": "عَمِّي يَعِيش فِي الرِّيَاض", "ex_en": "My uncle lives in Riyadh." },
+        { "ar": "خَال", "tr": "khāl", "en": "maternal uncle", "ex_ar": "زُرْنَا خَالِي فِي نِهَايَة الأُسْبُوع", "ex_en": "We visited my maternal uncle at the weekend." },
+        { "ar": "عَمَّة", "tr": "ʿamma", "en": "paternal aunt", "ex_ar": "عَمَّتِي مُعَلِّمَة", "ex_en": "My paternal aunt is a teacher." },
+        { "ar": "خَالَة", "tr": "khāla", "en": "maternal aunt", "ex_ar": "خَالَتِي تَسْكُن فِي القَاهِرَة", "ex_en": "My maternal aunt lives in Cairo." },
+        { "ar": "ابْن", "tr": "ibn", "en": "son", "ex_ar": "ابْنِي يَدْرُس فِي الجَامِعَة", "ex_en": "My son is studying at university." },
+        { "ar": "بِنْت", "tr": "bint", "en": "daughter", "ex_ar": "بِنْتِي تُحِبّ القِرَاءَة", "ex_en": "My daughter loves reading." },
+        { "ar": "زَوْج", "tr": "zawj", "en": "husband", "ex_ar": "زَوْجِي يَعْمَل مُهَنْدِسًا", "ex_en": "My husband works as an engineer." },
+        { "ar": "زَوْجَة", "tr": "zawja", "en": "wife", "ex_ar": "زَوْجَتِي طَبِيبَة أَسْنَان", "ex_en": "My wife is a dentist." }
+      ]
+    },
+    "body": {
+      "label": "Body / الجسم",
+      "entries": [
+        { "ar": "رَأْس", "tr": "raʾs", "en": "head", "ex_ar": "يُؤْلِمُنِي رَأْسِي", "ex_en": "My head hurts." },
+        { "ar": "وَجْه", "tr": "wajh", "en": "face", "ex_ar": "غَسَلْتُ وَجْهِي بِالمَاء", "ex_en": "I washed my face with water." },
+        { "ar": "عَيْن", "tr": "ʿayn", "en": "eye", "ex_ar": "عَيْنَاهُ خَضْرَاوَان", "ex_en": "His eyes are green." },
+        { "ar": "أُذُن", "tr": "udhun", "en": "ear", "ex_ar": "أُذُنِي تُؤْلِمُنِي", "ex_en": "My ear hurts." },
+        { "ar": "أَنْف", "tr": "anf", "en": "nose", "ex_ar": "أَنْفِي مَسْدُود مِنَ البَرْد", "ex_en": "My nose is blocked from the cold." },
+        { "ar": "فَم", "tr": "fam", "en": "mouth", "ex_ar": "افْتَح فَمَكَ مِنْ فَضْلِكَ", "ex_en": "Open your mouth please." },
+        { "ar": "أَسْنَان", "tr": "asnān", "en": "teeth", "ex_ar": "اغْسِل أَسْنَانَكَ مَرَّتَيْن يَوْمِيًّا", "ex_en": "Brush your teeth twice a day." },
+        { "ar": "يَد", "tr": "yad", "en": "hand", "ex_ar": "اغْسِل يَدَيْكَ قَبْل الأَكْل", "ex_en": "Wash your hands before eating." },
+        { "ar": "قَدَم", "tr": "qadam", "en": "foot", "ex_ar": "تَأْلَمُنِي قَدَمِي بَعْد المَشْي", "ex_en": "My foot hurts after walking." },
+        { "ar": "قَلْب", "tr": "qalb", "en": "heart", "ex_ar": "القَلْب يَضْخّ الدَّم فِي الجِسْم", "ex_en": "The heart pumps blood through the body." },
+        { "ar": "ظَهْر", "tr": "ẓahr", "en": "back", "ex_ar": "يُؤْلِمُنِي ظَهْرِي مِنَ الجُلُوس الطَّوِيل", "ex_en": "My back hurts from sitting for a long time." },
+        { "ar": "بَطْن", "tr": "baṭn", "en": "stomach / belly", "ex_ar": "أَشْعُرُ بِأَلَم فِي بَطْنِي", "ex_en": "I feel pain in my stomach." },
+        { "ar": "رَقَبَة", "tr": "raqaba", "en": "neck", "ex_ar": "رَقَبَتِي مُتَعِبَة مِنَ القِرَاءَة", "ex_en": "My neck is tired from reading." },
+        { "ar": "كَتِف", "tr": "katif", "en": "shoulder", "ex_ar": "كَتِفِي يُؤْلِمُنِي", "ex_en": "My shoulder hurts." },
+        { "ar": "رُكْبَة", "tr": "rukba", "en": "knee", "ex_ar": "أَصَبْتُ رُكْبَتِي أَثْنَاء اللَّعِب", "ex_en": "I injured my knee while playing." }
+      ]
+    },
+    "colors": {
+      "label": "Colors / الألوان",
+      "entries": [
+        { "ar": "أَحْمَر", "tr": "aḥmar", "en": "red", "ex_ar": "اشْتَرَيْتُ قَمِيصًا أَحْمَر", "ex_en": "I bought a red shirt." },
+        { "ar": "أَزْرَق", "tr": "azraq", "en": "blue", "ex_ar": "السَّمَاء زَرْقَاء فِي الصَّيْف", "ex_en": "The sky is blue in summer." },
+        { "ar": "أَخْضَر", "tr": "akhḍar", "en": "green", "ex_ar": "الأَشْجَار خَضْرَاء فِي الرَّبِيع", "ex_en": "Trees are green in spring." },
+        { "ar": "أَصْفَر", "tr": "aṣfar", "en": "yellow", "ex_ar": "المَوْز أَصْفَر اللَّوْن", "ex_en": "Bananas are yellow in colour." },
+        { "ar": "أَبْيَض", "tr": "abyaḍ", "en": "white", "ex_ar": "الثَّلْج أَبْيَض", "ex_en": "Snow is white." },
+        { "ar": "أَسْوَد", "tr": "aswad", "en": "black", "ex_ar": "القِطُّ أَسْوَد اللَّوْن", "ex_en": "The cat is black in colour." },
+        { "ar": "بُرْتُقَالِيّ", "tr": "burtuqālī", "en": "orange", "ex_ar": "اشْتَرَيْتُ حَقِيبَة بُرْتُقَالِيَّة", "ex_en": "I bought an orange bag." },
+        { "ar": "بَنَفْسَجِيّ", "tr": "banafsajī", "en": "purple / violet", "ex_ar": "الزَّهَرَة لَوْنُهَا بَنَفْسَجِيّ", "ex_en": "The flower is purple in colour." },
+        { "ar": "وَرْدِيّ", "tr": "wardī", "en": "pink", "ex_ar": "أُحِبّ اللَّوْن الوَرْدِيّ", "ex_en": "I like the colour pink." },
+        { "ar": "بُنِّيّ", "tr": "bunnī", "en": "brown", "ex_ar": "شَعْرِي بُنِّيّ", "ex_en": "My hair is brown." },
+        { "ar": "رَمَادِيّ", "tr": "ramādī", "en": "grey", "ex_ar": "الغَيْم رَمَادِيّ", "ex_en": "The cloud is grey." },
+        { "ar": "ذَهَبِيّ", "tr": "dhahabī", "en": "golden", "ex_ar": "الخَاتَم ذَهَبِيّ", "ex_en": "The ring is golden." }
+      ]
+    },
+    "food_and_drink": {
+      "label": "Food & Drink / الطعام والشراب",
+      "entries": [
+        { "ar": "خُبْز", "tr": "khubz", "en": "bread", "ex_ar": "نَأْكُل الخُبْز مَع كُلّ وَجْبَة", "ex_en": "We eat bread with every meal." },
+        { "ar": "أَرُزّ", "tr": "aruzz", "en": "rice", "ex_ar": "أَكَلْنَا الأَرُزّ بِالدَّجَاج", "ex_en": "We ate rice with chicken." },
+        { "ar": "لَحْم", "tr": "laḥm", "en": "meat", "ex_ar": "أُحِبّ اللَّحْم المَشْوِيّ", "ex_en": "I love grilled meat." },
+        { "ar": "دَجَاج", "tr": "dajāj", "en": "chicken", "ex_ar": "طَبَخَت أُمِّي الدَّجَاج بِالتَّوَابِل", "ex_en": "My mother cooked chicken with spices." },
+        { "ar": "سَمَك", "tr": "samak", "en": "fish", "ex_ar": "نَأْكُل السَّمَك فِي يَوْم الجُمْعَة", "ex_en": "We eat fish on Fridays." },
+        { "ar": "خُضَرَاوَات", "tr": "khuḍarāwāt", "en": "vegetables", "ex_ar": "الخُضَرَاوَات مُفِيدَة لِلصِّحَّة", "ex_en": "Vegetables are good for health." },
+        { "ar": "فَاكِهَة", "tr": "fākiha", "en": "fruit", "ex_ar": "أَكَلْتُ فَاكِهَة فِي الإِفْطَار", "ex_en": "I ate fruit for breakfast." },
+        { "ar": "مَاء", "tr": "māʾ", "en": "water", "ex_ar": "اشْرَب المَاء كَثِيرًا كُلَّ يَوْم", "ex_en": "Drink lots of water every day." },
+        { "ar": "عَصِير", "tr": "ʿaṣīr", "en": "juice", "ex_ar": "شَرِبْتُ عَصِير البُرْتُقَال فِي الصَّبَاح", "ex_en": "I drank orange juice in the morning." },
+        { "ar": "شَاي", "tr": "shāy", "en": "tea", "ex_ar": "أَشْرَب الشَّاي مَع الحَلِيب", "ex_en": "I drink tea with milk." },
+        { "ar": "قَهْوَة", "tr": "qahwa", "en": "coffee", "ex_ar": "القَهْوَة العَرَبِيَّة مَشْهُورَة بِالهَيْل", "ex_en": "Arabic coffee is famous for its cardamom." },
+        { "ar": "حَلِيب", "tr": "ḥalīb", "en": "milk", "ex_ar": "يَشْرَب الأَطْفَال الحَلِيب يَوْمِيًّا", "ex_en": "Children drink milk daily." },
+        { "ar": "سُكَّر", "tr": "sukkar", "en": "sugar", "ex_ar": "لَا أَضُمّ السُّكَّر فِي القَهْوَة", "ex_en": "I don't add sugar to coffee." },
+        { "ar": "مِلْح", "tr": "milḥ", "en": "salt", "ex_ar": "أَضِف قَلِيلًا مِنَ المِلْح إِلَى الطَّبَخ", "ex_en": "Add a little salt to the cooking." },
+        { "ar": "زَيْت", "tr": "zayt", "en": "oil", "ex_ar": "اسْتَعْمَل زَيْت الزَّيْتُون فِي الطَّبْخ", "ex_en": "Use olive oil in cooking." },
+        { "ar": "وَجْبَة", "tr": "wajba", "en": "meal", "ex_ar": "نَأْكُل ثَلَاث وَجَبَات فِي اليَوْم", "ex_en": "We eat three meals a day." },
+        { "ar": "إِفْطَار", "tr": "ifṭār", "en": "breakfast", "ex_ar": "الإِفْطَار أَهَمّ وَجْبَة فِي اليَوْم", "ex_en": "Breakfast is the most important meal of the day." },
+        { "ar": "غَدَاء", "tr": "ghadāʾ", "en": "lunch", "ex_ar": "نَتَنَاوَل الغَدَاء فِي الثَّانِيَة عَشْرَة ظُهْرًا", "ex_en": "We have lunch at noon." },
+        { "ar": "عَشَاء", "tr": "ʿashāʾ", "en": "dinner", "ex_ar": "تَجْتَمِع العَائِلَة عَلَى مَائِدَة العَشَاء", "ex_en": "The family gathers at the dinner table." }
+      ]
+    },
+    "time": {
+      "label": "Time / الوقت",
+      "entries": [
+        { "ar": "الآن", "tr": "al-ān", "en": "now", "ex_ar": "أَنَا مَشْغُول الآن", "ex_en": "I am busy now." },
+        { "ar": "اليَوْم", "tr": "al-yawm", "en": "today", "ex_ar": "اليَوْم الجُمْعَة", "ex_en": "Today is Friday." },
+        { "ar": "غَدًا", "tr": "ghadan", "en": "tomorrow", "ex_ar": "سَنَخْرُج غَدًا إِنْ شَاءَ اللَّه", "ex_en": "We will go out tomorrow, God willing." },
+        { "ar": "أَمْس", "tr": "ams", "en": "yesterday", "ex_ar": "ذَهَبْتُ إِلَى السُّوق أَمْس", "ex_en": "I went to the market yesterday." },
+        { "ar": "الآن بَعْد قَلِيل", "tr": "al-ān baʿda qalīl", "en": "in a little while", "ex_ar": "سَأَكُون هُنَاكَ الآن بَعْد قَلِيل", "ex_en": "I will be there in a little while." },
+        { "ar": "سَاعَة", "tr": "sāʿa", "en": "hour / clock", "ex_ar": "انْتَظَرْتُ سَاعَة كَامِلَة", "ex_en": "I waited for a full hour." },
+        { "ar": "دَقِيقَة", "tr": "daqīqa", "en": "minute", "ex_ar": "انْتَظِرْ دَقِيقَة وَاحِدَة", "ex_en": "Wait one minute." },
+        { "ar": "يَوْم", "tr": "yawm", "en": "day", "ex_ar": "اليَوْم يَوْم جَمِيل", "ex_en": "Today is a beautiful day." },
+        { "ar": "أُسْبُوع", "tr": "usbūʿ", "en": "week", "ex_ar": "سَأَعُود بَعْد أُسْبُوع", "ex_en": "I will return after a week." },
+        { "ar": "شَهْر", "tr": "shahr", "en": "month", "ex_ar": "مَضَى شَهْر مُنْذُ سَفَرِهِ", "ex_en": "A month has passed since his departure." },
+        { "ar": "سَنَة", "tr": "sana", "en": "year", "ex_ar": "السَّنَة الجَدِيدَة تَبْدَأ فِي يَنَايِر", "ex_en": "The new year begins in January." },
+        { "ar": "الصَّبَاح", "tr": "aṣ-ṣabāḥ", "en": "morning", "ex_ar": "أَسْتَيْقِظ فِي الصَّبَاح مُبَكِّرًا", "ex_en": "I wake up early in the morning." },
+        { "ar": "الظُّهْر", "tr": "aẓ-ẓuhr", "en": "noon / midday", "ex_ar": "نُصَلِّي صَلَاة الظُّهْر فِي الاثْنَتَيْ عَشْرَة", "ex_en": "We pray the noon prayer at twelve." },
+        { "ar": "المَسَاء", "tr": "al-masāʾ", "en": "evening", "ex_ar": "أَتَمَشَّى فِي المَسَاء", "ex_en": "I take a walk in the evening." },
+        { "ar": "اللَّيْل", "tr": "al-layl", "en": "night", "ex_ar": "أَنَام مُبَكِّرًا فِي اللَّيْل", "ex_en": "I go to sleep early at night." }
+      ]
+    },
+    "days_and_months": {
+      "label": "Days & Months / أيام الأسبوع والأشهر",
+      "entries": [
+        { "ar": "الأَحَد", "tr": "al-aḥad", "en": "Sunday", "ex_ar": "يَوْم الأَحَد هُوَ أَوَّل الأُسْبُوع", "ex_en": "Sunday is the first day of the week." },
+        { "ar": "الاثْنَيْن", "tr": "al-ithnayn", "en": "Monday", "ex_ar": "يَعُود المَدْرَسَة يَوْم الاثْنَيْن", "ex_en": "School resumes on Monday." },
+        { "ar": "الثَّلَاثَاء", "tr": "ath-thalāthāʾ", "en": "Tuesday", "ex_ar": "مَوْعِدِي يَوْم الثَّلَاثَاء", "ex_en": "My appointment is on Tuesday." },
+        { "ar": "الأَرْبِعَاء", "tr": "al-arbiʿāʾ", "en": "Wednesday", "ex_ar": "نَتَقَابَل يَوْم الأَرْبِعَاء", "ex_en": "We meet on Wednesday." },
+        { "ar": "الخَمِيس", "tr": "al-khamīs", "en": "Thursday", "ex_ar": "الاجْتِمَاع يَوْم الخَمِيس", "ex_en": "The meeting is on Thursday." },
+        { "ar": "الجُمْعَة", "tr": "al-jumʿa", "en": "Friday", "ex_ar": "يَوْم الجُمْعَة يَوْم مُبَارَك", "ex_en": "Friday is a blessed day." },
+        { "ar": "السَّبْت", "tr": "as-sabt", "en": "Saturday", "ex_ar": "نَسْتَرِيح يَوْم السَّبْت", "ex_en": "We rest on Saturday." },
+        { "ar": "يَنَايِر", "tr": "yanāyir", "en": "January", "ex_ar": "وُلِدْتُ فِي يَنَايِر", "ex_en": "I was born in January." },
+        { "ar": "فَبْرَايِر", "tr": "fabrāyir", "en": "February", "ex_ar": "فَبْرَايِر أَقْصَر شَهْر فِي السَّنَة", "ex_en": "February is the shortest month of the year." },
+        { "ar": "مَارِس", "tr": "māris", "en": "March", "ex_ar": "يَبْدَأ الرَّبِيع فِي مَارِس", "ex_en": "Spring begins in March." },
+        { "ar": "أَبْرِيل", "tr": "abrīl", "en": "April", "ex_ar": "تَتَفَتَّح الأَزْهَار فِي أَبْرِيل", "ex_en": "Flowers bloom in April." },
+        { "ar": "مَايُو", "tr": "māyū", "en": "May", "ex_ar": "الطَّقْس مُعْتَدِل فِي مَايُو", "ex_en": "The weather is mild in May." },
+        { "ar": "يُونِيُو", "tr": "yūnyū", "en": "June", "ex_ar": "يَبْدَأ الصَّيْف فِي يُونِيُو", "ex_en": "Summer begins in June." },
+        { "ar": "رَمَضَان", "tr": "ramaḍān", "en": "Ramadan (Islamic holy month)", "ex_ar": "رَمَضَان شَهْر الصِّيَام وَالصَّلَاة", "ex_en": "Ramadan is the month of fasting and prayer." }
+      ]
+    },
+    "weather": {
+      "label": "Weather / الطقس",
+      "entries": [
+        { "ar": "طَقْس", "tr": "ṭaqs", "en": "weather", "ex_ar": "كَيْفَ الطَّقْس اليَوْم؟", "ex_en": "What is the weather like today?" },
+        { "ar": "حَارّ", "tr": "ḥārr", "en": "hot", "ex_ar": "الجَوّ حَارّ جِدًّا فِي الصَّيْف", "ex_en": "The weather is very hot in summer." },
+        { "ar": "بَارِد", "tr": "bārid", "en": "cold", "ex_ar": "الجَوّ بَارِد فِي الشِّتَاء", "ex_en": "The weather is cold in winter." },
+        { "ar": "مُشْمِس", "tr": "mushmis", "en": "sunny", "ex_ar": "اليَوْم مُشْمِس وَجَمِيل", "ex_en": "Today is sunny and beautiful." },
+        { "ar": "مُمْطِر", "tr": "mumṭir", "en": "rainy", "ex_ar": "الجَوّ مُمْطِر، لَا تَنْسَ المِظَلَّة", "ex_en": "It's rainy, don't forget the umbrella." },
+        { "ar": "مَطَر", "tr": "maṭar", "en": "rain", "ex_ar": "المَطَر نِعْمَة مِنَ اللَّه", "ex_en": "Rain is a blessing from God." },
+        { "ar": "ثَلْج", "tr": "thalj", "en": "snow", "ex_ar": "يَتَسَاقَط الثَّلْج فِي الجَبَل", "ex_en": "Snow falls in the mountains." },
+        { "ar": "رِيح", "tr": "rīḥ", "en": "wind", "ex_ar": "الرِّيح قَوِيَّة اليَوْم", "ex_en": "The wind is strong today." },
+        { "ar": "غَيْم", "tr": "ghaym", "en": "cloud", "ex_ar": "السَّمَاء مَلِيئَة بِالغُيُوم", "ex_en": "The sky is full of clouds." },
+        { "ar": "عَاصِفَة", "tr": "ʿāṣifa", "en": "storm", "ex_ar": "كَانَت العَاصِفَة قَوِيَّة اللَّيْلَة", "ex_en": "The storm was strong last night." },
+        { "ar": "ضَبَاب", "tr": "ḍabāb", "en": "fog / mist", "ex_ar": "كَانَ هُنَاكَ ضَبَاب كَثِيف فِي الصَّبَاح", "ex_en": "There was thick fog in the morning." },
+        { "ar": "دَرَجَة الحَرَارَة", "tr": "darajat al-ḥarāra", "en": "temperature", "ex_ar": "دَرَجَة الحَرَارَة خَمْسَة وَثَلَاثُون", "ex_en": "The temperature is thirty-five degrees." }
+      ]
+    },
+    "travel_and_places": {
+      "label": "Travel & Places / السفر والأماكن",
+      "entries": [
+        { "ar": "مَطَار", "tr": "maṭār", "en": "airport", "ex_ar": "ذَهَبْتُ إِلَى المَطَار مُبَكِّرًا", "ex_en": "I went to the airport early." },
+        { "ar": "مَحَطَّة", "tr": "maḥaṭṭa", "en": "station (bus/train)", "ex_ar": "اجْتَمَعْنَا فِي مَحَطَّة القِطَار", "ex_en": "We met at the train station." },
+        { "ar": "فُنْدُق", "tr": "funduq", "en": "hotel", "ex_ar": "نَزَلْنَا فِي فُنْدُق خَمْس نُجُوم", "ex_en": "We stayed in a five-star hotel." },
+        { "ar": "مُسْتَشْفَى", "tr": "mustashfā", "en": "hospital", "ex_ar": "المُسْتَشْفَى قَرِيب مِن البَيْت", "ex_en": "The hospital is close to home." },
+        { "ar": "سُوق", "tr": "sūq", "en": "market / souk", "ex_ar": "اشْتَرَيْنَا التَّوَابِل مِنَ السُّوق", "ex_en": "We bought spices from the market." },
+        { "ar": "مَتْجَر", "tr": "matjar", "en": "shop / store", "ex_ar": "ذَهَبْتُ إِلَى المَتْجَر لِشِرَاء الخُبْز", "ex_en": "I went to the shop to buy bread." },
+        { "ar": "مَسْجِد", "tr": "masjid", "en": "mosque", "ex_ar": "يُصَلِّي المُسْلِمُون فِي المَسْجِد", "ex_en": "Muslims pray in the mosque." },
+        { "ar": "مَدِينَة", "tr": "madīna", "en": "city", "ex_ar": "القَاهِرَة مَدِينَة كَبِيرَة", "ex_en": "Cairo is a large city." },
+        { "ar": "قَرْيَة", "tr": "qarya", "en": "village", "ex_ar": "نَشَأْتُ فِي قَرْيَة صَغِيرَة", "ex_en": "I grew up in a small village." },
+        { "ar": "شَارِع", "tr": "shāriʿ", "en": "street", "ex_ar": "أَسْكُن فِي الشَّارِع الرَّئِيسِيّ", "ex_en": "I live on the main street." },
+        { "ar": "بَنْك", "tr": "bank", "en": "bank", "ex_ar": "سَحَبْتُ مَالًا مِنَ البَنْك", "ex_en": "I withdrew money from the bank." },
+        { "ar": "مَطْعَم", "tr": "maṭʿam", "en": "restaurant", "ex_ar": "أَكَلْنَا فِي مَطْعَم لُبْنَانِيّ", "ex_en": "We ate at a Lebanese restaurant." },
+        { "ar": "صَيْدَلِيَّة", "tr": "ṣaydaliyya", "en": "pharmacy", "ex_ar": "اشْتَرَيْتُ الدَّوَاء مِنَ الصَّيْدَلِيَّة", "ex_en": "I bought the medicine from the pharmacy." },
+        { "ar": "مَدْرَسَة", "tr": "madrasa", "en": "school", "ex_ar": "الأَطْفَال يَذْهَبُون إِلَى المَدْرَسَة", "ex_en": "Children go to school." },
+        { "ar": "جَامِعَة", "tr": "jāmiʿa", "en": "university", "ex_ar": "أَدْرُس فِي جَامِعَة القَاهِرَة", "ex_en": "I study at Cairo University." }
+      ]
+    },
+    "transport": {
+      "label": "Transport / المواصلات",
+      "entries": [
+        { "ar": "سَيَّارَة", "tr": "sayyāra", "en": "car", "ex_ar": "اشْتَرَى أَبِي سَيَّارَة جَدِيدَة", "ex_en": "My father bought a new car." },
+        { "ar": "حَافِلَة", "tr": "ḥāfila", "en": "bus", "ex_ar": "أَرْكَب الحَافِلَة كُلَّ يَوْم إِلَى الجَامِعَة", "ex_en": "I take the bus to university every day." },
+        { "ar": "قِطَار", "tr": "qiṭār", "en": "train", "ex_ar": "القِطَار أَسْرَع مِنَ الحَافِلَة", "ex_en": "The train is faster than the bus." },
+        { "ar": "طَائِرَة", "tr": "ṭāʾira", "en": "aeroplane", "ex_ar": "سَافَرْتُ بِالطَّائِرَة إِلَى إِسْطَنْبُول", "ex_en": "I travelled by plane to Istanbul." },
+        { "ar": "سَفِينَة", "tr": "safīna", "en": "ship / boat", "ex_ar": "رَكِبْنَا السَّفِينَة عَبْرَ النِّيل", "ex_en": "We took a boat across the Nile." },
+        { "ar": "دَرَّاجَة", "tr": "darrāja", "en": "bicycle", "ex_ar": "أَرْكَب الدَّرَّاجَة فِي الصَّبَاح", "ex_en": "I ride my bicycle in the morning." },
+        { "ar": "تَاكْسِي", "tr": "tāksī", "en": "taxi", "ex_ar": "أَخَذْتُ تَاكْسِي مِنَ المَطَار", "ex_en": "I took a taxi from the airport." }
+      ]
+    },
+    "school_and_work": {
+      "label": "School & Work / المدرسة والعمل",
+      "entries": [
+        { "ar": "مُعَلِّم", "tr": "muʿallim", "en": "teacher (male)", "ex_ar": "المُعَلِّم يَشْرَح الدَّرْس بِوُضُوح", "ex_en": "The teacher explains the lesson clearly." },
+        { "ar": "طَالِب", "tr": "ṭālib", "en": "student (male)", "ex_ar": "الطَّالِب يَكْتُب الوَاجِب", "ex_en": "The student is writing the homework." },
+        { "ar": "كِتَاب", "tr": "kitāb", "en": "book", "ex_ar": "قَرَأْتُ هَذَا الكِتَاب مَرَّتَيْن", "ex_en": "I have read this book twice." },
+        { "ar": "قَلَم", "tr": "qalam", "en": "pen / pencil", "ex_ar": "أَعْطِنِي قَلَمَك مِنْ فَضْلِكَ", "ex_en": "Give me your pen please." },
+        { "ar": "دَرْس", "tr": "dars", "en": "lesson", "ex_ar": "الدَّرْس سَهْل وَمُمْتِع", "ex_en": "The lesson is easy and interesting." },
+        { "ar": "امْتِحَان", "tr": "imtiḥān", "en": "exam / test", "ex_ar": "الامْتِحَان غَدًا الصَّبَاح", "ex_en": "The exam is tomorrow morning." },
+        { "ar": "مَكْتَب", "tr": "maktab", "en": "office / desk", "ex_ar": "أَعْمَل فِي مَكْتَب كَبِير", "ex_en": "I work in a large office." },
+        { "ar": "مُهَنْدِس", "tr": "muhandis", "en": "engineer", "ex_ar": "أَخِي مُهَنْدِس كَهْرَبَائِيّ", "ex_en": "My brother is an electrical engineer." },
+        { "ar": "طَبِيب", "tr": "ṭabīb", "en": "doctor", "ex_ar": "ذَهَبْتُ إِلَى الطَّبِيب أَمْس", "ex_en": "I went to the doctor yesterday." },
+        { "ar": "مُحَامِي", "tr": "muḥāmī", "en": "lawyer", "ex_ar": "الاسْتِشَارَة القَانُونِيَّة مَع المُحَامِي", "ex_en": "The legal consultation is with the lawyer." }
+      ]
+    },
+    "house_and_home": {
+      "label": "House & Home / البيت والمنزل",
+      "entries": [
+        { "ar": "بَيْت", "tr": "bayt", "en": "house / home", "ex_ar": "بَيْتِي بَيْتُكَ", "ex_en": "My home is your home." },
+        { "ar": "غُرْفَة", "tr": "ghurfa", "en": "room", "ex_ar": "غُرْفَتِي وَاسِعَة وَمُضِيئَة", "ex_en": "My room is spacious and bright." },
+        { "ar": "مَطْبَخ", "tr": "maṭbakh", "en": "kitchen", "ex_ar": "أُمِّي فِي المَطْبَخ تَطْبُخ", "ex_en": "My mother is in the kitchen cooking." },
+        { "ar": "حَمَّام", "tr": "ḥammām", "en": "bathroom", "ex_ar": "الحَمَّام فِي نِهَايَة المَمَرّ", "ex_en": "The bathroom is at the end of the corridor." },
+        { "ar": "صَالَة", "tr": "ṣāla", "en": "living room / hall", "ex_ar": "نَجْلِس فِي الصَّالَة مَعًا", "ex_en": "We sit together in the living room." },
+        { "ar": "بَاب", "tr": "bāb", "en": "door", "ex_ar": "أَغْلِق البَاب مِنْ فَضْلِكَ", "ex_en": "Please close the door." },
+        { "ar": "نَافِذَة", "tr": "nāfidha", "en": "window", "ex_ar": "افْتَح النَّافِذَة لِيَدْخُل الهَوَاء", "ex_en": "Open the window to let air in." },
+        { "ar": "طَابِق", "tr": "ṭābiq", "en": "floor / storey", "ex_ar": "أَسْكُن فِي الطَّابِق الثَّالِث", "ex_en": "I live on the third floor." },
+        { "ar": "سَرِير", "tr": "sarīr", "en": "bed", "ex_ar": "أَنَام عَلَى سَرِير مُرِيح", "ex_en": "I sleep on a comfortable bed." },
+        { "ar": "كُرْسِيّ", "tr": "kursī", "en": "chair", "ex_ar": "اجْلِس عَلَى الكُرْسِيّ", "ex_en": "Sit on the chair." }
+      ]
+    },
+    "nature": {
+      "label": "Nature / الطبيعة",
+      "entries": [
+        { "ar": "جَبَل", "tr": "jabal", "en": "mountain", "ex_ar": "تَسَلَّقْنَا الجَبَل فِي الصَّيْف", "ex_en": "We climbed the mountain in summer." },
+        { "ar": "بَحْر", "tr": "baḥr", "en": "sea", "ex_ar": "البَحْر الأَحْمَر مَشْهُور بِشُعَابِهِ المَرْجَانِيَّة", "ex_en": "The Red Sea is famous for its coral reefs." },
+        { "ar": "نَهْر", "tr": "nahr", "en": "river", "ex_ar": "نَهْر النِّيل أَطْوَل نَهْر فِي أَفْرِيقِيَا", "ex_en": "The Nile is the longest river in Africa." },
+        { "ar": "صَحْرَاء", "tr": "ṣaḥrāʾ", "en": "desert", "ex_ar": "الصَّحْرَاء الكُبْرَى أَكْبَر صَحْرَاء حَارَّة فِي العَالَم", "ex_en": "The Sahara is the largest hot desert in the world." },
+        { "ar": "غَابَة", "tr": "ghāba", "en": "forest", "ex_ar": "يَعِيش الأَسَد فِي الغَابَة", "ex_en": "The lion lives in the forest." },
+        { "ar": "شَجَرَة", "tr": "shajara", "en": "tree", "ex_ar": "زَرَعْنَا شَجَرَة فِي الحَدِيقَة", "ex_en": "We planted a tree in the garden." },
+        { "ar": "زَهْرَة", "tr": "zahra", "en": "flower", "ex_ar": "الزَّهْرَة الجَمِيلَة فِي البُسْتَان", "ex_en": "The beautiful flower is in the garden." },
+        { "ar": "شَمْس", "tr": "shams", "en": "sun", "ex_ar": "الشَّمْس تَشْرُق مِنَ الشَّرْق", "ex_en": "The sun rises in the east." },
+        { "ar": "قَمَر", "tr": "qamar", "en": "moon", "ex_ar": "القَمَر يُضِيء السَّمَاء لَيْلًا", "ex_en": "The moon illuminates the sky at night." },
+        { "ar": "نَجْمَة", "tr": "najma", "en": "star", "ex_ar": "السَّمَاء مَلِيئَة بِالنُّجُوم", "ex_en": "The sky is full of stars." }
+      ]
+    },
+    "adjectives": {
+      "label": "Adjectives / الصفات",
+      "entries": [
+        { "ar": "كَبِير", "tr": "kabīr", "en": "big / large / old", "ex_ar": "المَدِينَة كَبِيرَة جِدًّا", "ex_en": "The city is very large." },
+        { "ar": "صَغِير", "tr": "ṣaghīr", "en": "small / young", "ex_ar": "البَيْت صَغِير لَكِنَّه مُرِيح", "ex_en": "The house is small but comfortable." },
+        { "ar": "جَمِيل", "tr": "jamīl", "en": "beautiful / handsome", "ex_ar": "المَنْظَر جَمِيل مِنَ الجَبَل", "ex_en": "The view from the mountain is beautiful." },
+        { "ar": "قَبِيح", "tr": "qabīḥ", "en": "ugly", "ex_ar": "لَا تَقُل كَلِمَات قَبِيحَة", "ex_en": "Don't say ugly words." },
+        { "ar": "سَرِيع", "tr": "sarīʿ", "en": "fast / quick", "ex_ar": "القِطَار سَرِيع جِدًّا", "ex_en": "The train is very fast." },
+        { "ar": "بَطِيء", "tr": "baṭīʾ", "en": "slow", "ex_ar": "السُّلْحُفَاة بَطِيئَة", "ex_en": "The turtle is slow." },
+        { "ar": "صَعْب", "tr": "ṣaʿb", "en": "difficult / hard", "ex_ar": "الامْتِحَان صَعْب", "ex_en": "The exam is difficult." },
+        { "ar": "سَهْل", "tr": "sahl", "en": "easy", "ex_ar": "السُّؤَال سَهْل", "ex_en": "The question is easy." },
+        { "ar": "جَدِيد", "tr": "jadīd", "en": "new", "ex_ar": "اشْتَرَيْتُ هَاتِفًا جَدِيدًا", "ex_en": "I bought a new phone." },
+        { "ar": "قَدِيم", "tr": "qadīm", "en": "old (object)", "ex_ar": "البَيْت قَدِيم لَكِنَّه جَمِيل", "ex_en": "The house is old but beautiful." },
+        { "ar": "طَوِيل", "tr": "ṭawīl", "en": "tall / long", "ex_ar": "أَخِي طَوِيل القَامَة", "ex_en": "My brother is tall." },
+        { "ar": "قَصِير", "tr": "qaṣīr", "en": "short", "ex_ar": "الطَّرِيق قَصِير", "ex_en": "The road is short." },
+        { "ar": "قَوِيّ", "tr": "qawī", "en": "strong", "ex_ar": "الرِّيح قَوِيَّة اليَوْم", "ex_en": "The wind is strong today." },
+        { "ar": "ضَعِيف", "tr": "ḍaʿīf", "en": "weak", "ex_ar": "يَشْعُر بِضَعْف بَعْد المَرَض", "ex_en": "He feels weak after the illness." },
+        { "ar": "غَالِي", "tr": "ghālī", "en": "expensive / precious", "ex_ar": "هَذَا الهَاتِف غَالِي", "ex_en": "This phone is expensive." },
+        { "ar": "رَخِيص", "tr": "rakhīṣ", "en": "cheap / inexpensive", "ex_ar": "المَطْعَم رَخِيص وَلَذِيذ", "ex_en": "The restaurant is cheap and delicious." },
+        { "ar": "سَعِيد", "tr": "saʿīd", "en": "happy", "ex_ar": "أَنَا سَعِيد بِنَجَاحِي", "ex_en": "I am happy about my success." },
+        { "ar": "حَزِين", "tr": "ḥazīn", "en": "sad", "ex_ar": "هُوَ حَزِين بَعْد الأَخْبَار السَّيِّئَة", "ex_en": "He is sad after the bad news." },
+        { "ar": "مُتْعَب", "tr": "mutʿab", "en": "tired", "ex_ar": "أَنَا مُتْعَب بَعْد العَمَل", "ex_en": "I am tired after work." },
+        { "ar": "مَرِيض", "tr": "marīḍ", "en": "sick / ill", "ex_ar": "لَمْ يَحْضُر لِأَنَّه مَرِيض", "ex_en": "He didn't come because he is sick." }
+      ]
+    },
+    "verbs": {
+      "label": "Common Verbs / الأفعال الشائعة",
+      "entries": [
+        { "ar": "ذَهَبَ", "tr": "dhahaba", "en": "to go (he went)", "ex_ar": "ذَهَبَ إِلَى العَمَل بَاكِرًا", "ex_en": "He went to work early." },
+        { "ar": "جَاءَ", "tr": "jāʾa", "en": "to come (he came)", "ex_ar": "جَاءَ صَدِيقِي إِلَى المَنْزِل", "ex_en": "My friend came to the house." },
+        { "ar": "أَكَلَ", "tr": "akala", "en": "to eat (he ate)", "ex_ar": "أَكَلَ العَشَاء مُتَأَخِّرًا", "ex_en": "He ate dinner late." },
+        { "ar": "شَرِبَ", "tr": "shariba", "en": "to drink (he drank)", "ex_ar": "شَرِبَ المَاء بَعْد التَّمْرِين", "ex_en": "He drank water after exercise." },
+        { "ar": "كَتَبَ", "tr": "kataba", "en": "to write (he wrote)", "ex_ar": "كَتَبَ رِسَالَة إِلَى صَدِيقِه", "ex_en": "He wrote a letter to his friend." },
+        { "ar": "قَرَأَ", "tr": "qaraʾa", "en": "to read (he read)", "ex_ar": "قَرَأَ الكِتَاب فِي لَيْلَة وَاحِدَة", "ex_en": "He read the book in one night." },
+        { "ar": "دَرَسَ", "tr": "darasa", "en": "to study (he studied)", "ex_ar": "دَرَسَ اللُّغَة العَرَبِيَّة فِي القَاهِرَة", "ex_en": "He studied Arabic in Cairo." },
+        { "ar": "عَمِلَ", "tr": "ʿamila", "en": "to work (he worked)", "ex_ar": "عَمِلَ طَوِيلًا لِيُكْمِل المَشْرُوع", "ex_en": "He worked long to complete the project." },
+        { "ar": "نَامَ", "tr": "nāma", "en": "to sleep (he slept)", "ex_ar": "نَامَ مُبَكِّرًا كُلَّ لَيْلَة", "ex_en": "He slept early every night." },
+        { "ar": "اسْتَيْقَظَ", "tr": "istayqaẓa", "en": "to wake up (he woke up)", "ex_ar": "اسْتَيْقَظَ عَلَى صَوْت المُنَبِّه", "ex_en": "He woke up to the sound of the alarm." },
+        { "ar": "تَكَلَّمَ", "tr": "takallama", "en": "to speak / talk (he spoke)", "ex_ar": "تَكَلَّمَ بِالعَرَبِيَّة بِطَلَاقَة", "ex_en": "He spoke Arabic fluently." },
+        { "ar": "اسْتَمَعَ", "tr": "istamaʿa", "en": "to listen (he listened)", "ex_ar": "اسْتَمَعَ إِلَى الأُغْنِيَة بِانْتِبَاه", "ex_en": "He listened to the song attentively." },
+        { "ar": "رَأَى", "tr": "raʾā", "en": "to see (he saw)", "ex_ar": "رَأَى شَيْئًا غَرِيبًا فِي الطَّرِيق", "ex_en": "He saw something strange on the road." },
+        { "ar": "سَافَرَ", "tr": "sāfara", "en": "to travel (he travelled)", "ex_ar": "سَافَرَ إِلَى أُوْرُوبَّا الصَّيْف الماضِي", "ex_en": "He travelled to Europe last summer." },
+        { "ar": "اشْتَرَى", "tr": "ishtarā", "en": "to buy (he bought)", "ex_ar": "اشْتَرَى هَدِيَّة لِأُمِّه", "ex_en": "He bought a gift for his mother." },
+        { "ar": "بَاعَ", "tr": "bāʿa", "en": "to sell (he sold)", "ex_ar": "بَاعَ سَيَّارَتَه القَدِيمَة", "ex_en": "He sold his old car." },
+        { "ar": "فَهِمَ", "tr": "fahima", "en": "to understand (he understood)", "ex_ar": "فَهِمَ الدَّرْس بِسُرْعَة", "ex_en": "He understood the lesson quickly." },
+        { "ar": "عَرَفَ", "tr": "ʿarafa", "en": "to know (he knew)", "ex_ar": "عَرَفَ الإِجَابَة الصَّحِيحَة", "ex_en": "He knew the correct answer." },
+        { "ar": "أَحَبَّ", "tr": "aḥabba", "en": "to love / like (he loved)", "ex_ar": "أَحَبَّ اللُّغَة العَرَبِيَّة مُنْذُ صِغَرِه", "ex_en": "He loved the Arabic language since childhood." },
+        { "ar": "سَاعَدَ", "tr": "sāʿada", "en": "to help (he helped)", "ex_ar": "سَاعَدَ جَارَه فِي نَقْل الأَثَاث", "ex_en": "He helped his neighbour move furniture." }
+      ]
+    },
+    "question_words": {
+      "label": "Question Words / أدوات الاستفهام",
+      "entries": [
+        { "ar": "مَن؟", "tr": "man?", "en": "Who?", "ex_ar": "مَن طَرَق البَاب؟", "ex_en": "Who knocked on the door?" },
+        { "ar": "مَا / مَاذَا؟", "tr": "mā / mādhā?", "en": "What?", "ex_ar": "مَاذَا تَفْعَل الآن؟", "ex_en": "What are you doing now?" },
+        { "ar": "أَيْن؟", "tr": "ayna?", "en": "Where?", "ex_ar": "أَيْن تَسْكُن؟", "ex_en": "Where do you live?" },
+        { "ar": "مَتَى؟", "tr": "matā?", "en": "When?", "ex_ar": "مَتَى يَبْدَأ الدَّرْس؟", "ex_en": "When does the lesson begin?" },
+        { "ar": "لِمَاذَا؟", "tr": "limādhā?", "en": "Why?", "ex_ar": "لِمَاذَا تَأَخَّرْتَ؟", "ex_en": "Why were you late?" },
+        { "ar": "كَيْف؟", "tr": "kayfa?", "en": "How?", "ex_ar": "كَيْفَ حَالُكَ؟", "ex_en": "How are you?" },
+        { "ar": "كَمْ؟", "tr": "kam?", "en": "How many? / How much?", "ex_ar": "كَمْ سَنَة دَرَسْتَ العَرَبِيَّة؟", "ex_en": "How many years did you study Arabic?" },
+        { "ar": "أَيّ؟", "tr": "ayy?", "en": "Which?", "ex_ar": "أَيّ لَوْن تُحِبّ؟", "ex_en": "Which colour do you like?" },
+        { "ar": "هَل؟", "tr": "hal?", "en": "Do / Does / Is / Are (yes/no question)", "ex_ar": "هَل تَتَكَلَّم العَرَبِيَّة؟", "ex_en": "Do you speak Arabic?" }
+      ]
+    },
+    "health_and_medicine": {
+      "label": "Health & Medicine / الصحة والطب",
+      "entries": [
+        { "ar": "صِحَّة", "tr": "ṣiḥḥa", "en": "health", "ex_ar": "الصِّحَّة نِعْمَة يَجِب الحِفَاظ عَلَيْهَا", "ex_en": "Health is a blessing that must be preserved." },
+        { "ar": "مَرَض", "tr": "maraḍ", "en": "illness / disease", "ex_ar": "المَرَض يَمْنَعُهُ مِنَ العَمَل", "ex_en": "The illness prevents him from working." },
+        { "ar": "دَوَاء", "tr": "dawāʾ", "en": "medicine / medication", "ex_ar": "أَخُذ الدَّوَاء بَعْد الأَكْل", "ex_en": "I take the medicine after eating." },
+        { "ar": "أَلَم", "tr": "alam", "en": "pain", "ex_ar": "أَشْعُر بِأَلَم شَدِيد فِي رَأْسِي", "ex_en": "I feel a severe pain in my head." },
+        { "ar": "حُمَّى", "tr": "ḥummā", "en": "fever", "ex_ar": "عِنْدَه حُمَّى عَالِيَة", "ex_en": "He has a high fever." },
+        { "ar": "كُحَّة", "tr": "kuḥḥa", "en": "cough", "ex_ar": "الكُحَّة تَزْعُجُنِي كَثِيرًا", "ex_en": "The cough bothers me a lot." },
+        { "ar": "زُكَام", "tr": "zukām", "en": "cold (illness)", "ex_ar": "أَصَبْتُ بِالزُّكَام بِسَبَب البَرْد", "ex_en": "I caught a cold because of the cold weather." }
+      ]
+    },
+    "emotions": {
+      "label": "Emotions / المشاعر",
+      "entries": [
+        { "ar": "فَرَح", "tr": "faraḥ", "en": "joy / happiness", "ex_ar": "الفَرَح يَمْلَأ قَلْبَه", "ex_en": "Joy fills his heart." },
+        { "ar": "حُزْن", "tr": "ḥuzn", "en": "sadness / grief", "ex_ar": "الحُزْن ظَاهِر عَلَى وَجْهِه", "ex_en": "Sadness is apparent on his face." },
+        { "ar": "خَوْف", "tr": "khawf", "en": "fear", "ex_ar": "الخَوْف طَبِيعِيّ فِي مَوَاقِف الخَطَر", "ex_en": "Fear is natural in dangerous situations." },
+        { "ar": "غَضَب", "tr": "ghaḍab", "en": "anger", "ex_ar": "الغَضَب يُضِرّ بِالصِّحَّة", "ex_en": "Anger is harmful to health." },
+        { "ar": "حُبّ", "tr": "ḥubb", "en": "love", "ex_ar": "الحُبّ يَجْعَل الحَيَاة أَجْمَل", "ex_en": "Love makes life more beautiful." },
+        { "ar": "تَعَب", "tr": "taʿab", "en": "tiredness / fatigue", "ex_ar": "أَشْعُر بِالتَّعَب بَعْد يَوْم طَوِيل", "ex_en": "I feel tiredness after a long day." },
+        { "ar": "دَهْشَة", "tr": "dahsha", "en": "surprise / astonishment", "ex_ar": "عَلَى وَجْهِه دَهْشَة كَبِيرَة", "ex_en": "He has a look of great surprise on his face." }
+      ]
+    },
+    "technology": {
+      "label": "Technology / التكنولوجيا",
+      "entries": [
+        { "ar": "هَاتِف", "tr": "hātif", "en": "phone", "ex_ar": "هَاتِفِي الجَدِيد سَرِيع", "ex_en": "My new phone is fast." },
+        { "ar": "حَاسُوب", "tr": "ḥāsūb", "en": "computer", "ex_ar": "أَعْمَل عَلَى الحَاسُوب طُوَال اليَوْم", "ex_en": "I work on the computer all day." },
+        { "ar": "إِنْتَرْنِت", "tr": "intarnit", "en": "internet", "ex_ar": "الإِنْتَرْنِت ضَرُورِيّ فِي عَصْرِنَا", "ex_en": "The internet is essential in our era." },
+        { "ar": "بَرِيد إِلِكْتْرُونِيّ", "tr": "barīd iliktrūnī", "en": "email", "ex_ar": "أَرْسَلْتُ البَرِيد الإِلِكْتْرُونِيّ لِلشَّرِكَة", "ex_en": "I sent the email to the company." },
+        { "ar": "تَطْبِيق", "tr": "taṭbīq", "en": "app / application", "ex_ar": "حَمَّلْتُ تَطْبِيقَ التَّعَلُّم", "ex_en": "I downloaded the learning app." },
+        { "ar": "شَبَكَة اجْتِمَاعِيَّة", "tr": "shabaka ijtimāʿiyya", "en": "social network", "ex_ar": "أَقْضِي وَقْتًا فِي الشَّبَكَات الاجْتِمَاعِيَّة", "ex_en": "I spend time on social networks." }
+      ]
+    },
+    "grammar_essentials": {
+      "label": "Grammar Essentials / أساسيات القواعد",
+      "note": "Key grammatical function words every Arabic learner needs.",
+      "entries": [
+        { "ar": "فِي", "tr": "fī", "en": "in / at", "ex_ar": "أَسْكُن فِي المَدِينَة", "ex_en": "I live in the city." },
+        { "ar": "مِن", "tr": "min", "en": "from", "ex_ar": "أَنَا مِن مَصْر", "ex_en": "I am from Egypt." },
+        { "ar": "إِلَى", "tr": "ilā", "en": "to / towards", "ex_ar": "ذَهَبَ إِلَى المَدْرَسَة", "ex_en": "He went to school." },
+        { "ar": "مَعَ", "tr": "maʿa", "en": "with", "ex_ar": "جِئْتُ مَعَ أَخِي", "ex_en": "I came with my brother." },
+        { "ar": "عَلَى", "tr": "ʿalā", "en": "on / upon", "ex_ar": "الكِتَاب عَلَى الطَّاوِلَة", "ex_en": "The book is on the table." },
+        { "ar": "عَن", "tr": "ʿan", "en": "about / from", "ex_ar": "تَحَدَّثَ عَن سَفَرِه", "ex_en": "He talked about his travel." },
+        { "ar": "لِ / لِـ", "tr": "li-", "en": "for / to (belonging / purpose)", "ex_ar": "هَذَا الكِتَاب لِي", "ex_en": "This book is for me." },
+        { "ar": "وَ", "tr": "wa-", "en": "and", "ex_ar": "ذَهَبَ وَجَاءَ", "ex_en": "He went and came." },
+        { "ar": "أَو", "tr": "aw", "en": "or", "ex_ar": "هَل تُرِيد شَاي أَو قَهْوَة؟", "ex_en": "Do you want tea or coffee?" },
+        { "ar": "لَكِن", "tr": "lākin", "en": "but / however", "ex_ar": "الدَّرْس صَعْب لَكِنَّه مُمْتِع", "ex_en": "The lesson is difficult but interesting." },
+        { "ar": "لِأَنَّ", "tr": "liʾanna", "en": "because", "ex_ar": "لَمْ أَنَم لِأَنَّ الضَّجِيج كَثِير", "ex_en": "I didn't sleep because there was too much noise." },
+        { "ar": "إِذَا", "tr": "idhā", "en": "if / when", "ex_ar": "إِذَا درست، نَجَحْتَ", "ex_en": "If you study, you will succeed." },
+        { "ar": "هُنَاكَ", "tr": "hunāka", "en": "there is / there are", "ex_ar": "هُنَاكَ مَدْرَسَة قَرِيبَة", "ex_en": "There is a school nearby." },
+        { "ar": "لَيْسَ", "tr": "laysa", "en": "is not / are not", "ex_ar": "لَيْسَ هَذَا صَحِيحًا", "ex_en": "This is not correct." }
+      ]
+    }
+  }
+}

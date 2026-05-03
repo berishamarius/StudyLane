@@ -1,0 +1,376 @@
+{
+  "meta": {
+    "language": "Mandarin Chinese (普通话 Pǔtōnghuà)",
+    "script": "Simplified Chinese (简体字 Jiǎntǐzì) with Pinyin romanisation",
+    "note": "Each entry: Chinese character(s) in 'zh', Pinyin with tone marks in 'py', English meaning in 'en', example sentence in Chinese in 'ex_zh', English translation in 'ex_en'. Tones: ā á ǎ à (1st, 2nd, 3rd, 4th), neutral tone unmarked. Measure words (量词 liàngcí) noted where essential.",
+    "totalEntries": 500
+  },
+  "categories": {
+    "greetings_and_basics": {
+      "label": "Greetings & Basic Expressions / 问候和基本用语",
+      "entries": [
+        { "zh": "你好", "py": "Nǐ hǎo", "en": "Hello (informal)", "ex_zh": "你好！你叫什么名字？", "ex_en": "Hello! What is your name?" },
+        { "zh": "您好", "py": "Nín hǎo", "en": "Hello (polite/formal)", "ex_zh": "您好，请坐。", "ex_en": "Hello, please sit down." },
+        { "zh": "早上好", "py": "Zǎoshang hǎo", "en": "Good morning", "ex_zh": "早上好！你睡好了吗？", "ex_en": "Good morning! Did you sleep well?" },
+        { "zh": "下午好", "py": "Xiàwǔ hǎo", "en": "Good afternoon", "ex_zh": "下午好，今天怎么样？", "ex_en": "Good afternoon, how is your day?" },
+        { "zh": "晚上好", "py": "Wǎnshang hǎo", "en": "Good evening", "ex_zh": "晚上好，欢迎来到这里。", "ex_en": "Good evening, welcome here." },
+        { "zh": "晚安", "py": "Wǎn'ān", "en": "Good night", "ex_zh": "晚安，好好休息！", "ex_en": "Good night, rest well!" },
+        { "zh": "再见", "py": "Zàijiàn", "en": "Goodbye (see you again)", "ex_zh": "再见，明天见！", "ex_en": "Goodbye, see you tomorrow!" },
+        { "zh": "拜拜", "py": "Bāibāi", "en": "Bye-bye (casual, loan word)", "ex_zh": "拜拜，保重！", "ex_en": "Bye-bye, take care!" },
+        { "zh": "谢谢", "py": "Xièxiè", "en": "Thank you", "ex_zh": "谢谢你的帮助。", "ex_en": "Thank you for your help." },
+        { "zh": "不客气 / 没关系", "py": "Bù kèqi / Méi guānxi", "en": "You're welcome / No problem", "ex_zh": "不客气，这是应该的。", "ex_en": "You're welcome, it's what I should do." },
+        { "zh": "请", "py": "Qǐng", "en": "Please / Please do (invitation)", "ex_zh": "请帮我一个忙。", "ex_en": "Please do me a favour." },
+        { "zh": "对不起", "py": "Duìbuqǐ", "en": "I'm sorry / Excuse me (apology)", "ex_zh": "对不起，我迟到了。", "ex_en": "I'm sorry, I was late." },
+        { "zh": "不好意思", "py": "Bù hǎoyìsi", "en": "Excuse me (mild apology / getting attention)", "ex_zh": "不好意思，请问厕所在哪里？", "ex_en": "Excuse me, where is the toilet please?" },
+        { "zh": "我不明白 / 我不懂", "py": "Wǒ bù míngbai / Wǒ bù dǒng", "en": "I don't understand", "ex_zh": "对不起，我不明白你说的。", "ex_en": "Sorry, I don't understand what you said." },
+        { "zh": "你叫什么名字？", "py": "Nǐ jiào shénme míngzi?", "en": "What is your name?", "ex_zh": "你叫什么名字？我叫李明。", "ex_en": "What is your name? My name is Li Ming." },
+        { "zh": "我叫……", "py": "Wǒ jiào …", "en": "My name is …", "ex_zh": "我叫王芳，很高兴认识你。", "ex_en": "My name is Wang Fang, nice to meet you." },
+        { "zh": "你好吗？", "py": "Nǐ hǎo ma?", "en": "How are you?", "ex_zh": "你好吗？我很好，谢谢。", "ex_en": "How are you? I'm fine, thank you." }
+      ]
+    },
+    "numbers": {
+      "label": "Numbers / 数字",
+      "entries": [
+        { "zh": "零", "py": "líng", "en": "zero", "ex_zh": "结果是零。", "ex_en": "The result is zero." },
+        { "zh": "一", "py": "yī", "en": "one", "ex_zh": "我有一个哥哥。", "ex_en": "I have one older brother." },
+        { "zh": "二 / 两", "py": "èr / liǎng", "en": "two (二 in sequences; 两 before measure words)", "ex_zh": "桌子上有两本书。", "ex_en": "There are two books on the table." },
+        { "zh": "三", "py": "sān", "en": "three", "ex_zh": "我们有三个孩子。", "ex_en": "We have three children." },
+        { "zh": "四", "py": "sì", "en": "four", "ex_zh": "一年有四个季节。", "ex_en": "A year has four seasons." },
+        { "zh": "五", "py": "wǔ", "en": "five", "ex_zh": "每只手有五根手指。", "ex_en": "Each hand has five fingers." },
+        { "zh": "六", "py": "liù", "en": "six", "ex_zh": "商店六点关门。", "ex_en": "The shop closes at six." },
+        { "zh": "七", "py": "qī", "en": "seven", "ex_zh": "一周有七天。", "ex_en": "There are seven days in a week." },
+        { "zh": "八", "py": "bā", "en": "eight", "ex_zh": "他每晚睡八个小时。", "ex_en": "He sleeps eight hours every night." },
+        { "zh": "九", "py": "jiǔ", "en": "nine", "ex_zh": "这栋楼有九层。", "ex_en": "This building has nine floors." },
+        { "zh": "十", "py": "shí", "en": "ten", "ex_zh": "我有十块钱。", "ex_en": "I have ten yuan." },
+        { "zh": "二十", "py": "èrshí", "en": "twenty", "ex_zh": "她二十岁了。", "ex_en": "She is twenty years old." },
+        { "zh": "一百", "py": "yī bǎi", "en": "one hundred", "ex_zh": "我付了一百块钱。", "ex_en": "I paid one hundred yuan." },
+        { "zh": "一千", "py": "yī qiān", "en": "one thousand", "ex_zh": "距离是一千公里。", "ex_en": "The distance is one thousand kilometres." },
+        { "zh": "一万", "py": "yī wàn", "en": "ten thousand (key unit in Chinese)", "ex_zh": "这件东西要一万块。", "ex_en": "This item costs ten thousand yuan." },
+        { "zh": "一百万", "py": "yī bǎi wàn", "en": "one million", "ex_zh": "这个城市有一百万居民。", "ex_en": "This city has one million residents." }
+      ]
+    },
+    "family": {
+      "label": "Family / 家庭",
+      "entries": [
+        { "zh": "家庭", "py": "jiātíng", "en": "family", "ex_zh": "我的家庭很大。", "ex_en": "My family is large." },
+        { "zh": "爸爸 / 父亲", "py": "bàba / fùqīn", "en": "dad / father (informal/formal)", "ex_zh": "我爸爸是医生。", "ex_en": "My father is a doctor." },
+        { "zh": "妈妈 / 母亲", "py": "māma / mǔqīn", "en": "mum / mother (informal/formal)", "ex_zh": "我妈妈每天做饭。", "ex_en": "My mother cooks every day." },
+        { "zh": "哥哥", "py": "gēgē", "en": "older brother", "ex_zh": "我哥哥比我大三岁。", "ex_en": "My older brother is three years older than me." },
+        { "zh": "弟弟", "py": "dìdì", "en": "younger brother", "ex_zh": "我弟弟还在上小学。", "ex_en": "My younger brother is still in primary school." },
+        { "zh": "姐姐", "py": "jiějiě", "en": "older sister", "ex_zh": "我姐姐在学医。", "ex_en": "My older sister is studying medicine." },
+        { "zh": "妹妹", "py": "mèimei", "en": "younger sister", "ex_zh": "我妹妹很可爱。", "ex_en": "My younger sister is very cute." },
+        { "zh": "爷爷", "py": "yéyé", "en": "paternal grandfather", "ex_zh": "爷爷给我讲故事。", "ex_en": "Grandfather tells me stories." },
+        { "zh": "奶奶", "py": "nǎinai", "en": "paternal grandmother", "ex_zh": "奶奶住在农村。", "ex_en": "Grandmother lives in the countryside." },
+        { "zh": "外公", "py": "wàigōng", "en": "maternal grandfather", "ex_zh": "外公很喜欢钓鱼。", "ex_en": "My maternal grandfather loves fishing." },
+        { "zh": "外婆", "py": "wàipó", "en": "maternal grandmother", "ex_zh": "外婆的饭菜最好吃。", "ex_en": "Grandmother's cooking is the most delicious." },
+        { "zh": "叔叔 / 伯伯", "py": "shūshu / bóbo", "en": "paternal uncle (younger/older than father)", "ex_zh": "叔叔住在北京。", "ex_en": "My uncle lives in Beijing." },
+        { "zh": "阿姨", "py": "āyí", "en": "maternal aunt / auntie", "ex_zh": "阿姨是一名老师。", "ex_en": "My aunt is a teacher." },
+        { "zh": "儿子", "py": "érzi", "en": "son", "ex_zh": "我儿子在大学读书。", "ex_en": "My son is studying at university." },
+        { "zh": "女儿", "py": "nǚ'ér", "en": "daughter", "ex_zh": "我女儿很喜欢读书。", "ex_en": "My daughter loves reading." },
+        { "zh": "丈夫", "py": "zhàngfu", "en": "husband", "ex_zh": "我丈夫是工程师。", "ex_en": "My husband is an engineer." },
+        { "zh": "妻子", "py": "qīzi", "en": "wife", "ex_zh": "我妻子是牙医。", "ex_en": "My wife is a dentist." }
+      ]
+    },
+    "body": {
+      "label": "Body / 身体",
+      "entries": [
+        { "zh": "头", "py": "tóu", "en": "head", "ex_zh": "我头很痛。", "ex_en": "I have a headache." },
+        { "zh": "脸", "py": "liǎn", "en": "face", "ex_zh": "她的脸很好看。", "ex_en": "Her face is very beautiful." },
+        { "zh": "眼睛", "py": "yǎnjīng", "en": "eye(s)", "ex_zh": "他的眼睛是蓝色的。", "ex_en": "His eyes are blue." },
+        { "zh": "耳朵", "py": "ěrduō", "en": "ear(s)", "ex_zh": "我的耳朵很痛。", "ex_en": "My ear hurts a lot." },
+        { "zh": "鼻子", "py": "bízi", "en": "nose", "ex_zh": "我鼻子不通气。", "ex_en": "My nose is blocked." },
+        { "zh": "嘴巴 / 嘴", "py": "zuǐba / zuǐ", "en": "mouth", "ex_zh": "请张开嘴。", "ex_en": "Please open your mouth." },
+        { "zh": "牙齿", "py": "yáchǐ", "en": "teeth", "ex_zh": "每天要刷两次牙。", "ex_en": "You should brush your teeth twice a day." },
+        { "zh": "手", "py": "shǒu", "en": "hand", "ex_zh": "饭前要洗手。", "ex_en": "Wash your hands before eating." },
+        { "zh": "脚", "py": "jiǎo", "en": "foot", "ex_zh": "跑步后我的脚很痛。", "ex_en": "My foot hurts after running." },
+        { "zh": "心脏", "py": "xīnzàng", "en": "heart", "ex_zh": "心脏负责泵血。", "ex_en": "The heart is responsible for pumping blood." },
+        { "zh": "背", "py": "bèi", "en": "back", "ex_zh": "我背很痛。", "ex_en": "My back hurts." },
+        { "zh": "肚子 / 胃", "py": "dùzi / wèi", "en": "stomach / belly", "ex_zh": "我肚子不舒服。", "ex_en": "My stomach is uncomfortable." },
+        { "zh": "脖子", "py": "bózi", "en": "neck", "ex_zh": "我脖子酸了。", "ex_en": "My neck is stiff/sore." },
+        { "zh": "肩膀", "py": "jiānbǎng", "en": "shoulder", "ex_zh": "她扭伤了肩膀。", "ex_en": "She sprained her shoulder." },
+        { "zh": "膝盖", "py": "xīgài", "en": "knee", "ex_zh": "他运动时伤了膝盖。", "ex_en": "He injured his knee while exercising." }
+      ]
+    },
+    "colors": {
+      "label": "Colors / 颜色",
+      "entries": [
+        { "zh": "红色", "py": "hóngsè", "en": "red", "ex_zh": "我买了一件红色的衬衫。", "ex_en": "I bought a red shirt." },
+        { "zh": "蓝色", "py": "lánsè", "en": "blue", "ex_zh": "夏天天空是蓝色的。", "ex_en": "The sky is blue in summer." },
+        { "zh": "绿色", "py": "lǜsè", "en": "green", "ex_zh": "春天树是绿色的。", "ex_en": "Trees are green in spring." },
+        { "zh": "黄色", "py": "huángsè", "en": "yellow", "ex_zh": "香蕉是黄色的。", "ex_en": "Bananas are yellow." },
+        { "zh": "白色", "py": "báisè", "en": "white", "ex_zh": "雪是白色的。", "ex_en": "Snow is white." },
+        { "zh": "黑色", "py": "hēisè", "en": "black", "ex_zh": "那只猫是黑色的。", "ex_en": "That cat is black." },
+        { "zh": "橙色", "py": "chéngsè", "en": "orange", "ex_zh": "我买了一个橙色的包。", "ex_en": "I bought an orange bag." },
+        { "zh": "紫色", "py": "zǐsè", "en": "purple / violet", "ex_zh": "那朵花是紫色的。", "ex_en": "That flower is purple." },
+        { "zh": "粉红色", "py": "fěnhóngsè", "en": "pink", "ex_zh": "她喜欢粉红色。", "ex_en": "She likes pink." },
+        { "zh": "棕色 / 咖啡色", "py": "zōngsè / kāfēisè", "en": "brown / coffee-coloured", "ex_zh": "她的头发是棕色的。", "ex_en": "Her hair is brown." },
+        { "zh": "灰色", "py": "huīsè", "en": "grey", "ex_zh": "今天天空是灰色的。", "ex_en": "The sky is grey today." },
+        { "zh": "金色", "py": "jīnsè", "en": "golden", "ex_zh": "那枚戒指是金色的。", "ex_en": "That ring is golden." }
+      ]
+    },
+    "food_and_drink": {
+      "label": "Food & Drink / 食物和饮料",
+      "entries": [
+        { "zh": "米饭", "py": "mǐfàn", "en": "cooked rice", "ex_zh": "我们每天吃米饭。", "ex_en": "We eat rice every day." },
+        { "zh": "面条", "py": "miàntiáo", "en": "noodles", "ex_zh": "他很喜欢吃面条。", "ex_en": "He loves eating noodles." },
+        { "zh": "包子", "py": "bāozi", "en": "steamed bun (filled)", "ex_zh": "早饭我吃了两个包子。", "ex_en": "I ate two steamed buns for breakfast." },
+        { "zh": "饺子", "py": "jiǎozi", "en": "dumplings", "ex_zh": "过年的时候，我们包饺子。", "ex_en": "During Chinese New Year we make dumplings." },
+        { "zh": "肉", "py": "ròu", "en": "meat", "ex_zh": "我喜欢吃烤肉。", "ex_en": "I like eating barbecued meat." },
+        { "zh": "鸡肉", "py": "jīròu", "en": "chicken (meat)", "ex_zh": "炸鸡肉很好吃。", "ex_en": "Fried chicken is very delicious." },
+        { "zh": "鱼", "py": "yú", "en": "fish", "ex_zh": "我们星期五吃鱼。", "ex_en": "We eat fish on Fridays." },
+        { "zh": "蔬菜", "py": "shūcài", "en": "vegetables", "ex_zh": "蔬菜对健康有好处。", "ex_en": "Vegetables are good for health." },
+        { "zh": "水果", "py": "shuǐguǒ", "en": "fruit", "ex_zh": "早餐我吃了一些水果。", "ex_en": "I ate some fruit for breakfast." },
+        { "zh": "水", "py": "shuǐ", "en": "water", "ex_zh": "每天要多喝水。", "ex_en": "Drink more water every day." },
+        { "zh": "茶", "py": "chá", "en": "tea", "ex_zh": "我喜欢喝绿茶。", "ex_en": "I like drinking green tea." },
+        { "zh": "咖啡", "py": "kāfēi", "en": "coffee", "ex_zh": "我每天早上喝一杯咖啡。", "ex_en": "I drink a cup of coffee every morning." },
+        { "zh": "牛奶", "py": "niúnǎi", "en": "milk", "ex_zh": "孩子们每天喝牛奶。", "ex_en": "Children drink milk every day." },
+        { "zh": "糖", "py": "táng", "en": "sugar / sweets / candy", "ex_zh": "咖啡里我不加糖。", "ex_en": "I don't add sugar to my coffee." },
+        { "zh": "盐", "py": "yán", "en": "salt", "ex_zh": "菜里加一点盐。", "ex_en": "Add a little salt to the dish." },
+        { "zh": "早饭 / 早餐", "py": "zǎofàn / zǎocān", "en": "breakfast", "ex_zh": "早饭是最重要的一餐。", "ex_en": "Breakfast is the most important meal." },
+        { "zh": "午饭 / 午餐", "py": "wǔfàn / wǔcān", "en": "lunch", "ex_zh": "我们十二点吃午饭。", "ex_en": "We have lunch at twelve o'clock." },
+        { "zh": "晚饭 / 晚餐", "py": "wǎnfàn / wǎncān", "en": "dinner", "ex_zh": "全家一起吃晚饭。", "ex_en": "The whole family eats dinner together." }
+      ]
+    },
+    "time": {
+      "label": "Time / 时间",
+      "entries": [
+        { "zh": "现在", "py": "xiànzài", "en": "now", "ex_zh": "我现在很忙。", "ex_en": "I am very busy right now." },
+        { "zh": "今天", "py": "jīntiān", "en": "today", "ex_zh": "今天是星期五。", "ex_en": "Today is Friday." },
+        { "zh": "明天", "py": "míngtiān", "en": "tomorrow", "ex_zh": "明天我们去郊游。", "ex_en": "Tomorrow we will go on an outing." },
+        { "zh": "昨天", "py": "zuótiān", "en": "yesterday", "ex_zh": "昨天我去了市场。", "ex_en": "Yesterday I went to the market." },
+        { "zh": "小时", "py": "xiǎoshí", "en": "hour", "ex_zh": "几点了？", "ex_en": "What time is it?" },
+        { "zh": "分钟", "py": "fēnzhōng", "en": "minute", "ex_zh": "请等一分钟。", "ex_en": "Please wait a minute." },
+        { "zh": "天 / 日", "py": "tiān / rì", "en": "day", "ex_zh": "今天是个好天气。", "ex_en": "Today has good weather." },
+        { "zh": "星期 / 周", "py": "xīngqī / zhōu", "en": "week", "ex_zh": "我一周后回来。", "ex_en": "I will return in one week." },
+        { "zh": "月", "py": "yuè", "en": "month", "ex_zh": "他离开已经一个月了。", "ex_en": "He has been gone for one month." },
+        { "zh": "年", "py": "nián", "en": "year", "ex_zh": "新年在一月开始。", "ex_en": "The new year begins in January." },
+        { "zh": "早上 / 上午", "py": "zǎoshang / shàngwǔ", "en": "morning", "ex_zh": "我早上六点起床。", "ex_en": "I get up at six in the morning." },
+        { "zh": "中午", "py": "zhōngwǔ", "en": "noon / midday", "ex_zh": "我们中午一起吃饭。", "ex_en": "We eat together at noon." },
+        { "zh": "下午", "py": "xiàwǔ", "en": "afternoon", "ex_zh": "下午我去图书馆。", "ex_en": "In the afternoon I go to the library." },
+        { "zh": "晚上", "py": "wǎnshang", "en": "evening / night", "ex_zh": "晚上我喜欢散步。", "ex_en": "I like to take a walk in the evening." }
+      ]
+    },
+    "days_and_months": {
+      "label": "Days & Months / 星期和月份",
+      "entries": [
+        { "zh": "星期一", "py": "xīngqīyī", "en": "Monday", "ex_zh": "星期一学校开始上课。", "ex_en": "School starts on Monday." },
+        { "zh": "星期二", "py": "xīngqīèr", "en": "Tuesday", "ex_zh": "我的预约在星期二。", "ex_en": "My appointment is on Tuesday." },
+        { "zh": "星期三", "py": "xīngqīsān", "en": "Wednesday", "ex_zh": "我们星期三见面。", "ex_en": "We meet on Wednesday." },
+        { "zh": "星期四", "py": "xīngqīsì", "en": "Thursday", "ex_zh": "会议在星期四举行。", "ex_en": "The meeting is on Thursday." },
+        { "zh": "星期五", "py": "xīngqīwǔ", "en": "Friday", "ex_zh": "星期五是我最喜欢的一天。", "ex_en": "Friday is my favourite day." },
+        { "zh": "星期六", "py": "xīngqīliù", "en": "Saturday", "ex_zh": "星期六我们运动。", "ex_en": "We exercise on Saturdays." },
+        { "zh": "星期日 / 星期天", "py": "xīngqīrì / xīngqītiān", "en": "Sunday", "ex_zh": "星期天全家人在一起。", "ex_en": "The whole family is together on Sundays." },
+        { "zh": "一月", "py": "yīyuè", "en": "January", "ex_zh": "我是一月出生的。", "ex_en": "I was born in January." },
+        { "zh": "二月", "py": "èryuè", "en": "February", "ex_zh": "二月是最短的月份。", "ex_en": "February is the shortest month." },
+        { "zh": "三月", "py": "sānyuè", "en": "March", "ex_zh": "三月春天开始了。", "ex_en": "Spring begins in March." },
+        { "zh": "四月", "py": "sìyuè", "en": "April", "ex_zh": "四月鲜花盛开。", "ex_en": "Flowers bloom in April." },
+        { "zh": "五月", "py": "wǔyuè", "en": "May", "ex_zh": "五月天气很好。", "ex_en": "The weather is nice in May." },
+        { "zh": "六月", "py": "liùyuè", "en": "June", "ex_zh": "六月夏天到来。", "ex_en": "Summer arrives in June." },
+        { "zh": "十二月", "py": "shí'èryuè", "en": "December", "ex_zh": "十二月过圣诞节。", "ex_en": "Christmas is celebrated in December." }
+      ]
+    },
+    "weather": {
+      "label": "Weather / 天气",
+      "entries": [
+        { "zh": "天气", "py": "tiānqì", "en": "weather", "ex_zh": "今天天气怎么样？", "ex_en": "What is the weather like today?" },
+        { "zh": "热 / 暖和", "py": "rè / nuǎnhuo", "en": "hot / warm", "ex_zh": "夏天很热。", "ex_en": "It is very hot in summer." },
+        { "zh": "冷 / 凉快", "py": "lěng / liángkuai", "en": "cold / cool", "ex_zh": "冬天很冷。", "ex_en": "It is very cold in winter." },
+        { "zh": "晴天", "py": "qíngtiān", "en": "sunny / clear day", "ex_zh": "今天是晴天，很舒服。", "ex_en": "Today is sunny and comfortable." },
+        { "zh": "下雨", "py": "xià yǔ", "en": "to rain / raining", "ex_zh": "今天在下雨，别忘了带伞。", "ex_en": "It's raining today, don't forget your umbrella." },
+        { "zh": "下雪", "py": "xià xuě", "en": "to snow / snowing", "ex_zh": "山上在下雪。", "ex_en": "It's snowing in the mountains." },
+        { "zh": "风", "py": "fēng", "en": "wind", "ex_zh": "今天风很大。", "ex_en": "The wind is strong today." },
+        { "zh": "云", "py": "yún", "en": "cloud", "ex_zh": "天空布满了云。", "ex_en": "The sky is covered with clouds." },
+        { "zh": "雷雨 / 暴风雨", "py": "léiyǔ / bàofēngyǔ", "en": "thunderstorm / storm", "ex_zh": "昨晚有一场大雷雨。", "ex_en": "There was a big thunderstorm last night." },
+        { "zh": "雾", "py": "wù", "en": "fog / mist", "ex_zh": "今天早上有大雾。", "ex_en": "There was thick fog this morning." },
+        { "zh": "温度", "py": "wēndù", "en": "temperature", "ex_zh": "今天温度是三十五度。", "ex_en": "The temperature is thirty-five degrees today." }
+      ]
+    },
+    "travel_and_places": {
+      "label": "Travel & Places / 旅行和地点",
+      "entries": [
+        { "zh": "机场", "py": "jīchǎng", "en": "airport", "ex_zh": "我早早到了机场。", "ex_en": "I arrived at the airport early." },
+        { "zh": "火车站", "py": "huǒchē zhàn", "en": "train station", "ex_zh": "我们在火车站见面。", "ex_en": "We met at the train station." },
+        { "zh": "酒店 / 宾馆", "py": "jiǔdiàn / bīnguǎn", "en": "hotel", "ex_zh": "我们住在一家五星级酒店。", "ex_en": "We are staying in a five-star hotel." },
+        { "zh": "医院", "py": "yīyuàn", "en": "hospital", "ex_zh": "医院就在附近。", "ex_en": "The hospital is nearby." },
+        { "zh": "市场 / 超市", "py": "shìchǎng / chāoshì", "en": "market / supermarket", "ex_zh": "我去超市买东西了。", "ex_en": "I went to the supermarket to buy things." },
+        { "zh": "商店", "py": "shāngdiàn", "en": "shop / store", "ex_zh": "我去商店买了一些面包。", "ex_en": "I went to the shop to buy some bread." },
+        { "zh": "城市", "py": "chéngshì", "en": "city / town", "ex_zh": "北京是一个很大的城市。", "ex_en": "Beijing is a very large city." },
+        { "zh": "农村 / 村子", "py": "nóngcūn / cūnzi", "en": "countryside / village", "ex_zh": "我在一个小村子长大。", "ex_en": "I grew up in a small village." },
+        { "zh": "街道 / 路", "py": "jiēdào / lù", "en": "street / road", "ex_zh": "我住在主街上。", "ex_en": "I live on the main street." },
+        { "zh": "银行", "py": "yínháng", "en": "bank", "ex_zh": "我去银行取了钱。", "ex_en": "I withdrew money from the bank." },
+        { "zh": "餐厅 / 饭馆", "py": "cāntīng / fànguǎn", "en": "restaurant", "ex_zh": "我们在一家中餐厅吃饭。", "ex_en": "We ate at a Chinese restaurant." },
+        { "zh": "药店 / 药房", "py": "yàodiàn / yàofáng", "en": "pharmacy / drugstore", "ex_zh": "我在药店买了药。", "ex_en": "I bought medicine at the pharmacy." },
+        { "zh": "学校", "py": "xuéxiào", "en": "school", "ex_zh": "孩子们去学校上课。", "ex_en": "Children go to school for lessons." },
+        { "zh": "大学", "py": "dàxué", "en": "university", "ex_zh": "我在北京大学学习。", "ex_en": "I study at Peking University." },
+        { "zh": "图书馆", "py": "túshūguǎn", "en": "library", "ex_zh": "我每天去图书馆读书。", "ex_en": "I go to the library to read every day." }
+      ]
+    },
+    "transport": {
+      "label": "Transport / 交通",
+      "entries": [
+        { "zh": "汽车 / 车", "py": "qìchē / chē", "en": "car / vehicle", "ex_zh": "我爸爸买了一辆新车。", "ex_en": "My father bought a new car." },
+        { "zh": "公共汽车 / 公交车", "py": "gōnggòng qìchē / gōngjiāo chē", "en": "bus", "ex_zh": "我每天坐公交车上班。", "ex_en": "I take the bus to work every day." },
+        { "zh": "火车", "py": "huǒchē", "en": "train", "ex_zh": "火车比公交车快。", "ex_en": "The train is faster than the bus." },
+        { "zh": "飞机", "py": "fēijī", "en": "aeroplane", "ex_zh": "我坐飞机去了北京。", "ex_en": "I flew to Beijing." },
+        { "zh": "船", "py": "chuán", "en": "boat / ship", "ex_zh": "我们坐船过了河。", "ex_en": "We crossed the river by boat." },
+        { "zh": "自行车", "py": "zìxíngchē", "en": "bicycle", "ex_zh": "我每天骑自行车上学。", "ex_en": "I cycle to school every day." },
+        { "zh": "出租车", "py": "chūzūchē", "en": "taxi", "ex_zh": "我从机场打了一辆出租车。", "ex_en": "I took a taxi from the airport." },
+        { "zh": "地铁", "py": "dìtiě", "en": "underground / metro", "ex_zh": "北京的地铁很方便。", "ex_en": "Beijing's metro is very convenient." },
+        { "zh": "高铁", "py": "gāotiě", "en": "high-speed rail", "ex_zh": "高铁让旅行更快了。", "ex_en": "High-speed rail has made travel faster." }
+      ]
+    },
+    "school_and_work": {
+      "label": "School & Work / 学校和工作",
+      "entries": [
+        { "zh": "老师", "py": "lǎoshī", "en": "teacher", "ex_zh": "老师把课讲得很清楚。", "ex_en": "The teacher explained the lesson very clearly." },
+        { "zh": "学生", "py": "xuéshēng", "en": "student", "ex_zh": "学生正在写作业。", "ex_en": "The student is doing homework." },
+        { "zh": "书", "py": "shū", "en": "book", "ex_zh": "这本书我读了两遍。", "ex_en": "I have read this book twice." },
+        { "zh": "笔", "py": "bǐ", "en": "pen / pencil", "ex_zh": "你能把笔借我一下吗？", "ex_en": "Can you lend me your pen?" },
+        { "zh": "课", "py": "kè", "en": "lesson / class", "ex_zh": "今天的课很有趣。", "ex_en": "Today's lesson was very interesting." },
+        { "zh": "考试", "py": "kǎoshì", "en": "exam / test", "ex_zh": "明天早上有考试。", "ex_en": "There is an exam tomorrow morning." },
+        { "zh": "作业", "py": "zuòyè", "en": "homework", "ex_zh": "我要先写完作业才能玩。", "ex_en": "I need to finish my homework before I can play." },
+        { "zh": "办公室", "py": "bàngōngshì", "en": "office", "ex_zh": "我在一个大办公室工作。", "ex_en": "I work in a large office." },
+        { "zh": "工程师", "py": "gōngchéngshī", "en": "engineer", "ex_zh": "我哥哥是电气工程师。", "ex_en": "My brother is an electrical engineer." },
+        { "zh": "医生", "py": "yīshēng", "en": "doctor", "ex_zh": "我昨天去看医生了。", "ex_en": "I went to see the doctor yesterday." },
+        { "zh": "律师", "py": "lǜshī", "en": "lawyer", "ex_zh": "我需要咨询一位律师。", "ex_en": "I need to consult a lawyer." }
+      ]
+    },
+    "house_and_home": {
+      "label": "House & Home / 房子和家",
+      "entries": [
+        { "zh": "房子 / 家", "py": "fángzi / jiā", "en": "house / home", "ex_zh": "我的家就是你的家。", "ex_en": "My home is your home." },
+        { "zh": "房间", "py": "fángjiān", "en": "room", "ex_zh": "我的房间又大又亮。", "ex_en": "My room is large and bright." },
+        { "zh": "厨房", "py": "chúfáng", "en": "kitchen", "ex_zh": "我妈妈在厨房里。", "ex_en": "My mother is in the kitchen." },
+        { "zh": "卫生间 / 洗手间", "py": "wèishēngjiān / xǐshǒujiān", "en": "bathroom / toilet", "ex_zh": "洗手间在走廊尽头。", "ex_en": "The bathroom is at the end of the corridor." },
+        { "zh": "客厅", "py": "kètīng", "en": "living room", "ex_zh": "我们在客厅看电视。", "ex_en": "We watch TV in the living room." },
+        { "zh": "门", "py": "mén", "en": "door", "ex_zh": "请把门关上。", "ex_en": "Please close the door." },
+        { "zh": "窗户", "py": "chuānghù", "en": "window", "ex_zh": "打开窗户让新鲜空气进来。", "ex_en": "Open the window to let fresh air in." },
+        { "zh": "楼层 / 层", "py": "lóucéng / céng", "en": "floor / storey", "ex_zh": "我住在三楼。", "ex_en": "I live on the third floor." },
+        { "zh": "床", "py": "chuáng", "en": "bed", "ex_zh": "我睡在一张舒适的床上。", "ex_en": "I sleep in a comfortable bed." },
+        { "zh": "椅子", "py": "yǐzi", "en": "chair", "ex_zh": "请坐在椅子上。", "ex_en": "Please sit on the chair." }
+      ]
+    },
+    "nature": {
+      "label": "Nature / 自然",
+      "entries": [
+        { "zh": "山", "py": "shān", "en": "mountain", "ex_zh": "夏天我们去爬山了。", "ex_en": "We climbed the mountain in summer." },
+        { "zh": "大海 / 海", "py": "dàhǎi / hǎi", "en": "sea / ocean", "ex_zh": "地中海非常美丽。", "ex_en": "The Mediterranean is very beautiful." },
+        { "zh": "河 / 河流", "py": "hé / héliú", "en": "river", "ex_zh": "长江是中国最长的河流。", "ex_en": "The Yangtze is China's longest river." },
+        { "zh": "沙漠", "py": "shāmò", "en": "desert", "ex_zh": "撒哈拉是最大的热带沙漠。", "ex_en": "The Sahara is the largest hot desert." },
+        { "zh": "森林", "py": "sēnlín", "en": "forest", "ex_zh": "森林里住着很多动物。", "ex_en": "Many animals live in the forest." },
+        { "zh": "树", "py": "shù", "en": "tree", "ex_zh": "我们在花园里种了一棵树。", "ex_en": "We planted a tree in the garden." },
+        { "zh": "花", "py": "huā", "en": "flower", "ex_zh": "花园里的花很漂亮。", "ex_en": "The flowers in the garden are beautiful." },
+        { "zh": "太阳", "py": "tàiyáng", "en": "sun", "ex_zh": "太阳从东方升起。", "ex_en": "The sun rises from the east." },
+        { "zh": "月亮", "py": "yuèliàng", "en": "moon", "ex_zh": "月亮在晚上照亮天空。", "ex_en": "The moon illuminates the sky at night." },
+        { "zh": "星星", "py": "xīngxīng", "en": "star(s)", "ex_zh": "天空中有很多星星。", "ex_en": "There are many stars in the sky." }
+      ]
+    },
+    "adjectives": {
+      "label": "Adjectives / 形容词",
+      "entries": [
+        { "zh": "大", "py": "dà", "en": "big / large / great", "ex_zh": "这座城市很大。", "ex_en": "This city is very large." },
+        { "zh": "小", "py": "xiǎo", "en": "small / little / young", "ex_zh": "这房子小但很舒适。", "ex_en": "This house is small but comfortable." },
+        { "zh": "漂亮 / 美", "py": "piàoliang / měi", "en": "beautiful / pretty", "ex_zh": "这里的风景很漂亮。", "ex_en": "The scenery here is beautiful." },
+        { "zh": "快", "py": "kuài", "en": "fast / quick", "ex_zh": "这辆火车很快。", "ex_en": "This train is very fast." },
+        { "zh": "慢", "py": "màn", "en": "slow", "ex_zh": "乌龟走得很慢。", "ex_en": "The tortoise walks very slowly." },
+        { "zh": "难 / 困难", "py": "nán / kùnnán", "en": "difficult / hard", "ex_zh": "这次考试很难。", "ex_en": "This exam is very difficult." },
+        { "zh": "容易 / 简单", "py": "róngyì / jiǎndān", "en": "easy / simple", "ex_zh": "这个问题很简单。", "ex_en": "This question is very simple." },
+        { "zh": "新", "py": "xīn", "en": "new", "ex_zh": "我买了一部新手机。", "ex_en": "I bought a new phone." },
+        { "zh": "旧 / 老", "py": "jiù / lǎo", "en": "old (things/people)", "ex_zh": "这房子很旧但很美。", "ex_en": "This house is old but beautiful." },
+        { "zh": "强 / 强壮", "py": "qiáng / qiángzhuàng", "en": "strong", "ex_zh": "今天风很强。", "ex_en": "The wind is very strong today." },
+        { "zh": "贵", "py": "guì", "en": "expensive / precious", "ex_zh": "这部手机太贵了。", "ex_en": "This phone is too expensive." },
+        { "zh": "便宜", "py": "piányí", "en": "cheap / affordable", "ex_zh": "这个餐厅很便宜。", "ex_en": "This restaurant is very affordable." },
+        { "zh": "高兴 / 快乐", "py": "gāoxìng / kuàilè", "en": "happy / glad / joyful", "ex_zh": "我为自己的成绩感到高兴。", "ex_en": "I am happy about my results." },
+        { "zh": "难过 / 伤心", "py": "nánguò / shāngxīn", "en": "sad", "ex_zh": "坏消息让他很难过。", "ex_en": "The bad news made him very sad." },
+        { "zh": "累", "py": "lèi", "en": "tired", "ex_zh": "工作以后我很累。", "ex_en": "I am tired after work." },
+        { "zh": "生病 / 不舒服", "py": "shēngbìng / bù shūfu", "en": "sick / ill / unwell", "ex_zh": "他生病了，没来上班。", "ex_en": "He was sick and didn't come to work." }
+      ]
+    },
+    "verbs": {
+      "label": "Common Verbs / 常用动词",
+      "entries": [
+        { "zh": "去", "py": "qù", "en": "to go", "ex_zh": "我每天早上去学校。", "ex_en": "I go to school every morning." },
+        { "zh": "来", "py": "lái", "en": "to come", "ex_zh": "我朋友今晚来。", "ex_en": "My friend is coming this evening." },
+        { "zh": "吃", "py": "chī", "en": "to eat", "ex_zh": "我们中午一起吃饭。", "ex_en": "We eat together at noon." },
+        { "zh": "喝", "py": "hē", "en": "to drink", "ex_zh": "他运动后喝水。", "ex_en": "He drinks water after exercise." },
+        { "zh": "写", "py": "xiě", "en": "to write", "ex_zh": "她给朋友写信。", "ex_en": "She is writing a letter to her friend." },
+        { "zh": "读 / 看书", "py": "dú / kàn shū", "en": "to read", "ex_zh": "他一晚上读完了这本书。", "ex_en": "He read the book in one night." },
+        { "zh": "学 / 学习", "py": "xué / xuéxí", "en": "to learn / study", "ex_zh": "她在北京学中文。", "ex_en": "She is studying Chinese in Beijing." },
+        { "zh": "工作", "py": "gōngzuò", "en": "to work", "ex_zh": "他努力工作完成项目。", "ex_en": "He works hard to finish the project." },
+        { "zh": "睡觉", "py": "shuìjiào", "en": "to sleep", "ex_zh": "我每晚早点睡觉。", "ex_en": "I go to sleep early every night." },
+        { "zh": "起床", "py": "qǐchuáng", "en": "to get up / wake up", "ex_zh": "我闹钟响了就起床。", "ex_en": "I get up when the alarm rings." },
+        { "zh": "说话 / 讲", "py": "shuōhuà / jiǎng", "en": "to speak / talk", "ex_zh": "他说中文说得很流利。", "ex_en": "He speaks Chinese very fluently." },
+        { "zh": "听", "py": "tīng", "en": "to listen / hear", "ex_zh": "她认真听那首歌。", "ex_en": "She listens carefully to that song." },
+        { "zh": "看", "py": "kàn", "en": "to see / look / watch", "ex_zh": "我看到了奇怪的东西。", "ex_en": "I saw something strange." },
+        { "zh": "旅行", "py": "lǚxíng", "en": "to travel", "ex_zh": "他去年去了欧洲旅行。", "ex_en": "He travelled to Europe last year." },
+        { "zh": "买", "py": "mǎi", "en": "to buy", "ex_zh": "她给妈妈买了礼物。", "ex_en": "She bought her mother a gift." },
+        { "zh": "明白 / 懂", "py": "míngbai / dǒng", "en": "to understand", "ex_zh": "他很快就明白了这节课。", "ex_en": "He understood the lesson quickly." },
+        { "zh": "知道", "py": "zhīdào", "en": "to know (a fact)", "ex_zh": "我知道正确答案。", "ex_en": "I know the correct answer." },
+        { "zh": "喜欢 / 爱", "py": "xǐhuān / ài", "en": "to like / to love", "ex_zh": "我从小就喜欢中文。", "ex_en": "I have liked Chinese since childhood." },
+        { "zh": "帮助", "py": "bāngzhù", "en": "to help", "ex_zh": "他帮邻居搬家了。", "ex_en": "He helped his neighbour move house." },
+        { "zh": "能 / 可以", "py": "néng / kěyǐ", "en": "can / to be able to / may", "ex_zh": "我明天能来。", "ex_en": "I can come tomorrow." }
+      ]
+    },
+    "question_words": {
+      "label": "Question Words / 疑问词",
+      "entries": [
+        { "zh": "谁", "py": "shéi / shuí", "en": "who", "ex_zh": "谁在敲门？", "ex_en": "Who is knocking at the door?" },
+        { "zh": "什么", "py": "shénme", "en": "what", "ex_zh": "你在做什么？", "ex_en": "What are you doing?" },
+        { "zh": "哪里 / 在哪", "py": "nǎlǐ / zài nǎ", "en": "where", "ex_zh": "你住在哪里？", "ex_en": "Where do you live?" },
+        { "zh": "什么时候", "py": "shénme shíhòu", "en": "when", "ex_zh": "课什么时候开始？", "ex_en": "When does the lesson start?" },
+        { "zh": "为什么", "py": "wèishénme", "en": "why", "ex_zh": "你为什么迟到了？", "ex_en": "Why are you late?" },
+        { "zh": "怎么 / 如何", "py": "zěnme / rúhé", "en": "how", "ex_zh": "你怎么去学校？", "ex_en": "How do you go to school?" },
+        { "zh": "多少", "py": "duōshǎo", "en": "how many / how much", "ex_zh": "这个多少钱？", "ex_en": "How much does this cost?" },
+        { "zh": "几", "py": "jǐ", "en": "how many (small number, < 10)", "ex_zh": "你有几个兄弟？", "ex_en": "How many brothers do you have?" },
+        { "zh": "哪 / 哪个", "py": "nǎ / nǎge", "en": "which / which one", "ex_zh": "你喜欢哪种颜色？", "ex_en": "Which colour do you like?" }
+      ]
+    },
+    "health_and_medicine": {
+      "label": "Health & Medicine / 健康和医疗",
+      "entries": [
+        { "zh": "健康", "py": "jiànkāng", "en": "health / healthy", "ex_zh": "健康是最宝贵的财富。", "ex_en": "Health is the most precious wealth." },
+        { "zh": "生病", "py": "shēngbìng", "en": "to be sick / fall ill", "ex_zh": "他生病了，没去上班。", "ex_en": "He was sick and didn't go to work." },
+        { "zh": "药", "py": "yào", "en": "medicine / drug", "ex_zh": "我饭后吃药。", "ex_en": "I take my medicine after eating." },
+        { "zh": "疼 / 痛", "py": "téng / tòng", "en": "pain / ache / hurt", "ex_zh": "我头很疼。", "ex_en": "My head hurts a lot." },
+        { "zh": "发烧", "py": "fāshāo", "en": "to have a fever", "ex_zh": "他发高烧了。", "ex_en": "He has a high fever." },
+        { "zh": "咳嗽", "py": "késou", "en": "to cough / a cough", "ex_zh": "这咳嗽很烦人。", "ex_en": "This cough is very annoying." },
+        { "zh": "感冒", "py": "gǎnmào", "en": "a cold (illness)", "ex_zh": "我感冒了。", "ex_en": "I caught a cold." }
+      ]
+    },
+    "emotions": {
+      "label": "Emotions / 情感",
+      "entries": [
+        { "zh": "高兴 / 快乐", "py": "gāoxìng / kuàilè", "en": "happy / joyful", "ex_zh": "看到你，我很高兴。", "ex_en": "I am very happy to see you." },
+        { "zh": "难过 / 伤心", "py": "nánguò / shāngxīn", "en": "sad", "ex_zh": "他看起来很难过。", "ex_en": "He looks very sad." },
+        { "zh": "害怕 / 恐惧", "py": "hàipà / kǒngjù", "en": "afraid / fear", "ex_zh": "在危险情况下害怕是正常的。", "ex_en": "It is normal to feel afraid in dangerous situations." },
+        { "zh": "生气 / 愤怒", "py": "shēngqì / fènnù", "en": "angry", "ex_zh": "愤怒对健康有害。", "ex_en": "Anger is harmful to health." },
+        { "zh": "爱 / 爱情", "py": "ài / àiqíng", "en": "love", "ex_zh": "爱让生活更美好。", "ex_en": "Love makes life more beautiful." },
+        { "zh": "累 / 疲倦", "py": "lèi / píjuàn", "en": "tired / exhausted", "ex_zh": "忙了一天，我感到很累。", "ex_en": "After a busy day I feel very tired." },
+        { "zh": "惊喜 / 惊讶", "py": "jīngxǐ / jīngyà", "en": "surprised / amazed", "ex_zh": "他的表情让我很惊讶。", "ex_en": "His expression surprised me greatly." }
+      ]
+    },
+    "grammar_essentials": {
+      "label": "Grammar Essentials / 语法要点",
+      "entries": [
+        { "zh": "在", "py": "zài", "en": "at / in / on (location)", "ex_zh": "我在我的房间里。", "ex_en": "I am in my room." },
+        { "zh": "从", "py": "cóng", "en": "from (origin)", "ex_zh": "我从中国来。", "ex_en": "I come from China." },
+        { "zh": "到 / 去", "py": "dào / qù", "en": "to (destination)", "ex_zh": "他去了北京。", "ex_en": "He went to Beijing." },
+        { "zh": "和 / 跟", "py": "hé / gēn", "en": "and / with", "ex_zh": "我和我哥哥一起来了。", "ex_en": "I came together with my brother." },
+        { "zh": "上", "py": "shàng", "en": "on top of / above", "ex_zh": "书在桌子上。", "ex_en": "The book is on the table." },
+        { "zh": "下", "py": "xià", "en": "under / below / next (time)", "ex_zh": "猫在床下面。", "ex_en": "The cat is under the bed." },
+        { "zh": "为", "py": "wèi", "en": "for / on behalf of", "ex_zh": "这本书是为你准备的。", "ex_en": "This book is prepared for you." },
+        { "zh": "但是 / 可是", "py": "dànshì / kěshì", "en": "but / however", "ex_zh": "这节课难，但是很有趣。", "ex_en": "The lesson is difficult but interesting." },
+        { "zh": "因为", "py": "yīnwèi", "en": "because", "ex_zh": "我没睡觉，因为太吵了。", "ex_en": "I didn't sleep because it was too loud." },
+        { "zh": "如果", "py": "rúguǒ", "en": "if", "ex_zh": "如果你学习，你就会通过。", "ex_en": "If you study, you will pass." },
+        { "zh": "有", "py": "yǒu", "en": "to have / there is / there are", "ex_zh": "附近有一所学校。", "ex_en": "There is a school nearby." },
+        { "zh": "没有", "py": "méiyǒu", "en": "don't have / there isn't / not (past)", "ex_zh": "这里没有问题。", "ex_en": "There is no problem here." },
+        { "zh": "不", "py": "bù", "en": "not (negation, present/future)", "ex_zh": "这不对。", "ex_en": "This is not correct." },
+        { "zh": "也", "py": "yě", "en": "also / too", "ex_zh": "我也喜欢中文。", "ex_en": "I also like Chinese." },
+        { "zh": "很", "py": "hěn", "en": "very (default linking adj. to be)", "ex_zh": "今天天气很好。", "ex_en": "Today the weather is very good." },
+        { "zh": "的", "py": "de", "en": "structural particle (possessive / attributive)", "ex_zh": "这是我的书。", "ex_en": "This is my book." },
+        { "zh": "了", "py": "le", "en": "particle (completed action / change of state)", "ex_zh": "我吃了饭了。", "ex_en": "I have eaten (the meal)." },
+        { "zh": "吗", "py": "ma", "en": "question particle (yes/no question)", "ex_zh": "你是学生吗？", "ex_en": "Are you a student?" }
+      ]
+    }
+  }
+}

@@ -31,89 +31,13 @@ const DEMO_MODE_KEY = 'nexus_demo_mode';
 const AUTH_REMEMBER_KEY = 'nexus_remember_me';
 const FORCE_DEMO_MODE = true;
 const LEARN_BOOKMARKS_KEY = 'nexus_learn_bookmarks_v1';
-
-const DEMO_DATA = {
-  tasks: [
-    { id: 'd-task-1', title: 'Mathematics: Solve quadratic equations worksheet', status: 'open', course_name: 'Mathematics', due_date: '2026-05-02' },
-    { id: 'd-task-2', title: 'Biology: Read chapter on genetics and heredity', status: 'open', course_name: 'Biology', due_date: '2026-05-03' },
-    { id: 'd-task-3', title: 'German: Write analytical essay on "Der Vorleser"', status: 'open', course_name: 'German Language', due_date: '2026-05-05' },
-    { id: 'd-task-4', title: 'Chemistry: Lab report – Acid-base titration', status: 'overdue', course_name: 'Chemistry', due_date: '2026-04-25' },
-    { id: 'd-task-5', title: 'Physics: Lab report – Ohm\'s Law experiment', status: 'done', course_name: 'Physics', due_date: '2026-04-22' },
-    { id: 'd-task-6', title: 'CS: Implement binary search algorithm in Python', status: 'open', course_name: 'Computer Science', due_date: '2026-05-06' },
-    { id: 'd-task-7', title: 'History: Present on causes of World War I', status: 'open', course_name: 'History', due_date: '2026-05-08' },
-    { id: 'd-task-8', title: 'English: Write argumentative essay on social media', status: 'open', course_name: 'English Language', due_date: '2026-05-04' },
-    { id: 'd-task-9', title: 'Mathematics: Prepare for upcoming analysis exam', status: 'open', course_name: 'Mathematics', due_date: '2026-05-12' },
-    { id: 'd-task-10', title: 'Biology: Prepare evolution presentation slides', status: 'done', course_name: 'Biology', due_date: '2026-04-28' },
-  ],
-  courses: [
-    { id: 'd-course-1', name: 'Mathematics', teacher_name: 'Dr. Weber', level: 'Advanced', description: 'Algebra, geometry, differential calculus, and statistics with weekly problem sets.' },
-    { id: 'd-course-2', name: 'Physics', teacher_name: 'Mr. Hoffmann', level: 'Intermediate', description: 'Mechanics, electricity, thermodynamics and waves with lab experiments.' },
-    { id: 'd-course-3', name: 'Chemistry', teacher_name: 'Dr. Müller', level: 'Intermediate', description: 'Atomic structure, chemical reactions, acids and bases, organic chemistry.' },
-    { id: 'd-course-4', name: 'Biology', teacher_name: 'Prof. Klein', level: 'Intermediate', description: 'Cell biology, genetics, ecology, and human physiology with practicals.' },
-    { id: 'd-course-5', name: 'Computer Science', teacher_name: 'Ms. Novak', level: 'Beginner', description: 'Programming, algorithms, data structures, and digital systems.' },
-    { id: 'd-course-6', name: 'German Language', teacher_name: 'Mr. Bauer', level: 'Advanced', description: 'Grammar, text analysis, essay writing, and literature study.' },
-    { id: 'd-course-7', name: 'History', teacher_name: 'Dr. Schmidt', level: 'Intermediate', description: 'Modern history 1800–present: revolutions, world wars, and contemporary events.' },
-    { id: 'd-course-8', name: 'English Language', teacher_name: 'Ms. Turner', level: 'Intermediate', description: 'Reading comprehension, grammar, writing, and oral communication.' },
-  ],
-  files: [
-    { id: 'd-file-1', name: 'Semester_Plan.pdf', size: 640 },
-    { id: 'd-file-2', name: 'Physics_Formula_Sheet.pdf', size: 220 },
-    { id: 'd-file-3', name: 'Chemistry_Lab_Protocol.pdf', size: 185 },
-    { id: 'd-file-4', name: 'German_Essay_Template.docx', size: 95 },
-  ],
-  events: [
-    { id: 'd-event-1', title: 'Mathematics Exam', starts_at: '2026-05-12T09:00:00Z', location: 'Exam Hall A' },
-    { id: 'd-event-2', title: 'Chemistry Lab', starts_at: '2026-05-07T12:00:00Z', location: 'Lab 1B' },
-    { id: 'd-event-3', title: 'History Presentation', starts_at: '2026-05-08T10:30:00Z', location: 'Room 305' },
-    { id: 'd-event-4', title: 'Biology Field Trip', starts_at: '2026-05-14T08:00:00Z', location: 'Nature Reserve' },
-    { id: 'd-event-5', title: 'Sports Day', starts_at: '2026-05-20T09:00:00Z', location: 'School Grounds' },
-  ],
-  schedules: [
-    { id: 'd-sched-1', day: 'Monday', time: '07:45 – 08:30', subject: 'Mathematics', location: 'Room 201', type: 'Lesson' },
-    { id: 'd-sched-2', day: 'Monday', time: '08:35 – 09:20', subject: 'German Language', location: 'Room 112', type: 'Lesson' },
-    { id: 'd-sched-3', day: 'Monday', time: '09:30 – 10:15', subject: 'Physics', location: 'Lab 3A', type: 'Lab' },
-    { id: 'd-sched-4', day: 'Monday', time: '10:30 – 11:15', subject: 'English Language', location: 'Room 108', type: 'Class' },
-    { id: 'd-sched-5', day: 'Monday', time: '11:20 – 12:05', subject: 'History', location: 'Room 305', type: 'Seminar' },
-    { id: 'd-sched-6', day: 'Monday', time: '13:00 – 13:45', subject: 'Chemistry', location: 'Lab 1B', type: 'Lab' },
-    { id: 'd-sched-7', day: 'Monday', time: '13:50 – 14:35', subject: 'Biology', location: 'Room 204', type: 'Lesson' },
-    { id: 'd-sched-8', day: 'Monday', time: '14:40 – 15:25', subject: 'Computer Science', location: 'Room PC-2', type: 'Project' },
-  ],
-  learningRooms: [
-    { id: 'd-room-1', name: 'Quiet Study', description: 'A focused space for homework, revision and deep thinking.', status: 'Available', bestFor: 'Individual work' },
-    { id: 'd-room-2', name: 'Homeschool Hub', description: 'A home classroom setup for parents and learners with daily routine support.', status: 'Ready', bestFor: 'Routine & family study' },
-    { id: 'd-room-3', name: 'Group Room', description: 'A team space for group projects, video calls and collaborative review.', status: 'Open', bestFor: 'Project work' },
-    { id: 'd-room-4', name: 'Online Tutor', description: 'A digital room for remote tutoring, exam prep and live support.', status: 'Booked', bestFor: 'Remote coaching' },
-  ],
-  homeschoolTips: [
-    'Use a weekly timetable and block time for lessons, revision and breaks.',
-    'Set up one dedicated study space with good light, clear surfaces and minimal distractions.',
-    'Mix quiet solo work with short group or tutor sessions to stay motivated.',
-    'Review your schedule each evening and plan the next day before you start.',
-  ],
-  grades: [
-    { id: 'd-grade-1', course_name: 'Mathematics', value: 2, notes: 'Strong algebra performance', updated_at: '2026-04-20' },
-    { id: 'd-grade-2', course_name: 'Physics', value: 2, notes: 'Good lab work, theory improving', updated_at: '2026-04-18' },
-    { id: 'd-grade-3', course_name: 'Chemistry', value: 3, notes: 'Solid understanding of reactions', updated_at: '2026-04-15' },
-    { id: 'd-grade-4', course_name: 'Biology', value: 1, notes: 'Excellent practical work', updated_at: '2026-04-18' },
-    { id: 'd-grade-5', course_name: 'Computer Science', value: 2, notes: 'Great coding projects', updated_at: '2026-04-12' },
-    { id: 'd-grade-6', course_name: 'German Language', value: 3, notes: 'Essays improving – keep up revision', updated_at: '2026-04-22' },
-    { id: 'd-grade-7', course_name: 'History', value: 2, notes: 'Strong source analysis skills', updated_at: '2026-04-10' },
-    { id: 'd-grade-8', course_name: 'English Language', value: 1, notes: 'Exceptional oral and written work', updated_at: '2026-04-08' },
-  ],
-  chats: [
-    { id: 'd-room-1', room_name: 'General Study', last_message: 'Remember to review chapters 3 and 4.', updated_at: '2026-04-30T10:00:00Z' },
-    { id: 'd-room-2', room_name: 'Physics Lab Group', last_message: 'Meeting at 14:00 in Lab B-3.', updated_at: '2026-04-29T17:30:00Z' },
-  ],
-  chatMessages: {
-    'd-room-1': [
-      { id: 'd-msg-1', room_id: 'd-room-1', content: 'Hi all, today we focus on revision strategy.', created_at: '2026-04-30T08:00:00Z', sender_id: 'system', sender_name: 'Tutor' },
-      { id: 'd-msg-2', room_id: 'd-room-1', content: 'Remember to review chapters 3 and 4.', created_at: '2026-04-30T10:00:00Z', sender_id: 'system', sender_name: 'Tutor' },
-    ],
-    'd-room-2': [
-      { id: 'd-msg-3', room_id: 'd-room-2', content: 'Meeting at 14:00 in Lab B-3.', created_at: '2026-04-29T17:30:00Z', sender_id: 'system', sender_name: 'Lab Assistant' },
-    ],
-  },
-};
+const PLANNER_SCHEDULE_KEY = 'nexus_planner_schedule_v1'; // legacy
+const TIMETABLE_KEY = 'nexus_timetable_v2';
+const PLANER_TASKS_KEY = 'nexus_planer_tasks_v1';
+// Default time labels for 12 timetable periods
+const TIMETABLE_SLOTS = [
+  '07:00','07:45','08:45','09:30','10:30','11:15','12:15','13:00','14:00','14:45','15:45','16:30'
+];
 
 const tr = (key, fallback) => {
   if (typeof t === 'function') {
@@ -154,6 +78,33 @@ const localizeLearnText = async (text, lang) => {
   if (normalized.startsWith('en')) return text;
   if (typeof window.translateText !== 'function') return text;
   return window.translateText(text, normalized);
+};
+
+window.translateText = async (text, targetLang) => {
+  if (!text || !targetLang || targetLang.toLowerCase().startsWith('en')) return text;
+  try {
+    const lang = encodeURIComponent(targetLang.toLowerCase());
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${lang}&dt=t&q=${encodeURIComponent(text)}`;
+    const res = await fetch(url, { cache: 'no-store' });
+    const data = await res.json();
+    if (!Array.isArray(data) || !Array.isArray(data[0])) return text;
+    return data[0].map((part) => part[0] || '').join('') || text;
+  } catch {
+    return text;
+  }
+};
+
+const applyTheme = () => {
+  document.body.classList.toggle('dark', state.ui.theme === 'dark');
+};
+
+const setTheme = (theme) => {
+  if (theme !== 'light' && theme !== 'dark') return;
+  state.ui.theme = theme;
+  saveUiSettings();
+  applyTheme();
+  renderSettings();
+  Notifications.show(tr('settingsThemeSaved', theme === 'dark' ? 'Dark mode enabled' : 'Light mode enabled'));
 };
 
 const getLearningContextLine = (mode) => {
@@ -360,6 +311,7 @@ const showShell = () => {
   document.getElementById('authScreen').classList.add('hidden');
   document.getElementById('appShell').classList.remove('hidden');
   loadUiSettings();
+  applyTheme();
   updateUserChip();
   loadPage(state.page);
 };
@@ -384,6 +336,8 @@ const loadUiSettings = () => {
       if (parsed.uniSemester) state.ui.uniSemester = parsed.uniSemester;
       if (parsed.examMode) state.ui.examMode = parsed.examMode;
       if (parsed.country) state.ui.country = parsed.country;
+      if (parsed.theme === 'light' || parsed.theme === 'dark') state.ui.theme = parsed.theme;
+      if (parsed.plannerTab === 'timetable' || parsed.plannerTab === 'tasks' || parsed.plannerTab === 'view' || parsed.plannerTab === 'edit') state.ui.plannerTab = (parsed.plannerTab === 'view' || parsed.plannerTab === 'timetable') ? 'timetable' : 'tasks';
     }
   } catch (_) {
     state.ui.studyMode = 'school';
@@ -391,11 +345,131 @@ const loadUiSettings = () => {
     state.ui.uniSemester = 'semester-1-2';
     state.ui.examMode = 'balanced';
     state.ui.country = 'de';
+    state.ui.theme = 'dark';
+    state.ui.plannerTab = 'timetable';
   }
 };
 
 const saveUiSettings = () => {
   localStorage.setItem(UI_SETTINGS_KEY, JSON.stringify(state.ui));
+};
+
+// ─── Timetable storage ───────────────────────────────────────────────────────
+const loadTimetable = () => {
+  try { const r = localStorage.getItem(TIMETABLE_KEY); return r ? JSON.parse(r) : {}; }
+  catch { return {}; }
+};
+const saveTimetable = (data) => {
+  localStorage.setItem(TIMETABLE_KEY, JSON.stringify(data));
+};
+
+// ─── Planer tasks storage ────────────────────────────────────────────────────
+const loadPlanerTasks = () => {
+  try { const r = localStorage.getItem(PLANER_TASKS_KEY); return r ? JSON.parse(r) : []; }
+  catch { return []; }
+};
+const savePlanerTasks = (tasks) => {
+  localStorage.setItem(PLANER_TASKS_KEY, JSON.stringify(tasks));
+};
+
+// Keep legacy loader for migration (not actively used)
+const loadPlannerSchedule = () => {
+  try { const r = localStorage.getItem(PLANNER_SCHEDULE_KEY); return r ? JSON.parse(r) : []; }
+  catch { return []; }
+};
+
+window.switchPlannerTab = (tab) => {
+  if (tab !== 'timetable' && tab !== 'tasks') return;
+  state.ui.plannerTab = tab;
+  saveUiSettings();
+  renderTasks();
+};
+
+window.openTimetableCell = (day, slot) => {
+  const tt = loadTimetable();
+  const cell = (tt[day] || {})[slot] || {};
+  showModal(tr('planerEditSlot','Edit time slot'), `
+    <div style="display:flex;flex-direction:column;gap:12px;padding:4px 0">
+      <input id="ttSubject" class="input" type="text" placeholder="${tr('planerSubject','Subject')}" value="${(cell.subject||'').replace(/"/g,'&quot;')}" />
+      <input id="ttTeacher" class="input" type="text" placeholder="${tr('planerTeacher','Teacher (optional)')}" value="${(cell.teacher||'').replace(/"/g,'&quot;')}" />
+      <input id="ttRoom" class="input" type="text" placeholder="${tr('planerRoom','Room (optional)')}" value="${(cell.room||'').replace(/"/g,'&quot;')}" />
+      <div style="display:flex;align-items:center;gap:10px">
+        <label style="font-size:13px;color:var(--text2)">${tr('planerColor','Color')}</label>
+        <input id="ttColor" type="color" value="${cell.color||'#3b5bdb'}" style="width:44px;height:32px;border:none;border-radius:8px;cursor:pointer;padding:0" />
+      </div>
+      <div style="display:flex;gap:8px;margin-top:4px">
+        <button class="btn btn-primary" style="flex:1" onclick="saveTimetableCell(${day},${slot})">${tr('planerSave','Save')}</button>
+        ${cell.subject ? `<button class="btn" style="color:#ef4444;border-color:#ef4444" onclick="deleteTimetableCell(${day},${slot})">${tr('planerDelete','Delete')}</button>` : ''}
+      </div>
+    </div>
+  `);
+  setTimeout(() => document.getElementById('ttSubject')?.focus(), 80);
+};
+
+window.saveTimetableCell = (day, slot) => {
+  const subject = (document.getElementById('ttSubject')?.value || '').trim();
+  if (!subject) { Notifications.show(tr('planerSubjectRequired','Subject is required.'), 'warn'); return; }
+  const tt = loadTimetable();
+  if (!tt[day]) tt[day] = {};
+  tt[day][slot] = {
+    subject,
+    teacher: (document.getElementById('ttTeacher')?.value || '').trim(),
+    room: (document.getElementById('ttRoom')?.value || '').trim(),
+    color: document.getElementById('ttColor')?.value || '#3b5bdb',
+  };
+  saveTimetable(tt);
+  closeModal();
+  renderTasks();
+};
+
+window.deleteTimetableCell = (day, slot) => {
+  const tt = loadTimetable();
+  if (tt[day]) delete tt[day][slot];
+  saveTimetable(tt);
+  closeModal();
+  renderTasks();
+};
+
+window.addPlanerTask = () => {
+  showModal(tr('planerAddTask','New task'), `
+    <div style="display:flex;flex-direction:column;gap:12px;padding:4px 0">
+      <input id="ptTitle" class="input" type="text" placeholder="${tr('planerTaskTitle','Task title')}" />
+      <input id="ptSubject" class="input" type="text" placeholder="${tr('planerSubject','Subject (optional)')}" />
+      <input id="ptDue" class="input" type="date" />
+      <button class="btn btn-primary" onclick="submitPlanerTask()">${tr('planerSave','Save')}</button>
+    </div>
+  `);
+  setTimeout(() => document.getElementById('ptTitle')?.focus(), 80);
+};
+
+window.submitPlanerTask = () => {
+  const title = (document.getElementById('ptTitle')?.value || '').trim();
+  if (!title) { Notifications.show(tr('planerTaskRequired','Task title is required.'), 'warn'); return; }
+  const tasks = loadPlanerTasks();
+  tasks.unshift({
+    id: `pt-${Date.now()}`,
+    title,
+    subject: (document.getElementById('ptSubject')?.value || '').trim(),
+    dueDate: document.getElementById('ptDue')?.value || '',
+    done: false,
+    createdAt: new Date().toISOString(),
+  });
+  savePlanerTasks(tasks);
+  closeModal();
+  renderTasks();
+};
+
+window.togglePlanerTask = (id) => {
+  const tasks = loadPlanerTasks();
+  const t = tasks.find(x => x.id === id);
+  if (t) t.done = !t.done;
+  savePlanerTasks(tasks);
+  renderTasks();
+};
+
+window.deletePlanerTask = (id) => {
+  savePlanerTasks(loadPlanerTasks().filter(x => x.id !== id));
+  renderTasks();
 };
 
 const showAuth = () => {
@@ -561,18 +635,29 @@ const renderDashboard = async () => {
     </button>
   `;
 
-  // Data source: demo vs real
-  const tasks = state.demoMode ? DEMO_DATA.tasks : (state.tasks || []);
-  const courses = state.demoMode ? DEMO_DATA.courses : (state.courses || []);
-  const schedules = state.demoMode ? DEMO_DATA.schedules : [];
+  const tasks = state.tasks || [];
+  const courses = state.courses || [];
+  // Today's timetable from new timetable data
+  const jsDow = new Date().getDay();
+  const todayDayIdx = jsDow === 0 ? 6 : jsDow - 1; // 0=Mon...6=Sun
+  const tt = loadTimetable();
+  const todaySlots = TIMETABLE_SLOTS.map((time, si) => {
+    const cell = (tt[todayDayIdx] || {})[si];
+    return cell && cell.subject ? { time, ...cell } : null;
+  }).filter(Boolean);
+  // Also merge legacy state.schedules
+  const legacySchedules = state.schedules || [];
+  const schedules = todaySlots.length ? todaySlots : legacySchedules;
   const openTasks = tasks.filter(t => t.status !== 'done');
+  // Also load new planer tasks
+  const planerTasks = loadPlanerTasks().filter(t => !t.done);
 
   // Stats
   const statsEl = document.getElementById('dashStats');
   if (statsEl) statsEl.innerHTML = `
     <div class="dash-stat dash-stat-purple">
       <div class="dash-stat-icon">📋</div>
-      <span class="dash-stat-value">${formatNumber(openTasks.length)}</span>
+      <span class="dash-stat-value">${formatNumber(openTasks.length + planerTasks.length)}</span>
       <span class="dash-stat-label">${tr('dashStatTasks', 'Open tasks')}</span>
     </div>
     <div class="dash-stat dash-stat-blue">
@@ -592,16 +677,16 @@ const renderDashboard = async () => {
     </div>
   `;
 
-  // Schedule
+  // Schedule (today's timetable)
   const dashSchedule = document.getElementById('dashSchedule');
   if (dashSchedule) {
     if (schedules.length) {
       dashSchedule.innerHTML = schedules.map(s => `
         <div class="dash-schedule-item">
-          <div class="dash-schedule-time">${s.time}</div>
+          <div class="dash-schedule-time" style="color:${s.color||'var(--accent)'}">${s.time}</div>
           <div class="dash-schedule-info">
-            <div class="dash-list-title">${s.subject}</div>
-            <div class="dash-list-sub">${s.type} · ${s.location}</div>
+            <div class="dash-list-title"><span class="planner-color-dot" style="background:${s.color||'var(--accent)'}"></span>${s.subject}</div>
+            ${s.teacher || s.room ? `<div class="dash-list-sub">${[s.teacher, s.room].filter(Boolean).join(' · ')}</div>` : ''}
           </div>
         </div>`).join('');
     } else {
@@ -784,35 +869,109 @@ const filterCourses = () => {
 };
 
 const renderTasks = async () => {
-  // Render schedule in planner
-  const plannerSchedule = document.getElementById('plannerSchedule');
-  if (plannerSchedule) {
-    const schedules = state.demoMode ? DEMO_DATA.schedules : [];
-    if (schedules.length) {
-      plannerSchedule.innerHTML = schedules.map(s => `
-        <div class="dash-schedule-item">
-          <div class="dash-schedule-time">${s.time}</div>
-          <div class="dash-schedule-info">
-            <div class="dash-list-title">${s.subject}</div>
-            <div class="dash-list-sub">${s.type} · ${s.location}</div>
-          </div>
-        </div>`).join('');
-    } else {
-      plannerSchedule.innerHTML = `<div class="dash-list-placeholder">${tr('dashNoSchedule','No classes scheduled.')}</div>`;
-    }
+  const content = document.getElementById('plannerContent');
+  if (!content) return;
+
+  const activeTab = state.ui.plannerTab || 'timetable';
+
+  // Localized day names via Intl (0=Mon … 6=Sun)
+  const lang = (typeof getActiveLanguage === 'function' ? getActiveLanguage() : null) || 'de';
+  const fmtLong  = new Intl.DateTimeFormat(lang, { weekday: 'long' });
+  const fmtShort = new Intl.DateTimeFormat(lang, { weekday: 'short' });
+  // 2024-01-01 = Monday, 2024-01-07 = Sunday
+  const DAY_NAMES = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(2024, 0, i + 1);
+    return [fmtLong.format(d), fmtShort.format(d)];
+  });
+
+  // ── Timetable tab ─────────────────────────────────────────────────────────
+  let panelHtml = '';
+  if (activeTab === 'timetable') {
+    const tt = loadTimetable();
+    // Determine today's column index (0=Mon … 6=Sun; JS getDay: 0=Sun,1=Mon…)
+    const jsDow = new Date().getDay();
+    const todayIdx = jsDow === 0 ? 6 : jsDow - 1;
+
+    // Build header row
+    const headerCells = DAY_NAMES.map(([full], di) =>
+      `<th class="tt-day-hdr${di === todayIdx ? ' tt-today' : ''}">${full}</th>`
+    ).join('');
+
+    // Build body rows
+    const bodyRows = TIMETABLE_SLOTS.map((time, si) => {
+      const cells = DAY_NAMES.map(([,], di) => {
+        const cell = (tt[di] || {})[si];
+        if (cell && cell.subject) {
+          return `<td class="tt-cell tt-cell-filled" onclick="openTimetableCell(${di},${si})" style="--cell-color:${cell.color||'#3b5bdb'}">
+            <div class="tt-cell-inner" style="background:${cell.color||'#3b5bdb'}22;border-left:3px solid ${cell.color||'#3b5bdb'}">
+              <div class="tt-cell-subject">${cell.subject}</div>
+              ${cell.teacher ? `<div class="tt-cell-teacher">${cell.teacher}</div>` : ''}
+              ${cell.room ? `<div class="tt-cell-room">${cell.room}</div>` : ''}
+            </div>
+          </td>`;
+        }
+        return `<td class="tt-cell tt-cell-empty" onclick="openTimetableCell(${di},${si})">
+          <span class="tt-add-icon">+</span>
+        </td>`;
+      }).join('');
+      return `<tr><td class="tt-time-cell">${time}</td>${cells}</tr>`;
+    }).join('');
+
+    panelHtml = `
+      <div class="tt-scroll-wrap">
+        <table class="tt-table">
+          <thead><tr><th class="tt-time-hdr">${tr('planerPeriod','Period')}</th>${headerCells}</tr></thead>
+          <tbody>${bodyRows}</tbody>
+        </table>
+      </div>
+      <p class="tt-hint">${tr('planerClickHint','Click any cell to add or edit a lesson.')}</p>`;
+
+  // ── Tasks tab ─────────────────────────────────────────────────────────────
+  } else {
+    const tasks = loadPlanerTasks();
+    const openTasks = tasks.filter(t => !t.done);
+    const doneTasks = tasks.filter(t => t.done);
+    const taskRow = (task) => `
+      <div class="planer-task-row${task.done ? ' planer-task-done' : ''}">
+        <button class="planer-task-check" onclick="togglePlanerTask('${task.id}')" title="${task.done ? tr('planerUncheck','Uncheck') : tr('planerCheck','Check')}">
+          ${task.done ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><polyline points="20 6 9 17 4 12"/></svg>` : ''}
+        </button>
+        <div class="planer-task-body">
+          <div class="planer-task-title">${task.title}</div>
+          ${(task.subject || task.dueDate) ? `<div class="planer-task-meta">${task.subject ? `${task.subject}` : ''}${task.subject && task.dueDate ? ' · ' : ''}${task.dueDate ? `📅 ${task.dueDate}` : ''}</div>` : ''}
+        </div>
+        <button class="planer-task-delete icon-btn" onclick="deletePlanerTask('${task.id}')" title="${tr('planerDelete','Delete')}">✕</button>
+      </div>`;
+
+    panelHtml = `
+      <div class="planer-task-toolbar">
+        <button class="btn btn-primary" onclick="addPlanerTask()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          ${tr('planerAddTask','Add task')}
+        </button>
+        <span class="planer-task-count">${openTasks.length} ${tr('planerOpenTasks','open')}</span>
+      </div>
+      ${tasks.length === 0 ? `<div class="dash-list-placeholder" style="padding:40px 0">${tr('planerNoTasks','No tasks yet. Add your first task!')}</div>` : ''}
+      <div class="planer-task-list">${openTasks.map(taskRow).join('')}</div>
+      ${doneTasks.length ? `
+        <div class="planer-done-section">
+          <div class="planer-done-label">${tr('planerDone','Completed')} (${doneTasks.length})</div>
+          <div class="planer-task-list">${doneTasks.map(taskRow).join('')}</div>
+        </div>` : ''}`;
   }
-  const container = document.getElementById('taskList');
-  if (!container) return;
-  container.innerHTML = `<div class="dash-list-placeholder">${tr('loadingLabel','Loading...')}</div>`;
-  if (state.demoMode) {
-    state.tasks = [...DEMO_DATA.tasks];
-    filterTasks(state.taskFilter || 'all');
-    return;
-  }
-  const { data, error } = await sb.from('tasks').select('*').order('due_date', { ascending: false });
-  if (error) return (container.innerHTML = `<div class="dash-list-placeholder">${tr('tasksLoadError','Unable to load tasks.')}</div>`);
-  state.tasks = data || [];
-  filterTasks(state.taskFilter || 'all');
+
+  content.innerHTML = `
+    <div class="planer-tabs-row">
+      <button class="planer-main-tab${activeTab === 'timetable' ? ' active' : ''}" onclick="switchPlannerTab('timetable')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
+        ${tr('planerTabTimetable','Stundenplan')}
+      </button>
+      <button class="planer-main-tab${activeTab === 'tasks' ? ' active' : ''}" onclick="switchPlannerTab('tasks')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        ${tr('planerTabTasks','Aufgaben')}
+      </button>
+    </div>
+    <div class="planer-panel">${panelHtml}</div>`;
 };
 
 const renderMessages = async () => {
@@ -1008,31 +1167,11 @@ const submitCalEvent = (dateStr) => {
 const renderGrades = async () => {
   const content = document.getElementById('gradesContent');
   content.innerHTML = `<div class="dash-list-placeholder">${tr('loadingLabel','Loading...')}</div>`;
-  if (state.demoMode) {
-    const grades = DEMO_DATA.grades || [];
-    if (!grades.length) {
-      content.innerHTML = `
-        <div class="empty-state">
-          <div class="empty-state-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <h3>${tr('emptyGrades','No grades yet')}</h3>
-          <p>${tr('emptyGradesDesc','Your grades will appear here once your teacher adds them.')}</p>
-        </div>`;
-      return;
-    }
-    const lang = getActiveLanguage();
-    const sys = getSchoolSystem();
-    const scaleInfo = `<div style="font-size:12px;color:var(--text3);margin-bottom:12px">📊 ${sys.flag} ${sys.name} — ${sys.gradeScale.scaleDesc}</div>`;
-    content.innerHTML = scaleInfo + `<table class="grade-table"><thead><tr><th>${tr('grSubject','Course')}</th><th>${tr('grGrade','Grade')}</th><th>${tr('grNote','Notes')}</th><th>${tr('grDate','Date')}</th></tr></thead><tbody>${grades.map((grade) => {
-      const dispVal = formatGradeValue(grade.value, lang);
-      const cssC = gradeClass(grade.value);
-      const dateStr = new Date(grade.updated_at).toLocaleDateString(lang, { day: 'numeric', month: 'short', year: 'numeric' });
-      return `<tr><td>${grade.course_name}</td><td class="grade-val ${cssC}">${dispVal}</td><td>${grade.notes || '—'}</td><td style="color:var(--text3);font-size:12px">${dateStr}</td></tr>`;
-    }).join('')}</tbody></table>`;
-    return;
-  }
   const { data, error } = await sb.from('grades').select('*').order('updated_at', { ascending: false });
   if (error) return (content.innerHTML = `<div class="dash-list-placeholder">${tr('dashLoadError','Unable to load data.')}</div>`);
-  content.innerHTML = data.length ? `<table class="grade-table"><thead><tr><th>${tr('grSubject','Course')}</th><th>${tr('grGrade','Grade')}</th><th>${tr('grNote','Notes')}</th></tr></thead><tbody>${data.map((grade) => `<tr><td>${grade.course_name}</td><td class="grade-val grade-${Math.min(6, Math.max(1, grade.value))}">${grade.value}</td><td>${grade.notes || '—'}</td></tr>`).join('')}</tbody></table>` : `<div class="empty-state"><div class="empty-state-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3>${tr('emptyGrades','No grades available')}</h3></div>`;
+  content.innerHTML = data.length
+    ? `<table class="grade-table"><thead><tr><th>${tr('grSubject','Course')}</th><th>${tr('grGrade','Grade')}</th><th>${tr('grNote','Notes')}</th></tr></thead><tbody>${data.map((grade) => `<tr><td>${grade.course_name}</td><td class="grade-val grade-${Math.min(6, Math.max(1, grade.value))}">${grade.value}</td><td>${grade.notes || '—'}</td></tr>`).join('')}</tbody></table>`
+    : `<div class="empty-state"><div class="empty-state-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3>${tr('emptyGrades','No grades available')}</h3></div>`;
 };
 
 const SUBJECT_META = {
@@ -1064,6 +1203,30 @@ const SUBJECT_META = {
   'social-studies':             { icon: '🏛️',  color: '#2c3e50' },
   'philosophy':                 { icon: '🧠', color: '#6c3483' },
   'media-literacy':             { icon: '📱', color: '#3498db' },
+  'media-studies':              { icon: '📱', color: '#3498db' },
+  'politics-civics':            { icon: '🏛️',  color: '#2c3e50' },
+  'psychology-school':          { icon: '🧠', color: '#6c3483' },
+  astronomy:                    { icon: '🔭', color: '#1a1a6e' },
+  'latin-language':             { icon: '🏺', color: '#8e6b3e' },
+  'chinese-language':           { icon: '🇨🇳', color: '#c0392b' },
+  'environmental-studies':      { icon: '🌿', color: '#27ae60' },
+  // University-only subjects
+  law:                          { icon: '⚖️',  color: '#2c3e50' },
+  medicine:                     { icon: '🩺', color: '#e74c3c' },
+  psychology:                   { icon: '🧠', color: '#8e44ad' },
+  sociology:                    { icon: '👥', color: '#2980b9' },
+  'political-science':          { icon: '🏛️',  color: '#34495e' },
+  architecture:                 { icon: '🏗️',  color: '#795548' },
+  engineering:                  { icon: '⚙️',  color: '#607d8b' },
+  'business-administration':    { icon: '💼', color: '#f39c12' },
+  linguistics:                  { icon: '🗣️',  color: '#16a085' },
+  literature:                   { icon: '📖', color: '#8e6b3e' },
+  'environmental-science':      { icon: '🌍', color: '#27ae60' },
+  'education-pedagogy':         { icon: '🎓', color: '#2980b9' },
+  'statistics-data-science':    { icon: '📈', color: '#e67e22' },
+  cybersecurity:                { icon: '🔐', color: '#c0392b' },
+  'social-work':                { icon: '🤝', color: '#16a085' },
+  'nutrition-dietetics':        { icon: '🥗', color: '#27ae60' },
 };
 const getLearnMeta = (id) => SUBJECT_META[id] || { icon: '📚', color: 'var(--accent2)' };
 
@@ -1420,7 +1583,33 @@ const gradeClass = (germanValue) => {
   return sys.gradeScale.cssClass(pct);
 };
 
-const renderLearnTopicDetail = async (subjectId, folderIdx, topicIdx) => {
+// ─── Learn Progress Tracking ─────────────────────────────────────────────────
+const LEARN_PROGRESS_KEY = 'nexus_learn_progress_v2';
+const loadLearnProgress = () => {
+  try { return JSON.parse(localStorage.getItem(LEARN_PROGRESS_KEY) || '{}'); } catch { return {}; }
+};
+const saveLearnProgress = (d) => {
+  try { localStorage.setItem(LEARN_PROGRESS_KEY, JSON.stringify(d)); } catch {}
+};
+const _progressKey = (mode, sid, fi, ti) => `${mode}::${sid}::${fi}::${ti}`;
+const markTopicDone = (mode, sid, fi, ti) => {
+  const p = loadLearnProgress(); p[_progressKey(mode, sid, fi, ti)] = Date.now(); saveLearnProgress(p);
+};
+const unmarkTopicDone = (mode, sid, fi, ti) => {
+  const p = loadLearnProgress(); delete p[_progressKey(mode, sid, fi, ti)]; saveLearnProgress(p);
+};
+const isTopicDone = (mode, sid, fi, ti) => !!loadLearnProgress()[_progressKey(mode, sid, fi, ti)];
+const countSubjectDone = (mode, sid, folders) => {
+  const p = loadLearnProgress();
+  let done = 0, total = 0;
+  (folders || []).forEach((f, fi) => (f.topics || []).forEach((_, ti) => { total++; if (p[_progressKey(mode, sid, fi, ti)]) done++; }));
+  return { done, total };
+};
+
+// ─── Learn search state ───────────────────────────────────────────────────────
+const _learnSearch = { q: '', cat: 'all' };
+
+const renderLearnTopicDetail = async (subjectId, folderIdx, topicIdx, _scrollSection) => {
   const container = document.getElementById('learnContent');
   if (!container) return;
   const model = window.LEARN_SOURCES || { core: {}, school: [], university: [] };
@@ -1433,171 +1622,331 @@ const renderLearnTopicDetail = async (subjectId, folderIdx, topicIdx) => {
   const topicRaw = (folder.topics || [])[topicIdx];
   if (!topicRaw) return renderLearn();
 
-  const lang = getActiveLanguage();
-  const meta = getLearnMeta(subjectId);
+  const meta       = getLearnMeta(subjectId);
+  const done       = isTopicDone(mode, subjectId, folderIdx, topicIdx);
+  const subjectTl  = tr(subject.title, subject.title);
+  const folderTl   = tr(folder.name, folder.name);
+  const topicTl    = tr(topicRaw, topicRaw);
+  const sources    = model.core[folder.sourceGroup] || [];
 
-  const [subjectTl, folderTl, topicTl, descTl, miniTaskTl] = await Promise.all([
-    localizeLearnText(subject.title, lang),
-    localizeLearnText(folder.name, lang),
-    localizeLearnText(topicRaw, lang),
-    localizeLearnText(folder.description || '', lang),
-    localizeLearnText(folder.miniTask || '', lang),
-  ]);
-  const keyPointsTl = await Promise.all((folder.keyPoints || []).map(kp => localizeLearnText(kp, lang)));
-  const allTopicsTl = await Promise.all((folder.topics || []).map(t => localizeLearnText(t, lang)));
-  const sourceNames = (model.core[folder.sourceGroup] || []).join(', ');
+  // ── Per-topic deep content (falls back to folder-level) ───────────────────
+  const tpDescRaw   = tr(topicRaw + '_desc', '');
+  const descTl      = tpDescRaw || (folder.description ? tr(folder.description, folder.description) : '');
 
-  // Filter key points relevant to the clicked topic (heuristic: include all for now)
-  const kpHtml = keyPointsTl.length
-    ? `<ul class="learn-key-points">${keyPointsTl.map(kp => `<li>${kp}</li>`).join('')}</ul>`
-    : '';
+  const tpKps       = [0,1,2,3,4].map(i => tr(topicRaw + '_kp' + i, '')).filter(Boolean);
+  const keyPointsTl = tpKps.length > 0 ? tpKps : (folder.keyPoints || []).map(kp => tr(kp, kp));
 
-  // Other topics in the folder (excluding current)
-  const otherTopics = allTopicsTl
-    .map((t, i) => ({ t, i }))
-    .filter(({ i }) => i !== topicIdx);
-  const relatedHtml = otherTopics.length
-    ? `<div class="learn-topic-related-row">${otherTopics.map(({ t, i }) =>
-        `<button class="learn-topic-chip learn-topic-chip-btn" onclick="renderLearnTopicDetail('${subjectId}',${folderIdx},${i})">${t}</button>`
-      ).join('')}</div>`
-    : '';
+  const tpInsight   = tr(topicRaw + '_insight', '');
+  const insightTl   = tpInsight || (folder.miniTask ? tr(folder.miniTask, folder.miniTask) : '');
+
+  const allTopicsTl = (folder.topics || []).map(t => tr(t, t));
+
+  // ── Auto-save bookmark (tracks exact position within topic) ───────────────
+  const prevBm = getLearnBookmark(mode);
+  const sameTopicBm = prevBm?.subjectId === subjectId && prevBm?.folderIndex === folderIdx && prevBm?.topicIndex === topicIdx;
+  const scrollSection = _scrollSection || (sameTopicBm ? prevBm.sectionKey : null);
+  setLearnBookmark({
+    mode, subjectId, subjectTitle: subjectTl, folderName: folderTl,
+    folderIndex: folderIdx, topic: topicTl, topicIndex: topicIdx,
+    sectionKey: scrollSection || 'desc',
+  });
+
+  // ── Build HTML ─────────────────────────────────────────────────────────────
+  const mkSection = (secKey, labelKey, labelFb, inner) => `
+    <div class="learn-topic-section ltd-sec" data-section="${secKey}"
+         onclick="learnMarkSection('${subjectId}',${folderIdx},${topicIdx},'${secKey}')">
+      <div class="learn-topic-section-label">${tr(labelKey, labelFb)}</div>
+      ${inner}
+    </div>`;
+
+  const kpHtml = keyPointsTl.map((kp, i) => `
+    <div class="ltd-kp-row" data-section="kp${i}"
+         onclick="event.stopPropagation();learnMarkSection('${subjectId}',${folderIdx},${topicIdx},'kp${i}')">
+      <span class="ltd-kp-num" style="background:${meta.color}22;color:${meta.color}">${i + 1}</span>
+      <span class="ltd-kp-text">${kp}</span>
+      <span class="ltd-kp-bookmark-icon" title="${tr('learnBookmarkPos','Position merken')}">🔖</span>
+    </div>`).join('');
+
+  const relatedHtml = allTopicsTl.filter((_, i) => i !== topicIdx).map((t, i) => {
+    const realIdx = i >= topicIdx ? i + 1 : i;
+    return `<button class="learn-topic-chip learn-topic-chip-btn" onclick="renderLearnTopicDetail('${subjectId}',${folderIdx},${realIdx})">${t}</button>`;
+  }).join('');
+
+  const sourcesHtml = sources.map(s => `<span class="ltd-source-tag">${s}</span>`).join('');
 
   container.innerHTML = `
     <div class="learn-wrap">
-      <div class="learn-mode-bar" style="display:flex;align-items:center;gap:12px">
+      <div class="ltd-topbar">
         <button class="learn-back-btn" onclick="renderLearn()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><polyline points="15 18 9 12 15 6"/></svg>
-          ${tr('learnBack', 'Back')}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><polyline points="15 18 9 12 15 6"/></svg>
+          ${tr('learnBack','Zurück')}
         </button>
-        <span style="color:var(--text3);font-size:13px">${subjectTl} › ${folderTl}</span>
+        <nav class="ltd-breadcrumb">
+          <span>${subjectTl}</span><span class="ltd-bc-sep">›</span>
+          <span>${folderTl}</span><span class="ltd-bc-sep">›</span>
+          <span class="ltd-bc-current">${topicTl}</span>
+        </nav>
+        <button class="ltd-pos-btn" onclick="learnMarkSection('${subjectId}',${folderIdx},${topicIdx},'desc')" title="${tr('learnBookmarkPos','Position merken')}">
+          🔖 ${tr('learnBookmarkPos','Position merken')}
+        </button>
       </div>
 
       <div class="learn-topic-detail">
-        <div class="learn-topic-detail-header" style="border-left:4px solid ${meta.color}">
-          <span style="font-size:32px;line-height:1">${meta.icon}</span>
-          <div>
-            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--text3);margin-bottom:4px">${folderTl}</div>
+        <div class="ltd-header" style="border-left:4px solid ${meta.color}">
+          <div class="ltd-header-icon" style="background:${meta.color}22;font-size:28px">${meta.icon}</div>
+          <div class="ltd-header-text">
+            <div class="ltd-folder-label">${folderTl}</div>
             <h2 class="learn-topic-detail-title">${topicTl}</h2>
           </div>
+          <button class="ltd-done-btn${done ? ' done' : ''}"
+            onclick="toggleLearnTopicDone('${subjectId}',${folderIdx},${topicIdx},this)"
+            style="${done ? `background:${meta.color};border-color:${meta.color};color:#fff` : ''}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><polyline points="20 6 9 17 4 12"/></svg>
+            ${done ? tr('learnDone','Erledigt ✓') : tr('learnMarkDone','Als erledigt markieren')}
+          </button>
         </div>
 
-        ${descTl ? `
-        <div class="learn-topic-section">
-          <div class="learn-topic-section-label">${tr('learnSummary', 'Overview')}</div>
-          <p class="learn-folder-desc">${descTl}</p>
-        </div>` : ''}
+        ${descTl ? mkSection('desc','learnSummary','Erklärung', `<p class="ltd-desc">${descTl}</p>`) : ''}
 
-        ${kpHtml ? `
-        <div class="learn-topic-section">
-          <div class="learn-topic-section-label">${tr('learnTopicKeyPoints', 'Key concepts')}</div>
-          ${kpHtml}
-        </div>` : ''}
+        ${kpHtml ? mkSection('concepts','learnTopicKeyPoints','Kernkonzepte', `<div class="ltd-kp-list">${kpHtml}</div>`) : ''}
 
-        ${miniTaskTl ? `
-        <div class="learn-topic-section">
-          <div class="learn-topic-section-label">${tr('learnTopicTask', 'Practice task')}</div>
-          <div class="learn-mini-task">${miniTaskTl}</div>
-        </div>` : ''}
+        ${insightTl ? mkSection('insight','learnTopicInsight','Vertiefung', `
+          <div class="ltd-insight-box" style="border-left:3px solid ${meta.color}">
+            <span class="ltd-insight-icon">💡</span>
+            <span class="ltd-insight-text">${insightTl}</span>
+          </div>`) : ''}
 
-        ${sourceNames ? `
-        <div class="learn-topic-section">
-          <div class="learn-topic-section-label">${tr('learnTopicSources', 'Sources')}</div>
-          <p class="learn-sources-line">${sourceNames}</p>
-        </div>` : ''}
+        ${sourcesHtml ? mkSection('sources','learnTopicSources','Quellen', `<div class="ltd-sources-row">${sourcesHtml}</div>`) : ''}
 
-        ${relatedHtml ? `
-        <div class="learn-topic-section">
-          <div class="learn-topic-section-label">${tr('learnTopicRelated', 'Related topics')}</div>
-          ${relatedHtml}
-        </div>` : ''}
+        ${relatedHtml ? mkSection('related','learnTopicRelated','Weitere Themen in diesem Kapitel', `<div class="learn-topic-related-row">${relatedHtml}</div>`) : ''}
       </div>
     </div>`;
+
+  // ── Highlight + scroll to saved/requested section ─────────────────────────
+  const targetSec = scrollSection;
+  if (targetSec) {
+    setTimeout(() => {
+      // Try specific kp row first, then section
+      const el = container.querySelector(`[data-section="${targetSec}"]`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('ltd-highlight');
+        setTimeout(() => el.classList.remove('ltd-highlight'), 2500);
+      }
+    }, 80);
+  }
 };
 
 window.renderLearnTopicDetail = renderLearnTopicDetail;
+
+window.learnMarkSection = (subjectId, folderIdx, topicIdx, sectionKey) => {
+  const mode = state.ui.studyMode;
+  const bm = getLearnBookmark(mode);
+  // Update sectionKey in existing bookmark for this topic
+  if (bm) {
+    setLearnBookmark({ ...bm, sectionKey });
+  }
+  // Visual feedback: highlight the clicked row
+  document.querySelectorAll('.ltd-kp-row, .ltd-sec').forEach(el => el.classList.remove('ltd-bookmark-pos'));
+  const el = document.querySelector(`[data-section="${sectionKey}"]`);
+  if (el) {
+    el.classList.add('ltd-bookmark-pos');
+    Notifications.show('🔖 ' + tr('learnBookmarkPosSaved', 'Lesezeichen gesetzt'));
+  }
+};
+
+window.toggleLearnTopicDone = (subjectId, folderIdx, topicIdx) => {
+  const mode = state.ui.studyMode;
+  if (isTopicDone(mode, subjectId, folderIdx, topicIdx)) {
+    unmarkTopicDone(mode, subjectId, folderIdx, topicIdx);
+    Notifications.show(tr('learnMarkedUndone','Marked as not done.'));
+  } else {
+    markTopicDone(mode, subjectId, folderIdx, topicIdx);
+    Notifications.show(tr('learnMarkedDone','Topic marked as done! ✓'));
+  }
+  renderLearnTopicDetail(subjectId, folderIdx, topicIdx);
+};
 
 const renderLearn = async () => {
   const container = document.getElementById('learnContent');
   if (!container) return;
 
   const mode = state.ui.studyMode;
-  const activeLang = getActiveLanguage();
   const model = window.LEARN_SOURCES || { core: {}, school: [], university: [] };
-  const subjects = model[mode] || [];
+  const allSubjects = model[mode] || [];
 
-  if (!subjects.length) {
+  if (!allSubjects.length) {
     container.innerHTML = `<div class="dash-list-placeholder">${tr('learnEmpty','No content available.')}</div>`;
     return;
   }
 
-  if (!state.ui.learnSelectedSubject || !subjects.find(s => s.id === state.ui.learnSelectedSubject)) {
-    state.ui.learnSelectedSubject = subjects[0].id;
+  // ── Category definitions ─────────────────────────────────────────────────
+  const LEARN_CATS = {
+    school: [
+      { id: 'stem',   label: tr('learnCatSTEM','MINT'),             ids: ['mathematics','physics','chemistry','biology','computer-science','earth-science','astronomy'] },
+      { id: 'lang',   label: tr('learnCatLanguages','Sprachen'),     ids: ['language-arts','german-language','french-language','spanish-language','arabic-language','chinese-language','latin-language','english-as-foreign-language'] },
+      { id: 'social', label: tr('learnCatSocial','Soziales'),        ids: ['history','geography','economics','social-studies','politics-civics'] },
+      { id: 'hum',    label: tr('learnCatHumanities','Geisteswiss.'),ids: ['philosophy','religion-ethics','arts','music','media-studies'] },
+      { id: 'health', label: tr('learnCatHealth','Sport & Gesundheit'), ids: ['health','physical-education'] },
+      { id: 'tech',   label: tr('learnCatTech','Technik'),           ids: ['technology','environmental-studies','psychology-school'] },
+    ],
+    university: [
+      { id: 'stem',   label: tr('learnCatSTEM','MINT'),              ids: ['mathematics','physics','chemistry','biology','computer-science','engineering','statistics-data-science','cybersecurity'] },
+      { id: 'social', label: tr('learnCatSocial','Sozialwiss.'),     ids: ['economics','law','sociology','political-science','social-work'] },
+      { id: 'health', label: tr('learnCatHealth','Medizin & Gesundheit'), ids: ['medicine','psychology','nutrition-dietetics'] },
+      { id: 'lang',   label: tr('learnCatLanguages','Sprachen & Lit.'), ids: ['linguistics','literature'] },
+      { id: 'hum',    label: tr('learnCatHumanities','Geisteswiss.'), ids: ['philosophy','history','education-pedagogy'] },
+      { id: 'tech',   label: tr('learnCatTech','Angewandte Wiss.'),  ids: ['architecture','business-administration','environmental-science'] },
+    ],
+  };
+  const cats = LEARN_CATS[mode] || [];
+
+  // Track which category sections are open (Set of cat ids)
+  if (!_learnSearch.openCats) {
+    _learnSearch.openCats = new Set([cats[0]?.id].filter(Boolean));
+  }
+
+  const q = (_learnSearch.q || '').toLowerCase().trim();
+
+  // Ensure a valid subject is selected
+  if (!state.ui.learnSelectedSubject || !allSubjects.find(s => s.id === state.ui.learnSelectedSubject)) {
+    state.ui.learnSelectedSubject = allSubjects[0].id;
   }
   const selId = state.ui.learnSelectedSubject;
-  const subject = subjects.find(s => s.id === selId) || subjects[0];
+  const subject = allSubjects.find(s => s.id === selId) || allSubjects[0];
   const meta = getLearnMeta(subject.id);
+  const subjectTitle = tr(subject.title, subject.title);
 
-  // Translate ALL subject titles (for pills) in parallel
-  const subjectTitlesTl = await Promise.all(subjects.map(s => localizeLearnText(s.title, activeLang)));
-
-  // Subject pills (scrollable row)
-  const pillsHtml = subjects.map((s, si) => {
+  // Helper: render one subject card
+  const subjectCard = (s) => {
     const m = getLearnMeta(s.id);
     const active = s.id === selId;
-    return `<button class="learn-pill${active ? ' active' : ''}"
-      onclick="selectLearnSubject('${s.id}')"
-      style="${active ? `background:${m.color};color:#fff;border-color:${m.color}` : `border-color:${m.color}40`}">
-      <span style="font-size:16px;line-height:1">${m.icon}</span>
-      <span>${subjectTitlesTl[si]}</span>
-    </button>`;
-  }).join('');
-
-  const subjectTitle = subjectTitlesTl[subjects.findIndex(s => s.id === selId)] || subject.title;
-
-  // Translate folder names, short desc, and topic chips only (detail is in topic view)
-  const localizedFolders = await Promise.all((subject.folders || []).map(async (folder, fi) => {
-    const rawDesc = folder.description ? folder.description.slice(0, 130) : '';
-    const [name, descShort] = await Promise.all([
-      localizeLearnText(folder.name, activeLang),
-      rawDesc ? localizeLearnText(rawDesc, activeLang) : Promise.resolve(''),
-    ]);
-    const topics = folder.topics
-      ? await Promise.all(folder.topics.map(t => localizeLearnText(t, activeLang)))
-      : [];
-    return { name, descShort, topics, fi };
-  }));
-
-  // Compact folder rows — no accordion, no nested lists
-  const foldersHtml = localizedFolders.map(({ name, descShort, topics, fi }) => {
-    const topicsHtml = topics.length
-      ? `<div class="learn-topics-row">${topics.map((t, ti) =>
-          `<button class="learn-topic-chip learn-topic-chip-btn" onclick="renderLearnTopicDetail('${selId}',${fi},${ti})">${t}</button>`
-        ).join('')}</div>`
-      : '';
-    const trailDot = descShort && descShort.length >= 130 ? '…' : '';
+    const title = tr(s.title, s.title);
+    const { done, total } = countSubjectDone(mode, s.id, s.folders);
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    const folderCount = (s.folders || []).length;
     return `
-      <div class="learn-folder-row">
+      <button type="button" class="learn-subject-card${active ? ' active' : ''}" onclick="selectLearnSubject('${s.id}')"
+        style="${active ? `border-color:${m.color};box-shadow:0 0 0 3px ${m.color}22` : ''}">
+        <div class="learn-subject-card-icon" style="background:${m.color}">${m.icon}</div>
+        <div class="learn-subject-card-title">${title}</div>
+        <div class="lsc-meta-row">
+          <span class="lsc-badge">${folderCount} ${tr('learnChapters','Kap.')}</span>
+          ${done > 0 ? `<span class="lsc-badge lsc-done">${done}/${total} ✓</span>` : ''}
+        </div>
+        ${pct > 0 ? `<div class="lsc-progress-bar"><div class="lsc-progress-fill" style="width:${pct}%;background:${m.color}"></div></div>` : ''}
+      </button>`;
+  };
+
+  // ── Search mode: flat grid ────────────────────────────────────────────────
+  let bodyHtml = '';
+  if (q) {
+    const results = allSubjects.filter(s => tr(s.title, s.id).toLowerCase().includes(q));
+    if (results.length === 0) {
+      bodyHtml = `<div class="dash-list-placeholder">${tr('learnNoResults','Keine Fächer gefunden.')}</div>`;
+    } else {
+      bodyHtml = `<div class="learn-subject-grid">${results.map(subjectCard).join('')}</div>`;
+      if (!results.find(s => s.id === selId)) {
+        state.ui.learnSelectedSubject = results[0].id;
+      }
+    }
+  } else {
+    // ── Accordion mode: collapsible category sections ──────────────────────
+    bodyHtml = cats.map(cat => {
+      const catSubjects = allSubjects.filter(s => cat.ids.includes(s.id));
+      if (!catSubjects.length) return '';
+      const isOpen = _learnSearch.openCats.has(cat.id);
+      const doneCount = catSubjects.reduce((acc, s) => acc + countSubjectDone(mode, s.id, s.folders).done, 0);
+      const totalCount = catSubjects.reduce((acc, s) => acc + countSubjectDone(mode, s.id, s.folders).total, 0);
+      const pct = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
+      return `
+        <div class="learn-cat-section">
+          <button class="learn-cat-hdr" onclick="learnToggleCat('${cat.id}')">
+            <svg class="learn-cat-chevron${isOpen ? ' open' : ''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="learn-cat-hdr-label">${cat.label}</span>
+            <span class="learn-cat-hdr-count">${catSubjects.length}</span>
+            ${pct > 0 ? `<span class="learn-cat-hdr-done">${pct}%</span>` : ''}
+          </button>
+          ${isOpen ? `<div class="learn-cat-body"><div class="learn-subject-grid learn-subject-grid-compact">${catSubjects.map(subjectCard).join('')}</div></div>` : ''}
+        </div>`;
+    }).join('');
+  }
+
+  // ── Folder panel for selected subject ─────────────────────────────────────
+  const { done: subDone, total: subTotal } = countSubjectDone(mode, selId, subject.folders);
+  const subPct = subTotal > 0 ? Math.round((subDone / subTotal) * 100) : 0;
+
+  const foldersHtml = (subject.folders || []).map((folder, fi) => {
+    const name = tr(folder.name, folder.name);
+    const fullDesc = folder.description ? tr(folder.description, folder.description) : '';
+    const topics = folder.topics || [];
+    const topicsDone = topics.filter((_, ti) => isTopicDone(mode, selId, fi, ti)).length;
+    const allDone = topics.length > 0 && topicsDone === topics.length;
+    const topicsHtml = topics.length
+      ? `<div class="learn-topics-row">${topics.map((raw, ti) => {
+          const t = tr(raw, raw);
+          const tdone = isTopicDone(mode, selId, fi, ti);
+          return `<button class="learn-topic-chip learn-topic-chip-btn${tdone ? ' chip-done' : ''}"
+            style="${tdone ? `background:${meta.color}22;border-color:${meta.color};color:${meta.color}` : ''}"
+            onclick="renderLearnTopicDetail('${selId}',${fi},${ti})">${tdone ? '✓ ' : ''}${t}</button>`;
+        }).join('')}</div>`
+      : '';
+    return `
+      <div class="learn-folder-row${allDone ? ' folder-done' : ''}">
         <div class="learn-folder-row-hdr">
-          <span class="learn-folder-num">${fi + 1}</span>
+          <span class="learn-folder-num" style="background:${allDone ? meta.color : meta.color+'22'};color:${allDone ? '#fff' : meta.color}">${allDone ? '✓' : fi + 1}</span>
           <div class="learn-folder-row-info">
             <div class="learn-folder-row-name">${name}</div>
-            ${descShort ? `<div class="learn-folder-row-desc">${descShort}${trailDot}</div>` : ''}
+            ${fullDesc ? `<div class="learn-folder-row-desc">${fullDesc.slice(0,150)}${fullDesc.length > 150 ? '…' : ''}</div>` : ''}
           </div>
+          ${topics.length > 0 ? `<span class="lf-count" style="color:${meta.color}">${topicsDone}/${topics.length}</span>` : ''}
         </div>
         ${topicsHtml}
       </div>`;
   }).join('');
 
+  // Bookmark resume bar
+  const bm = getLearnBookmark(mode);
+  const bmHtml = bm ? `
+    <div class="lbr-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+      <span class="lbr-text">🔖 <strong>${bm.subjectTitle || ''}</strong> › ${bm.folderName || ''} › ${bm.topic || ''}</span>
+      <button class="lbr-btn" onclick="renderLearnTopicDetail('${bm.subjectId}',${bm.folderIndex},${bm.topicIndex},'${bm.sectionKey || 'desc'}')">${tr('learnContinue','Weiter')}</button>
+      <button class="lbr-close" onclick="clearLearnBookmark()">✕</button>
+    </div>` : '';
+
   container.innerHTML = `
     <div class="learn-wrap">
-      <div class="learn-mode-bar">
-        <span>${tr('studyMode','Mode')}: <strong>${mode === 'school' ? tr('studyModeSchool','School') : tr('studyModeUniversity','University')}</strong></span>
+      <div class="learn-topbar-row">
+        <div class="learn-mode-toggle">
+          <button class="lmt-btn${mode === 'school' ? ' active' : ''}" onclick="switchLearnMode('school')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            ${tr('studyModeSchool','Schule')}
+          </button>
+          <button class="lmt-btn${mode === 'university' ? ' active' : ''}" onclick="switchLearnMode('university')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            ${tr('studyModeUniversity','Universität')}
+          </button>
+        </div>
+        <div class="learn-search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;color:var(--text3);flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="learn-search-input" type="text" placeholder="${tr('learnSearch','Fächer suchen…')}" value="${q.replace(/"/g,'&quot;')}" oninput="learnSearch(this.value)" />
+          ${q ? `<button class="lsi-clear" onclick="learnSearch('')">✕</button>` : ''}
+        </div>
       </div>
-      <div class="learn-subjects-pills">${pillsHtml}</div>
+
+      ${bmHtml}
+
+      <div class="learn-categories">${bodyHtml}</div>
+
       <div class="learn-subject-panel">
         <div class="learn-subject-panel-header" style="border-left:4px solid ${meta.color}">
-          <span style="font-size:28px;line-height:1">${meta.icon}</span>
-          <span class="learn-subject-panel-title">${subjectTitle}</span>
+          <span class="lsp-icon" style="background:${meta.color}22;font-size:22px;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex-shrink:0">${meta.icon}</span>
+          <div class="lsp-header-text">
+            <span class="learn-subject-panel-title">${subjectTitle}</span>
+            ${subPct > 0 ? `<span class="lsp-pct">${subPct}% ${tr('learnComplete','abgeschlossen')}</span>` : `<span class="lsp-pct">${subTotal} ${tr('learnTopicsTotal','Themen')}</span>`}
+          </div>
+          ${subPct > 0 ? `<div class="lsp-prog-wrap"><div class="lsp-prog-bar"><div class="lsp-prog-fill" style="width:${subPct}%;background:${meta.color}"></div></div><span class="lsp-prog-label">${subDone}/${subTotal}</span></div>` : ''}
         </div>
         <div class="learn-folder-list">${foldersHtml}</div>
       </div>
@@ -1606,6 +1955,39 @@ const renderLearn = async () => {
 
 window.selectLearnSubject = (id) => {
   state.ui.learnSelectedSubject = id;
+  // Scroll subject panel into view
+  setTimeout(() => document.querySelector('.learn-subject-panel')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  renderLearn();
+};
+
+window.switchLearnMode = (mode) => {
+  state.ui.studyMode = mode;
+  state.ui.learnSelectedSubject = null;
+  _learnSearch.q = '';
+  _learnSearch.cat = 'all';
+  _learnSearch.openCats = null; // reset so first cat opens again
+  saveUiSettings();
+  renderLearn();
+};
+
+window.learnSearch = (q) => {
+  _learnSearch.q = q || '';
+  renderLearn();
+};
+
+window.learnToggleCat = (catId) => {
+  if (!_learnSearch.openCats) _learnSearch.openCats = new Set();
+  if (_learnSearch.openCats.has(catId)) {
+    _learnSearch.openCats.delete(catId);
+  } else {
+    _learnSearch.openCats.add(catId);
+  }
+  renderLearn();
+};
+
+window.learnSetCat = (cat) => {
+  _learnSearch.cat = cat || 'all';
+  state.ui.learnSelectedSubject = null;
   renderLearn();
 };
 
@@ -1748,12 +2130,19 @@ const renderSettings = () => {
           </div>
           <div>
             <div class="settings-card-title" data-i18n="settingsAppearanceTitle">${tr('settingsAppearanceTitle','Appearance')}</div>
-            <div class="settings-card-sub" data-i18n="settingsAppearanceSub">${tr('settingsAppearanceSub','Dark theme is active and optimized for focus.')}</div>
+            <div class="settings-card-sub" data-i18n="settingsAppearanceSub">${tr('settingsAppearanceSub','Choose your interface and focus settings.')}</div>
           </div>
         </div>
         <div class="settings-info-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-          ${tr('settingsDarkModeActive','Dark mode active')}
+          ${state.ui.theme === 'dark' ? tr('settingsDarkModeActive','Dark mode active') : tr('settingsLightModeActive','Light mode active')}
+        </div>
+        <div class="settings-field">
+          <label data-i18n="settingsThemeLabel">${tr('settingsThemeLabel','Theme')}</label>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="settings-action-btn" onclick="setTheme('light')">${tr('settingsLightMode','Light mode')}</button>
+            <button class="settings-action-btn" onclick="setTheme('dark')">${tr('settingsDarkMode','Dark mode')}</button>
+          </div>
         </div>
         <div class="settings-field">
           <label data-i18n="settingsLanguageLabel">${tr('settingsLanguageLabel','Language')}</label>
@@ -2332,12 +2721,7 @@ const toggleTaskDone = async (event, taskId) => {
 const init = async () => {
   if (typeof ensurePagesMounted === 'function') ensurePagesMounted();
   if (FORCE_DEMO_MODE || isDemoModeEnabled()) {
-    state.demoMode = true;
-    state.user = { id: 'demo-user', email: 'demo@lyceon.local' };
-    state.profile = { id: 'demo-user', full_name: 'Demo User', role: 'student' };
-    localStorage.setItem(DEMO_MODE_KEY, '1');
-    showShell();
-    Notifications.show(tr('demoModeEnabled', 'Demo mode enabled. Authentication is bypassed for testing.'));
+    enterApp();
     return;
   }
 

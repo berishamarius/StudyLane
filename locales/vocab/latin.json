@@ -1,0 +1,298 @@
+{
+  "meta": {
+    "language": "Latin (Lingua Latina)",
+    "script": "Latin (classical Roman script)",
+    "note": "Latin is a dead language and is included in all locale vocab files. Each entry: Latin word with principal parts where relevant, grammatical note, English meaning, example sentence (Latin + English). Based on Classical Latin (1st c. BCE – 2nd c. CE).",
+    "totalEntries": 500,
+    "applicableTo": "all locales"
+  },
+  "categories": {
+    "greetings_and_basics": {
+      "label": "Greetings & Basic Expressions / Salutationes",
+      "entries": [
+        { "la": "Salve! (sg.) / Salvete! (pl.)", "en": "Hello! / Greetings!", "ex_la": "Salve, Marce! Ut vales?", "ex_en": "Hello, Marcus! How are you?" },
+        { "la": "Vale! (sg.) / Valete! (pl.)", "en": "Farewell! / Goodbye!", "ex_la": "Vale, amice! Cras te videbo.", "ex_en": "Farewell, friend! I will see you tomorrow." },
+        { "la": "Ave! / Avete!", "en": "Hail! / Greetings! (formal/imperial)", "ex_la": "Ave, Caesar!", "ex_en": "Hail, Caesar!" },
+        { "la": "Bene vale", "en": "Farewell well / All the best", "ex_la": "Bene vale et memento mei.", "ex_en": "Farewell and remember me." },
+        { "la": "Gratias tibi ago", "en": "I give thanks to you / Thank you", "ex_la": "Gratias tibi ago pro auxilio tuo.", "ex_en": "Thank you for your help." },
+        { "la": "Quaeso / Amabo te", "en": "Please / I beg you", "ex_la": "Quaeso, da mihi librum.", "ex_en": "Please give me the book." },
+        { "la": "Ignosce mihi", "en": "Pardon me / Forgive me", "ex_la": "Ignosce mihi, non intellexi.", "ex_en": "Forgive me, I did not understand." },
+        { "la": "Non intellego", "en": "I do not understand", "ex_la": "Non intellego hanc regulam.", "ex_en": "I do not understand this rule." },
+        { "la": "Quid est nomen tibi?", "en": "What is your name?", "ex_la": "Quid est nomen tibi, amice?", "ex_en": "What is your name, friend?" },
+        { "la": "Nomen mihi est …", "en": "My name is …", "ex_la": "Nomen mihi est Marcus.", "ex_en": "My name is Marcus." },
+        { "la": "Ita / Ita est", "en": "Yes / It is so", "ex_la": "Ita, haec vera sunt.", "ex_en": "Yes, these things are true." },
+        { "la": "Non / Minime", "en": "No / Not at all", "ex_la": "Non, hoc non verum est.", "ex_en": "No, this is not true." },
+        { "la": "Bene / Optime", "en": "Well / Excellent", "ex_la": "Optime! Hoc facere potes.", "ex_en": "Excellent! You can do this." },
+        { "la": "Recte / Vere", "en": "Correctly / Truly", "ex_la": "Recte dicis, mi amice.", "ex_en": "You speak correctly, my friend." }
+      ]
+    },
+    "numbers": {
+      "label": "Numbers / Numeri",
+      "entries": [
+        { "la": "unus, una, unum", "en": "one (m/f/n)", "ex_la": "Unus discipulus in schola est.", "ex_en": "One student is in the school." },
+        { "la": "duo, duae, duo", "en": "two (m/f/n)", "ex_la": "Duo libri super mensam sunt.", "ex_en": "Two books are on the table." },
+        { "la": "tres, tres, tria", "en": "three (m/f/n)", "ex_la": "Tres filii patri sunt.", "ex_en": "The father has three sons." },
+        { "la": "quattuor", "en": "four (indeclinable)", "ex_la": "Annus quattuor partes habet.", "ex_en": "The year has four parts." },
+        { "la": "quinque", "en": "five (indeclinable)", "ex_la": "Quinque digiti in manu sunt.", "ex_en": "There are five fingers on the hand." },
+        { "la": "sex", "en": "six (indeclinable)", "ex_la": "Sex horae labore absumpsi.", "ex_en": "I spent six hours in labour." },
+        { "la": "septem", "en": "seven (indeclinable)", "ex_la": "Septem dies in hebdomade sunt.", "ex_en": "There are seven days in the week." },
+        { "la": "octo", "en": "eight (indeclinable)", "ex_la": "Octo horas dormio.", "ex_en": "I sleep eight hours." },
+        { "la": "novem", "en": "nine (indeclinable)", "ex_la": "Novem planetae (in antiqua scientia) sunt.", "ex_en": "There are nine planets (in ancient science)." },
+        { "la": "decem", "en": "ten (indeclinable)", "ex_la": "Decem denarii in bursa sunt.", "ex_en": "There are ten denarii in the purse." },
+        { "la": "viginti", "en": "twenty (indeclinable)", "ex_la": "Viginti annos habeo.", "ex_en": "I am twenty years old." },
+        { "la": "centum", "en": "one hundred (indeclinable)", "ex_la": "Centum milites in castris erant.", "ex_en": "There were one hundred soldiers in the camp." },
+        { "la": "mille", "en": "one thousand (indeclinable)", "ex_la": "Mille passuum iter est.", "ex_en": "It is a journey of a thousand paces." },
+        { "la": "primus, prima, primum", "en": "first (ordinal, m/f/n)", "ex_la": "Prima lux caelum illustrat.", "ex_en": "The first light illuminates the sky." },
+        { "la": "secundus, secunda, secundum", "en": "second (ordinal, m/f/n)", "ex_la": "Secundo anno Romam visitavi.", "ex_en": "In the second year I visited Rome." }
+      ]
+    },
+    "family": {
+      "label": "Family / Familia",
+      "entries": [
+        { "la": "familia, -ae (f.)", "en": "family, household", "ex_la": "Familia mea magna et laeta est.", "ex_en": "My family is large and happy." },
+        { "la": "pater, patris (m.)", "en": "father", "ex_la": "Pater meus medicus est.", "ex_en": "My father is a doctor." },
+        { "la": "mater, matris (f.)", "en": "mother", "ex_la": "Mater mea cotidie coquit.", "ex_en": "My mother cooks every day." },
+        { "la": "frater, fratris (m.)", "en": "brother", "ex_la": "Frater meus maior natu quam ego est.", "ex_en": "My brother is older than me." },
+        { "la": "soror, sororis (f.)", "en": "sister", "ex_la": "Soror mea medicinam studet.", "ex_en": "My sister studies medicine." },
+        { "la": "avus, -i (m.)", "en": "grandfather (paternal)", "ex_la": "Avus meus pulchras fabulas narrat.", "ex_en": "My grandfather tells beautiful stories." },
+        { "la": "avia, -ae (f.)", "en": "grandmother (paternal)", "ex_la": "Avia mea in villa vivit.", "ex_en": "My grandmother lives in the country house." },
+        { "la": "patruus, -i (m.)", "en": "paternal uncle", "ex_la": "Patruus meus Romae habitat.", "ex_en": "My uncle lives in Rome." },
+        { "la": "amita, -ae (f.)", "en": "paternal aunt", "ex_la": "Amita mea magistra est.", "ex_en": "My aunt is a teacher." },
+        { "la": "filius, -i (m.)", "en": "son", "ex_la": "Filius meus in universitate studet.", "ex_en": "My son studies at university." },
+        { "la": "filia, -ae (f.)", "en": "daughter", "ex_la": "Filia mea libros legere amat.", "ex_en": "My daughter loves to read books." },
+        { "la": "maritus, -i (m.)", "en": "husband", "ex_la": "Maritus meus faber est.", "ex_en": "My husband is a craftsman / engineer." },
+        { "la": "uxor, uxoris (f.)", "en": "wife", "ex_la": "Uxor mea medica est.", "ex_en": "My wife is a doctor." },
+        { "la": "liberi, -orum (m. pl.)", "en": "children (freeborn)", "ex_la": "Liberi in horto ludunt.", "ex_en": "The children are playing in the garden." }
+      ]
+    },
+    "body": {
+      "label": "Body / Corpus",
+      "entries": [
+        { "la": "caput, capitis (n.)", "en": "head", "ex_la": "Caput mihi dolet.", "ex_en": "My head aches." },
+        { "la": "facies, -ei (f.)", "en": "face", "ex_la": "Facies eius pulchra est.", "ex_en": "Her face is beautiful." },
+        { "la": "oculus, -i (m.)", "en": "eye", "ex_la": "Oculi eius caerulei sunt.", "ex_en": "His eyes are blue." },
+        { "la": "auris, auris (f.)", "en": "ear", "ex_la": "Auris mihi dolet.", "ex_en": "My ear hurts." },
+        { "la": "nasus, -i (m.)", "en": "nose", "ex_la": "Nasus meus obstructus est.", "ex_en": "My nose is blocked." },
+        { "la": "os, oris (n.)", "en": "mouth", "ex_la": "Os aperi, quaeso.", "ex_en": "Open your mouth, please." },
+        { "la": "dens, dentis (m.)", "en": "tooth", "ex_la": "Dentes bis quotidie lavanda sunt.", "ex_en": "The teeth must be cleaned twice daily." },
+        { "la": "manus, -us (f.)", "en": "hand", "ex_la": "Manus ante cibum lavandae sunt.", "ex_en": "Hands must be washed before food." },
+        { "la": "pes, pedis (m.)", "en": "foot", "ex_la": "Pes mihi post iter dolet.", "ex_en": "My foot hurts after the journey." },
+        { "la": "cor, cordis (n.)", "en": "heart", "ex_la": "Cor sanguinem per corpus mittit.", "ex_en": "The heart sends blood through the body." },
+        { "la": "tergum, -i (n.) / dorsum, -i (n.)", "en": "back", "ex_la": "Dorsum mihi dolet.", "ex_en": "My back hurts." },
+        { "la": "venter, ventris (m.)", "en": "stomach / belly", "ex_la": "Venter mihi dolet.", "ex_en": "My stomach hurts." },
+        { "la": "collum, -i (n.)", "en": "neck", "ex_la": "Collum mihi dolet.", "ex_en": "My neck hurts." },
+        { "la": "umerus, -i (m.)", "en": "shoulder", "ex_la": "Umerum vulneravi.", "ex_en": "I injured my shoulder." },
+        { "la": "genu, -us (n.)", "en": "knee", "ex_la": "Genu mihi vulnus feci ludens.", "ex_en": "I injured my knee while playing." }
+      ]
+    },
+    "colors": {
+      "label": "Colors / Colores",
+      "entries": [
+        { "la": "ruber, rubra, rubrum", "en": "red", "ex_la": "Tunicam rubram emi.", "ex_en": "I bought a red tunic." },
+        { "la": "caeruleus, -a, -um", "en": "blue", "ex_la": "Caelum aestate caeruleum est.", "ex_en": "The sky in summer is blue." },
+        { "la": "viridis, viride", "en": "green", "ex_la": "Arbores vere virides sunt.", "ex_en": "Trees in spring are green." },
+        { "la": "flavus, -a, -um", "en": "yellow / golden-yellow", "ex_la": "Mala flava sunt.", "ex_en": "Apples are yellow." },
+        { "la": "albus, -a, -um", "en": "white", "ex_la": "Nix alba est.", "ex_en": "Snow is white." },
+        { "la": "niger, nigra, nigrum", "en": "black", "ex_la": "Felis nigra est.", "ex_en": "The cat is black." },
+        { "la": "roseus, -a, -um", "en": "rose-coloured / pink", "ex_la": "Flores rosei pulchri sunt.", "ex_en": "Pink flowers are beautiful." },
+        { "la": "purpureus, -a, -um", "en": "purple / crimson", "ex_la": "Toga purpurea regibus digna est.", "ex_en": "A purple toga is worthy of kings." },
+        { "la": "fuscus, -a, -um", "en": "dark / brown / dusky", "ex_la": "Capilli eius fusci sunt.", "ex_en": "His hair is dark/brown." },
+        { "la": "canus, -a, -um", "en": "grey / white (hair)", "ex_la": "Senex canos capillos habet.", "ex_en": "The old man has grey hair." },
+        { "la": "aureus, -a, -um", "en": "golden", "ex_la": "Anulus aureus pretiosus est.", "ex_en": "The golden ring is precious." }
+      ]
+    },
+    "food_and_drink": {
+      "label": "Food & Drink / Cibus et Potus",
+      "entries": [
+        { "la": "panis, panis (m.)", "en": "bread", "ex_la": "Panem et circenses populus postulat.", "ex_en": "The people demand bread and circuses." },
+        { "la": "cibus, -i (m.)", "en": "food", "ex_la": "Cibus bonus corpus alit.", "ex_en": "Good food nourishes the body." },
+        { "la": "caro, carnis (f.)", "en": "meat / flesh", "ex_la": "Carnem assum amo.", "ex_en": "I love roast meat." },
+        { "la": "piscis, piscis (m.)", "en": "fish", "ex_la": "Romani pisces saepe edebant.", "ex_en": "Romans often ate fish." },
+        { "la": "olera, -um (n. pl.)", "en": "vegetables / greens", "ex_la": "Olera valetudini prodesse dicuntur.", "ex_en": "Vegetables are said to be good for health." },
+        { "la": "fructus, -us (m.)", "en": "fruit (also: result, profit)", "ex_la": "Fructus laboris dulcis est.", "ex_en": "The fruit of labour is sweet." },
+        { "la": "aqua, -ae (f.)", "en": "water", "ex_la": "Aqua vitae necessaria est.", "ex_en": "Water is necessary for life." },
+        { "la": "vinum, -i (n.)", "en": "wine", "ex_la": "Romani vinum cum aqua miscebant.", "ex_en": "Romans mixed wine with water." },
+        { "la": "lac, lactis (n.)", "en": "milk", "ex_la": "Lac matris infantibus optimum est.", "ex_en": "Mother's milk is best for infants." },
+        { "la": "mel, mellis (n.)", "en": "honey", "ex_la": "Mel dulcissimum omnium est.", "ex_en": "Honey is the sweetest of all." },
+        { "la": "sal, salis (m./n.)", "en": "salt", "ex_la": "Sal cibum iucundum facit.", "ex_en": "Salt makes food pleasant." },
+        { "la": "oleum, -i (n.)", "en": "olive oil", "ex_la": "Oleum in Italia copiosum erat.", "ex_en": "Olive oil was abundant in Italy." },
+        { "la": "prandium, -i (n.)", "en": "lunch / midday meal", "ex_la": "Prandium hora sexta sumitur.", "ex_en": "Lunch is taken at the sixth hour." },
+        { "la": "cena, -ae (f.)", "en": "dinner / main meal (evening)", "ex_la": "Cena Romani maxima pars cibi cotidiani erat.", "ex_en": "Dinner was the most important part of the Roman's daily food." }
+      ]
+    },
+    "time": {
+      "label": "Time / Tempus",
+      "entries": [
+        { "la": "nunc", "en": "now", "ex_la": "Nunc occupatus sum.", "ex_en": "I am busy now." },
+        { "la": "hodie", "en": "today", "ex_la": "Hodie Veneris dies est.", "ex_en": "Today is Friday (day of Venus)." },
+        { "la": "cras", "en": "tomorrow", "ex_la": "Cras ad forum ibo.", "ex_en": "Tomorrow I will go to the forum." },
+        { "la": "heri", "en": "yesterday", "ex_la": "Heri in macellum ivi.", "ex_en": "Yesterday I went to the market." },
+        { "la": "hora, -ae (f.)", "en": "hour", "ex_la": "Quota hora est?", "ex_en": "What hour is it? (What time is it?)" },
+        { "la": "dies, -ei (m./f.)", "en": "day", "ex_la": "Dies pulcher est.", "ex_en": "The day is beautiful." },
+        { "la": "hebdomas, -adis (f.)", "en": "week (Late Latin)", "ex_la": "Post unam hebdomadem reveniam.", "ex_en": "I will return after one week." },
+        { "la": "mensis, mensis (m.)", "en": "month", "ex_la": "Unus mensis ab discessu eius transivit.", "ex_en": "One month has passed since his departure." },
+        { "la": "annus, -i (m.)", "en": "year", "ex_la": "Novus annus Ianuario incipit.", "ex_en": "The new year begins in January." },
+        { "la": "mane (indecl.)", "en": "in the morning / early", "ex_la": "Mane primo surgo.", "ex_en": "I rise early in the morning." },
+        { "la": "meridies, -ei (m.)", "en": "midday / noon", "ex_la": "Hora meridiei cibum sumimus.", "ex_en": "We take food at the noon hour." },
+        { "la": "vesper, -eris (m.)", "en": "evening", "ex_la": "Vesperi ambulare soleo.", "ex_en": "I am accustomed to walking in the evenings." },
+        { "la": "nox, noctis (f.)", "en": "night", "ex_la": "Noctu dormire debemus.", "ex_en": "We ought to sleep at night." }
+      ]
+    },
+    "days_and_months": {
+      "label": "Days & Months / Dies et Menses",
+      "note": "Roman days were named after planets/deities. Modern weekday names descend from these.",
+      "entries": [
+        { "la": "dies Lunae", "en": "Monday (day of the Moon)", "ex_la": "Die Lunae scholam frequentamus.", "ex_en": "On Monday we attend school." },
+        { "la": "dies Martis", "en": "Tuesday (day of Mars)", "ex_la": "Die Martis pugnare Romani solebant.", "ex_en": "On Tuesday (day of Mars) Romans used to fight." },
+        { "la": "dies Mercurii", "en": "Wednesday (day of Mercury)", "ex_la": "Die Mercurii mercatores negotium agebant.", "ex_en": "On Wednesday (Mercury's day) merchants did business." },
+        { "la": "dies Iovis", "en": "Thursday (day of Jupiter)", "ex_la": "Die Iovis Iuppiter honorabatur.", "ex_en": "On Thursday Jupiter was honoured." },
+        { "la": "dies Veneris", "en": "Friday (day of Venus)", "ex_la": "Die Veneris convivium habebamus.", "ex_en": "On Friday (Venus's day) we had a banquet." },
+        { "la": "dies Saturni", "en": "Saturday (day of Saturn)", "ex_la": "Die Saturni Saturnalia celebrantur.", "ex_en": "On Saturn's day the Saturnalia are celebrated." },
+        { "la": "dies Solis", "en": "Sunday (day of the Sun)", "ex_la": "Die Solis solem adorabant.", "ex_en": "On Sunday (day of the Sun) they worshipped the sun." },
+        { "la": "Ianuarius, -i (m.)", "en": "January (month of Janus)", "ex_la": "Ianuarius primus anni mensis est.", "ex_en": "January is the first month of the year." },
+        { "la": "Februarius, -i (m.)", "en": "February (month of purification)", "ex_la": "Februarius brevissimus mensium est.", "ex_en": "February is the shortest of the months." },
+        { "la": "Martius, -i (m.)", "en": "March (month of Mars)", "ex_la": "Martio ver incipit.", "ex_en": "Spring begins in March." },
+        { "la": "Aprilis, -is (m.)", "en": "April", "ex_la": "Aprili flores florescunt.", "ex_en": "In April flowers bloom." },
+        { "la": "Maius, -i (m.)", "en": "May (month of Maia)", "ex_la": "Maio temperies mitis est.", "ex_en": "In May the weather is mild." },
+        { "la": "Iunius, -i (m.)", "en": "June (month of Juno)", "ex_la": "Iunio aestas incipit.", "ex_en": "Summer begins in June." },
+        { "la": "December, Decembris (m.)", "en": "December (tenth month, old calendar)", "ex_la": "Decembri Saturnalia celebrantur.", "ex_en": "In December the Saturnalia are celebrated." }
+      ]
+    },
+    "nature": {
+      "label": "Nature / Natura",
+      "entries": [
+        { "la": "mons, montis (m.)", "en": "mountain", "ex_la": "Mons altus nubibus tectus est.", "ex_en": "The high mountain is covered by clouds." },
+        { "la": "mare, maris (n.)", "en": "sea", "ex_la": "Mare Mediterraneum Romanos circumdabat.", "ex_en": "The Mediterranean Sea surrounded the Romans." },
+        { "la": "flumen, fluminis (n.)", "en": "river (large)", "ex_la": "Tiberis flumen Romam praeterfluit.", "ex_en": "The Tiber river flows past Rome." },
+        { "la": "silva, -ae (f.)", "en": "forest / woodland", "ex_la": "In silva leo habitat.", "ex_en": "The lion lives in the forest." },
+        { "la": "arbor, arboris (f.)", "en": "tree", "ex_la": "Arborem in horto plantavimus.", "ex_en": "We planted a tree in the garden." },
+        { "la": "flos, floris (m.)", "en": "flower", "ex_la": "Flores in prato pulchri sunt.", "ex_en": "The flowers in the meadow are beautiful." },
+        { "la": "sol, solis (m.)", "en": "sun", "ex_la": "Sol ab oriente oritur.", "ex_en": "The sun rises from the east." },
+        { "la": "luna, -ae (f.)", "en": "moon", "ex_la": "Luna noctu caelum illustrat.", "ex_en": "The moon illuminates the sky at night." },
+        { "la": "stella, -ae (f.)", "en": "star", "ex_la": "Stellae caelum ornant.", "ex_en": "The stars adorn the sky." },
+        { "la": "terra, -ae (f.)", "en": "earth / land / ground", "ex_la": "Terra nostra patria est.", "ex_en": "This land is our homeland." },
+        { "la": "caelum, -i (n.)", "en": "sky / heaven", "ex_la": "Caelum hieme obscurum est.", "ex_en": "The sky in winter is dark." },
+        { "la": "aqua, -ae (f.)", "en": "water", "ex_la": "Aqua vitae fons est.", "ex_en": "Water is the source of life." },
+        { "la": "ignis, ignis (m.)", "en": "fire", "ex_la": "Ignis calet et lucet.", "ex_en": "Fire is hot and bright." },
+        { "la": "ventus, -i (m.)", "en": "wind", "ex_la": "Ventus arbores movet.", "ex_en": "The wind moves the trees." },
+        { "la": "pluvia, -ae (f.)", "en": "rain", "ex_la": "Pluvia agros irrigat.", "ex_en": "Rain irrigates the fields." }
+      ]
+    },
+    "travel_and_places": {
+      "label": "Travel & Places / Itinera et Loca",
+      "entries": [
+        { "la": "urbs, urbis (f.)", "en": "city (esp. Rome)", "ex_la": "Urbs Roma caput mundi erat.", "ex_en": "The city of Rome was the head of the world." },
+        { "la": "oppidum, -i (n.)", "en": "town / walled settlement", "ex_la": "In oppido multa fora erant.", "ex_en": "There were many forums in the town." },
+        { "la": "villa, -ae (f.)", "en": "country house / estate", "ex_la": "Divites Romani villas rusticas habebant.", "ex_en": "Wealthy Romans had country estates." },
+        { "la": "forum, -i (n.)", "en": "forum / marketplace / public square", "ex_la": "In foro oratores disputabant.", "ex_en": "Orators debated in the forum." },
+        { "la": "templum, -i (n.)", "en": "temple", "ex_la": "Templum Iovis in Capitolio erat.", "ex_en": "The temple of Jupiter was on the Capitol." },
+        { "la": "via, -ae (f.)", "en": "road / street / way", "ex_la": "Via Appia iter longissimum est.", "ex_en": "The Appian Way is a very long road." },
+        { "la": "iter, itineris (n.)", "en": "journey / route", "ex_la": "Iter longum me fatigat.", "ex_en": "The long journey tires me." },
+        { "la": "porta, -ae (f.)", "en": "gate / door (large)", "ex_la": "Per portam urbis ingredimur.", "ex_en": "We enter through the city gate." },
+        { "la": "schola, -ae (f.)", "en": "school / place of learning", "ex_la": "Discipuli in scholam conveniunt.", "ex_en": "Students gather in the school." },
+        { "la": "bibliotheca, -ae (f.)", "en": "library", "ex_la": "Caesar magnam bibliothecam aedificare voluit.", "ex_en": "Caesar wanted to build a great library." }
+      ]
+    },
+    "adjectives": {
+      "label": "Adjectives / Adiectiva",
+      "entries": [
+        { "la": "magnus, -a, -um", "en": "great / large / big", "ex_la": "Magnus exercitus trans flumen transiit.", "ex_en": "A great army crossed the river." },
+        { "la": "parvus, -a, -um", "en": "small / little", "ex_la": "Parva domus saepe plena gaudio est.", "ex_en": "A small house is often full of joy." },
+        { "la": "bonus, -a, -um", "en": "good", "ex_la": "Bonus discipulus magistrum audit.", "ex_en": "A good student listens to the teacher." },
+        { "la": "malus, -a, -um", "en": "bad / evil", "ex_la": "Mala consilia principem perdunt.", "ex_en": "Bad plans ruin a leader." },
+        { "la": "pulcher, pulchra, pulchrum", "en": "beautiful / handsome", "ex_la": "Roma urbs pulcherrima est.", "ex_en": "Rome is the most beautiful city." },
+        { "la": "longus, -a, -um", "en": "long", "ex_la": "Iter longum erat.", "ex_en": "The journey was long." },
+        { "la": "brevis, breve", "en": "short / brief", "ex_la": "Vita brevis, ars longa.", "ex_en": "Life is short, art is long." },
+        { "la": "altus, -a, -um", "en": "high / deep", "ex_la": "Mons altissimus regionem dominat.", "ex_en": "The very high mountain dominates the region." },
+        { "la": "novus, -a, -um", "en": "new", "ex_la": "Nova via per vallem ducit.", "ex_en": "A new road leads through the valley." },
+        { "la": "antiquus, -a, -um / vetus, veteris", "en": "ancient / old", "ex_la": "Antiqui Romani multa nobis tradiderunt.", "ex_en": "The ancient Romans passed many things down to us." },
+        { "la": "fortis, forte", "en": "strong / brave", "ex_la": "Miles fortis pro patria pugnat.", "ex_en": "The brave soldier fights for the homeland." },
+        { "la": "sapiens, sapientis", "en": "wise", "ex_la": "Sapiens homo multa tacet.", "ex_en": "A wise person keeps silent about many things." },
+        { "la": "laetus, -a, -um", "en": "happy / joyful", "ex_la": "Discipuli laeti scholam relinquunt.", "ex_en": "The happy students leave the school." },
+        { "la": "tristis, triste", "en": "sad", "ex_la": "Tristis puer in angulo sedet.", "ex_en": "The sad boy sits in the corner." },
+        { "la": "liber, libera, liberum", "en": "free", "ex_la": "Homo liber suam vitam regit.", "ex_en": "A free person governs his own life." }
+      ]
+    },
+    "verbs": {
+      "label": "Common Verbs / Verba Communia",
+      "note": "Principal parts given: 1st person present, infinitive, perfect, supine.",
+      "entries": [
+        { "la": "sum, esse, fui", "en": "to be", "ex_la": "Cogito, ergo sum.", "ex_en": "I think, therefore I am." },
+        { "la": "eo, ire, ii/ivi, itum", "en": "to go", "ex_la": "Quo vadis?", "ex_en": "Where are you going?" },
+        { "la": "venio, venire, veni, ventum", "en": "to come", "ex_la": "Veni, vidi, vici.", "ex_en": "I came, I saw, I conquered." },
+        { "la": "do, dare, dedi, datum", "en": "to give", "ex_la": "Magister discipulis libros dat.", "ex_en": "The teacher gives books to the students." },
+        { "la": "dico, dicere, dixi, dictum", "en": "to say / speak", "ex_la": "Veritas semper dicenda est.", "ex_en": "The truth must always be spoken." },
+        { "la": "facio, facere, feci, factum", "en": "to make / do", "ex_la": "Noli multa simul facere.", "ex_en": "Do not do many things at once." },
+        { "la": "video, videre, vidi, visum", "en": "to see", "ex_la": "Quid vides, amice?", "ex_en": "What do you see, friend?" },
+        { "la": "audio, audire, audivi, auditum", "en": "to hear / listen", "ex_la": "Audi, tace, et disce.", "ex_en": "Listen, be silent, and learn." },
+        { "la": "lego, legere, legi, lectum", "en": "to read / gather / choose", "ex_la": "Discipulus librum legit.", "ex_en": "The student reads the book." },
+        { "la": "scribo, scribere, scripsi, scriptum", "en": "to write", "ex_la": "Cicero multas epistulas scripsit.", "ex_en": "Cicero wrote many letters." },
+        { "la": "amo, amare, amavi, amatum", "en": "to love / like", "ex_la": "Romani patriam suam amabant.", "ex_en": "The Romans loved their homeland." },
+        { "la": "habeo, habere, habui, habitum", "en": "to have / hold", "ex_la": "Quid habes in manu?", "ex_en": "What do you have in your hand?" },
+        { "la": "peto, petere, petivi, petitum", "en": "to seek / ask / attack", "ex_la": "Sapientiam semper petamus.", "ex_en": "Let us always seek wisdom." },
+        { "la": "possum, posse, potui", "en": "to be able to / can", "ex_la": "Fortis esse potes si velis.", "ex_en": "You can be strong if you wish." },
+        { "la": "volo, velle, volui", "en": "to wish / want", "ex_la": "Quid vis facere?", "ex_en": "What do you want to do?" },
+        { "la": "disco, discere, didici", "en": "to learn", "ex_la": "Nunquam sero discendum est.", "ex_en": "It is never too late to learn." },
+        { "la": "doceo, docere, docui, doctum", "en": "to teach", "ex_la": "Magister discipulos docet.", "ex_en": "The teacher teaches the students." },
+        { "la": "curro, currere, cucurri, cursum", "en": "to run", "ex_la": "Pueri in campo currunt.", "ex_en": "The boys run in the field." },
+        { "la": "porto, portare, portavi, portatum", "en": "to carry", "ex_la": "Miles arma portat.", "ex_en": "The soldier carries weapons." },
+        { "la": "duco, ducere, duxi, ductum", "en": "to lead", "ex_la": "Dux exercitum ducit.", "ex_en": "The leader leads the army." }
+      ]
+    },
+    "question_words": {
+      "label": "Question Words / Voces Interrogativae",
+      "entries": [
+        { "la": "quis? / qui?", "en": "who? / which? (m.)", "ex_la": "Quis ad ianuam pulsavit?", "ex_en": "Who knocked at the door?" },
+        { "la": "quid?", "en": "what? (n.)", "ex_la": "Quid agis?", "ex_en": "What are you doing?" },
+        { "la": "ubi?", "en": "where? (at which place?)", "ex_la": "Ubi habitas?", "ex_en": "Where do you live?" },
+        { "la": "quo?", "en": "where to? (whither?)", "ex_la": "Quo vadis?", "ex_en": "Where are you going?" },
+        { "la": "quando?", "en": "when?", "ex_la": "Quando schola incipit?", "ex_en": "When does school begin?" },
+        { "la": "cur? / quare?", "en": "why?", "ex_la": "Cur sero venisti?", "ex_en": "Why did you come late?" },
+        { "la": "quomodo? / ut?", "en": "how?", "ex_la": "Quomodo vales?", "ex_en": "How are you?" },
+        { "la": "quot?", "en": "how many?", "ex_la": "Quot anni sunt?", "ex_en": "How many years are there?" },
+        { "la": "quantus, -a, -um?", "en": "how great / how much?", "ex_la": "Quanta pecunia tibi est?", "ex_en": "How much money do you have?" },
+        { "la": "num? / nonne?", "en": "whether / surely not? / surely yes?", "ex_la": "Nonne hoc verum est?", "ex_en": "Surely this is true, isn't it?" }
+      ]
+    },
+    "grammar_and_key_phrases": {
+      "label": "Key Latin Phrases & Grammar Words / Sententiae Notae",
+      "note": "Famous Latin phrases still used in English and European academic, legal, and scientific contexts.",
+      "entries": [
+        { "la": "et", "en": "and", "ex_la": "Pater et mater liberos amant.", "ex_en": "Father and mother love their children." },
+        { "la": "sed", "en": "but", "ex_la": "Vita brevis est, sed ars longa.", "ex_en": "Life is short, but art is long." },
+        { "la": "aut … aut …", "en": "either … or …", "ex_la": "Aut Caesar aut nihil.", "ex_en": "Either Caesar or nothing." },
+        { "la": "quia / quod / quoniam", "en": "because / since", "ex_la": "Laetus sum quia te video.", "ex_en": "I am happy because I see you." },
+        { "la": "si", "en": "if", "ex_la": "Si vis pacem, para bellum.", "ex_en": "If you want peace, prepare for war." },
+        { "la": "in", "en": "in / into / on (+ abl. = in; + acc. = into)", "ex_la": "In schola discimus.", "ex_en": "We learn in school." },
+        { "la": "de", "en": "about / down from / concerning (+ abl.)", "ex_la": "De rebus humanis multa scripta sunt.", "ex_en": "Much has been written about human affairs." },
+        { "la": "ad", "en": "to / towards / near (+ acc.)", "ex_la": "Ad Romam iter fecimus.", "ex_en": "We made a journey to Rome." },
+        { "la": "ex / e", "en": "out of / from (+ abl.)", "ex_la": "Ex schola domum revertit.", "ex_en": "He returned home from school." },
+        { "la": "cum", "en": "with / when (+ abl.)", "ex_la": "Cum amico ambulavi.", "ex_en": "I walked with a friend." },
+        { "la": "per", "en": "through / by means of (+ acc.)", "ex_la": "Per vias Romanas exercitus iter fecit.", "ex_en": "The army marched through the Roman roads." },
+        { "la": "pro", "en": "for / on behalf of / in front of (+ abl.)", "ex_la": "Pro patria mori nobile est.", "ex_en": "To die for one's homeland is noble." },
+        { "la": "carpe diem", "en": "seize the day", "ex_la": "Carpe diem, quam minimum credula postero. (Horatius)", "ex_en": "Seize the day, trusting as little as possible in tomorrow." },
+        { "la": "tempus fugit", "en": "time flies", "ex_la": "Sed fugit interea, fugit irreparabile tempus. (Vergilius)", "ex_en": "But meanwhile time flees, irretrievable time flees." },
+        { "la": "amor vincit omnia", "en": "love conquers all", "ex_la": "Amor vincit omnia, et nos cedamus amori. (Vergilius)", "ex_en": "Love conquers all things, and let us yield to love." },
+        { "la": "in vino veritas", "en": "in wine there is truth", "ex_la": "In vino veritas, in aqua sanitas.", "ex_en": "In wine there is truth, in water health." },
+        { "la": "ars longa, vita brevis", "en": "art is long, life is short", "ex_la": "Ars longa, vita brevis, occasio praeceps. (Hippocrates, transl. Seneca)", "ex_en": "Art is long, life is short, opportunity fleeting." },
+        { "la": "e pluribus unum", "en": "out of many, one", "ex_la": "E pluribus unum — motto Civitatum Foederatarum.", "ex_en": "Out of many, one — motto of the United States." },
+        { "la": "veni, vidi, vici", "en": "I came, I saw, I conquered", "ex_la": "Veni, vidi, vici. (Caesar, de victoria Zelae)", "ex_en": "I came, I saw, I conquered. (Caesar, on the victory at Zela)" },
+        { "la": "per aspera ad astra", "en": "through hardships to the stars", "ex_la": "Per aspera ad astra, per ardua ad honores.", "ex_en": "Through hardships to the stars, through struggles to honours." }
+      ]
+    },
+    "grammar_basics": {
+      "label": "Grammar Basics / Elementa Grammaticae",
+      "note": "Core grammatical terms in Latin — useful for understanding classical texts and English/Romance language grammar.",
+      "entries": [
+        { "la": "nomen, nominis (n.)", "en": "noun / name", "ex_la": "Nomen proprium personam significat.", "ex_en": "A proper noun signifies a person." },
+        { "la": "verbum, -i (n.)", "en": "verb / word", "ex_la": "Verbum agendi actionem significat.", "ex_en": "A verb of action signifies an action." },
+        { "la": "adiectivum, -i (n.)", "en": "adjective", "ex_la": "Adiectivum nomen ornat.", "ex_en": "An adjective adorns (modifies) a noun." },
+        { "la": "casus, -us (m.)", "en": "grammatical case (nominative, accusative, etc.)", "ex_la": "Latina sex casus habet.", "ex_en": "Latin has six cases." },
+        { "la": "nominativus, -i (m.)", "en": "nominative case (subject)", "ex_la": "Nominativus subiectum designat.", "ex_en": "The nominative designates the subject." },
+        { "la": "accusativus, -i (m.)", "en": "accusative case (direct object)", "ex_la": "Accusativus obiectum directum designat.", "ex_en": "The accusative designates the direct object." },
+        { "la": "genitivus, -i (m.)", "en": "genitive case (possession, of)", "ex_la": "Genitivus possessionem significat.", "ex_en": "The genitive signifies possession." },
+        { "la": "dativus, -i (m.)", "en": "dative case (indirect object, to/for)", "ex_la": "Dativus obiectum indirectum significat.", "ex_en": "The dative signifies the indirect object." }
+      ]
+    }
+  }
+}

@@ -1,0 +1,367 @@
+{
+  "meta": {
+    "language": "French (Français)",
+    "script": "Latin",
+    "note": "Each entry: French word, English meaning, example sentence (French + English translation). Gender indicated for nouns (m = masculine, f = feminine).",
+    "totalEntries": 500
+  },
+  "categories": {
+    "greetings_and_basics": {
+      "label": "Greetings & Basic Expressions / Salutations et expressions de base",
+      "entries": [
+        { "fr": "Bonjour", "en": "Hello / Good morning / Good day", "ex_fr": "Bonjour, comment allez-vous ?", "ex_en": "Hello, how are you?" },
+        { "fr": "Bonsoir", "en": "Good evening", "ex_fr": "Bonsoir, bienvenue chez nous.", "ex_en": "Good evening, welcome to our home." },
+        { "fr": "Bonne nuit", "en": "Good night", "ex_fr": "Bonne nuit, dors bien !", "ex_en": "Good night, sleep well!" },
+        { "fr": "Salut", "en": "Hi / Bye (informal)", "ex_fr": "Salut, ça va ?", "ex_en": "Hi, how's it going?" },
+        { "fr": "Au revoir", "en": "Goodbye", "ex_fr": "Au revoir, à bientôt !", "ex_en": "Goodbye, see you soon!" },
+        { "fr": "À bientôt", "en": "See you soon", "ex_fr": "À bientôt, j'espère !", "ex_en": "See you soon, I hope!" },
+        { "fr": "S'il vous plaît", "en": "Please (formal)", "ex_fr": "S'il vous plaît, pouvez-vous m'aider ?", "ex_en": "Please, can you help me?" },
+        { "fr": "Merci", "en": "Thank you", "ex_fr": "Merci beaucoup pour votre aide.", "ex_en": "Thank you very much for your help." },
+        { "fr": "De rien", "en": "You're welcome", "ex_fr": "De rien, c'est avec plaisir !", "ex_en": "You're welcome, it's my pleasure!" },
+        { "fr": "Excusez-moi", "en": "Excuse me (formal)", "ex_fr": "Excusez-moi, où est la gare ?", "ex_en": "Excuse me, where is the station?" },
+        { "fr": "Pardon", "en": "Sorry / Pardon", "ex_fr": "Pardon, je n'ai pas compris.", "ex_en": "Sorry, I didn't understand." },
+        { "fr": "Je ne comprends pas", "en": "I don't understand", "ex_fr": "Je ne comprends pas cette règle.", "ex_en": "I don't understand this rule." },
+        { "fr": "Parlez-vous anglais ?", "en": "Do you speak English?", "ex_fr": "Parlez-vous anglais ? Je parle peu le français.", "ex_en": "Do you speak English? I speak little French." },
+        { "fr": "Comment vous appelez-vous ?", "en": "What is your name? (formal)", "ex_fr": "Comment vous appelez-vous, s'il vous plaît ?", "ex_en": "What is your name, please?" },
+        { "fr": "Je m'appelle …", "en": "My name is …", "ex_fr": "Je m'appelle Marie.", "ex_en": "My name is Marie." }
+      ]
+    },
+    "numbers": {
+      "label": "Numbers / Les chiffres",
+      "entries": [
+        { "fr": "zéro", "en": "zero", "ex_fr": "Le résultat est zéro.", "ex_en": "The result is zero." },
+        { "fr": "un / une", "en": "one (m/f)", "ex_fr": "J'ai un frère.", "ex_en": "I have one brother." },
+        { "fr": "deux", "en": "two", "ex_fr": "Il y a deux livres sur la table.", "ex_en": "There are two books on the table." },
+        { "fr": "trois", "en": "three", "ex_fr": "Nous avons trois enfants.", "ex_en": "We have three children." },
+        { "fr": "quatre", "en": "four", "ex_fr": "Une année a quatre saisons.", "ex_en": "A year has four seasons." },
+        { "fr": "cinq", "en": "five", "ex_fr": "Il y a cinq doigts sur chaque main.", "ex_en": "There are five fingers on each hand." },
+        { "fr": "six", "en": "six", "ex_fr": "Le magasin ferme à dix-huit heures.", "ex_en": "The shop closes at eighteen hundred hours." },
+        { "fr": "sept", "en": "seven", "ex_fr": "La semaine a sept jours.", "ex_en": "The week has seven days." },
+        { "fr": "huit", "en": "eight", "ex_fr": "Il dort huit heures par nuit.", "ex_en": "He sleeps eight hours a night." },
+        { "fr": "neuf", "en": "nine", "ex_fr": "Mon immeuble a neuf étages.", "ex_en": "My building has nine floors." },
+        { "fr": "dix", "en": "ten", "ex_fr": "J'ai dix euros.", "ex_en": "I have ten euros." },
+        { "fr": "vingt", "en": "twenty", "ex_fr": "Elle a vingt ans.", "ex_en": "She is twenty years old." },
+        { "fr": "cent", "en": "one hundred", "ex_fr": "J'ai payé cent euros.", "ex_en": "I paid one hundred euros." },
+        { "fr": "mille", "en": "one thousand", "ex_fr": "La distance est de mille kilomètres.", "ex_en": "The distance is one thousand kilometres." },
+        { "fr": "un million", "en": "one million", "ex_fr": "La ville compte un million d'habitants.", "ex_en": "The city has one million inhabitants." }
+      ]
+    },
+    "family": {
+      "label": "Family / La famille",
+      "entries": [
+        { "fr": "la famille", "en": "family (f)", "ex_fr": "Ma famille est grande.", "ex_en": "My family is large." },
+        { "fr": "le père", "en": "father (m)", "ex_fr": "Mon père est médecin.", "ex_en": "My father is a doctor." },
+        { "fr": "la mère", "en": "mother (f)", "ex_fr": "Ma mère cuisine chaque soir.", "ex_en": "My mother cooks every evening." },
+        { "fr": "le frère", "en": "brother (m)", "ex_fr": "Mon frère est plus âgé que moi.", "ex_en": "My brother is older than me." },
+        { "fr": "la sœur", "en": "sister (f)", "ex_fr": "Ma sœur étudie la médecine.", "ex_en": "My sister is studying medicine." },
+        { "fr": "le grand-père", "en": "grandfather (m)", "ex_fr": "Mon grand-père raconte de belles histoires.", "ex_en": "My grandfather tells beautiful stories." },
+        { "fr": "la grand-mère", "en": "grandmother (f)", "ex_fr": "Ma grand-mère vit à la campagne.", "ex_en": "My grandmother lives in the countryside." },
+        { "fr": "l'oncle", "en": "uncle (m)", "ex_fr": "Mon oncle habite à Lyon.", "ex_en": "My uncle lives in Lyon." },
+        { "fr": "la tante", "en": "aunt (f)", "ex_fr": "Ma tante est professeure.", "ex_en": "My aunt is a teacher." },
+        { "fr": "le fils", "en": "son (m)", "ex_fr": "Mon fils est à l'université.", "ex_en": "My son is at university." },
+        { "fr": "la fille", "en": "daughter (f)", "ex_fr": "Ma fille adore lire.", "ex_en": "My daughter loves reading." },
+        { "fr": "le mari", "en": "husband (m)", "ex_fr": "Mon mari est ingénieur.", "ex_en": "My husband is an engineer." },
+        { "fr": "la femme / l'épouse", "en": "wife (f)", "ex_fr": "Ma femme est dentiste.", "ex_en": "My wife is a dentist." },
+        { "fr": "le cousin / la cousine", "en": "cousin (m/f)", "ex_fr": "Mon cousin habite en Belgique.", "ex_en": "My cousin lives in Belgium." },
+        { "fr": "les enfants", "en": "children (m pl)", "ex_fr": "Les enfants jouent dans le jardin.", "ex_en": "The children are playing in the garden." }
+      ]
+    },
+    "body": {
+      "label": "Body / Le corps",
+      "entries": [
+        { "fr": "la tête", "en": "head (f)", "ex_fr": "J'ai mal à la tête.", "ex_en": "I have a headache." },
+        { "fr": "le visage", "en": "face (m)", "ex_fr": "Elle a un joli visage.", "ex_en": "She has a pretty face." },
+        { "fr": "l'œil / les yeux", "en": "eye / eyes (m)", "ex_fr": "Ses yeux sont bleus.", "ex_en": "His eyes are blue." },
+        { "fr": "l'oreille", "en": "ear (f)", "ex_fr": "J'ai mal à l'oreille.", "ex_en": "My ear hurts." },
+        { "fr": "le nez", "en": "nose (m)", "ex_fr": "Mon nez est bouché.", "ex_en": "My nose is blocked." },
+        { "fr": "la bouche", "en": "mouth (f)", "ex_fr": "Ouvrez la bouche, s'il vous plaît.", "ex_en": "Open your mouth, please." },
+        { "fr": "les dents", "en": "teeth (f pl)", "ex_fr": "Brosse-toi les dents deux fois par jour.", "ex_en": "Brush your teeth twice a day." },
+        { "fr": "la main", "en": "hand (f)", "ex_fr": "Lave-toi les mains avant de manger.", "ex_en": "Wash your hands before eating." },
+        { "fr": "le pied", "en": "foot (m)", "ex_fr": "J'ai mal au pied après la marche.", "ex_en": "My foot hurts after walking." },
+        { "fr": "le cœur", "en": "heart (m)", "ex_fr": "Le cœur pompe le sang.", "ex_en": "The heart pumps blood." },
+        { "fr": "le dos", "en": "back (m)", "ex_fr": "J'ai mal dans le dos.", "ex_en": "I have back pain." },
+        { "fr": "le ventre", "en": "stomach / belly (m)", "ex_fr": "J'ai mal au ventre.", "ex_en": "I have a stomachache." },
+        { "fr": "le cou", "en": "neck (m)", "ex_fr": "J'ai mal au cou.", "ex_en": "My neck hurts." },
+        { "fr": "l'épaule", "en": "shoulder (f)", "ex_fr": "Elle s'est blessée à l'épaule.", "ex_en": "She injured her shoulder." },
+        { "fr": "le genou", "en": "knee (m)", "ex_fr": "Il s'est fait mal au genou.", "ex_en": "He hurt his knee." }
+      ]
+    },
+    "colors": {
+      "label": "Colors / Les couleurs",
+      "entries": [
+        { "fr": "rouge", "en": "red", "ex_fr": "J'ai acheté une chemise rouge.", "ex_en": "I bought a red shirt." },
+        { "fr": "bleu(e)", "en": "blue", "ex_fr": "Le ciel est bleu en été.", "ex_en": "The sky is blue in summer." },
+        { "fr": "vert(e)", "en": "green", "ex_fr": "Les arbres sont verts au printemps.", "ex_en": "Trees are green in spring." },
+        { "fr": "jaune", "en": "yellow", "ex_fr": "Les bananes sont jaunes.", "ex_en": "Bananas are yellow." },
+        { "fr": "blanc / blanche", "en": "white (m/f)", "ex_fr": "La neige est blanche.", "ex_en": "Snow is white." },
+        { "fr": "noir(e)", "en": "black", "ex_fr": "Le chat est noir.", "ex_en": "The cat is black." },
+        { "fr": "orange", "en": "orange (invariable)", "ex_fr": "J'ai acheté un sac orange.", "ex_en": "I bought an orange bag." },
+        { "fr": "violet / violette", "en": "purple / violet (m/f)", "ex_fr": "La fleur est violette.", "ex_en": "The flower is violet." },
+        { "fr": "rose", "en": "pink", "ex_fr": "Elle aime la couleur rose.", "ex_en": "She likes the colour pink." },
+        { "fr": "marron", "en": "brown (invariable)", "ex_fr": "Ses cheveux sont marron.", "ex_en": "Her hair is brown." },
+        { "fr": "gris(e)", "en": "grey", "ex_fr": "Le ciel est gris aujourd'hui.", "ex_en": "The sky is grey today." },
+        { "fr": "doré(e)", "en": "golden", "ex_fr": "La bague est dorée.", "ex_en": "The ring is golden." }
+      ]
+    },
+    "food_and_drink": {
+      "label": "Food & Drink / La nourriture et les boissons",
+      "entries": [
+        { "fr": "le pain", "en": "bread (m)", "ex_fr": "Nous mangeons du pain à chaque repas.", "ex_en": "We eat bread at every meal." },
+        { "fr": "le riz", "en": "rice (m)", "ex_fr": "On a mangé du riz avec du poulet.", "ex_en": "We ate rice with chicken." },
+        { "fr": "la viande", "en": "meat (f)", "ex_fr": "J'adore la viande grillée.", "ex_en": "I love grilled meat." },
+        { "fr": "le poulet", "en": "chicken (m)", "ex_fr": "Le poulet rôti est délicieux.", "ex_en": "Roast chicken is delicious." },
+        { "fr": "le poisson", "en": "fish (m)", "ex_fr": "Nous mangeons du poisson le vendredi.", "ex_en": "We eat fish on Fridays." },
+        { "fr": "les légumes", "en": "vegetables (m pl)", "ex_fr": "Les légumes sont bons pour la santé.", "ex_en": "Vegetables are good for health." },
+        { "fr": "les fruits", "en": "fruit (m pl)", "ex_fr": "J'ai mangé des fruits au petit-déjeuner.", "ex_en": "I ate fruit for breakfast." },
+        { "fr": "l'eau", "en": "water (f)", "ex_fr": "Bois beaucoup d'eau chaque jour.", "ex_en": "Drink lots of water every day." },
+        { "fr": "le jus", "en": "juice (m)", "ex_fr": "J'ai bu du jus d'orange ce matin.", "ex_en": "I drank orange juice this morning." },
+        { "fr": "le thé", "en": "tea (m)", "ex_fr": "Je prends mon thé avec du lait.", "ex_en": "I take my tea with milk." },
+        { "fr": "le café", "en": "coffee (m)", "ex_fr": "Un café au lait, s'il vous plaît.", "ex_en": "A coffee with milk, please." },
+        { "fr": "le lait", "en": "milk (m)", "ex_fr": "Les enfants boivent du lait chaque matin.", "ex_en": "Children drink milk every morning." },
+        { "fr": "le sucre", "en": "sugar (m)", "ex_fr": "Je ne mets pas de sucre dans mon café.", "ex_en": "I don't put sugar in my coffee." },
+        { "fr": "le sel", "en": "salt (m)", "ex_fr": "Ajoute un peu de sel à la cuisine.", "ex_en": "Add a little salt to the cooking." },
+        { "fr": "l'huile d'olive", "en": "olive oil (f)", "ex_fr": "J'utilise l'huile d'olive pour cuisiner.", "ex_en": "I use olive oil for cooking." },
+        { "fr": "le repas", "en": "meal (m)", "ex_fr": "Nous faisons trois repas par jour.", "ex_en": "We have three meals a day." },
+        { "fr": "le petit-déjeuner", "en": "breakfast (m)", "ex_fr": "Le petit-déjeuner est le repas le plus important.", "ex_en": "Breakfast is the most important meal." },
+        { "fr": "le déjeuner", "en": "lunch (m)", "ex_fr": "Nous déjeunons à midi.", "ex_en": "We have lunch at noon." },
+        { "fr": "le dîner", "en": "dinner (m)", "ex_fr": "La famille se réunit pour le dîner.", "ex_en": "The family gathers for dinner." }
+      ]
+    },
+    "time": {
+      "label": "Time / Le temps",
+      "entries": [
+        { "fr": "maintenant", "en": "now", "ex_fr": "Je suis occupé maintenant.", "ex_en": "I am busy now." },
+        { "fr": "aujourd'hui", "en": "today", "ex_fr": "Aujourd'hui c'est vendredi.", "ex_en": "Today is Friday." },
+        { "fr": "demain", "en": "tomorrow", "ex_fr": "Nous sortirons demain.", "ex_en": "We will go out tomorrow." },
+        { "fr": "hier", "en": "yesterday", "ex_fr": "Je suis allé au marché hier.", "ex_en": "I went to the market yesterday." },
+        { "fr": "l'heure", "en": "hour / time (f)", "ex_fr": "Quelle heure est-il ?", "ex_en": "What time is it?" },
+        { "fr": "la minute", "en": "minute (f)", "ex_fr": "Attends une minute, s'il te plaît.", "ex_en": "Wait a minute, please." },
+        { "fr": "le jour", "en": "day (m)", "ex_fr": "C'est une belle journée.", "ex_en": "It's a beautiful day." },
+        { "fr": "la semaine", "en": "week (f)", "ex_fr": "Je reviendrai dans une semaine.", "ex_en": "I will return in a week." },
+        { "fr": "le mois", "en": "month (m)", "ex_fr": "Un mois s'est passé depuis son départ.", "ex_en": "A month has passed since his departure." },
+        { "fr": "l'année", "en": "year (f)", "ex_fr": "La nouvelle année commence en janvier.", "ex_en": "The new year begins in January." },
+        { "fr": "le matin", "en": "morning (m)", "ex_fr": "Je me lève tôt le matin.", "ex_en": "I get up early in the morning." },
+        { "fr": "le midi", "en": "noon (m)", "ex_fr": "On se retrouve à midi.", "ex_en": "We meet at noon." },
+        { "fr": "le soir", "en": "evening (m)", "ex_fr": "Je me promène le soir.", "ex_en": "I take a walk in the evening." },
+        { "fr": "la nuit", "en": "night (f)", "ex_fr": "Je dors tôt la nuit.", "ex_en": "I go to sleep early at night." }
+      ]
+    },
+    "days_and_months": {
+      "label": "Days & Months / Les jours et les mois",
+      "entries": [
+        { "fr": "lundi", "en": "Monday", "ex_fr": "L'école reprend lundi.", "ex_en": "School resumes on Monday." },
+        { "fr": "mardi", "en": "Tuesday", "ex_fr": "Mon rendez-vous est mardi.", "ex_en": "My appointment is on Tuesday." },
+        { "fr": "mercredi", "en": "Wednesday", "ex_fr": "On se voit mercredi.", "ex_en": "We see each other on Wednesday." },
+        { "fr": "jeudi", "en": "Thursday", "ex_fr": "La réunion est jeudi.", "ex_en": "The meeting is on Thursday." },
+        { "fr": "vendredi", "en": "Friday", "ex_fr": "Le vendredi est un jour de repos.", "ex_en": "Friday is a rest day." },
+        { "fr": "samedi", "en": "Saturday", "ex_fr": "On fait du sport le samedi.", "ex_en": "We do sport on Saturday." },
+        { "fr": "dimanche", "en": "Sunday", "ex_fr": "Le dimanche on va à l'église.", "ex_en": "On Sunday we go to church." },
+        { "fr": "janvier", "en": "January", "ex_fr": "Je suis né(e) en janvier.", "ex_en": "I was born in January." },
+        { "fr": "février", "en": "February", "ex_fr": "Février est le mois le plus court.", "ex_en": "February is the shortest month." },
+        { "fr": "mars", "en": "March", "ex_fr": "Le printemps commence en mars.", "ex_en": "Spring begins in March." },
+        { "fr": "avril", "en": "April", "ex_fr": "Les fleurs s'épanouissent en avril.", "ex_en": "Flowers bloom in April." },
+        { "fr": "mai", "en": "May", "ex_fr": "Le temps est doux en mai.", "ex_en": "The weather is mild in May." },
+        { "fr": "juin", "en": "June", "ex_fr": "L'été commence en juin.", "ex_en": "Summer begins in June." },
+        { "fr": "décembre", "en": "December", "ex_fr": "Noël est fêté en décembre.", "ex_en": "Christmas is celebrated in December." }
+      ]
+    },
+    "weather": {
+      "label": "Weather / La météo",
+      "entries": [
+        { "fr": "le temps / la météo", "en": "weather (m/f)", "ex_fr": "Quel temps fait-il aujourd'hui ?", "ex_en": "What is the weather like today?" },
+        { "fr": "chaud(e)", "en": "hot / warm", "ex_fr": "Il fait très chaud en été.", "ex_en": "It is very hot in summer." },
+        { "fr": "froid(e)", "en": "cold", "ex_fr": "Il fait froid en hiver.", "ex_en": "It is cold in winter." },
+        { "fr": "ensoleillé(e)", "en": "sunny", "ex_fr": "Il fait beau et ensoleillé aujourd'hui.", "ex_en": "It is nice and sunny today." },
+        { "fr": "pluvieux / pluvieuse", "en": "rainy (m/f)", "ex_fr": "Le temps est pluvieux, prends ton parapluie.", "ex_en": "It's rainy, take your umbrella." },
+        { "fr": "la pluie", "en": "rain (f)", "ex_fr": "La pluie est nécessaire pour les plantes.", "ex_en": "Rain is necessary for plants." },
+        { "fr": "la neige", "en": "snow (f)", "ex_fr": "Il neige en montagne.", "ex_en": "It snows in the mountains." },
+        { "fr": "le vent", "en": "wind (m)", "ex_fr": "Le vent est fort aujourd'hui.", "ex_en": "The wind is strong today." },
+        { "fr": "le nuage", "en": "cloud (m)", "ex_fr": "Le ciel est couvert de nuages.", "ex_en": "The sky is covered with clouds." },
+        { "fr": "l'orage", "en": "storm / thunderstorm (m)", "ex_fr": "Il y a eu un violent orage hier soir.", "ex_en": "There was a violent storm last night." },
+        { "fr": "le brouillard", "en": "fog (m)", "ex_fr": "Il y avait du brouillard ce matin.", "ex_en": "There was fog this morning." },
+        { "fr": "la température", "en": "temperature (f)", "ex_fr": "La température est de trente-cinq degrés.", "ex_en": "The temperature is thirty-five degrees." }
+      ]
+    },
+    "travel_and_places": {
+      "label": "Travel & Places / Les voyages et les endroits",
+      "entries": [
+        { "fr": "l'aéroport", "en": "airport (m)", "ex_fr": "Je suis arrivé à l'aéroport de bonne heure.", "ex_en": "I arrived at the airport early." },
+        { "fr": "la gare", "en": "train/bus station (f)", "ex_fr": "On s'est retrouvés à la gare.", "ex_en": "We met at the station." },
+        { "fr": "l'hôtel", "en": "hotel (m)", "ex_fr": "Nous logeons dans un hôtel cinq étoiles.", "ex_en": "We are staying in a five-star hotel." },
+        { "fr": "l'hôpital", "en": "hospital (m)", "ex_fr": "L'hôpital est près de chez moi.", "ex_en": "The hospital is near my home." },
+        { "fr": "le marché", "en": "market (m)", "ex_fr": "J'ai acheté des épices au marché.", "ex_en": "I bought spices at the market." },
+        { "fr": "le magasin", "en": "shop / store (m)", "ex_fr": "Je suis allé au magasin acheter du pain.", "ex_en": "I went to the shop to buy bread." },
+        { "fr": "l'église", "en": "church (f)", "ex_fr": "L'église est au centre du village.", "ex_en": "The church is in the centre of the village." },
+        { "fr": "la ville", "en": "city / town (f)", "ex_fr": "Paris est une grande ville.", "ex_en": "Paris is a large city." },
+        { "fr": "le village", "en": "village (m)", "ex_fr": "J'ai grandi dans un petit village.", "ex_en": "I grew up in a small village." },
+        { "fr": "la rue", "en": "street (f)", "ex_fr": "J'habite dans la rue principale.", "ex_en": "I live on the main street." },
+        { "fr": "la banque", "en": "bank (f)", "ex_fr": "J'ai retiré de l'argent à la banque.", "ex_en": "I withdrew money from the bank." },
+        { "fr": "le restaurant", "en": "restaurant (m)", "ex_fr": "On a dîné dans un restaurant français.", "ex_en": "We dined in a French restaurant." },
+        { "fr": "la pharmacie", "en": "pharmacy (f)", "ex_fr": "J'ai acheté le médicament à la pharmacie.", "ex_en": "I bought the medicine at the pharmacy." },
+        { "fr": "l'école", "en": "school (f)", "ex_fr": "Les enfants vont à l'école.", "ex_en": "Children go to school." },
+        { "fr": "l'université", "en": "university (f)", "ex_fr": "J'étudie à l'université de Paris.", "ex_en": "I study at the University of Paris." }
+      ]
+    },
+    "transport": {
+      "label": "Transport / Les transports",
+      "entries": [
+        { "fr": "la voiture", "en": "car (f)", "ex_fr": "Mon père a acheté une nouvelle voiture.", "ex_en": "My father bought a new car." },
+        { "fr": "le bus", "en": "bus (m)", "ex_fr": "Je prends le bus tous les jours.", "ex_en": "I take the bus every day." },
+        { "fr": "le train", "en": "train (m)", "ex_fr": "Le train est plus rapide que le bus.", "ex_en": "The train is faster than the bus." },
+        { "fr": "l'avion", "en": "aeroplane (m)", "ex_fr": "J'ai voyagé en avion jusqu'à Istanbul.", "ex_en": "I travelled by plane to Istanbul." },
+        { "fr": "le bateau", "en": "boat / ship (m)", "ex_fr": "Nous avons traversé la Manche en bateau.", "ex_en": "We crossed the Channel by boat." },
+        { "fr": "le vélo", "en": "bicycle (m)", "ex_fr": "Je fais du vélo le matin.", "ex_en": "I ride my bicycle in the morning." },
+        { "fr": "le taxi", "en": "taxi (m)", "ex_fr": "J'ai pris un taxi depuis l'aéroport.", "ex_en": "I took a taxi from the airport." },
+        { "fr": "le métro", "en": "metro / underground (m)", "ex_fr": "Le métro parisien est très pratique.", "ex_en": "The Paris metro is very practical." }
+      ]
+    },
+    "school_and_work": {
+      "label": "School & Work / L'école et le travail",
+      "entries": [
+        { "fr": "le professeur / la professeure", "en": "teacher / professor (m/f)", "ex_fr": "Le professeur explique clairement la leçon.", "ex_en": "The teacher explains the lesson clearly." },
+        { "fr": "l'étudiant(e)", "en": "student (m/f)", "ex_fr": "L'étudiant rédige sa dissertation.", "ex_en": "The student is writing his essay." },
+        { "fr": "le livre", "en": "book (m)", "ex_fr": "J'ai lu ce livre deux fois.", "ex_en": "I have read this book twice." },
+        { "fr": "le stylo", "en": "pen (m)", "ex_fr": "Passe-moi ton stylo, s'il te plaît.", "ex_en": "Pass me your pen, please." },
+        { "fr": "la leçon", "en": "lesson (f)", "ex_fr": "La leçon est facile et intéressante.", "ex_en": "The lesson is easy and interesting." },
+        { "fr": "l'examen", "en": "exam (m)", "ex_fr": "L'examen aura lieu demain matin.", "ex_en": "The exam will take place tomorrow morning." },
+        { "fr": "le bureau", "en": "office / desk (m)", "ex_fr": "Je travaille dans un grand bureau.", "ex_en": "I work in a large office." },
+        { "fr": "l'ingénieur(e)", "en": "engineer (m/f)", "ex_fr": "Mon frère est ingénieur électrique.", "ex_en": "My brother is an electrical engineer." },
+        { "fr": "le médecin / la médecin", "en": "doctor (m/f)", "ex_fr": "Je suis allé chez le médecin hier.", "ex_en": "I went to the doctor yesterday." },
+        { "fr": "l'avocat(e)", "en": "lawyer (m/f)", "ex_fr": "La consultation juridique est avec l'avocat.", "ex_en": "The legal consultation is with the lawyer." }
+      ]
+    },
+    "house_and_home": {
+      "label": "House & Home / La maison",
+      "entries": [
+        { "fr": "la maison", "en": "house / home (f)", "ex_fr": "Ma maison est ta maison.", "ex_en": "My home is your home." },
+        { "fr": "la chambre", "en": "bedroom (f)", "ex_fr": "Ma chambre est spacieuse et lumineuse.", "ex_en": "My room is spacious and bright." },
+        { "fr": "la cuisine", "en": "kitchen (f)", "ex_fr": "Ma mère est dans la cuisine.", "ex_en": "My mother is in the kitchen." },
+        { "fr": "la salle de bains", "en": "bathroom (f)", "ex_fr": "La salle de bains est au bout du couloir.", "ex_en": "The bathroom is at the end of the corridor." },
+        { "fr": "le salon", "en": "living room (m)", "ex_fr": "Nous nous réunissons dans le salon.", "ex_en": "We gather in the living room." },
+        { "fr": "la porte", "en": "door (f)", "ex_fr": "Ferme la porte, s'il te plaît.", "ex_en": "Close the door, please." },
+        { "fr": "la fenêtre", "en": "window (f)", "ex_fr": "Ouvre la fenêtre pour faire entrer l'air.", "ex_en": "Open the window to let air in." },
+        { "fr": "l'étage", "en": "floor / storey (m)", "ex_fr": "J'habite au troisième étage.", "ex_en": "I live on the third floor." },
+        { "fr": "le lit", "en": "bed (m)", "ex_fr": "Je dors dans un lit confortable.", "ex_en": "I sleep in a comfortable bed." },
+        { "fr": "la chaise", "en": "chair (f)", "ex_fr": "Assieds-toi sur la chaise.", "ex_en": "Sit on the chair." }
+      ]
+    },
+    "nature": {
+      "label": "Nature / La nature",
+      "entries": [
+        { "fr": "la montagne", "en": "mountain (f)", "ex_fr": "Nous avons gravi la montagne en été.", "ex_en": "We climbed the mountain in summer." },
+        { "fr": "la mer", "en": "sea (f)", "ex_fr": "La Méditerranée est une belle mer.", "ex_en": "The Mediterranean is a beautiful sea." },
+        { "fr": "la rivière / le fleuve", "en": "river (f/m)", "ex_fr": "La Seine est le fleuve qui traverse Paris.", "ex_en": "The Seine is the river that flows through Paris." },
+        { "fr": "le désert", "en": "desert (m)", "ex_fr": "Le Sahara est le plus grand désert chaud.", "ex_en": "The Sahara is the largest hot desert." },
+        { "fr": "la forêt", "en": "forest (f)", "ex_fr": "Le lion vit dans la forêt.", "ex_en": "The lion lives in the forest." },
+        { "fr": "l'arbre", "en": "tree (m)", "ex_fr": "Nous avons planté un arbre dans le jardin.", "ex_en": "We planted a tree in the garden." },
+        { "fr": "la fleur", "en": "flower (f)", "ex_fr": "La belle fleur est dans le jardin.", "ex_en": "The beautiful flower is in the garden." },
+        { "fr": "le soleil", "en": "sun (m)", "ex_fr": "Le soleil se lève à l'est.", "ex_en": "The sun rises in the east." },
+        { "fr": "la lune", "en": "moon (f)", "ex_fr": "La lune illumine le ciel la nuit.", "ex_en": "The moon illuminates the sky at night." },
+        { "fr": "l'étoile", "en": "star (f)", "ex_fr": "Le ciel est plein d'étoiles.", "ex_en": "The sky is full of stars." }
+      ]
+    },
+    "adjectives": {
+      "label": "Adjectives / Les adjectifs",
+      "entries": [
+        { "fr": "grand(e)", "en": "big / large / tall", "ex_fr": "La ville est très grande.", "ex_en": "The city is very large." },
+        { "fr": "petit(e)", "en": "small / short", "ex_fr": "La maison est petite mais confortable.", "ex_en": "The house is small but comfortable." },
+        { "fr": "beau / belle", "en": "beautiful / handsome (m/f)", "ex_fr": "Le paysage est magnifique.", "ex_en": "The landscape is beautiful." },
+        { "fr": "rapide", "en": "fast / quick", "ex_fr": "Le train est très rapide.", "ex_en": "The train is very fast." },
+        { "fr": "lent(e)", "en": "slow", "ex_fr": "La tortue est lente.", "ex_en": "The turtle is slow." },
+        { "fr": "difficile", "en": "difficult / hard", "ex_fr": "L'examen est difficile.", "ex_en": "The exam is difficult." },
+        { "fr": "facile", "en": "easy", "ex_fr": "La question est facile.", "ex_en": "The question is easy." },
+        { "fr": "nouveau / nouvelle", "en": "new (m/f)", "ex_fr": "J'ai acheté un nouveau téléphone.", "ex_en": "I bought a new phone." },
+        { "fr": "vieux / vieille", "en": "old (m/f)", "ex_fr": "La maison est vieille mais belle.", "ex_en": "The house is old but beautiful." },
+        { "fr": "fort(e)", "en": "strong", "ex_fr": "Le vent est fort aujourd'hui.", "ex_en": "The wind is strong today." },
+        { "fr": "cher / chère", "en": "expensive / dear (m/f)", "ex_fr": "Ce téléphone est trop cher.", "ex_en": "This phone is too expensive." },
+        { "fr": "bon marché", "en": "cheap / inexpensive (invariable)", "ex_fr": "Ce restaurant est bon marché.", "ex_en": "This restaurant is cheap." },
+        { "fr": "heureux / heureuse", "en": "happy (m/f)", "ex_fr": "Je suis heureux de mon succès.", "ex_en": "I am happy about my success." },
+        { "fr": "triste", "en": "sad", "ex_fr": "Il est triste après les mauvaises nouvelles.", "ex_en": "He is sad after the bad news." },
+        { "fr": "fatigué(e)", "en": "tired", "ex_fr": "Je suis fatigué après le travail.", "ex_en": "I am tired after work." },
+        { "fr": "malade", "en": "sick / ill", "ex_fr": "Il n'est pas venu car il est malade.", "ex_en": "He didn't come because he is sick." }
+      ]
+    },
+    "verbs": {
+      "label": "Common Verbs / Les verbes courants",
+      "entries": [
+        { "fr": "aller", "en": "to go", "ex_fr": "Je vais à l'école tous les matins.", "ex_en": "I go to school every morning." },
+        { "fr": "venir", "en": "to come", "ex_fr": "Mon ami vient chez moi ce soir.", "ex_en": "My friend is coming to my house this evening." },
+        { "fr": "manger", "en": "to eat", "ex_fr": "Nous mangeons ensemble à midi.", "ex_en": "We eat together at noon." },
+        { "fr": "boire", "en": "to drink", "ex_fr": "Il boit de l'eau après le sport.", "ex_en": "He drinks water after sport." },
+        { "fr": "écrire", "en": "to write", "ex_fr": "Elle écrit une lettre à son amie.", "ex_en": "She is writing a letter to her friend." },
+        { "fr": "lire", "en": "to read", "ex_fr": "Il a lu le livre en une nuit.", "ex_en": "He read the book in one night." },
+        { "fr": "étudier", "en": "to study", "ex_fr": "Elle étudie le français à Paris.", "ex_en": "She is studying French in Paris." },
+        { "fr": "travailler", "en": "to work", "ex_fr": "Il travaille beaucoup pour finir le projet.", "ex_en": "He works hard to finish the project." },
+        { "fr": "dormir", "en": "to sleep", "ex_fr": "Je dors tôt chaque soir.", "ex_en": "I sleep early every evening." },
+        { "fr": "se réveiller", "en": "to wake up", "ex_fr": "Je me réveille au son du réveil.", "ex_en": "I wake up to the sound of the alarm." },
+        { "fr": "parler", "en": "to speak / talk", "ex_fr": "Il parle français couramment.", "ex_en": "He speaks French fluently." },
+        { "fr": "écouter", "en": "to listen", "ex_fr": "Elle écoute la chanson attentivement.", "ex_en": "She listens to the song attentively." },
+        { "fr": "voir", "en": "to see", "ex_fr": "J'ai vu quelque chose d'étrange.", "ex_en": "I saw something strange." },
+        { "fr": "voyager", "en": "to travel", "ex_fr": "Il a voyagé en Europe l'été dernier.", "ex_en": "He travelled to Europe last summer." },
+        { "fr": "acheter", "en": "to buy", "ex_fr": "Elle a acheté un cadeau pour sa mère.", "ex_en": "She bought a gift for her mother." },
+        { "fr": "comprendre", "en": "to understand", "ex_fr": "Il a compris la leçon rapidement.", "ex_en": "He understood the lesson quickly." },
+        { "fr": "savoir", "en": "to know (a fact)", "ex_fr": "Je sais la bonne réponse.", "ex_en": "I know the correct answer." },
+        { "fr": "aimer", "en": "to love / like", "ex_fr": "J'aime le français depuis l'enfance.", "ex_en": "I have loved French since childhood." },
+        { "fr": "aider", "en": "to help", "ex_fr": "Il a aidé son voisin à déménager.", "ex_en": "He helped his neighbour to move." },
+        { "fr": "pouvoir", "en": "to be able to / can", "ex_fr": "Je peux venir demain.", "ex_en": "I can come tomorrow." }
+      ]
+    },
+    "question_words": {
+      "label": "Question Words / Les mots interrogatifs",
+      "entries": [
+        { "fr": "qui ?", "en": "who?", "ex_fr": "Qui a frappé à la porte ?", "ex_en": "Who knocked on the door?" },
+        { "fr": "que / quoi ?", "en": "what?", "ex_fr": "Qu'est-ce que tu fais ?", "ex_en": "What are you doing?" },
+        { "fr": "où ?", "en": "where?", "ex_fr": "Où habitez-vous ?", "ex_en": "Where do you live?" },
+        { "fr": "quand ?", "en": "when?", "ex_fr": "Quand commence le cours ?", "ex_en": "When does the lesson begin?" },
+        { "fr": "pourquoi ?", "en": "why?", "ex_fr": "Pourquoi êtes-vous en retard ?", "ex_en": "Why are you late?" },
+        { "fr": "comment ?", "en": "how?", "ex_fr": "Comment allez-vous ?", "ex_en": "How are you?" },
+        { "fr": "combien ?", "en": "how many / much?", "ex_fr": "Combien d'années avez-vous étudié le français ?", "ex_en": "How many years did you study French?" },
+        { "fr": "quel(le) ?", "en": "which / what? (m/f)", "ex_fr": "Quelle couleur préférez-vous ?", "ex_en": "Which colour do you prefer?" },
+        { "fr": "est-ce que … ?", "en": "yes/no question marker", "ex_fr": "Est-ce que vous parlez anglais ?", "ex_en": "Do you speak English?" }
+      ]
+    },
+    "health_and_medicine": {
+      "label": "Health & Medicine / La santé et la médecine",
+      "entries": [
+        { "fr": "la santé", "en": "health (f)", "ex_fr": "La santé est la richesse la plus précieuse.", "ex_en": "Health is the most precious wealth." },
+        { "fr": "la maladie", "en": "illness / disease (f)", "ex_fr": "La maladie l'empêche de travailler.", "ex_en": "The illness prevents him from working." },
+        { "fr": "le médicament", "en": "medicine / medication (m)", "ex_fr": "Je prends mon médicament après le repas.", "ex_en": "I take my medicine after meals." },
+        { "fr": "la douleur", "en": "pain (f)", "ex_fr": "J'ai une forte douleur à la tête.", "ex_en": "I have a severe headache." },
+        { "fr": "la fièvre", "en": "fever (f)", "ex_fr": "Il a une forte fièvre.", "ex_en": "He has a high fever." },
+        { "fr": "la toux", "en": "cough (f)", "ex_fr": "Cette toux me gêne beaucoup.", "ex_en": "This cough bothers me a lot." },
+        { "fr": "le rhume", "en": "cold (illness) (m)", "ex_fr": "J'ai attrapé un rhume à cause du froid.", "ex_en": "I caught a cold because of the cold weather." }
+      ]
+    },
+    "emotions": {
+      "label": "Emotions / Les émotions",
+      "entries": [
+        { "fr": "la joie", "en": "joy / happiness (f)", "ex_fr": "La joie remplit son cœur.", "ex_en": "Joy fills his heart." },
+        { "fr": "la tristesse", "en": "sadness (f)", "ex_fr": "La tristesse est visible sur son visage.", "ex_en": "Sadness is visible on his face." },
+        { "fr": "la peur", "en": "fear (f)", "ex_fr": "La peur est naturelle dans les situations dangereuses.", "ex_en": "Fear is natural in dangerous situations." },
+        { "fr": "la colère", "en": "anger (f)", "ex_fr": "La colère nuit à la santé.", "ex_en": "Anger is harmful to health." },
+        { "fr": "l'amour", "en": "love (m)", "ex_fr": "L'amour rend la vie plus belle.", "ex_en": "Love makes life more beautiful." },
+        { "fr": "la fatigue", "en": "tiredness / fatigue (f)", "ex_fr": "Je ressens de la fatigue après une longue journée.", "ex_en": "I feel tiredness after a long day." },
+        { "fr": "la surprise", "en": "surprise (f)", "ex_fr": "Il a eu une grande surprise.", "ex_en": "He had a great surprise." }
+      ]
+    },
+    "grammar_essentials": {
+      "label": "Grammar Essentials / Les mots grammaticaux essentiels",
+      "entries": [
+        { "fr": "dans", "en": "in / inside", "ex_fr": "Je suis dans la chambre.", "ex_en": "I am in the room." },
+        { "fr": "de", "en": "from / of", "ex_fr": "Je viens de France.", "ex_en": "I come from France." },
+        { "fr": "à", "en": "to / at / in (a city)", "ex_fr": "Il est allé à Paris.", "ex_en": "He went to Paris." },
+        { "fr": "avec", "en": "with", "ex_fr": "Je suis venu avec mon frère.", "ex_en": "I came with my brother." },
+        { "fr": "sur", "en": "on / upon", "ex_fr": "Le livre est sur la table.", "ex_en": "The book is on the table." },
+        { "fr": "sous", "en": "under / beneath", "ex_fr": "Le chat est sous le lit.", "ex_en": "The cat is under the bed." },
+        { "fr": "pour", "en": "for / in order to", "ex_fr": "Ce livre est pour toi.", "ex_en": "This book is for you." },
+        { "fr": "et", "en": "and", "ex_fr": "Il est allé et revenu.", "ex_en": "He went and came back." },
+        { "fr": "ou", "en": "or", "ex_fr": "Tu veux du thé ou du café ?", "ex_en": "Do you want tea or coffee?" },
+        { "fr": "mais", "en": "but / however", "ex_fr": "Le cours est difficile mais intéressant.", "ex_en": "The lesson is difficult but interesting." },
+        { "fr": "parce que", "en": "because", "ex_fr": "Je n'ai pas dormi parce qu'il y avait trop de bruit.", "ex_en": "I didn't sleep because there was too much noise." },
+        { "fr": "si", "en": "if", "ex_fr": "Si tu étudies, tu réussiras.", "ex_en": "If you study, you will succeed." },
+        { "fr": "il y a", "en": "there is / there are", "ex_fr": "Il y a une école près d'ici.", "ex_en": "There is a school nearby." },
+        { "fr": "ne … pas", "en": "not (negation)", "ex_fr": "Ce n'est pas correct.", "ex_en": "This is not correct." }
+      ]
+    }
+  }
+}
