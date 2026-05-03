@@ -1607,7 +1607,30 @@ const countSubjectDone = (mode, sid, folders) => {
 };
 
 // ─── Learn search state ───────────────────────────────────────────────────────
-const _learnSearch = { q: '', cat: 'all' };
+const _learnSearch = { q: '', cat: 'all', subjectTab: 'topics', vocabCache: {}, vocabLoading: false };
+
+// ─── Vocabulary tab config per language subject ───────────────────────────────
+// LANG_VOCAB_SKIP: locale codes (lower-case) that are native for this subject
+//   → those users don't see the vocab tab (they ARE the native speakers).
+const LANG_VOCAB_SKIP = {
+  'german-language':             new Set(['de']),
+  'french-language':             new Set(['fr']),
+  'spanish-language':            new Set(['es', 'es-ar', 'es-mx', 'es-us', 'es-uy']),
+  'arabic-language':             new Set(['ar', 'ar-ps']),
+  'chinese-language':            new Set(['zh', 'zh-tw']),
+  'latin-language':              new Set([]),
+  'english-as-foreign-language': new Set(['en']),
+};
+
+const LANG_VOCAB_MAP = {
+  'german-language':             { file: 'german',  wordKey: 'de', subKey: null, transKey: 'en', exKey: 'ex_de', rtl: false },
+  'french-language':             { file: 'french',  wordKey: 'fr', subKey: null, transKey: 'en', exKey: 'ex_fr', rtl: false },
+  'spanish-language':            { file: 'spanish', wordKey: 'es', subKey: null, transKey: 'en', exKey: 'ex_es', rtl: false },
+  'arabic-language':             { file: 'arabic',  wordKey: 'ar', subKey: 'tr', transKey: 'en', exKey: 'ex_ar', rtl: true  },
+  'chinese-language':            { file: 'chinese', wordKey: 'zh', subKey: 'py', transKey: 'en', exKey: 'ex_zh', rtl: false },
+  'latin-language':              { file: 'latin',   wordKey: 'la', subKey: null, transKey: 'en', exKey: 'ex_la', rtl: false },
+  'english-as-foreign-language': { file: 'english', wordKey: 'en', subKey: null, transKey: 'de', exKey: 'ex_en', rtl: false },
+};
 
 const renderLearnTopicDetail = async (subjectId, folderIdx, topicIdx, _scrollSection) => {
   const container = document.getElementById('learnContent');
@@ -1816,6 +1839,11 @@ const renderLearn = async () => {
   const subject = allSubjects.find(s => s.id === selId) || allSubjects[0];
   const meta = getLearnMeta(subject.id);
   const subjectTitle = tr(subject.title, subject.title);
+  const vocabConf   = LANG_VOCAB_MAP[selId] || null;
+  const activeLoc   = (window.currentLang || 'en').toLowerCase();
+  const isNative    = vocabConf && (LANG_VOCAB_SKIP[selId] || new Set()).has(activeLoc);
+  const hasVocabTab = vocabConf && !isNative;
+  const subjectTab  = hasVocabTab ? (_learnSearch.subjectTab || 'topics') : 'topics';
 
   // Helper: render one subject card
   const subjectCard = (s) => {
@@ -1905,6 +1933,50 @@ const renderLearn = async () => {
       </div>`;
   }).join('');
 
+  // ── Vocab panel HTML (for language subjects) ──────────────────────────────
+  let vocabPanelHtml = '';
+  if (subjectTab === 'vocab' && hasVocabTab) {
+    const locale    = activeLoc;
+    const cacheKey  = vocabConf.file;
+    const cached    = _learnSearch.vocabCache[cacheKey];
+    if (_learnSearch.vocabLoading) {
+      vocabPanelHtml = `<div class="vocab-loading">${tr('loading','Laden…')}</div>`;
+    } else if (cached === null) {
+      vocabPanelHtml = `<div class="vocab-error">${tr('vocabLoadError','Vokabeln konnten nicht geladen werden.')}</div>`;
+    } else if (cached) {
+      const catEntries = Object.entries(cached.categories || {});
+      if (!_learnSearch.vocabOpenCats) _learnSearch.vocabOpenCats = new Set([catEntries[0]?.[0]].filter(Boolean));
+      vocabPanelHtml = `<div class="vocab-panel">${catEntries.map(([key, cat]) => {
+        const isOpen = _learnSearch.vocabOpenCats.has(key);
+        const entries = cat.entries || [];
+        return `<div class="vocab-cat">
+          <button class="vocab-cat-hdr" onclick="learnVocabToggleCat('${key}')">
+            <svg class="vocab-cat-chevron${isOpen ? ' open' : ''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><polyline points="6 9 12 15 18 9"/></svg>
+            <span>${cat.label || key}</span>
+            <span class="vocab-cat-count">${entries.length}</span>
+          </button>
+          ${isOpen ? `<div class="vocab-entries">${entries.map(e => {
+            const word    = e[vocabConf.wordKey] || '';
+            const sub     = vocabConf.subKey ? (e[vocabConf.subKey] || '') : '';
+            // Inline locale translation: try full locale, then base lang, then English
+            const baseLang = locale.includes('-') ? locale.split('-')[0] : locale;
+            const trans   = e[locale] || e[baseLang] || e[vocabConf.transKey] || e.en || '';
+            const ex      = e[vocabConf.exKey] || '';
+            const exTrans = (vocabConf.exKey !== 'ex_en') ? (e.ex_en || '') : '';
+            return `<div class="vocab-entry">
+              <div class="vocab-entry-top">
+                <span class="vocab-word${vocabConf.rtl ? ' rtl' : ''}">${word}</span>
+                ${sub ? `<span class="vocab-sub">${sub}</span>` : ''}
+                <span class="vocab-trans">${trans}</span>
+              </div>
+              ${ex ? `<div class="vocab-ex">${ex}${exTrans ? `<span class="vocab-ex-trans"> — ${exTrans}</span>` : ''}</div>` : ''}
+            </div>`;
+          }).join('')}</div>` : ''}
+        </div>`;
+      }).join('')}</div>`;
+    }
+  }
+
   // Bookmark resume bar
   const bm = getLearnBookmark(mode);
   const bmHtml = bm ? `
@@ -1948,13 +2020,19 @@ const renderLearn = async () => {
           </div>
           ${subPct > 0 ? `<div class="lsp-prog-wrap"><div class="lsp-prog-bar"><div class="lsp-prog-fill" style="width:${subPct}%;background:${meta.color}"></div></div><span class="lsp-prog-label">${subDone}/${subTotal}</span></div>` : ''}
         </div>
-        <div class="learn-folder-list">${foldersHtml}</div>
+        ${hasVocabTab ? `<div class="lsp-tabs">
+          <button class="lsp-tab${subjectTab === 'topics' ? ' active' : ''}" onclick="learnSelectTab('topics')" style="${subjectTab === 'topics' ? `border-bottom-color:${meta.color};color:${meta.color}` : ''}">${tr('learnTabTopics','Themen')}</button>
+          <button class="lsp-tab${subjectTab === 'vocab' ? ' active' : ''}" onclick="learnSelectTab('vocab')" style="${subjectTab === 'vocab' ? `border-bottom-color:${meta.color};color:${meta.color}` : ''}">${tr('learnTabVocab','Vokabular')}</button>
+        </div>` : ''}
+        ${subjectTab === 'vocab' && hasVocabTab ? vocabPanelHtml : `<div class="learn-folder-list">${foldersHtml}</div>`}
       </div>
     </div>`;
 };
 
 window.selectLearnSubject = (id) => {
   state.ui.learnSelectedSubject = id;
+  _learnSearch.subjectTab = 'topics';
+  _learnSearch.vocabOpenCats = null;
   // Scroll subject panel into view
   setTimeout(() => document.querySelector('.learn-subject-panel')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
   renderLearn();
@@ -1988,6 +2066,35 @@ window.learnToggleCat = (catId) => {
 window.learnSetCat = (cat) => {
   _learnSearch.cat = cat || 'all';
   state.ui.learnSelectedSubject = null;
+  renderLearn();
+};
+
+window.learnSelectTab = async (tab) => {
+  _learnSearch.subjectTab = tab;
+  if (tab === 'vocab') {
+    const conf = LANG_VOCAB_MAP[state.ui.learnSelectedSubject];
+    if (conf && !_learnSearch.vocabCache[conf.file]) {
+      _learnSearch.vocabLoading = true;
+      renderLearn();
+      try {
+        const r = await fetch(`locales/vocab/${conf.file}.json`);
+        _learnSearch.vocabCache[conf.file] = await r.json();
+      } catch (e) {
+        _learnSearch.vocabCache[conf.file] = null;
+      }
+      _learnSearch.vocabLoading = false;
+    }
+  }
+  renderLearn();
+};
+
+window.learnVocabToggleCat = (key) => {
+  if (!_learnSearch.vocabOpenCats) _learnSearch.vocabOpenCats = new Set();
+  if (_learnSearch.vocabOpenCats.has(key)) {
+    _learnSearch.vocabOpenCats.delete(key);
+  } else {
+    _learnSearch.vocabOpenCats.add(key);
+  }
   renderLearn();
 };
 

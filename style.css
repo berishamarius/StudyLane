@@ -546,6 +546,32 @@ details.learn-folder-card[open] > .learn-folder-body { display: block; }
 .learn-subject-panel-title { font-size: 20px; font-weight: 700; color: var(--text); font-family: var(--font-heading); }
 .learn-folder-list { display: flex; flex-direction: column; gap: 10px; }
 .learn-folder-num { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; display: grid; place-items: center; flex-shrink: 0; }
+
+/* ── Learn subject tabs (Themen / Vokabular) ──────────────────── */
+.lsp-tabs { display: flex; border-bottom: 1px solid var(--border,rgba(0,0,0,.1)); margin: 6px 0 14px; gap: 0; }
+.lsp-tab { padding: 7px 18px; font-size: 13px; font-weight: 500; border: none; border-bottom: 2px solid transparent; background: none; color: var(--text3,#888); cursor: pointer; transition: color .15s, border-color .15s; }
+.lsp-tab:hover { color: var(--text1,#222); }
+.lsp-tab.active { color: var(--accent,#b07f52); border-bottom-color: var(--accent,#b07f52); }
+
+/* ── Vocab panel ──────────────────────────────────────────────── */
+.vocab-panel { display: flex; flex-direction: column; gap: 4px; padding-bottom: 8px; }
+.vocab-cat { border-radius: 10px; overflow: hidden; background: var(--bg2,#f6f3ef); }
+.vocab-cat-hdr { display: flex; align-items: center; gap: 8px; width: 100%; padding: 10px 14px; background: none; border: none; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--text1,#1a1a1a); text-align: left; transition: background .12s; }
+.vocab-cat-hdr:hover { background: var(--bg3,#ede8e2); }
+.vocab-cat-chevron { transition: transform .2s; color: var(--text3,#888); flex-shrink: 0; }
+.vocab-cat-chevron.open { transform: rotate(180deg); }
+.vocab-cat-count { margin-left: auto; font-size: 11px; font-weight: 500; color: var(--text3,#888); background: var(--bg3,#ede8e2); padding: 1px 7px; border-radius: 20px; }
+.vocab-entries { padding: 0 14px 10px; display: flex; flex-direction: column; gap: 0; }
+.vocab-entry { padding: 8px 0; border-bottom: 1px solid var(--border,rgba(0,0,0,.07)); }
+.vocab-entry:last-child { border-bottom: none; }
+.vocab-entry-top { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+.vocab-word { font-size: 15px; font-weight: 600; color: var(--text1,#1a1a1a); }
+.vocab-word.rtl { direction: rtl; font-size: 18px; line-height: 1.4; }
+.vocab-sub { font-size: 12px; color: var(--text2,#555); font-style: italic; }
+.vocab-trans { font-size: 13px; color: var(--text3,#888); margin-left: auto; text-align: right; }
+.vocab-ex { font-size: 12px; color: var(--text3,#888); margin-top: 3px; font-style: italic; line-height: 1.5; }
+.vocab-ex-trans { color: var(--text2,#555); }
+.vocab-loading,.vocab-error { padding: 32px; text-align: center; color: var(--text3,#888); font-size: 14px; }
 .learn-folder-header { list-style: none; }
 .learn-folder-header::-webkit-details-marker { display: none; }
 .learn-topics-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
