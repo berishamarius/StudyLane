@@ -1,0 +1,411 @@
+{
+  "meta": {
+    "language": "English",
+    "script": "Latin",
+    "note": "Vocabulary reference for German speakers learning English. Each entry: English word in 'en', German translation in 'de', example sentence in English in 'ex_en', German translation of the example in 'ex_de'. Gender/article of German translation noted in parentheses where relevant.",
+    "totalEntries": 500,
+    "targetAudience": "German speakers"
+  },
+  "categories": {
+    "greetings_and_basics": {
+      "label": "Greetings & Basic Expressions / Begrüßungen und Grundausdrücke",
+      "entries": [
+        { "en": "Hello / Hi", "de": "Hallo / Hi", "ex_en": "Hello! How are you?", "ex_de": "Hallo! Wie geht es dir?" },
+        { "en": "Good morning", "de": "Guten Morgen", "ex_en": "Good morning! Did you sleep well?", "ex_de": "Guten Morgen! Hast du gut geschlafen?" },
+        { "en": "Good afternoon", "de": "Guten Tag / Guten Nachmittag", "ex_en": "Good afternoon, how was your day so far?", "ex_de": "Guten Nachmittag, wie war dein Tag bisher?" },
+        { "en": "Good evening", "de": "Guten Abend", "ex_en": "Good evening, welcome to our home.", "ex_de": "Guten Abend, willkommen bei uns zu Hause." },
+        { "en": "Good night", "de": "Gute Nacht", "ex_en": "Good night, sleep well!", "ex_de": "Gute Nacht, schlaf gut!" },
+        { "en": "Goodbye / Bye", "de": "Auf Wiedersehen / Tschüss", "ex_en": "Goodbye, see you tomorrow!", "ex_de": "Auf Wiedersehen, bis morgen!" },
+        { "en": "See you later", "de": "Bis später", "ex_en": "I have to go now, see you later!", "ex_de": "Ich muss jetzt gehen, bis später!" },
+        { "en": "Please", "de": "Bitte", "ex_en": "Could you help me, please?", "ex_de": "Könntest du mir bitte helfen?" },
+        { "en": "Thank you / Thanks", "de": "Danke / Danke schön", "ex_en": "Thank you very much for your help.", "ex_de": "Vielen Dank für deine Hilfe." },
+        { "en": "You're welcome", "de": "Bitte sehr / Gern geschehen", "ex_en": "You're welcome, it was no trouble at all.", "ex_de": "Gern geschehen, es war überhaupt kein Problem." },
+        { "en": "Excuse me / Sorry", "de": "Entschuldigung / Es tut mir leid", "ex_en": "Excuse me, where is the nearest station?", "ex_de": "Entschuldigung, wo ist der nächste Bahnhof?" },
+        { "en": "I don't understand", "de": "Ich verstehe nicht", "ex_en": "I'm sorry, I don't understand this rule.", "ex_de": "Es tut mir leid, ich verstehe diese Regel nicht." },
+        { "en": "Do you speak German?", "de": "Sprechen Sie Deutsch?", "ex_en": "Do you speak German? My English is not very good yet.", "ex_de": "Sprechen Sie Deutsch? Mein Englisch ist noch nicht sehr gut." },
+        { "en": "What is your name?", "de": "Wie heißt du? / Wie ist Ihr Name?", "ex_en": "What is your name? I'm Sarah.", "ex_de": "Wie heißt du? Ich bin Sarah." },
+        { "en": "My name is …", "de": "Ich heiße … / Mein Name ist …", "ex_en": "My name is Tom and I'm from Germany.", "ex_de": "Ich heiße Tom und komme aus Deutschland." },
+        { "en": "Nice to meet you", "de": "Schön, dich kennenzulernen / Freut mich", "ex_en": "Nice to meet you, I've heard a lot about you.", "ex_de": "Schön, dich kennenzulernen, ich habe viel von dir gehört." },
+        { "en": "How are you?", "de": "Wie geht es dir? / Wie geht's?", "ex_en": "How are you? I'm fine, thank you!", "ex_de": "Wie geht es dir? Mir geht's gut, danke!" }
+      ]
+    },
+    "numbers": {
+      "label": "Numbers / Zahlen",
+      "entries": [
+        { "en": "zero", "de": "null", "ex_en": "The temperature dropped to zero degrees.", "ex_de": "Die Temperatur fiel auf null Grad." },
+        { "en": "one", "de": "eins / ein", "ex_en": "I have one sister.", "ex_de": "Ich habe eine Schwester." },
+        { "en": "two", "de": "zwei", "ex_en": "There are two books on the shelf.", "ex_de": "Auf dem Regal stehen zwei Bücher." },
+        { "en": "three", "de": "drei", "ex_en": "We have three cats at home.", "ex_de": "Wir haben drei Katzen zu Hause." },
+        { "en": "four", "de": "vier", "ex_en": "A table has four legs.", "ex_de": "Ein Tisch hat vier Beine." },
+        { "en": "five", "de": "fünf", "ex_en": "I finish work at five o'clock.", "ex_de": "Ich höre um fünf Uhr mit der Arbeit auf." },
+        { "en": "six", "de": "sechs", "ex_en": "She is six years old today.", "ex_de": "Sie ist heute sechs Jahre alt." },
+        { "en": "seven", "de": "sieben", "ex_en": "There are seven days in a week.", "ex_de": "Eine Woche hat sieben Tage." },
+        { "en": "eight", "de": "acht", "ex_en": "I sleep eight hours every night.", "ex_de": "Ich schlafe jede Nacht acht Stunden." },
+        { "en": "nine", "de": "neun", "ex_en": "Our building has nine floors.", "ex_de": "Unser Gebäude hat neun Stockwerke." },
+        { "en": "ten", "de": "zehn", "ex_en": "I have ten euros left.", "ex_de": "Ich habe noch zehn Euro übrig." },
+        { "en": "eleven", "de": "elf", "ex_en": "The meeting starts at eleven.", "ex_de": "Das Meeting beginnt um elf Uhr." },
+        { "en": "twelve", "de": "zwölf", "ex_en": "There are twelve months in a year.", "ex_de": "Ein Jahr hat zwölf Monate." },
+        { "en": "twenty", "de": "zwanzig", "ex_en": "She just turned twenty.", "ex_de": "Sie ist gerade zwanzig geworden." },
+        { "en": "fifty", "de": "fünfzig", "ex_en": "The speed limit here is fifty miles per hour.", "ex_de": "Hier gilt eine Geschwindigkeitsbegrenzung von fünfzig Meilen pro Stunde." },
+        { "en": "one hundred", "de": "hundert / einhundert", "ex_en": "One hundred people attended the event.", "ex_de": "Hundert Menschen nahmen an der Veranstaltung teil." },
+        { "en": "one thousand", "de": "tausend / eintausend", "ex_en": "The distance is one thousand kilometres.", "ex_de": "Die Entfernung beträgt tausend Kilometer." }
+      ]
+    },
+    "family": {
+      "label": "Family / Familie",
+      "entries": [
+        { "en": "family", "de": "die Familie", "ex_en": "My family is very important to me.", "ex_de": "Meine Familie ist mir sehr wichtig." },
+        { "en": "father / dad", "de": "der Vater / der Papa", "ex_en": "My father works as a doctor.", "ex_de": "Mein Vater arbeitet als Arzt." },
+        { "en": "mother / mum", "de": "die Mutter / die Mama", "ex_en": "My mother is a great cook.", "ex_de": "Meine Mutter ist eine tolle Köchin." },
+        { "en": "brother", "de": "der Bruder", "ex_en": "My brother is two years older than me.", "ex_de": "Mein Bruder ist zwei Jahre älter als ich." },
+        { "en": "sister", "de": "die Schwester", "ex_en": "My sister studies law at university.", "ex_de": "Meine Schwester studiert Jura an der Universität." },
+        { "en": "grandfather / grandad", "de": "der Großvater / der Opa", "ex_en": "My grandfather tells the best stories.", "ex_de": "Mein Großvater erzählt die besten Geschichten." },
+        { "en": "grandmother / granny", "de": "die Großmutter / die Oma", "ex_en": "We visit our grandmother every Sunday.", "ex_de": "Wir besuchen unsere Großmutter jeden Sonntag." },
+        { "en": "uncle", "de": "der Onkel", "ex_en": "My uncle lives in London.", "ex_de": "Mein Onkel wohnt in London." },
+        { "en": "aunt", "de": "die Tante", "ex_en": "My aunt is a primary school teacher.", "ex_de": "Meine Tante ist Grundschullehrerin." },
+        { "en": "son", "de": "der Sohn", "ex_en": "Their son just started university.", "ex_de": "Ihr Sohn hat gerade mit dem Studium angefangen." },
+        { "en": "daughter", "de": "die Tochter", "ex_en": "Their daughter is very talented at music.", "ex_de": "Ihre Tochter ist sehr musikalisch talentiert." },
+        { "en": "husband", "de": "der Ehemann / der Mann", "ex_en": "Her husband is an architect.", "ex_de": "Ihr Mann ist Architekt." },
+        { "en": "wife", "de": "die Ehefrau / die Frau", "ex_en": "His wife is a software engineer.", "ex_de": "Seine Frau ist Software-Ingenieurin." },
+        { "en": "cousin", "de": "der Cousin (m.) / die Cousine (f.)", "ex_en": "My cousin is visiting from Berlin next week.", "ex_de": "Mein Cousin besucht mich nächste Woche aus Berlin." },
+        { "en": "children / kids", "de": "die Kinder", "ex_en": "The children are playing outside.", "ex_de": "Die Kinder spielen draußen." },
+        { "en": "parents", "de": "die Eltern", "ex_en": "My parents are both retired.", "ex_de": "Meine Eltern sind beide Rentner." }
+      ]
+    },
+    "body": {
+      "label": "Body / Körper",
+      "entries": [
+        { "en": "head", "de": "der Kopf", "ex_en": "I have a terrible headache today.", "ex_de": "Ich habe heute furchtbare Kopfschmerzen." },
+        { "en": "face", "de": "das Gesicht", "ex_en": "She has a warm, friendly face.", "ex_de": "Sie hat ein warmes, freundliches Gesicht." },
+        { "en": "eye", "de": "das Auge (pl. die Augen)", "ex_en": "He has green eyes.", "ex_de": "Er hat grüne Augen." },
+        { "en": "ear", "de": "das Ohr (pl. die Ohren)", "ex_en": "My ear hurts when I chew.", "ex_de": "Mein Ohr tut weh, wenn ich kaue." },
+        { "en": "nose", "de": "die Nase", "ex_en": "My nose is running today.", "ex_de": "Meine Nase läuft heute." },
+        { "en": "mouth", "de": "der Mund", "ex_en": "Please open your mouth wide.", "ex_de": "Bitte öffne deinen Mund weit." },
+        { "en": "teeth", "de": "die Zähne", "ex_en": "You should brush your teeth twice a day.", "ex_de": "Du solltest deine Zähne zweimal täglich putzen." },
+        { "en": "hand", "de": "die Hand (pl. die Hände)", "ex_en": "Wash your hands before every meal.", "ex_de": "Wasch deine Hände vor jeder Mahlzeit." },
+        { "en": "foot", "de": "der Fuß (pl. die Füße)", "ex_en": "My foot is sore after all that walking.", "ex_de": "Mein Fuß ist wund nach all dem Gehen." },
+        { "en": "heart", "de": "das Herz", "ex_en": "Regular exercise keeps the heart healthy.", "ex_de": "Regelmäßige Bewegung hält das Herz gesund." },
+        { "en": "back", "de": "der Rücken", "ex_en": "I hurt my back lifting heavy boxes.", "ex_de": "Ich habe mir beim Heben schwerer Kisten den Rücken verletzt." },
+        { "en": "stomach / belly", "de": "der Bauch / der Magen", "ex_en": "I have an upset stomach.", "ex_de": "Ich habe einen Magenverstimmung." },
+        { "en": "neck", "de": "der Hals / der Nacken", "ex_en": "I have a stiff neck from sleeping badly.", "ex_de": "Ich habe einen steifen Nacken vom schlechten Schlafen." },
+        { "en": "shoulder", "de": "die Schulter", "ex_en": "She dislocated her shoulder playing tennis.", "ex_de": "Sie hat sich beim Tennisspielen die Schulter ausgekugelt." },
+        { "en": "knee", "de": "das Knie", "ex_en": "He injured his knee during the match.", "ex_de": "Er hat sich beim Spiel das Knie verletzt." },
+        { "en": "arm", "de": "der Arm", "ex_en": "He broke his arm in the accident.", "ex_de": "Er hat sich beim Unfall den Arm gebrochen." },
+        { "en": "leg", "de": "das Bein", "ex_en": "My legs ache after yesterday's run.", "ex_de": "Meine Beine schmerzen nach dem gestrigen Lauf." }
+      ]
+    },
+    "colors": {
+      "label": "Colors / Farben",
+      "entries": [
+        { "en": "red", "de": "rot", "ex_en": "She wore a beautiful red dress.", "ex_de": "Sie trug ein wunderschönes rotes Kleid." },
+        { "en": "blue", "de": "blau", "ex_en": "The ocean looks so blue today.", "ex_de": "Das Meer sieht heute so blau aus." },
+        { "en": "green", "de": "grün", "ex_en": "The park is so green in spring.", "ex_de": "Der Park ist im Frühling so grün." },
+        { "en": "yellow", "de": "gelb", "ex_en": "Sunflowers are bright yellow.", "ex_de": "Sonnenblumen sind leuchtend gelb." },
+        { "en": "white", "de": "weiß", "ex_en": "Fresh snow is pure white.", "ex_de": "Frischer Schnee ist rein weiß." },
+        { "en": "black", "de": "schwarz", "ex_en": "He always wears black.", "ex_de": "Er trägt immer Schwarz." },
+        { "en": "orange", "de": "orange", "ex_en": "I painted the wall orange.", "ex_de": "Ich habe die Wand orange gestrichen." },
+        { "en": "purple / violet", "de": "lila / violett", "ex_en": "The lavender fields are purple.", "ex_de": "Die Lavendelfelder sind lila." },
+        { "en": "pink", "de": "rosa / pink", "ex_en": "The baby's room is painted pale pink.", "ex_de": "Das Babyzimmer ist hellrosa gestrichen." },
+        { "en": "brown", "de": "braun", "ex_en": "The dog has a shiny brown coat.", "ex_de": "Der Hund hat ein glänzendes braunes Fell." },
+        { "en": "grey", "de": "grau", "ex_en": "It was a grey, cloudy day.", "ex_de": "Es war ein grauer, bewölkter Tag." },
+        { "en": "golden", "de": "golden / goldfarben", "ex_en": "The autumn leaves turn golden.", "ex_de": "Die Herbstblätter werden golden." }
+      ]
+    },
+    "food_and_drink": {
+      "label": "Food & Drink / Essen und Trinken",
+      "entries": [
+        { "en": "bread", "de": "das Brot", "ex_en": "I always have bread with my soup.", "ex_de": "Ich esse immer Brot zur Suppe." },
+        { "en": "rice", "de": "der Reis", "ex_en": "We had rice and vegetables for dinner.", "ex_de": "Wir hatten Reis und Gemüse zum Abendessen." },
+        { "en": "meat", "de": "das Fleisch", "ex_en": "I don't eat red meat very often.", "ex_de": "Ich esse nicht sehr oft rotes Fleisch." },
+        { "en": "chicken", "de": "das Huhn / das Hähnchen", "ex_en": "Roast chicken is my favourite dish.", "ex_de": "Brathähnchen ist mein Lieblingsgericht." },
+        { "en": "fish", "de": "der Fisch", "ex_en": "We eat fish at least once a week.", "ex_de": "Wir essen mindestens einmal pro Woche Fisch." },
+        { "en": "vegetables", "de": "das Gemüse", "ex_en": "Try to eat more vegetables every day.", "ex_de": "Versuche jeden Tag mehr Gemüse zu essen." },
+        { "en": "fruit", "de": "das Obst", "ex_en": "Fresh fruit is the best snack.", "ex_de": "Frisches Obst ist das beste Snack." },
+        { "en": "water", "de": "das Wasser", "ex_en": "Drink at least two litres of water a day.", "ex_de": "Trinke täglich mindestens zwei Liter Wasser." },
+        { "en": "juice", "de": "der Saft", "ex_en": "I had a glass of orange juice for breakfast.", "ex_de": "Ich hatte ein Glas Orangensaft zum Frühstück." },
+        { "en": "tea", "de": "der Tee", "ex_en": "Would you like a cup of tea?", "ex_de": "Möchten Sie eine Tasse Tee?" },
+        { "en": "coffee", "de": "der Kaffee", "ex_en": "I can't start my day without coffee.", "ex_de": "Ich kann meinen Tag nicht ohne Kaffee beginnen." },
+        { "en": "milk", "de": "die Milch", "ex_en": "Do you take milk in your tea?", "ex_de": "Nimmst du Milch in deinen Tee?" },
+        { "en": "sugar", "de": "der Zucker", "ex_en": "I've cut down on sugar this year.", "ex_de": "Ich habe dieses Jahr den Zuckerkonsum reduziert." },
+        { "en": "salt", "de": "das Salz", "ex_en": "This soup needs a little more salt.", "ex_de": "Diese Suppe braucht noch etwas mehr Salz." },
+        { "en": "butter", "de": "die Butter", "ex_en": "Spread a little butter on the toast.", "ex_de": "Streich etwas Butter auf den Toast." },
+        { "en": "cheese", "de": "der Käse", "ex_en": "Germany produces excellent cheese.", "ex_de": "Deutschland produziert ausgezeichneten Käse." },
+        { "en": "egg", "de": "das Ei (pl. die Eier)", "ex_en": "I like my eggs scrambled.", "ex_de": "Ich mag meine Eier als Rührei." },
+        { "en": "soup", "de": "die Suppe", "ex_en": "Hot soup is perfect on a cold day.", "ex_de": "Heiße Suppe ist perfekt an einem kalten Tag." },
+        { "en": "breakfast", "de": "das Frühstück", "ex_en": "Breakfast is the most important meal of the day.", "ex_de": "Das Frühstück ist die wichtigste Mahlzeit des Tages." },
+        { "en": "lunch", "de": "das Mittagessen", "ex_en": "We usually have a light lunch.", "ex_de": "Wir essen meistens ein leichtes Mittagessen." },
+        { "en": "dinner", "de": "das Abendessen", "ex_en": "The whole family gathers for dinner.", "ex_de": "Die ganze Familie kommt zum Abendessen zusammen." }
+      ]
+    },
+    "time": {
+      "label": "Time / Zeit",
+      "entries": [
+        { "en": "now", "de": "jetzt / gerade", "ex_en": "I'm busy right now, can I call you back?", "ex_de": "Ich bin gerade beschäftigt, kann ich zurückrufen?" },
+        { "en": "today", "de": "heute", "ex_en": "What are you doing today?", "ex_de": "Was machst du heute?" },
+        { "en": "tomorrow", "de": "morgen", "ex_en": "I have a big exam tomorrow.", "ex_de": "Ich habe morgen eine große Prüfung." },
+        { "en": "yesterday", "de": "gestern", "ex_en": "I went to the cinema yesterday.", "ex_de": "Ich war gestern im Kino." },
+        { "en": "hour", "de": "die Stunde", "ex_en": "The journey takes about two hours.", "ex_de": "Die Reise dauert etwa zwei Stunden." },
+        { "en": "minute", "de": "die Minute", "ex_en": "Wait a minute, I'll be right back.", "ex_de": "Warte eine Minute, ich bin gleich zurück." },
+        { "en": "second", "de": "die Sekunde", "ex_en": "The race was decided by a single second.", "ex_de": "Das Rennen wurde um eine einzige Sekunde entschieden." },
+        { "en": "day", "de": "der Tag", "ex_en": "What a beautiful day!", "ex_de": "Was für ein schöner Tag!" },
+        { "en": "week", "de": "die Woche", "ex_en": "I'll see you next week.", "ex_de": "Ich sehe dich nächste Woche." },
+        { "en": "month", "de": "der Monat", "ex_en": "We've been friends for months.", "ex_de": "Wir sind schon seit Monaten Freunde." },
+        { "en": "year", "de": "das Jahr", "ex_en": "Happy New Year!", "ex_de": "Frohes neues Jahr!" },
+        { "en": "morning", "de": "der Morgen / der Vormittag", "ex_en": "I like to exercise in the morning.", "ex_de": "Ich treibe gerne am Morgen Sport." },
+        { "en": "afternoon", "de": "der Nachmittag", "ex_en": "The appointment is in the afternoon.", "ex_de": "Der Termin ist am Nachmittag." },
+        { "en": "evening", "de": "der Abend", "ex_en": "We usually relax in the evening.", "ex_de": "Wir entspannen uns meistens am Abend." },
+        { "en": "night", "de": "die Nacht", "ex_en": "I can't sleep well at night.", "ex_de": "Ich kann nachts nicht gut schlafen." }
+      ]
+    },
+    "days_and_months": {
+      "label": "Days & Months / Wochentage und Monate",
+      "entries": [
+        { "en": "Monday", "de": "Montag", "ex_en": "I have a team meeting every Monday.", "ex_de": "Ich habe jeden Montag ein Team-Meeting." },
+        { "en": "Tuesday", "de": "Dienstag", "ex_en": "My dentist appointment is on Tuesday.", "ex_de": "Mein Zahnarzttermin ist am Dienstag." },
+        { "en": "Wednesday", "de": "Mittwoch", "ex_en": "We go food shopping on Wednesdays.", "ex_de": "Wir gehen mittwochs einkaufen." },
+        { "en": "Thursday", "de": "Donnerstag", "ex_en": "The concert is on Thursday evening.", "ex_de": "Das Konzert ist am Donnerstagabend." },
+        { "en": "Friday", "de": "Freitag", "ex_en": "Looking forward to Friday!", "ex_de": "Ich freue mich auf Freitag!" },
+        { "en": "Saturday", "de": "Samstag", "ex_en": "We always sleep in on Saturdays.", "ex_de": "Wir schlafen samstags immer lange." },
+        { "en": "Sunday", "de": "Sonntag", "ex_en": "Sunday is a day of rest for us.", "ex_de": "Sonntag ist für uns ein Ruhetag." },
+        { "en": "January", "de": "Januar", "ex_en": "It's always cold in January.", "ex_de": "Im Januar ist es immer kalt." },
+        { "en": "February", "de": "Februar", "ex_en": "February is the shortest month.", "ex_de": "Februar ist der kürzeste Monat." },
+        { "en": "March", "de": "März", "ex_en": "Spring begins in March.", "ex_de": "Der Frühling beginnt im März." },
+        { "en": "April", "de": "April", "ex_en": "April showers bring May flowers.", "ex_de": "Aprilregen bringt Maiblumen." },
+        { "en": "May", "de": "Mai", "ex_en": "May is my favourite month.", "ex_de": "Mai ist mein Lieblingsmonat." },
+        { "en": "June", "de": "Juni", "ex_en": "Schools often break for summer in June.", "ex_de": "Die Schulen beginnen oft im Juni mit den Sommerferien." },
+        { "en": "July", "de": "Juli", "ex_en": "July is the hottest month of the year.", "ex_de": "Juli ist der heißeste Monat des Jahres." },
+        { "en": "August", "de": "August", "ex_en": "We always go on holiday in August.", "ex_de": "Wir fahren immer im August in den Urlaub." },
+        { "en": "September", "de": "September", "ex_en": "School starts again in September.", "ex_de": "Die Schule beginnt wieder im September." },
+        { "en": "October", "de": "Oktober", "ex_en": "The leaves turn red in October.", "ex_de": "Die Blätter werden im Oktober rot." },
+        { "en": "November", "de": "November", "ex_en": "November is often cold and dark.", "ex_de": "November ist oft kalt und dunkel." },
+        { "en": "December", "de": "Dezember", "ex_en": "Christmas is celebrated in December.", "ex_de": "Weihnachten wird im Dezember gefeiert." }
+      ]
+    },
+    "weather": {
+      "label": "Weather / Wetter",
+      "entries": [
+        { "en": "weather", "de": "das Wetter", "ex_en": "The weather is lovely today.", "ex_de": "Das Wetter ist heute wunderschön." },
+        { "en": "hot", "de": "heiß", "ex_en": "It's really hot today, drink plenty of water.", "ex_de": "Es ist heute wirklich heiß, trink viel Wasser." },
+        { "en": "warm", "de": "warm", "ex_en": "Put on a warm jacket before you go out.", "ex_de": "Zieh eine warme Jacke an, bevor du rausgehst." },
+        { "en": "cold", "de": "kalt", "ex_en": "It's very cold outside today.", "ex_de": "Es ist heute sehr kalt draußen." },
+        { "en": "cool", "de": "kühl", "ex_en": "It's a nice, cool evening.", "ex_de": "Es ist ein schöner, kühler Abend." },
+        { "en": "sunny", "de": "sonnig", "ex_en": "It's sunny, let's go to the park!", "ex_de": "Es ist sonnig, lass uns in den Park gehen!" },
+        { "en": "cloudy", "de": "bewölkt / wolkig", "ex_en": "It's a bit cloudy, bring an umbrella.", "ex_de": "Es ist etwas bewölkt, nimm einen Regenschirm mit." },
+        { "en": "rainy / raining", "de": "regnerisch / es regnet", "ex_en": "It's been rainy all week.", "ex_de": "Es war die ganze Woche regnerisch." },
+        { "en": "rain", "de": "der Regen", "ex_en": "We need rain for the garden.", "ex_de": "Wir brauchen Regen für den Garten." },
+        { "en": "snow / snowing", "de": "der Schnee / es schneit", "ex_en": "Children love playing in the snow.", "ex_de": "Kinder lieben es, im Schnee zu spielen." },
+        { "en": "wind / windy", "de": "der Wind / windig", "ex_en": "It's very windy by the coast.", "ex_de": "An der Küste ist es sehr windig." },
+        { "en": "thunderstorm", "de": "das Gewitter", "ex_en": "There's a thunderstorm forecast for tonight.", "ex_de": "Für heute Nacht ist ein Gewitter vorhergesagt." },
+        { "en": "fog / foggy", "de": "der Nebel / neblig", "ex_en": "Drive carefully — it's very foggy.", "ex_de": "Fahre vorsichtig — es ist sehr neblig." },
+        { "en": "temperature", "de": "die Temperatur", "ex_en": "The temperature will reach 30 degrees tomorrow.", "ex_de": "Die Temperatur wird morgen 30 Grad erreichen." }
+      ]
+    },
+    "travel_and_places": {
+      "label": "Travel & Places / Reisen und Orte",
+      "entries": [
+        { "en": "airport", "de": "der Flughafen", "ex_en": "We need to be at the airport by six.", "ex_de": "Wir müssen um sechs am Flughafen sein." },
+        { "en": "train station", "de": "der Bahnhof", "ex_en": "The train station is in the city centre.", "ex_de": "Der Bahnhof liegt im Stadtzentrum." },
+        { "en": "hotel", "de": "das Hotel", "ex_en": "We booked a hotel near the beach.", "ex_de": "Wir haben ein Hotel in Strandnähe gebucht." },
+        { "en": "hospital", "de": "das Krankenhaus", "ex_en": "The hospital is just five minutes away.", "ex_de": "Das Krankenhaus ist nur fünf Minuten entfernt." },
+        { "en": "market", "de": "der Markt", "ex_en": "I love shopping at the farmers' market.", "ex_de": "Ich kaufe gerne auf dem Wochenmarkt ein." },
+        { "en": "shop / store", "de": "das Geschäft / der Laden", "ex_en": "The shop opens at nine in the morning.", "ex_de": "Das Geschäft öffnet um neun Uhr morgens." },
+        { "en": "church", "de": "die Kirche", "ex_en": "The church is over five hundred years old.", "ex_de": "Die Kirche ist über fünfhundert Jahre alt." },
+        { "en": "city", "de": "die Stadt", "ex_en": "London is a very diverse city.", "ex_de": "London ist eine sehr vielfältige Stadt." },
+        { "en": "village", "de": "das Dorf", "ex_en": "She grew up in a small village.", "ex_de": "Sie wuchs in einem kleinen Dorf auf." },
+        { "en": "street / road", "de": "die Straße", "ex_en": "Cross the street carefully.", "ex_de": "Überquere die Straße vorsichtig." },
+        { "en": "bank", "de": "die Bank", "ex_en": "I need to go to the bank today.", "ex_de": "Ich muss heute zur Bank gehen." },
+        { "en": "restaurant", "de": "das Restaurant", "ex_en": "Let's try that new Italian restaurant.", "ex_de": "Lass uns das neue italienische Restaurant ausprobieren." },
+        { "en": "pharmacy", "de": "die Apotheke", "ex_en": "You can buy painkillers at the pharmacy.", "ex_de": "Du kannst Schmerzmittel in der Apotheke kaufen." },
+        { "en": "school", "de": "die Schule", "ex_en": "School starts at eight thirty.", "ex_de": "Die Schule beginnt um halb neun." },
+        { "en": "university / college", "de": "die Universität / die Hochschule", "ex_en": "She studies engineering at university.", "ex_de": "Sie studiert Ingenieurwesen an der Universität." },
+        { "en": "library", "de": "die Bibliothek", "ex_en": "The library closes at eight in the evening.", "ex_de": "Die Bibliothek schließt um acht Uhr abends." }
+      ]
+    },
+    "transport": {
+      "label": "Transport / Verkehr",
+      "entries": [
+        { "en": "car", "de": "das Auto", "ex_en": "I drive my car to work every day.", "ex_de": "Ich fahre jeden Tag mit meinem Auto zur Arbeit." },
+        { "en": "bus", "de": "der Bus", "ex_en": "Take the number 10 bus to the centre.", "ex_de": "Nimm den Bus Nummer 10 ins Zentrum." },
+        { "en": "train", "de": "der Zug", "ex_en": "The train from Berlin arrives at noon.", "ex_de": "Der Zug aus Berlin kommt mittags an." },
+        { "en": "aeroplane / plane", "de": "das Flugzeug", "ex_en": "The plane landed smoothly.", "ex_de": "Das Flugzeug landete sanft." },
+        { "en": "ship / boat", "de": "das Schiff / das Boot", "ex_en": "We took a ferry across the channel.", "ex_de": "Wir nahmen eine Fähre über den Kanal." },
+        { "en": "bicycle / bike", "de": "das Fahrrad", "ex_en": "Cycling to work is good for the environment.", "ex_de": "Mit dem Fahrrad zur Arbeit zu fahren ist gut für die Umwelt." },
+        { "en": "taxi / cab", "de": "das Taxi", "ex_en": "I'll take a taxi to the airport.", "ex_de": "Ich nehme ein Taxi zum Flughafen." },
+        { "en": "underground / tube / metro", "de": "die U-Bahn", "ex_en": "The underground is the quickest way to cross London.", "ex_de": "Die U-Bahn ist der schnellste Weg, London zu durchqueren." },
+        { "en": "tram", "de": "die Straßenbahn", "ex_en": "We caught the tram to the museum.", "ex_de": "Wir nahmen die Straßenbahn zum Museum." },
+        { "en": "motorway / highway", "de": "die Autobahn", "ex_en": "The motorway was closed due to an accident.", "ex_de": "Die Autobahn war wegen eines Unfalls gesperrt." }
+      ]
+    },
+    "school_and_work": {
+      "label": "School & Work / Schule und Arbeit",
+      "entries": [
+        { "en": "teacher", "de": "der Lehrer / die Lehrerin", "ex_en": "My English teacher is very patient.", "ex_de": "Mein Englischlehrer ist sehr geduldig." },
+        { "en": "student / pupil", "de": "der Schüler / der Student", "ex_en": "The students are taking their final exams.", "ex_de": "Die Schüler machen ihre Abschlussprüfungen." },
+        { "en": "book", "de": "das Buch", "ex_en": "I'm reading a very good book at the moment.", "ex_de": "Ich lese gerade ein sehr gutes Buch." },
+        { "en": "pen / pencil", "de": "der Stift / der Bleistift", "ex_en": "Can I borrow your pen for a moment?", "ex_de": "Kann ich kurz deinen Stift ausleihen?" },
+        { "en": "lesson / class", "de": "die Stunde / der Unterricht", "ex_en": "The lesson starts in five minutes.", "ex_de": "Der Unterricht beginnt in fünf Minuten." },
+        { "en": "exam / test", "de": "die Prüfung / der Test", "ex_en": "I studied all night for the exam.", "ex_de": "Ich habe die ganze Nacht für die Prüfung gelernt." },
+        { "en": "homework", "de": "die Hausaufgaben", "ex_en": "Don't forget to do your homework.", "ex_de": "Vergiss nicht, deine Hausaufgaben zu machen." },
+        { "en": "office", "de": "das Büro", "ex_en": "The office is on the third floor.", "ex_de": "Das Büro ist im dritten Stockwerk." },
+        { "en": "engineer", "de": "der Ingenieur / die Ingenieurin", "ex_en": "She works as a mechanical engineer.", "ex_de": "Sie arbeitet als Maschinenbauingenieurin." },
+        { "en": "doctor", "de": "der Arzt / die Ärztin", "ex_en": "My doctor advised me to rest more.", "ex_de": "Mein Arzt hat mir geraten, mehr zu ruhen." },
+        { "en": "lawyer", "de": "der Anwalt / die Anwältin", "ex_en": "You should speak to a lawyer about this.", "ex_de": "Du solltest deshalb einen Anwalt aufsuchen." },
+        { "en": "salary / wage", "de": "das Gehalt / der Lohn", "ex_en": "She received a salary raise this year.", "ex_de": "Sie hat dieses Jahr eine Gehaltserhöhung bekommen." },
+        { "en": "meeting", "de": "das Meeting / die Besprechung", "ex_en": "I have three meetings before lunch.", "ex_de": "Ich habe vor dem Mittagessen drei Meetings." },
+        { "en": "deadline", "de": "die Deadline / der Abgabetermin", "ex_en": "The deadline is Friday at noon.", "ex_de": "Die Deadline ist Freitag um zwölf Uhr." }
+      ]
+    },
+    "house_and_home": {
+      "label": "House & Home / Haus und Zuhause",
+      "entries": [
+        { "en": "house / home", "de": "das Haus / das Zuhause", "ex_en": "Make yourself at home.", "ex_de": "Fühl dich wie zu Hause." },
+        { "en": "room", "de": "das Zimmer", "ex_en": "Can I see the room before I decide?", "ex_de": "Kann ich das Zimmer sehen, bevor ich mich entscheide?" },
+        { "en": "kitchen", "de": "die Küche", "ex_en": "The kitchen smells wonderful.", "ex_de": "Die Küche riecht wunderbar." },
+        { "en": "bathroom", "de": "das Badezimmer", "ex_en": "The bathroom is down the hall on the left.", "ex_de": "Das Badezimmer ist den Flur entlang auf der linken Seite." },
+        { "en": "living room", "de": "das Wohnzimmer", "ex_en": "We gather in the living room after dinner.", "ex_de": "Wir treffen uns nach dem Abendessen im Wohnzimmer." },
+        { "en": "bedroom", "de": "das Schlafzimmer", "ex_en": "The children's bedroom is upstairs.", "ex_de": "Das Kinderschlafzimmer ist oben." },
+        { "en": "door", "de": "die Tür", "ex_en": "Please close the door behind you.", "ex_de": "Bitte schließ die Tür hinter dir." },
+        { "en": "window", "de": "das Fenster", "ex_en": "Open the window, it's stuffy in here.", "ex_de": "Öffne das Fenster, es ist muffig hier drin." },
+        { "en": "floor / storey", "de": "der Boden / das Stockwerk", "ex_en": "Our flat is on the second floor.", "ex_de": "Unsere Wohnung ist im zweiten Stockwerk." },
+        { "en": "bed", "de": "das Bett", "ex_en": "I can't wait to get into bed tonight.", "ex_de": "Ich kann es kaum erwarten, heute Nacht ins Bett zu gehen." },
+        { "en": "chair", "de": "der Stuhl", "ex_en": "Pull up a chair and sit down.", "ex_de": "Zieh einen Stuhl heran und setz dich." },
+        { "en": "table", "de": "der Tisch", "ex_en": "Dinner is on the table.", "ex_de": "Das Abendessen steht auf dem Tisch." },
+        { "en": "garden / yard", "de": "der Garten", "ex_en": "We love spending time in the garden.", "ex_de": "Wir verbringen gerne Zeit im Garten." }
+      ]
+    },
+    "nature": {
+      "label": "Nature / Natur",
+      "entries": [
+        { "en": "mountain", "de": "der Berg", "ex_en": "We hiked up the mountain last weekend.", "ex_de": "Wir sind letztes Wochenende auf den Berg gewandert." },
+        { "en": "sea / ocean", "de": "das Meer / der Ozean", "ex_en": "I love the sound of the sea.", "ex_de": "Ich liebe das Geräusch des Meeres." },
+        { "en": "river", "de": "der Fluss", "ex_en": "The river runs through the city centre.", "ex_de": "Der Fluss fließt durch das Stadtzentrum." },
+        { "en": "desert", "de": "die Wüste", "ex_en": "The Sahara is the world's largest hot desert.", "ex_de": "Die Sahara ist die größte Hitzewüste der Welt." },
+        { "en": "forest / wood", "de": "der Wald", "ex_en": "We walked through the forest in autumn.", "ex_de": "Wir sind im Herbst durch den Wald spaziert." },
+        { "en": "tree", "de": "der Baum", "ex_en": "The children love climbing that old tree.", "ex_de": "Die Kinder klettern gerne auf diesen alten Baum." },
+        { "en": "flower", "de": "die Blume", "ex_en": "He brought her a bunch of flowers.", "ex_de": "Er brachte ihr einen Blumenstrauß." },
+        { "en": "sun", "de": "die Sonne", "ex_en": "The sun sets in the west.", "ex_de": "Die Sonne geht im Westen unter." },
+        { "en": "moon", "de": "der Mond", "ex_en": "The moon was full and bright last night.", "ex_de": "Der Mond war letzte Nacht voll und hell." },
+        { "en": "star", "de": "der Stern", "ex_en": "On clear nights, you can see thousands of stars.", "ex_de": "An klaren Nächten kann man Tausende von Sternen sehen." },
+        { "en": "lake", "de": "der See", "ex_en": "We went swimming in the lake.", "ex_de": "Wir sind im See schwimmen gegangen." },
+        { "en": "field", "de": "das Feld / die Wiese", "ex_en": "The sheep grazed in the green field.", "ex_de": "Die Schafe grasten auf der grünen Wiese." }
+      ]
+    },
+    "adjectives": {
+      "label": "Adjectives / Adjektive",
+      "entries": [
+        { "en": "big / large", "de": "groß", "ex_en": "That's a very big decision to make.", "ex_de": "Das ist eine sehr große Entscheidung." },
+        { "en": "small / little", "de": "klein", "ex_en": "It's a small world!", "ex_de": "Die Welt ist klein!" },
+        { "en": "beautiful / lovely", "de": "wunderschön / wundervoll", "ex_en": "What a beautiful sunset!", "ex_de": "Was für ein wunderschöner Sonnenuntergang!" },
+        { "en": "fast / quick", "de": "schnell", "ex_en": "Time passes so quickly.", "ex_de": "Die Zeit vergeht so schnell." },
+        { "en": "slow", "de": "langsam", "ex_en": "The internet connection is very slow today.", "ex_de": "Die Internetverbindung ist heute sehr langsam." },
+        { "en": "difficult / hard", "de": "schwierig / schwer", "ex_en": "Learning a new language is difficult but rewarding.", "ex_de": "Eine neue Sprache zu lernen ist schwierig, aber lohnend." },
+        { "en": "easy / simple", "de": "einfach / leicht", "ex_en": "This recipe is surprisingly easy.", "ex_de": "Dieses Rezept ist überraschend einfach." },
+        { "en": "new", "de": "neu", "ex_en": "Have you seen the new film?", "ex_de": "Hast du den neuen Film gesehen?" },
+        { "en": "old", "de": "alt", "ex_en": "This is an old building, over 200 years old.", "ex_de": "Das ist ein altes Gebäude, über 200 Jahre alt." },
+        { "en": "strong", "de": "stark / kräftig", "ex_en": "She's a very strong swimmer.", "ex_de": "Sie ist eine sehr starke Schwimmerin." },
+        { "en": "expensive", "de": "teuer", "ex_en": "London is an expensive city to live in.", "ex_de": "In London zu leben ist teuer." },
+        { "en": "cheap / affordable", "de": "billig / günstig", "ex_en": "This supermarket is much cheaper than the others.", "ex_de": "Dieser Supermarkt ist viel günstiger als die anderen." },
+        { "en": "happy / glad", "de": "glücklich / froh", "ex_en": "I'm so happy you could come!", "ex_de": "Ich bin so froh, dass du kommen konntest!" },
+        { "en": "sad", "de": "traurig", "ex_en": "The film had a sad ending.", "ex_de": "Der Film hatte ein trauriges Ende." },
+        { "en": "tired", "de": "müde", "ex_en": "I'm exhausted, I worked all weekend.", "ex_de": "Ich bin erschöpft, ich habe das ganze Wochenende gearbeitet." },
+        { "en": "hungry", "de": "hungrig", "ex_en": "I'm really hungry, when is dinner?", "ex_de": "Ich habe wirklich Hunger, wann gibt es Abendessen?" },
+        { "en": "thirsty", "de": "durstig", "ex_en": "All this exercise has made me thirsty.", "ex_de": "All diese Übung hat mich durstig gemacht." },
+        { "en": "interesting", "de": "interessant", "ex_en": "That's a very interesting idea.", "ex_de": "Das ist eine sehr interessante Idee." },
+        { "en": "boring", "de": "langweilig", "ex_en": "The lecture was a bit boring.", "ex_de": "Die Vorlesung war ein bisschen langweilig." },
+        { "en": "friendly / kind", "de": "freundlich / nett", "ex_en": "Everyone here is so friendly!", "ex_de": "Alle hier sind so freundlich!" }
+      ]
+    },
+    "verbs": {
+      "label": "Common Verbs / Häufige Verben",
+      "entries": [
+        { "en": "to go", "de": "gehen / fahren", "ex_en": "Where are you going this weekend?", "ex_de": "Wo gehst du dieses Wochenende hin?" },
+        { "en": "to come", "de": "kommen", "ex_en": "Can you come to the meeting tomorrow?", "ex_de": "Kannst du morgen zum Meeting kommen?" },
+        { "en": "to eat", "de": "essen", "ex_en": "Let's eat out tonight!", "ex_de": "Lass uns heute Abend auswärts essen!" },
+        { "en": "to drink", "de": "trinken", "ex_en": "I only drink water during the day.", "ex_de": "Ich trinke tagsüber nur Wasser." },
+        { "en": "to write", "de": "schreiben", "ex_en": "She writes in her diary every night.", "ex_de": "Sie schreibt jeden Abend in ihr Tagebuch." },
+        { "en": "to read", "de": "lesen", "ex_en": "I read for an hour before bed.", "ex_de": "Ich lese eine Stunde vor dem Schlafen." },
+        { "en": "to learn / study", "de": "lernen / studieren", "ex_en": "I'm learning English at evening class.", "ex_de": "Ich lerne Englisch im Abendkurs." },
+        { "en": "to work", "de": "arbeiten", "ex_en": "She works from home three days a week.", "ex_de": "Sie arbeitet drei Tage pro Woche von zu Hause." },
+        { "en": "to sleep", "de": "schlafen", "ex_en": "I usually sleep for eight hours.", "ex_de": "Ich schlafe normalerweise acht Stunden." },
+        { "en": "to wake up", "de": "aufwachen", "ex_en": "I wake up at six every morning.", "ex_de": "Ich wache jeden Morgen um sechs auf." },
+        { "en": "to speak / talk", "de": "sprechen / reden", "ex_en": "He speaks three languages fluently.", "ex_de": "Er spricht drei Sprachen fließend." },
+        { "en": "to listen", "de": "zuhören / hören", "ex_en": "Please listen carefully to the instructions.", "ex_de": "Bitte hör den Anweisungen genau zu." },
+        { "en": "to see / look", "de": "sehen / schauen", "ex_en": "Look at that beautiful view!", "ex_de": "Schau dir diese wunderschöne Aussicht an!" },
+        { "en": "to travel", "de": "reisen", "ex_en": "I love travelling to new countries.", "ex_de": "Ich reise gerne in neue Länder." },
+        { "en": "to buy", "de": "kaufen", "ex_en": "I need to buy a birthday present.", "ex_de": "Ich muss ein Geburtstagsgeschenk kaufen." },
+        { "en": "to understand", "de": "verstehen", "ex_en": "Do you understand what I mean?", "ex_de": "Verstehst du, was ich meine?" },
+        { "en": "to know", "de": "wissen / kennen", "ex_en": "Do you know the answer?", "ex_de": "Weißt du die Antwort?" },
+        { "en": "to like / love", "de": "mögen / lieben", "ex_en": "I really like British humour.", "ex_de": "Ich mag den britischen Humor wirklich sehr." },
+        { "en": "to help", "de": "helfen", "ex_en": "Can you help me with this?", "ex_de": "Kannst du mir dabei helfen?" },
+        { "en": "to think", "de": "denken / meinen", "ex_en": "What do you think about this idea?", "ex_de": "Was denkst du über diese Idee?" },
+        { "en": "to need", "de": "brauchen", "ex_en": "I need more practice with English.", "ex_de": "Ich brauche mehr Übung mit Englisch." },
+        { "en": "to want", "de": "wollen", "ex_en": "What do you want to do tonight?", "ex_de": "Was willst du heute Abend machen?" },
+        { "en": "to have", "de": "haben", "ex_en": "Do you have any questions?", "ex_de": "Hast du Fragen?" },
+        { "en": "to be", "de": "sein", "ex_en": "To be or not to be, that is the question.", "ex_de": "Sein oder Nichtsein, das ist hier die Frage." }
+      ]
+    },
+    "question_words": {
+      "label": "Question Words / Fragewörter",
+      "entries": [
+        { "en": "who", "de": "wer", "ex_en": "Who is calling, please?", "ex_de": "Wer ruft da an, bitte?" },
+        { "en": "what", "de": "was", "ex_en": "What time does the film start?", "ex_de": "Um wie viel Uhr beginnt der Film?" },
+        { "en": "where", "de": "wo / wohin", "ex_en": "Where are you from originally?", "ex_de": "Woher kommst du ursprünglich?" },
+        { "en": "when", "de": "wann", "ex_en": "When does the next train leave?", "ex_de": "Wann fährt der nächste Zug ab?" },
+        { "en": "why", "de": "warum / weshalb", "ex_en": "Why did you choose to study English?", "ex_de": "Warum hast du dich entschieden, Englisch zu lernen?" },
+        { "en": "how", "de": "wie", "ex_en": "How do you say this in English?", "ex_de": "Wie sagt man das auf Englisch?" },
+        { "en": "how much / how many", "de": "wie viel / wie viele", "ex_en": "How much does this cost?", "ex_de": "Wie viel kostet das?" },
+        { "en": "which", "de": "welche(r/s)", "ex_en": "Which platform does the train leave from?", "ex_de": "Von welchem Gleis fährt der Zug ab?" }
+      ]
+    },
+    "health_and_medicine": {
+      "label": "Health & Medicine / Gesundheit und Medizin",
+      "entries": [
+        { "en": "health / healthy", "de": "die Gesundheit / gesund", "ex_en": "Staying healthy is a priority for me.", "ex_de": "Gesund zu bleiben hat für mich Priorität." },
+        { "en": "illness / disease", "de": "die Krankheit / die Erkrankung", "ex_en": "He recovered from the illness quickly.", "ex_de": "Er erholte sich schnell von der Krankheit." },
+        { "en": "medicine / medication", "de": "das Medikament / die Medizin", "ex_en": "Take this medicine twice a day.", "ex_de": "Nehmen Sie dieses Medikament zweimal täglich ein." },
+        { "en": "pain / ache", "de": "der Schmerz / die Schmerzen", "ex_en": "I have a pain in my lower back.", "ex_de": "Ich habe Schmerzen im unteren Rücken." },
+        { "en": "fever", "de": "das Fieber", "ex_en": "She has a high fever and should rest.", "ex_de": "Sie hat hohes Fieber und sollte sich ausruhen." },
+        { "en": "cough", "de": "der Husten / husten", "ex_en": "This cough has been going on for a week.", "ex_de": "Dieser Husten dauert schon eine Woche an." },
+        { "en": "cold", "de": "die Erkältung", "ex_en": "I've got a terrible cold.", "ex_de": "Ich habe eine schlimme Erkältung." },
+        { "en": "allergy", "de": "die Allergie", "ex_en": "I have a severe peanut allergy.", "ex_de": "Ich habe eine starke Erdnussallergie." }
+      ]
+    },
+    "emotions": {
+      "label": "Emotions / Gefühle",
+      "entries": [
+        { "en": "happiness / joy", "de": "das Glück / die Freude", "ex_en": "Laughter is the greatest source of happiness.", "ex_de": "Lachen ist die größte Quelle der Freude." },
+        { "en": "sadness", "de": "die Traurigkeit / der Kummer", "ex_en": "She couldn't hide her sadness.", "ex_de": "Sie konnte ihre Traurigkeit nicht verbergen." },
+        { "en": "fear", "de": "die Angst / die Furcht", "ex_en": "He overcame his fear of flying.", "ex_de": "Er überwand seine Angst vor dem Fliegen." },
+        { "en": "anger", "de": "die Wut / der Ärger", "ex_en": "Try not to react in anger.", "ex_de": "Versuche, nicht aus Wut heraus zu reagieren." },
+        { "en": "love", "de": "die Liebe", "ex_en": "Love is the most powerful emotion.", "ex_de": "Liebe ist das stärkste Gefühl." },
+        { "en": "excitement", "de": "die Aufregung / die Begeisterung", "ex_en": "The children's excitement was contagious.", "ex_de": "Die Aufregung der Kinder war ansteckend." },
+        { "en": "surprise", "de": "die Überraschung", "ex_en": "What a wonderful surprise!", "ex_de": "Was für eine wunderbare Überraschung!" },
+        { "en": "boredom", "de": "die Langeweile", "ex_en": "Boredom can lead to creativity.", "ex_de": "Langeweile kann zu Kreativität führen." }
+      ]
+    },
+    "grammar_essentials": {
+      "label": "Grammar Essentials / Grammatik-Grundlagen",
+      "entries": [
+        { "en": "in", "de": "in / drin", "ex_en": "She is in the office right now.", "ex_de": "Sie ist gerade im Büro." },
+        { "en": "from", "de": "aus / von", "ex_en": "I'm from Germany originally.", "ex_de": "Ich komme ursprünglich aus Deutschland." },
+        { "en": "to", "de": "zu / nach / an", "ex_en": "We're going to London next week.", "ex_de": "Wir fahren nächste Woche nach London." },
+        { "en": "with", "de": "mit", "ex_en": "Come with me, please.", "ex_de": "Komm bitte mit mir." },
+        { "en": "on", "de": "auf / an", "ex_en": "The keys are on the table.", "ex_de": "Die Schlüssel liegen auf dem Tisch." },
+        { "en": "under / beneath", "de": "unter", "ex_en": "The cat is hiding under the bed.", "ex_de": "Die Katze versteckt sich unter dem Bett." },
+        { "en": "for", "de": "für", "ex_en": "This gift is for you.", "ex_de": "Dieses Geschenk ist für dich." },
+        { "en": "and", "de": "und", "ex_en": "Tea and coffee are both available.", "ex_de": "Tee und Kaffee sind beide verfügbar." },
+        { "en": "or", "de": "oder", "ex_en": "Would you prefer tea or coffee?", "ex_de": "Möchtest du lieber Tee oder Kaffee?" },
+        { "en": "but / however", "de": "aber / jedoch", "ex_en": "It's difficult but not impossible.", "ex_de": "Es ist schwierig, aber nicht unmöglich." },
+        { "en": "because", "de": "weil / denn", "ex_en": "I'm learning English because I love languages.", "ex_de": "Ich lerne Englisch, weil ich Sprachen liebe." },
+        { "en": "if", "de": "wenn / falls", "ex_en": "If you practise every day, you will improve.", "ex_de": "Wenn du jeden Tag übst, wirst du besser." },
+        { "en": "there is / there are", "de": "es gibt", "ex_en": "There is a great café on the corner.", "ex_de": "Es gibt ein tolles Café an der Ecke." },
+        { "en": "not", "de": "nicht", "ex_en": "That is not quite right.", "ex_de": "Das ist nicht ganz richtig." },
+        { "en": "also / too / as well", "de": "auch / ebenfalls", "ex_en": "I'd like a coffee too, please.", "ex_de": "Ich hätte auch gerne einen Kaffee, bitte." },
+        { "en": "very", "de": "sehr", "ex_en": "Thank you very much.", "ex_de": "Vielen Dank / Herzlichen Dank." },
+        { "en": "already", "de": "schon / bereits", "ex_en": "I've already finished the report.", "ex_de": "Ich habe den Bericht bereits fertig." },
+        { "en": "still / yet", "de": "noch / immer noch", "ex_en": "Are you still studying?", "ex_de": "Lernst du noch?" },
+        { "en": "only / just", "de": "nur / gerade", "ex_en": "I only have ten minutes.", "ex_de": "Ich habe nur zehn Minuten." }
+      ]
+    }
+  }
+}
